@@ -14,7 +14,6 @@ $ ./gradlew build
 ## Notes
 * If you are on windows, replace gradlew with gradlew.bat
 
-<br/><br/>
 
 # Adding to a project
 
@@ -32,3 +31,4 @@ and in your settings.gradle
 ```groovy
 include 'locationOflibrmb'
 ```
+
