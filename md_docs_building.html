@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>librmb: Related Pages</title>
+<title>librmb: Building</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,7 +76,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('pages.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('md_docs_building.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -94,18 +94,32 @@ $(document).ready(function(){initNavTree('pages.html',''); initResizable(); });
 </iframe>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Related Pages</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Building </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all related documentation pages:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="md_docs_additional_pancakerecipe.html" target="_self">pancakerecipe</a></td><td class="desc"></td></tr>
-<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="md_docs_building.html" target="_self">Building</a></td><td class="desc"></td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="deprecated.html" target="_self">Deprecated List</a></td><td class="desc"></td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<div class="textblock"><div class="fragment"><div class="line">$ # If you haven&#39;t installed the toolchain yet:</div>
+<div class="line"> </div>
+<div class="line">$ ./gradlew installRoboRioToolchain</div>
+<div class="line"> </div>
+<div class="line">$ # To build:</div>
+<div class="line"> </div>
+<div class="line">$ ./gradlew build</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md1"></a>
+Notes</h1>
+<ul>
+<li>If you are on windows, replace gradlew with gradlew.bat</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Adding to a project</h1>
+<p >see <a href="https://docs.gradle.org/current/userguide/native_software.html#sec:project_dependencies">https://docs.gradle.org/current/userguide/native_software.html#sec:project_dependencies</a></p>
+<p >essentially, in your sources.cpp, in your main project, you need to add something like </p><div class="fragment"><div class="line">sources.cpp {</div>
+<div class="line">    lib project: &quot;locationOflibrmb&quot;, library: &quot;librmb&quot;, linkage: &quot;static or shared. one of the two&quot;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p >and in your settings.gradle</p>
+<div class="fragment"><div class="line">include &#39;locationOflibrmb&#39;</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

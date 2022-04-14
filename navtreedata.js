@@ -26,6 +26,10 @@ var NAVTREE =
 [
   [ "librmb", "index.html", [
     [ "pancakerecipe", "md_docs_additional_pancakerecipe.html", null ],
+    [ "Building", "md_docs_building.html", [
+      [ "Notes", "md_docs_building.html#autotoc_md1", null ],
+      [ "Adding to a project", "md_docs_building.html#autotoc_md2", null ]
+    ] ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
