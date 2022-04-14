@@ -35,3 +35,12 @@ jobs:
       - name: Build
         run: |
           ./gradlew build
+          
+      # Format
+      - name: Check code formatting with clang-format
+        uses: DoozyX/clang-format-lint-action@v0.13
+        with:
+          source: '.'
+          extensions: 'h,cpp'
+          style: llvm
+        continue-on-error: true
