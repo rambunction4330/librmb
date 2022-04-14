@@ -48,7 +48,7 @@ wpi.sim.addDriverstation()
 
 model {
     components {
-        rmbLib(NativeLibrarySpec) {
+        librmb(NativeLibrarySpec) {
             targetPlatform wpi.platforms.roborio
             if (includeDesktopSupport) {
                 targetPlatform wpi.platforms.desktop
