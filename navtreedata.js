@@ -24,8 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "RobotCode2022", "index.html", [
-    [ "rambunction", "index.html", null ],
+  [ "librmb", "index.html", [
     [ "pancakerecipe", "md_docs_additional_pancakerecipe.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
@@ -56,7 +55,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_arm_feedforward_8h_source.html",
-"classrmb_1_1_spark_max_velocity_controller.html#a8184fafcf6b0d12865bc87cc2663f708"
+"classrmb_1_1_spark_max_velocity_controller.html#a4499452e91bb38be8cde4a333c59492c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

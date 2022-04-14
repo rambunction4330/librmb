@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['velocity_0',['velocity',['../structrmb_1_1trajectory_1_1_trajectory.html#a0dff5e95fb748ab56bf099c6716ca744',1,'rmb::trajectory::Trajectory']]],
-  ['velocity_5ft_1',['Velocity_t',['../classrmb_1_1_position_controller.html#a42a620e1fd29de249ae2b7af217234ac',1,'rmb::PositionController::Velocity_t()'],['../classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6',1,'rmb::VelocityController::Velocity_t()']]],
-  ['velocitycontroller_2',['VelocityController',['../classrmb_1_1_velocity_controller.html',1,'rmb']]],
-  ['velocitycontroller_3c_20units_3a_3ameters_20_3e_3',['VelocityController&lt; units::meters &gt;',['../classrmb_1_1_velocity_controller.html',1,'rmb']]]
+  ['updatepose_0',['updatePose',['../classrmb_1_1_drive_odometry.html#a1d5763def0e18e309624267ce8130b99',1,'rmb::DriveOdometry::updatePose()'],['../classrmb_1_1_mecanum_encoder_odometry.html#aba41698ad0971a1b0cd4e000524fb7f0',1,'rmb::MecanumEncoderOdometry::updatePose()'],['../classrmb_1_1_navx_accelerometer_odometry.html#abc228408ab0f400cd4197c297fd9fa56',1,'rmb::NavxAccelerometerOdometry::updatePose()']]],
+  ['usingsmartmotion_1',['usingSmartMotion',['../structrmb_1_1_spark_max_velocity_controller_1_1_p_i_d_config.html#afabcc295443879ed2f87b9d396091739',1,'rmb::SparkMaxVelocityController::PIDConfig']]]
 ];

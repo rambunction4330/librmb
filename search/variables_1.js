@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['g_0',['g',['../namespacermb_1_1trajectory.html#a0c51f8fd8e497beb0bdef57ae8340d01',1,'rmb::trajectory']]]
+  ['d_0',['d',['../structrmb_1_1_spark_max_velocity_controller_1_1_p_i_d_config.html#a841ca3f6032b3ec39e23f20052a93602',1,'rmb::SparkMaxVelocityController::PIDConfig']]]
 ];
