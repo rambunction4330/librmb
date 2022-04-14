@@ -21,15 +21,15 @@ namespace rmb {
 template <typename DistanceUnit>
 class SparkMaxVelocityController : public VelocityController<DistanceUnit> {
 public:
-  using Distance_t = typename VelocityController<DistanceUnit>::Distance_t;
+  using Distance_t = typename VelocityController<DistanceUnit>::Distance_t; /**< @see VelocityController<DistanceUnit>::Distance_t*/
 
-  using VeloctyUnit = typename VelocityController<DistanceUnit>::VelocityUnit;
-  using Velocity_t = typename VelocityController<DistanceUnit>::Velocity_t;
+  using VeloctyUnit = typename VelocityController<DistanceUnit>::VelocityUnit; /**< @see VelocityController<DistanceUnit>::VelocityUnit*/
+  using Velocity_t = typename VelocityController<DistanceUnit>::Velocity_t; /**< @see VelocityController<DistanceUnit>::Velocity_t*/
 
   using AccelerationUnit =
-      typename VelocityController<DistanceUnit>::AccelerationUnit;
+      typename VelocityController<DistanceUnit>::AccelerationUnit; /**< @see VelocityController<DistanceUnit>::AccelerationUnit*/
   using Acceleration_t =
-      typename VelocityController<DistanceUnit>::Acceleration_t;
+      typename VelocityController<DistanceUnit>::Acceleration_t; /**< @see VelocityController<DistanceUnit>::Acceleration_t*/
 
   using ConversionUnit =
       typename units::compound_unit<DistanceUnit,
@@ -44,7 +44,7 @@ public:
                                                                               conversion ≈ 0.3183
                                                                           
                                                                           */
-  using ConversionUnit_t = typename units::unit_t<ConversionUnit>;
+  using ConversionUnit_t = typename units::unit_t<ConversionUnit>; /**< Type declaration of ConversionUnit*/
 
   // raw velocity is in rpm. 1 rotation * 2pi rad = 2pi rad
   using RawUnit =
@@ -56,31 +56,46 @@ public:
                                                                                
                                                                                Thus the multiplier provided to the units:: library is 2pi
                                                                           */
-  using RawUnit_t = typename units::unit_t<RawUnit>;
+  using RawUnit_t = typename units::unit_t<RawUnit>; /**< Type declaration for RawUnit*/
+
   using RawVelocity =
       typename units::compound_unit<RawUnit, units::inverse<units::minutes>>; /**< The SparkMax does it's velocities in rotations per minute */
-  using RawVelocity_t = typename units::unit_t<RawVelocity>;
+  using RawVelocity_t = typename units::unit_t<RawVelocity>; /**< Type declaration for RawVelocity*/
   using RawAccel =
       typename units::compound_unit<RawVelocity,
                                     units::inverse<units::seconds>>; /**< Oddly, the SparkMax performs it's acceleration calculations in rotations per 
                                                                           minute per second. */
-  using RawAccel_t = typename units::unit_t<RawAccel>;
+  using RawAccel_t = typename units::unit_t<RawAccel>; /**< Type declaration for RawAccel*/
   
   /**
    * The PID constants used by the constructor of SparkMaxVelocityController. 
    */
   struct PIDConfig {
-    double p = 0.000057181, i = 0.0, d = 0.0, f = 0.0;
-    double iZone = 0.0, /* this should be removed -> */iMaxAccumulator = 0.0;
-    double maxOutput = 1.0, minOutput = -1.0;
+    double p = 0.000057181, /**< Proportional Gain @see https://en.wikipedia.org/wiki/PID_controller#Proportional*/
+           i = 0.0, /**< Integral Gain @see https://en.wikipedia.org/wiki/PID_controller#Integral*/
+           d = 0.0, /**< Derivative Gain @see https://en.wikipedia.org/wiki/PID_controller#Derivative*/
+           f = 0.0;  /**< Feed Forward*/
+
+    double iZone = 0.0, /**< Bound in which the error needs to be in for the integral value to take effect 
+    @see https://codedocs.revrobotics.com/cpp/classrev_1_1_c_a_n_p_i_d_controller.html#a4e724c38342a820d23ba79be0929a839*/
+    iMaxAccumulator = 0.0; /**< \deprecated*/
+
+    double maxOutput = 1.0, /**< Maximum motor output. Has to be a value between between 0.0 and 1.0*/
+           minOutput = -1.0; /**< Minimum motor output. Has to be a value between 0.0 and 1.0*/
+
 
     // SmartMotion config
-    bool usingSmartMotion = true;
-    Velocity_t maxVelocity = Velocity_t(25), minVelocity = Velocity_t(0);
-    Acceleration_t maxAccel = Acceleration_t(10);
-    Velocity_t allowedErr = Velocity_t(0.9);
+    bool usingSmartMotion = true; /**< Whether or not to use Smart Motion. 
+                                       If true, the encoder will take into account the params below*/
+    
+    Velocity_t maxVelocity = Velocity_t(25), /**< Smart Motion maximum velocity in user defined velocity units*/
+               minVelocity = Velocity_t(0);  /**< Smart Motion minimum velocity in user defined velocity units*/
+    
+    Acceleration_t maxAccel = Acceleration_t(10); /**< Maximum allowed acceleration in user defined accel units*/
+    Velocity_t allowedErr = Velocity_t(0.9); /**< Allowed velocity error in user defined velocity units*/
     rev::SparkMaxPIDController::AccelStrategy accelStrategy =
-        rev::SparkMaxPIDController::AccelStrategy::kSCurve;
+        rev::SparkMaxPIDController::AccelStrategy::kSCurve; /**< The acceleration strategy to use. Can be
+                                                                 kSCurve or kTrapezoidal*/
   };
 
   /**
@@ -88,7 +103,7 @@ public:
    * Will "follow" the specified motor. You can specify followers in the constructor.
    */
   struct Follower {
-    int id; /** device ID of the follower */
+    int id; /**< device ID of the follower */
     rev::CANSparkMax::MotorType motorType; /**< Motor type of the follower. Can be kBrushless or kBrushed */
     bool inverted; /**< Whether or not the motor is inverted or not. true for inverted.*/
   };
@@ -113,7 +128,7 @@ public:
    *                           1/2pi rot/rad 
    *                           conversion ≈ 0.1592
    * 
-   * @param feedForward the feedforward to be used. Defaults to noFeedforward<DistanceUnit>
+   * @param feedforward the feedforward to be used. Defaults to noFeedforward<DistanceUnit>
    * @param followers a list of followers to follow the motor
    * @param alternateEncoder whether or not the VelocityController should use the encoder plugged
    *                         into the SparkMax's data port
