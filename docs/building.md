@@ -1,13 +1,15 @@
 # Building
 
 ```bash
-$ # If you haven't installed the toolchain yet:
+# If you haven't installed the toolchain yet:
 $ ./gradlew installRoboRioToolchain
-$ # To build:
+
+# To build:
 $ ./gradlew build
-$ # To build docs
+
+# To build docs
 $ ./gradlew docs
-$ # or
+# or
 $ doxygen docs/Doxyfile
 ```
 
