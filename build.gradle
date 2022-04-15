@@ -46,6 +46,15 @@ wpi.sim.addGui().defaultEnabled = true
 // Enable DS but not by default
 wpi.sim.addDriverstation()
 
+abstract class DocumentationTask extends DefaultTask {
+    @TaskAction
+    def run() {
+        "doxygen docs/Doxyfile".execute()
+    }
+}
+
+tasks.register("docs", DocumentationTask)
+
 model {
     components {
         librmb(NativeLibrarySpec) {
@@ -79,3 +88,4 @@ model {
         }
     }
 }
+
