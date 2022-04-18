@@ -1,9 +1,9 @@
 var classrmb_1_1_position_controller =
 [
-    [ "Acceleration_t", "classrmb_1_1_position_controller.html#ae9aa54c76717e0333ab85041d84fd4d8", null ],
-    [ "AccelerationUnit", "classrmb_1_1_position_controller.html#af72d3da3481fd48583764acf765788dc", null ],
+    [ "Acceleration_t", "classrmb_1_1_position_controller.html#af6ee53c6f8b5cbf2fcf7992efe503bb0", null ],
+    [ "AccelerationUnit", "classrmb_1_1_position_controller.html#a1cd97454eda5d7a4cdaec4af9ed2b774", null ],
     [ "Distance_t", "classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81", null ],
-    [ "Velocity_t", "classrmb_1_1_position_controller.html#a42a620e1fd29de249ae2b7af217234ac", null ],
+    [ "Velocity_t", "classrmb_1_1_position_controller.html#a36d1c4dfbf4ab0524022178927600482", null ],
     [ "VelocityUnit", "classrmb_1_1_position_controller.html#adaf3719162c2e0a2df410ee2dd50d0ad", null ],
     [ "getInverted", "classrmb_1_1_position_controller.html#a33c8f20958be9ab248e830515bd48618", null ],
     [ "getMaxPosition", "classrmb_1_1_position_controller.html#aa136da3fdbf6ac7bea219ca7482772e0", null ],

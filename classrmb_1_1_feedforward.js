@@ -1,14 +1,14 @@
 var classrmb_1_1_feedforward =
 [
-    [ "Acceleration_t", "classrmb_1_1_feedforward.html#adf2ac070d40fb21be8c48ed3d125ea18", null ],
+    [ "Acceleration_t", "classrmb_1_1_feedforward.html#a19cfadebd0024ce7976484ca8a34ac01", null ],
     [ "AccelerationUnit", "classrmb_1_1_feedforward.html#a50e7d4794cb9af344f4a184c8af65d8e", null ],
     [ "Distance_t", "classrmb_1_1_feedforward.html#a1c2b5e9e7ddee9ff862cc31e588a133c", null ],
     [ "Ka_t", "classrmb_1_1_feedforward.html#a96c97f230a33b62554899e9ec399eb86", null ],
-    [ "KaUnit", "classrmb_1_1_feedforward.html#afe8ec305131d1bc355a67049be7a8481", null ],
+    [ "KaUnit", "classrmb_1_1_feedforward.html#abcdcab9c1b540ddaaeee85e410077f7d", null ],
     [ "Ks_t", "classrmb_1_1_feedforward.html#a8f406319756587bb78b1f6442d1403b2", null ],
     [ "KsUnit", "classrmb_1_1_feedforward.html#a1d833362cbbef2c618fe4f2a1b0af097", null ],
     [ "Kv_t", "classrmb_1_1_feedforward.html#a05204613cddfc7840ab7ea799e6c999a", null ],
-    [ "KvUnit", "classrmb_1_1_feedforward.html#a7c2a91a7eb9aa91d81edc4e61f12d0e5", null ],
+    [ "KvUnit", "classrmb_1_1_feedforward.html#ae6946a57b5d06f6a45d8dcf5e6ddf735", null ],
     [ "Velocity_t", "classrmb_1_1_feedforward.html#a7a95d2eb5318a77bf7828dd8ad9ed2a2", null ],
     [ "VelocityUnit", "classrmb_1_1_feedforward.html#ac9bd1bbe041e660530182667c23d81b8", null ],
     [ "calculate", "classrmb_1_1_feedforward.html#a68a7ca359f4c3ce1301d557681e37f73", null ],

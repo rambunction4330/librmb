@@ -101,37 +101,37 @@ $(document).ready(function(){initNavTree('log_8h_source.html',''); initResizable
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;wpi/raw_ostream.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;units/base.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;units/base.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;wpi/raw_ostream.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span>wpi {</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    raw_ostream&amp; operator&lt;&lt;(raw_ostream&amp; os, units::unit_t&lt;T&gt; val) {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        os &lt;&lt; val();</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keywordflow">return</span> os;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>raw_ostream &amp;operator&lt;&lt;(raw_ostream &amp;os, units::unit_t&lt;T&gt; val) {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  os &lt;&lt; val();</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <span class="keywordflow">return</span> os;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;    </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    raw_ostream&amp; operator&lt;&lt;(raw_ostream&amp; os, <span class="keyword">const</span> T&amp; val) {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        os &lt;&lt; std::to_string(val);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordflow">return</span> os;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; raw_ostream &amp;operator&lt;&lt;(raw_ostream &amp;os, <span class="keyword">const</span> T &amp;val) {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  os &lt;&lt; std::to_string(val);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keywordflow">return</span> os;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">inline</span> raw_ostream&amp; operator&lt;&lt;(raw_ostream&amp; os, raw_ostream&amp; (*pf)(raw_ostream&amp;)) {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">return</span> (*pf)(os);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">inline</span> raw_ostream&amp; flush(raw_ostream&amp; os) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        os.flush();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">return</span> os;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">inline</span> raw_ostream&amp; endl(raw_ostream&amp; os) {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        os &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span> os;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">inline</span> raw_ostream &amp;operator&lt;&lt;(raw_ostream &amp;os,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                               raw_ostream &amp;(*pf)(raw_ostream &amp;)) {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="keywordflow">return</span> (*pf)(os);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">inline</span> raw_ostream &amp;flush(raw_ostream &amp;os) {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  os.flush();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keywordflow">return</span> os;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">inline</span> raw_ostream &amp;endl(raw_ostream &amp;os) {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  os &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keywordflow">return</span> os;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>} <span class="comment">// namespace wpi</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
