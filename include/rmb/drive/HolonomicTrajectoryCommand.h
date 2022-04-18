@@ -20,7 +20,6 @@ class HolonomicTrajectoryCommand
     : public frc2::CommandHelper<frc2::CommandBase,
                                  HolonomicTrajectoryCommand> {
 public:
-
   /**
    * Creates a HolonomicTrajectoryCommand
    */
