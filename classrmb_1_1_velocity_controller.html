@@ -120,15 +120,13 @@ Inheritance diagram for rmb::VelocityController&lt; DistanceUnit &gt;:</div>
 Public Types</h2></td></tr>
 <tr class="memitem:a588cd9384fb546fda392757cf10a4ea0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a588cd9384fb546fda392757cf10a4ea0">Distance_t</a> = units::unit_t&lt; DistanceUnit &gt;</td></tr>
 <tr class="separator:a588cd9384fb546fda392757cf10a4ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6354cdbb6206c3178275bb0cd8fbb67"><td class="memItemLeft" align="right" valign="top"><a id="af6354cdbb6206c3178275bb0cd8fbb67" name="af6354cdbb6206c3178275bb0cd8fbb67"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>VelocityUnit</b> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:af6354cdbb6206c3178275bb0cd8fbb67"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:af6354cdbb6206c3178275bb0cd8fbb67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af76e5fead85640b7e1e88abcc0b441c6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">Velocity_t</a> = units::unit_t&lt; VelocityUnit &gt;</td></tr>
+<tr class="memitem:af76e5fead85640b7e1e88abcc0b441c6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">Velocity_t</a> = units::unit_t&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a> &gt;</td></tr>
 <tr class="separator:af76e5fead85640b7e1e88abcc0b441c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ec888f03e30ebef7f598038a6d80f21"><td class="memItemLeft" align="right" valign="top"><a id="a0ec888f03e30ebef7f598038a6d80f21" name="a0ec888f03e30ebef7f598038a6d80f21"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>AccelerationUnit</b> = units::compound_unit&lt; VelocityUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:a0ec888f03e30ebef7f598038a6d80f21"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">AccelerationUnit</a> = units::compound_unit&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a>, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:a0ec888f03e30ebef7f598038a6d80f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d2ddd51f51e55a5e2802ed3c3eb83db"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a6d2ddd51f51e55a5e2802ed3c3eb83db">Acceleration_t</a> = units::unit_t&lt; AccelerationUnit &gt;</td></tr>
+<tr class="memitem:a6d2ddd51f51e55a5e2802ed3c3eb83db"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a6d2ddd51f51e55a5e2802ed3c3eb83db">Acceleration_t</a> = units::unit_t&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">AccelerationUnit</a> &gt;</td></tr>
 <tr class="separator:a6d2ddd51f51e55a5e2802ed3c3eb83db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -155,7 +153,24 @@ class rmb::VelocityController&lt; DistanceUnit &gt;</div><p >The base class for 
 template&lt;typename DistanceUnit &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController</a>&lt; DistanceUnit &gt;::Acceleration_t =  units::unit_t&lt;AccelerationUnit&gt;</td>
+          <td class="memname">using <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController</a>&lt; DistanceUnit &gt;::Acceleration_t =  units::unit_t&lt;<a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">AccelerationUnit</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Type definition of <a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">VelocityController&lt;DistanceUnit&gt;::AccelerationUnit</a> </p>
+
+</div>
+</div>
+<a id="a0ec888f03e30ebef7f598038a6d80f21" name="a0ec888f03e30ebef7f598038a6d80f21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ec888f03e30ebef7f598038a6d80f21">&#9670;&nbsp;</a></span>AccelerationUnit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController</a>&lt; DistanceUnit &gt;::AccelerationUnit =  units::compound_unit&lt;<a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a>, units::inverse&lt;units::seconds&gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -176,7 +191,7 @@ template&lt;typename DistanceUnit &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >User specified distance unit </p>
+<p >User specified distance units </p>
 
 </div>
 </div>
@@ -189,11 +204,28 @@ template&lt;typename DistanceUnit &gt; </div>
 template&lt;typename DistanceUnit &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController</a>&lt; DistanceUnit &gt;::Velocity_t =  units::unit_t&lt;VelocityUnit&gt;</td>
+          <td class="memname">using <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController</a>&lt; DistanceUnit &gt;::Velocity_t =  units::unit_t&lt;<a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >User specificed distance unit / second </p>
+<p >Type definition for <a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityController&lt;DistanceUnit&gt;::VelocityUnit</a> </p>
+
+</div>
+</div>
+<a id="af6354cdbb6206c3178275bb0cd8fbb67" name="af6354cdbb6206c3178275bb0cd8fbb67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6354cdbb6206c3178275bb0cd8fbb67">&#9670;&nbsp;</a></span>VelocityUnit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController</a>&lt; DistanceUnit &gt;::VelocityUnit =  units::compound_unit&lt;DistanceUnit, units::inverse&lt;units::seconds&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >User specified distance unit / second </p>
 
 </div>
 </div>

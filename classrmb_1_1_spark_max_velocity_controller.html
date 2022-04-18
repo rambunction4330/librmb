@@ -126,7 +126,7 @@ Classes</h2></td></tr>
 Public Types</h2></td></tr>
 <tr class="memitem:a807a8527764ec3025eda9f8a57f598af"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a807a8527764ec3025eda9f8a57f598af">Distance_t</a> = typename <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; DistanceUnit &gt;::Distance_t</td></tr>
 <tr class="separator:a807a8527764ec3025eda9f8a57f598af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4499452e91bb38be8cde4a333c59492c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a4499452e91bb38be8cde4a333c59492c">VeloctyUnit</a> = typename <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; DistanceUnit &gt;::VelocityUnit</td></tr>
+<tr class="memitem:a4499452e91bb38be8cde4a333c59492c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a4499452e91bb38be8cde4a333c59492c">VeloctyUnit</a> = typename <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; DistanceUnit &gt;<a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">::VelocityUnit</a></td></tr>
 <tr class="separator:a4499452e91bb38be8cde4a333c59492c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a655db7f36f00b1cd9b87fbc80a6408"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a7a655db7f36f00b1cd9b87fbc80a6408">Velocity_t</a> = typename <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; DistanceUnit &gt;::Velocity_t</td></tr>
 <tr class="separator:a7a655db7f36f00b1cd9b87fbc80a6408"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,15 +153,13 @@ Public Types</h2></td></tr>
 <tr class="inherit_header pub_types_classrmb_1_1_velocity_controller"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classrmb_1_1_velocity_controller')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td></tr>
 <tr class="memitem:a588cd9384fb546fda392757cf10a4ea0 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a588cd9384fb546fda392757cf10a4ea0">Distance_t</a> = units::unit_t&lt; DistanceUnit &gt;</td></tr>
 <tr class="separator:a588cd9384fb546fda392757cf10a4ea0 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6354cdbb6206c3178275bb0cd8fbb67 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top"><a id="af6354cdbb6206c3178275bb0cd8fbb67" name="af6354cdbb6206c3178275bb0cd8fbb67"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>VelocityUnit</b> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:af6354cdbb6206c3178275bb0cd8fbb67 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:af6354cdbb6206c3178275bb0cd8fbb67 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af76e5fead85640b7e1e88abcc0b441c6 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">Velocity_t</a> = units::unit_t&lt; VelocityUnit &gt;</td></tr>
+<tr class="memitem:af76e5fead85640b7e1e88abcc0b441c6 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">Velocity_t</a> = units::unit_t&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a> &gt;</td></tr>
 <tr class="separator:af76e5fead85640b7e1e88abcc0b441c6 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ec888f03e30ebef7f598038a6d80f21 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top"><a id="a0ec888f03e30ebef7f598038a6d80f21" name="a0ec888f03e30ebef7f598038a6d80f21"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>AccelerationUnit</b> = units::compound_unit&lt; VelocityUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:a0ec888f03e30ebef7f598038a6d80f21 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">AccelerationUnit</a> = units::compound_unit&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a>, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:a0ec888f03e30ebef7f598038a6d80f21 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d2ddd51f51e55a5e2802ed3c3eb83db inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a6d2ddd51f51e55a5e2802ed3c3eb83db">Acceleration_t</a> = units::unit_t&lt; AccelerationUnit &gt;</td></tr>
+<tr class="memitem:a6d2ddd51f51e55a5e2802ed3c3eb83db inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a6d2ddd51f51e55a5e2802ed3c3eb83db">Acceleration_t</a> = units::unit_t&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">AccelerationUnit</a> &gt;</td></tr>
 <tr class="separator:a6d2ddd51f51e55a5e2802ed3c3eb83db inherit pub_types_classrmb_1_1_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -221,7 +219,7 @@ template&lt;typename DistanceUnit &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section see"><dt>See also</dt><dd>VelocityController&lt;DistanceUnit&gt;::AccelerationUnit </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">VelocityController&lt;DistanceUnit&gt;::AccelerationUnit</a> </dd></dl>
 
 </div>
 </div>
@@ -407,11 +405,11 @@ template&lt;typename DistanceUnit &gt; </div>
 template&lt;typename DistanceUnit &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html">rmb::SparkMaxVelocityController</a>&lt; DistanceUnit &gt;::VeloctyUnit =  typename <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt;DistanceUnit&gt;::VelocityUnit</td>
+          <td class="memname">using <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html">rmb::SparkMaxVelocityController</a>&lt; DistanceUnit &gt;::VeloctyUnit =  typename <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt;DistanceUnit&gt;<a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">::VelocityUnit</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section see"><dt>See also</dt><dd>VelocityController&lt;DistanceUnit&gt;::VelocityUnit </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityController&lt;DistanceUnit&gt;::VelocityUnit</a> </dd></dl>
 
 </div>
 </div>
@@ -433,7 +431,7 @@ template&lt;typename DistanceUnit &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>Creates a new <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html">SparkMaxVelocityController</a> with the specified device id </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>Creates a new <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html">SparkMaxVelocityController</a> with the specified device id </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">deviceID</td><td>the ID of the target SparkMax motor controller </td></tr>
