@@ -1,5 +1,11 @@
 #pragma once
 
+#include <frc2/command/Command.h>
+#include <frc2/command/CommandBase.h>
+#include <frc2/command/SequentialCommandGroup.h>
+
+#include <memory>
+
 #include <frc/Timer.h>
 #include <frc/controller/HolonomicDriveController.h>
 #include <frc/trajectory/Trajectory.h>
@@ -30,8 +36,14 @@ public:
     AddRequirements(command->GetRequirements());
   }
 
+  /**
+   * @private
+   */
   void Initialize() { command->Initialize(); }
 
+  /**
+   * @private
+   */
   void Execute() {
     if (command->IsFinished()) {
       command->End(false);
@@ -40,7 +52,14 @@ public:
     command->Execute();
   }
 
+  /**
+   * @private
+   */
   void End(bool interrupted) {}
+
+  /**
+   * @private
+   */
   bool IsFinished() { return false; }
 
 private:
