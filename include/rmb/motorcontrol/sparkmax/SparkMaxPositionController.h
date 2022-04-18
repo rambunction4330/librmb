@@ -18,15 +18,15 @@ namespace rmb {
 template <typename DistanceUnit>
 class SparkMaxPositionController : PositionController<DistanceUnit> {
 public:
-  using Distance_t = typename PositionController<DistanceUnit>::Distance_t;
+  using Distance_t = typename PositionController<DistanceUnit>::Distance_t;    /**< @see PositionController<DistanceUnit>::Distance_t*/
 
-  using VeloctyUnit = typename PositionController<DistanceUnit>::VelocityUnit;
-  using Velocity_t = typename PositionController<DistanceUnit>::Velocity_t;
+  using VeloctyUnit = typename PositionController<DistanceUnit>::VelocityUnit; /**< @see PositionController<DistanceUnit>::VelocityUnit*/
+  using Velocity_t = typename PositionController<DistanceUnit>::Velocity_t;    /**< @see PositionController<DistanceUnit>::Velocity_t*/
 
   using AccelerationUnit =
-      typename PositionController<DistanceUnit>::AccelerationUnit;
+      typename PositionController<DistanceUnit>::AccelerationUnit; /**< @see PositionController<DistanceUnit>::AccelerationUnit*/
   using Acceleration_t =
-      typename PositionController<DistanceUnit>::Acceleration_t;
+      typename PositionController<DistanceUnit>::Acceleration_t;   /**< @see PositionController<DistanceUnit>::Acceleration_t*/
 
   /**
    * The distance units that the SparkMax takes in by default is rotations. The conversion here
@@ -34,14 +34,14 @@ public:
    */
   using RawUnit =
       typename units::unit<std::ratio<2>, units::radians, std::ratio<1>>;
-  using RawUnit_t = typename units::unit_t<RawUnit>;
+  using RawUnit_t = typename units::unit_t<RawUnit>; /**< Type definition for SparkMaxPositionController<DistanceUnit>::RawUnit*/
 
   /**
    * The velocity units that the SparkMaxes use are done in rotations/minute.
    */
   using RawVelocity =
       typename units::compound_unit<RawUnit, units::inverse<units::minutes>>;
-  using RawVelocity_t = typename units::unit_t<RawVelocity>;
+  using RawVelocity_t = typename units::unit_t<RawVelocity>; /**< Type definition for SparkMaxPositionController<DistanceUnit>::RawVelocity*/
   
   /**
    * The SparkMax takes in acceleration in rpm/second. 
@@ -49,7 +49,7 @@ public:
   using RawAccel =
       typename units::compound_unit<RawVelocity,
                                     units::inverse<units::seconds>>;
-  using RawAccel_t = typename units::unit_t<RawAccel>;
+  using RawAccel_t = typename units::unit_t<RawAccel>; /**< Type definition for SparkMaxPositionController<DistanceUnit>::RawAccel*/
 
   /**
    * The conversion unit from the user defined DistanceUnit to radians. See SparkMaxVelocityController<DistanceUnit>::ConversionUnit.
@@ -57,22 +57,33 @@ public:
   using ConversionUnit =
       typename units::compound_unit<DistanceUnit,
                                     units::inverse<units::radians>>;
-  using ConversionUnit_t = typename units::unit_t<ConversionUnit>;
+  using ConversionUnit_t = typename units::unit_t<ConversionUnit>; /**< Type definition for SparkMaxPositionController<DistanceUnit>::ConversionUnit*/
 
   /**
    * Configuration constants for the SparkMax's PID controller.
    */
   struct PIDConfig {
-    double p, i, d, f;
-    double iZone, iMaxAccumulator;
-    double maxOutput, minOutput;
+    double p,  /**< Proportional Gain @see https://en.wikipedia.org/wiki/PID_controller#Proportional*/
+           i,  /**< Integral Gain @see https://en.wikipedia.org/wiki/PID_controller#Integral*/
+           d,  /**< Derivative Gain @see https://en.wikipedia.org/wiki/PID_controller#Derivative*/
+           f;  /**< Feed Forward*/
+
+    double iZone,  /**< Bound in which the error needs to be in for the integral value to take effect 
+    @see https://codedocs.revrobotics.com/cpp/classrev_1_1_c_a_n_p_i_d_controller.html#a4e724c38342a820d23ba79be0929a839*/
+           iMaxAccumulator; /**< \deprecated*/
+    double maxOutput,  /**< Maximum motor output. Has to be a value between between 0.0 and 1.0*/
+           minOutput;  /**< Minimum motor output. Has to be a value between 0.0 and 1.0*/
 
     // SmartMotion config
-    bool usingSmartMotion;
-    Velocity_t maxVelocity, minVelocity;
-    Acceleration_t maxAccel;
-    Distance_t allowedErr;
-    rev::SparkMaxPIDController::AccelStrategy accelStrategy;
+    bool usingSmartMotion; /**< Whether or not to use Smart Motion. 
+                                       If true, the encoder will take into account the params below*/
+    Velocity_t maxVelocity, /**< Smart Motion maximum velocity in user defined velocity units*/
+               minVelocity; /**< Smart Motion minimum velocity in user defined velocity units*/
+
+    Acceleration_t maxAccel; /**< Maximum allowed acceleration in user defined accel units*/
+    Distance_t allowedErr;   /**< Allowed velocity error in user defined velocity units*/
+    rev::SparkMaxPIDController::AccelStrategy accelStrategy; /**< The acceleration strategy to use. Can be
+                                                                 kSCurve or kTrapezoidal*/
   };
 
   /**
