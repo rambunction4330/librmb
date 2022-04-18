@@ -24,6 +24,23 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      
+      # Format
+      - name: Check code formatting with clang-format
+        uses: DoozyX/clang-format-lint-action@v0.13
+        with:
+          source: '.'
+          extensions: 'h,cpp'
+          style: llvm
+          inplace: true
+        # continue-on-error: true
+      - uses: EndBug/add-and-commit@v4
+        with:
+          author_name: Clang Format Robot
+          author_email: robot@nonexistantwebsite.com
+          message: ${{github.event.head_commit.message}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Install the RoboRio toolchain
       - name: Get toolchain
@@ -35,12 +52,4 @@ jobs:
       - name: Build
         run: |
           ./gradlew build
-          
-      # Format
-      - name: Check code formatting with clang-format
-        uses: DoozyX/clang-format-lint-action@v0.13
-        with:
-          source: '.'
-          extensions: 'h,cpp'
-          style: llvm
-        continue-on-error: true
+        

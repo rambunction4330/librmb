@@ -1,17 +1,17 @@
 #include "rmb/drive/HolonomicTrajectoryCommand.h"
 
-#include <utility>
 #include "rmb/io/log.h"
 #include <units/math.h>
+#include <utility>
 
 namespace rmb {
 HolonomicTrajectoryCommand::HolonomicTrajectoryCommand(
-    frc::Trajectory  t, HolonomicDrive &d,
-    const DriveOdometry &o, frc::HolonomicDriveController &dc,
-    std::initializer_list<frc2::Subsystem*> requirements)
+    frc::Trajectory t, HolonomicDrive &d, const DriveOdometry &o,
+    frc::HolonomicDriveController &dc,
+    std::initializer_list<frc2::Subsystem *> requirements)
     : trajectory(std::move(t)), drive(d), odometry(o), driveController(dc) {
-      AddRequirements(requirements);
-    }
+  AddRequirements(requirements);
+}
 
 void HolonomicTrajectoryCommand::Initialize() {
   timer.Reset();
@@ -27,9 +27,7 @@ void HolonomicTrajectoryCommand::Execute() {
   drive.driveChassisSpeeds(targetChassisSpeeds);
 }
 
-void HolonomicTrajectoryCommand::End(bool interrupted) {
-    timer.Stop();
-}
+void HolonomicTrajectoryCommand::End(bool interrupted) { timer.Stop(); }
 
 bool HolonomicTrajectoryCommand::IsFinished() {
   return timer.HasElapsed(trajectory.TotalTime());

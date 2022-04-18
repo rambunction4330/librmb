@@ -13,7 +13,7 @@
 namespace rmb {
 class MecanumDrive : public HolonomicDrive {
 public:
-  /** 
+  /**
    * Creates a MecanumDrive with wheels, kinematics, and maximum
    * linear and rotational velocity
    * @param frontLeft Velocity controller for the front left wheel
@@ -51,7 +51,8 @@ public:
   /**
    * Function to drive using chassis speeds
    * @param chassisSpeeds The chassis speeds to drive at
-   * @param centerOfRotation The optionally-specified center of rotation, defaults to 0
+   * @param centerOfRotation The optionally-specified center of rotation,
+   * defaults to 0
    * @see driveWheelSpeeds()
    * @see getChassisSpeeds()
    */

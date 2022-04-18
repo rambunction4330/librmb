@@ -9,7 +9,7 @@
 namespace rmb {
 class MecanumEncoderOdometry : public DriveOdometry {
 public:
-  /** 
+  /**
    * Creates a MecanumEncoderOdemetry with the mecanum drive,
    * gyro, and initial pose (location)
    * @param drive Mecanum drive of the robot

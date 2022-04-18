@@ -7,103 +7,136 @@
 #include <rev/CANSparkMax.h>
 
 #include "rmb/motorcontrol/PositionController.h"
-#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h" 
+#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h"
 #include <limits>
 
 namespace rmb {
 /**
- * A wrapper around the SparkMax motorcontroller that allows for the user to set and get the position of the motor
- * accurately through PID functionallity
+ * A wrapper around the SparkMax motorcontroller that allows for the user to set
+ * and get the position of the motor accurately through PID functionallity
  */
 template <typename DistanceUnit>
 class SparkMaxPositionController : PositionController<DistanceUnit> {
 public:
-  using Distance_t = typename PositionController<DistanceUnit>::Distance_t;    /**< @see PositionController<DistanceUnit>::Distance_t*/
+  using Distance_t = typename PositionController<DistanceUnit>::
+      Distance_t; /**< @see PositionController<DistanceUnit>::Distance_t*/
 
-  using VeloctyUnit = typename PositionController<DistanceUnit>::VelocityUnit; /**< @see PositionController<DistanceUnit>::VelocityUnit*/
-  using Velocity_t = typename PositionController<DistanceUnit>::Velocity_t;    /**< @see PositionController<DistanceUnit>::Velocity_t*/
+  using VeloctyUnit = typename PositionController<DistanceUnit>::
+      VelocityUnit; /**< @see PositionController<DistanceUnit>::VelocityUnit*/
+  using Velocity_t = typename PositionController<DistanceUnit>::
+      Velocity_t; /**< @see PositionController<DistanceUnit>::Velocity_t*/
 
-  using AccelerationUnit =
-      typename PositionController<DistanceUnit>::AccelerationUnit; /**< @see PositionController<DistanceUnit>::AccelerationUnit*/
-  using Acceleration_t =
-      typename PositionController<DistanceUnit>::Acceleration_t;   /**< @see PositionController<DistanceUnit>::Acceleration_t*/
+  using AccelerationUnit = typename PositionController<DistanceUnit>::
+      AccelerationUnit; /**< @see
+                           PositionController<DistanceUnit>::AccelerationUnit*/
+  using Acceleration_t = typename PositionController<DistanceUnit>::
+      Acceleration_t; /**< @see
+                         PositionController<DistanceUnit>::Acceleration_t*/
 
   /**
-   * The distance units that the SparkMax takes in by default is rotations. The conversion here
-   * is one rotation to 2pi radians.   
+   * The distance units that the SparkMax takes in by default is rotations. The
+   * conversion here is one rotation to 2pi radians.
    */
   using RawUnit =
       typename units::unit<std::ratio<2>, units::radians, std::ratio<1>>;
-  using RawUnit_t = typename units::unit_t<RawUnit>; /**< Type definition for SparkMaxPositionController<DistanceUnit>::RawUnit*/
+  using RawUnit_t = typename units::unit_t<
+      RawUnit>; /**< Type definition for
+                   SparkMaxPositionController<DistanceUnit>::RawUnit*/
 
   /**
    * The velocity units that the SparkMaxes use are done in rotations/minute.
    */
   using RawVelocity =
       typename units::compound_unit<RawUnit, units::inverse<units::minutes>>;
-  using RawVelocity_t = typename units::unit_t<RawVelocity>; /**< Type definition for SparkMaxPositionController<DistanceUnit>::RawVelocity*/
-  
+  using RawVelocity_t = typename units::unit_t<
+      RawVelocity>; /**< Type definition for
+                       SparkMaxPositionController<DistanceUnit>::RawVelocity*/
+
   /**
-   * The SparkMax takes in acceleration in rpm/second. 
+   * The SparkMax takes in acceleration in rpm/second.
    */
   using RawAccel =
       typename units::compound_unit<RawVelocity,
                                     units::inverse<units::seconds>>;
-  using RawAccel_t = typename units::unit_t<RawAccel>; /**< Type definition for SparkMaxPositionController<DistanceUnit>::RawAccel*/
+  using RawAccel_t = typename units::unit_t<
+      RawAccel>; /**< Type definition for
+                    SparkMaxPositionController<DistanceUnit>::RawAccel*/
 
   /**
-   * The conversion unit from the user defined DistanceUnit to radians. See SparkMaxVelocityController<DistanceUnit>::ConversionUnit.
+   * The conversion unit from the user defined DistanceUnit to radians. See
+   * SparkMaxVelocityController<DistanceUnit>::ConversionUnit.
    */
   using ConversionUnit =
       typename units::compound_unit<DistanceUnit,
                                     units::inverse<units::radians>>;
-  using ConversionUnit_t = typename units::unit_t<ConversionUnit>; /**< Type definition for SparkMaxPositionController<DistanceUnit>::ConversionUnit*/
+  using ConversionUnit_t = typename units::unit_t<
+      ConversionUnit>; /**< Type definition for
+                          SparkMaxPositionController<DistanceUnit>::ConversionUnit*/
 
   /**
    * Configuration constants for the SparkMax's PID controller.
    */
   struct PIDConfig {
-    double p,  /**< Proportional Gain @see https://en.wikipedia.org/wiki/PID_controller#Proportional*/
-           i,  /**< Integral Gain @see https://en.wikipedia.org/wiki/PID_controller#Integral*/
-           d,  /**< Derivative Gain @see https://en.wikipedia.org/wiki/PID_controller#Derivative*/
-           f;  /**< Feed Forward*/
+    double p, /**< Proportional Gain @see
+                 https://en.wikipedia.org/wiki/PID_controller#Proportional*/
+        i,    /**< Integral Gain @see
+                 https://en.wikipedia.org/wiki/PID_controller#Integral*/
+        d,    /**< Derivative Gain @see
+                 https://en.wikipedia.org/wiki/PID_controller#Derivative*/
+        f;    /**< Feed Forward*/
 
-    double iZone,  /**< Bound in which the error needs to be in for the integral value to take effect 
-    @see https://codedocs.revrobotics.com/cpp/classrev_1_1_c_a_n_p_i_d_controller.html#a4e724c38342a820d23ba79be0929a839*/
-           iMaxAccumulator; /**< \deprecated*/
-    double maxOutput,  /**< Maximum motor output. Has to be a value between between 0.0 and 1.0*/
-           minOutput;  /**< Minimum motor output. Has to be a value between 0.0 and 1.0*/
+    double
+        iZone, /**< Bound in which the error needs to be in for the integral
+value to take effect
+@see
+https://codedocs.revrobotics.com/cpp/classrev_1_1_c_a_n_p_i_d_controller.html#a4e724c38342a820d23ba79be0929a839*/
+        iMaxAccumulator; /**< \deprecated*/
+    double maxOutput,    /**< Maximum motor output. Has to be a value between
+                            between 0.0 and 1.0*/
+        minOutput; /**< Minimum motor output. Has to be a value between 0.0
+                      and 1.0*/
 
     // SmartMotion config
-    bool usingSmartMotion; /**< Whether or not to use Smart Motion. 
-                                       If true, the encoder will take into account the params below*/
-    Velocity_t maxVelocity, /**< Smart Motion maximum velocity in user defined velocity units*/
-               minVelocity; /**< Smart Motion minimum velocity in user defined velocity units*/
+    bool usingSmartMotion;  /**< Whether or not to use Smart Motion.
+                                        If true, the encoder will take into
+                               account the params below*/
+    Velocity_t maxVelocity, /**< Smart Motion maximum velocity in user defined
+                               velocity units*/
+        minVelocity; /**< Smart Motion minimum velocity in user defined velocity
+                        units*/
 
-    Acceleration_t maxAccel; /**< Maximum allowed acceleration in user defined accel units*/
-    Distance_t allowedErr;   /**< Allowed velocity error in user defined velocity units*/
-    rev::SparkMaxPIDController::AccelStrategy accelStrategy; /**< The acceleration strategy to use. Can be
-                                                                 kSCurve or kTrapezoidal*/
+    Acceleration_t maxAccel; /**< Maximum allowed acceleration in user defined
+                                accel units*/
+    Distance_t
+        allowedErr; /**< Allowed velocity error in user defined velocity units*/
+    rev::SparkMaxPIDController::AccelStrategy
+        accelStrategy; /**< The acceleration strategy to use. Can be
+                           kSCurve or kTrapezoidal*/
   };
 
   /**
-   * Type definition for the Follower functionality that the SparkMaxes provide. A follower is a motor that Will "follow" the specified motor. 
-   * You can specify followers in the constructor.
+   * Type definition for the Follower functionality that the SparkMaxes provide.
+   * A follower is a motor that Will "follow" the specified motor. You can
+   * specify followers in the constructor.
    */
   struct Follower {
     int id; /**< The ID of the follower motor */
-    rev::CANSparkMax::MotorType motorType; /**< The type of motor. Can be kBrushless or kBrushed. */
-    bool inverted; /**< Whether or not the follower motor should be inverted. true if inverted. */
+    rev::CANSparkMax::MotorType
+        motorType; /**< The type of motor. Can be kBrushless or kBrushed. */
+    bool inverted; /**< Whether or not the follower motor should be inverted.
+                      true if inverted. */
   };
 
   /** \deprecated
    * Creates a SparkMaxPositionController with the specified deviceID
    */
-  [[deprecated("Do not use this constructor in competition. This is not guaranteed to work!")]]
-  SparkMaxPositionController(int deviceID);
+  [[deprecated(
+      "Do not use this constructor in competition. This is not "
+      "guaranteed to work!")]] SparkMaxPositionController(int deviceID);
 
   /**
-   * Creates a SparkMaxPositionController with the specified SparkMax ID, PID configuration, and unit configuration
+   * Creates a SparkMaxPositionController with the specified SparkMax ID, PID
+   * configuration, and unit configuration
    * @param deviceID The ID of the target SparkMax motorcontroller
    * @param pidConfig configuration constants for the SparkMax PID controller. These constants will help you tune
    *                  your motor such that it runs smooth within the desired bounds.
@@ -118,35 +151,39 @@ public:
    * @param motorType the type of motor, Can be kBrushed or kBrushless
    */
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
-                             ConversionUnit_t conversion = ConversionUnit_t(1), 
-                             const Feedforward<DistanceUnit>& feedForward = noFeedforward<DistanceUnit>,
-                             std::initializer_list<Follower> followers = {}, bool alternateEncoder = false,
-                             int ticksPerRevolution = 4096, rev::CANSparkMax::MotorType motorType = rev::CANSparkMax::MotorType::kBrushless);
+                             ConversionUnit_t conversion = ConversionUnit_t(1),
+                             const Feedforward<DistanceUnit> &feedForward =
+                                 noFeedforward<DistanceUnit>,
+                             std::initializer_list<Follower> followers = {},
+                             bool alternateEncoder = false,
+                             int ticksPerRevolution = 4096,
+                             rev::CANSparkMax::MotorType motorType =
+                                 rev::CANSparkMax::MotorType::kBrushless);
 
   /**
    * Sets the position of the motor.
-   * @param position The distance from the reference, or "zero" point to set the motor to in user provided Distance_t. \n 
-   *                 See SparkMaxPositionController<DistanceUnit>::resetReference(Distance_t position)
+   * @param position The distance from the reference, or "zero" point to set the
+   * motor to in user provided Distance_t. \n See
+   * SparkMaxPositionController<DistanceUnit>::resetReference(Distance_t
+   * position)
    */
   void setPosition(Distance_t position) override;
 
   /**
    * Gets the position of the motor according to the SparkMax encoder
-   * @return the distance from the reference point in the user defined Distance. The reference point can be set with 
-   *         rmb::SparkMaxPositionController< DistanceUnit >::resetRefrence(Distance_t position) 	
+   * @return the distance from the reference point in the user defined Distance.
+   * The reference point can be set with rmb::SparkMaxPositionController<
+   * DistanceUnit >::resetRefrence(Distance_t position)
    */
   Distance_t getPosition() const override;
 
-
-
   /**
-   * Get the raw position(in rotations) of the motor. This is for debug purposes or advanced 
-   * users who want to bypass all of the code @theVerySharpFlat has written.
+   * Get the raw position(in rotations) of the motor. This is for debug purposes
+   * or advanced users who want to bypass all of the code @theVerySharpFlat has
+   * written.
    * @return raw position(in rotations) of the motor according to the encoder
    */
-  double getRawPosition() {
-    return sparkMaxEncoder -> GetPosition();
-  }
+  double getRawPosition() { return sparkMaxEncoder->GetPosition(); }
 
   /**
    * Gets the velocity of the motor according to the SparkMax encoder
@@ -156,7 +193,8 @@ public:
 
   /**
    * Toggles motor inversion based on inverted parameter
-   * @param inverted Desired motor inversion status. If this is true, the motor will be inverted.
+   * @param inverted Desired motor inversion status. If this is true, the motor
+   * will be inverted.
    */
   inline void setInverted(bool inverted) override {
     sparkMax.SetInverted(inverted);
@@ -170,15 +208,17 @@ public:
 
   /**
    * Resets the reference point to the provided postiion.
-   * @param position The desired reference point. This point will be treated as the 
-   *                 "0" for the SparkMaxPositionController<DistanceUnit>::getPosition() 
-   *                 and SparkMaxPositionController<DistanceUnit>::setPosition(Distance_t position) calls
+   * @param position The desired reference point. This point will be treated as
+   * the "0" for the SparkMaxPositionController<DistanceUnit>::getPosition() and
+   * SparkMaxPositionController<DistanceUnit>::setPosition(Distance_t position)
+   * calls
    */
   void resetRefrence(Distance_t position) override;
 
   /**
-   * Sets the max allowed position of the motor. If the user attempts to move the motor beyond the maximum position, 
-   * the motor will be set to the maximum position.
+   * Sets the max allowed position of the motor. If the user attempts to move
+   * the motor beyond the maximum position, the motor will be set to the maximum
+   * position.
    * @param max The maximum position in user defined DistanceUnits
    */
   void setMaxPosition(Distance_t max) override;
@@ -190,8 +230,9 @@ public:
   Distance_t getMaxPosition() override;
 
   /**
-   * Sets the minimum allowed position of the motor. If the user attempts to move the motor beyond the maximum position, 
-   * the motor will be set to the minimum position.
+   * Sets the minimum allowed position of the motor. If the user attempts to
+   * move the motor beyond the maximum position, the motor will be set to the
+   * minimum position.
    * @param min The minimum position in user defined distance units
    */
   void setMinPosition(Distance_t min) override;
@@ -212,21 +253,23 @@ public:
 
   /**
    * Spins to an offset of the current position
-   * @param position the offset from the current position 
+   * @param position the offset from the current position
    */
   void spinOffset(Distance_t position);
 
   /**
-   * Check if the position to be set is within the minimum position and maximum position.
+   * Check if the position to be set is within the minimum position and maximum
+   * position.
    * @param position The theoretical position
-   * @return Whether or not the motor can move to the specified position. true if it can move to the position.
+   * @return Whether or not the motor can move to the specified position. true
+   * if it can move to the position.
    */
   bool canSetPositionTo(Distance_t position);
 
   /**
    * Check if the motor position can offset to the specified value.
    * @param offset The theoretical offset
-   * @return If the motor can spin to the offset. Returns true if it can.  
+   * @return If the motor can spin to the offset. Returns true if it can.
    */
   bool canSpinOffsetOf(Distance_t offset);
 

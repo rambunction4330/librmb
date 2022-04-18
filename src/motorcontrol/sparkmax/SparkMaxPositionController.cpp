@@ -2,18 +2,19 @@
 
 #include <algorithm>
 
-#include <units/base.h>
 #include <units/angle.h>
+#include <units/base.h>
 #include <units/length.h>
 
 #include "rmb/motorcontrol/sparkmax/SparkMaxError.h"
-#include <wpi/raw_ostream.h>
 #include <string>
+#include <wpi/raw_ostream.h>
 
 template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
-      sparkMaxEncoder(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder())),
+      sparkMaxEncoder(std::make_unique<rev::SparkMaxRelativeEncoder>(
+          sparkMax.GetEncoder())),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(Distance_t(1) / units::radian_t(1)),
       feedforward(noFeedforward<U>) {}
@@ -21,19 +22,25 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)
 template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
     int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor,
-    const Feedforward<U> &ff, std::initializer_list<Follower> followerList, bool alternateEncoder
-    , int ticksPerRotation, rev::CANSparkMax::MotorType motorType)
+    const Feedforward<U> &ff, std::initializer_list<Follower> followerList,
+    bool alternateEncoder, int ticksPerRotation,
+    rev::CANSparkMax::MotorType motorType)
     : sparkMax(deviceID, motorType),
       sparkMaxEncoder(
-        alternateEncoder ? 
-          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder(rev::SparkMaxRelativeEncoder::Type::kQuadrature, ticksPerRotation))) :
-          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder()))
-        ),
+          alternateEncoder
+              ? std::unique_ptr<rev::RelativeEncoder>(
+                    std::make_unique<rev::SparkMaxRelativeEncoder>(
+                        sparkMax.GetEncoder(
+                            rev::SparkMaxRelativeEncoder::Type::kQuadrature,
+                            ticksPerRotation)))
+              : std::unique_ptr<rev::RelativeEncoder>(
+                    std::make_unique<rev::SparkMaxRelativeEncoder>(
+                        sparkMax.GetEncoder()))),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(conversionFactor), feedforward(ff) {
 
   CHECK_REVLIB_ERROR(sparkMax.RestoreFactoryDefaults());
-  //CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFeedbackDevice(*sparkMaxEncoder));
+  // CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFeedbackDevice(*sparkMaxEncoder));
 
   // configure pid consts
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetP(config.p));
@@ -96,8 +103,8 @@ void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
 template <typename U>
 typename rmb::SparkMaxPositionController<U>::Distance_t
 
-rmb::SparkMaxPositionController<U>::getPosition() const{
-  RawUnit_t val = RawUnit_t(sparkMaxEncoder -> GetPosition());
+rmb::SparkMaxPositionController<U>::getPosition() const {
+  RawUnit_t val = RawUnit_t(sparkMaxEncoder->GetPosition());
   std::clamp<RawUnit_t>(val, minPosition, maxPosition);
   return Distance_t((val * conversion)) - reference;
 }
@@ -105,12 +112,13 @@ rmb::SparkMaxPositionController<U>::getPosition() const{
 template <typename U>
 typename rmb::SparkMaxPositionController<U>::Velocity_t
 rmb::SparkMaxPositionController<U>::getVelocity() {
-  return Velocity_t(RawVelocity_t(sparkMaxEncoder -> GetVelocity()) * conversion);
+  return Velocity_t(RawVelocity_t(sparkMaxEncoder->GetVelocity()) * conversion);
 }
 
 template <typename U>
 void rmb::SparkMaxPositionController<U>::resetRefrence(Distance_t distance) {
-  reference = (RawUnit_t(sparkMaxEncoder -> GetPosition()) * conversion) - distance;
+  reference =
+      (RawUnit_t(sparkMaxEncoder->GetPosition()) * conversion) - distance;
 }
 
 template <typename U>
@@ -138,7 +146,8 @@ rmb::SparkMaxPositionController<U>::getMinPosition() {
 template <typename U>
 bool rmb::SparkMaxPositionController<U>::atPosition(Distance_t position) {
   Distance_t motorPosition = getPosition();
-  return position < (motorPosition + allowedError) && position > (motorPosition - allowedError);
+  return position < (motorPosition + allowedError) &&
+         position > (motorPosition - allowedError);
 }
 
 template <typename U>
@@ -148,7 +157,8 @@ void rmb::SparkMaxPositionController<U>::spinOffset(Distance_t position) {
 
 template <typename U>
 bool rmb::SparkMaxPositionController<U>::canSetPositionTo(Distance_t position) {
-  return (position < (maxPosition * conversion)) && (position > (minPosition * conversion));
+  return (position < (maxPosition * conversion)) &&
+         (position > (minPosition * conversion));
 }
 
 template <typename U>

@@ -29,7 +29,7 @@ public:
   virtual void driveChassisSpeeds(
       const frc::ChassisSpeeds &chassisSpeeds,
       const frc::Translation2d &centerofRotation = frc::Translation2d()) = 0;
-  
+
   /**
    * A pure virtual member that returns the current
    * chassis speeds.
@@ -52,13 +52,13 @@ public:
    * @see drivePolar()
    */
   virtual void driveCartesian(double ySpeed, double xSpeed, double zRotation);
-  
+
   /**
    * A pure virtual member that drives using
    * cartesian coordinates.
    * @param magnitude Double that gives the magnitude
    * in the direction specified by the angle parameter.
-   * @param angle Double that gives the angle for the 
+   * @param angle Double that gives the angle for the
    * direction to travel in.
    * @param zRotation Double that gives the rotation
    * along the z-axis.
