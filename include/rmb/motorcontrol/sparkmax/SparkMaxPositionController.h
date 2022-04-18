@@ -113,7 +113,8 @@ public:
    * @param feedForward The Feedforward to be passed to the motor. rmb::noFeedforward<DistanceUnit> is the default
    * @param followers list of motors to follow this motor. The parent motor will construct the children with the given configuration
    *                  and will own the followers.
-   * @param ticksPerRevolution The number of ticks per rotation of the motor
+   * @param alternateEncoder Whether or not to use an alternate encoder
+   * @param ticksPerRevolution The number of ticks per rotation of the alternate encoder
    * @param motorType the type of motor, Can be kBrushed or kBrushless
    */
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
@@ -204,7 +205,7 @@ public:
   /**
    * Check if the motor is at the specified position within the allowed error-bounds
    * specified in the PIDConfig struct passed in the constructor.
-   * @param The setpoint
+   * @param position The setpoint
    * @return true if the motor is at the specified position. 
    */
   bool atPosition(Distance_t position);
