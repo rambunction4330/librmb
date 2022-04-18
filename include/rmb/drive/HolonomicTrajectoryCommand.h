@@ -20,6 +20,10 @@ class HolonomicTrajectoryCommand
     : public frc2::CommandHelper<frc2::CommandBase,
                                  HolonomicTrajectoryCommand> {
 public:
+
+  /**
+   * Creates a HolonomicTrajectoryCommand
+   */
   HolonomicTrajectoryCommand(
       frc::Trajectory trajectory, HolonomicDrive &drive,
       const DriveOdometry &odometry,
@@ -31,7 +35,7 @@ public:
    * @see End()
    * @see IsFinished()
    */
-  void Initialize();
+  void Initialize() override;
 
   /**
    * Function called repeatedly while the command is scheduled.
@@ -39,7 +43,7 @@ public:
    * @see End()
    * @see IsFinished()
    */
-  void Execute();
+  void Execute() override;
 
   /**
    * Function called when the command ends or is interrupted.
@@ -49,7 +53,7 @@ public:
    * @see Execute()
    * @see IsFinished()
    */
-  void End(bool interrupted);
+  void End(bool interrupted) override;
 
   /** Function called repeatedly while the command is scheduled and calls End()
    * when returns true.
