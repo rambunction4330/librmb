@@ -1,5 +1,6 @@
 #pragma once
 
+#include <units/velocity.h>
 #include <units/base.h>
 
 namespace rmb {
@@ -7,16 +8,17 @@ namespace rmb {
 /**
  * Base class for wrappers around vendor API / device specific positionController code. 
  * This class provides a standard interface to code that allows you to control the position of a motor.
+ * @tparam User specified distance unit
  */
 template <typename DistanceUnit> class PositionController {
 public:
   using Distance_t = units::unit_t<DistanceUnit>; /**< User specified distance unit. Is probably going to be an angle or a length*/
   using VelocityUnit =
-      units::compound_unit<DistanceUnit, units::inverse<units::seconds>>;
-  using Velocity_t = units::unit_t<VelocityUnit>; /**< DistanceUnit per second*/
+      units::compound_unit<DistanceUnit, units::inverse<units::seconds>>; /**< DistanceUnit per second*/
+  using Velocity_t = units::unit_t<VelocityUnit>; /**< Type definition for PositionController<DistanceUnit>::VelocityUnit*/
   using AccelerationUnit =
-      units::compound_unit<VelocityUnit, units::inverse<units::seconds>>;
-  using Acceleration_t = units::unit_t<AccelerationUnit>; /**< DistanceUnit per second squared */
+      units::compound_unit<VelocityUnit, units::inverse<units::seconds>>; /**< DistanceUnit per second squared */
+  using Acceleration_t = units::unit_t<AccelerationUnit>; /**< Type definition for PositionController<DistanceUnit>::AccelerationUnit*/
 
   /**
    * Resets the reference point of the position controller to base position readings off of.
