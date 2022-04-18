@@ -60,7 +60,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_arm_feedforward_8h_source.html",
-"classrmb_1_1_spark_max_velocity_controller.html#a4499452e91bb38be8cde4a333c59492c"
+"classrmb_1_1_simple_motor_feedforward.html#a30b6b4727c876df7d2b6728d625368fd",
+"structrmb_1_1trajectory_1_1_trajectory.html#a51f7ecf17de28f48ef635ade3f40d49c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
