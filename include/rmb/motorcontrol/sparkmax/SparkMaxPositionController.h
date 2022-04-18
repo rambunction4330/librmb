@@ -130,9 +130,9 @@ https://codedocs.revrobotics.com/cpp/classrev_1_1_c_a_n_p_i_d_controller.html#a4
   /** \deprecated
    * Creates a SparkMaxPositionController with the specified deviceID
    */
-  [[deprecated("Do not use this constructor in competition. This is not "
-               "guaranteed to work!")]] SparkMaxPositionController(
-      int deviceID);
+  [[deprecated(
+      "Do not use this constructor in competition. This is not "
+      "guaranteed to work!")]] SparkMaxPositionController(int deviceID);
 
   /**
    * Creates a SparkMaxPositionController with the specified SparkMax ID, PID

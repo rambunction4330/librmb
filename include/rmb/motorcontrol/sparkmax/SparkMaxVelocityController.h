@@ -148,9 +148,9 @@ https://codedocs.revrobotics.com/cpp/classrev_1_1_c_a_n_p_i_d_controller.html#a4
    * Creates a new SparkMaxVelocityController with the specified device id
    * @param deviceID the ID of the target SparkMax motor controller
    */
-  [[deprecated("Do not use this constructor in competition. This is not "
-               "guaranteed to work!")]] SparkMaxVelocityController(
-      int deviceID);
+  [[deprecated(
+      "Do not use this constructor in competition. This is not "
+      "guaranteed to work!")]] SparkMaxVelocityController(int deviceID);
 
   /**
    * Creates a SparkMaxVelocityController
