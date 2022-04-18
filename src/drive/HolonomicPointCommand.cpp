@@ -5,8 +5,10 @@
 #include "rmb/drive/HolonomicPointCommand.h"
 
 namespace rmb {
-HolonomicPointCommand::HolonomicPointCommand(const frc::Pose2d& pose, HolonomicDrive& drive, const DriveOdometry& odometry, frc::HolonomicDriveController& controller) : 
-                                             pose(pose), drive(drive), odometry(odometry), controller(controller) {
+HolonomicPointCommand::HolonomicPointCommand(
+    const frc::Pose2d &pose, HolonomicDrive &drive,
+    const DriveOdometry &odometry, frc::HolonomicDriveController &controller)
+    : pose(pose), drive(drive), odometry(odometry), controller(controller) {
   // Use addRequirements() here to declare subsystem dependencies.
 }
 
@@ -20,7 +22,5 @@ void HolonomicPointCommand::Execute() {}
 void HolonomicPointCommand::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool HolonomicPointCommand::IsFinished() {
-  return false;
-}
-}
+bool HolonomicPointCommand::IsFinished() { return false; }
+} // namespace rmb

@@ -1,28 +1,40 @@
 #pragma once
 
-#include <units/velocity.h>
 #include <units/base.h>
+#include <units/velocity.h>
 
 namespace rmb {
 
 /**
- * Base class for wrappers around vendor API / device specific positionController code. 
- * This class provides a standard interface to code that allows you to control the position of a motor.
+ * Base class for wrappers around vendor API / device specific
+ * positionController code. This class provides a standard interface to code
+ * that allows you to control the position of a motor.
  * @tparam User specified distance unit
  */
 template <typename DistanceUnit> class PositionController {
 public:
-  using Distance_t = units::unit_t<DistanceUnit>; /**< User specified distance unit. Is probably going to be an angle or a length*/
+  using Distance_t = units::unit_t<DistanceUnit>; /**< User specified distance
+                                                     unit. Is probably going to
+                                                     be an angle or a length*/
   using VelocityUnit =
-      units::compound_unit<DistanceUnit, units::inverse<units::seconds>>; /**< DistanceUnit per second*/
-  using Velocity_t = units::unit_t<VelocityUnit>; /**< Type definition for PositionController<DistanceUnit>::VelocityUnit*/
-  using AccelerationUnit =
-      units::compound_unit<VelocityUnit, units::inverse<units::seconds>>; /**< DistanceUnit per second squared */
-  using Acceleration_t = units::unit_t<AccelerationUnit>; /**< Type definition for PositionController<DistanceUnit>::AccelerationUnit*/
+      units::compound_unit<DistanceUnit,
+                           units::inverse<units::seconds>>; /**< DistanceUnit
+                                                               per second*/
+  using Velocity_t = units::unit_t<
+      VelocityUnit>; /**< Type definition for
+                        PositionController<DistanceUnit>::VelocityUnit*/
+  using AccelerationUnit = units::compound_unit<
+      VelocityUnit,
+      units::inverse<units::seconds>>; /**< DistanceUnit per second squared */
+  using Acceleration_t = units::unit_t<
+      AccelerationUnit>; /**< Type definition for
+                            PositionController<DistanceUnit>::AccelerationUnit*/
 
   /**
-   * Resets the reference point of the position controller to base position readings off of.
-   * @param position the desired reference point of the position controller in user specified DistanceUnits
+   * Resets the reference point of the position controller to base position
+   * readings off of.
+   * @param position the desired reference point of the position controller in
+   * user specified DistanceUnits
    */
   virtual void resetRefrence(Distance_t position) = 0;
 
@@ -50,13 +62,11 @@ public:
    */
   virtual Distance_t getMinPosition() = 0;
 
-
   /**
    * Sets the desired position of the motor.
    * @param position the desired position in user specified DistanceUnits
    */
   virtual void setPosition(Distance_t position) = 0;
-
 
   /**
    * Get the current position of the motor.
@@ -72,7 +82,8 @@ public:
 
   /**
    * Invert the motor (make it go reverse from the default)
-   * @param inverted whether or not the motor should be inverted. true if inverted.
+   * @param inverted whether or not the motor should be inverted. true if
+   * inverted.
    */
   virtual void setInverted(bool inverted) = 0;
 

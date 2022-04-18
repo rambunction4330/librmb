@@ -10,21 +10,26 @@ namespace rmb {
 template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
-      sparkMaxEncoder(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder())),
+      sparkMaxEncoder(std::make_unique<rev::SparkMaxRelativeEncoder>(
+          sparkMax.GetEncoder())),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       feedforward(noFeedforward<U>) {}
 
 template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(
     int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit,
-    const Feedforward<U> &ff, std::initializer_list<Follower> followerList, 
-    bool alternateEncoder, int countsPerRevolution, rev::CANSparkMax::MotorType motorType)
+    const Feedforward<U> &ff, std::initializer_list<Follower> followerList,
+    bool alternateEncoder, int countsPerRevolution,
+    rev::CANSparkMax::MotorType motorType)
     : sparkMax(deviceID, motorType),
       sparkMaxEncoder(
-        alternateEncoder ? 
-          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxAlternateEncoder>(sparkMax.GetAlternateEncoder(countsPerRevolution))) :
-          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder()))
-        ),
+          alternateEncoder
+              ? std::unique_ptr<rev::RelativeEncoder>(
+                    std::make_unique<rev::SparkMaxAlternateEncoder>(
+                        sparkMax.GetAlternateEncoder(countsPerRevolution)))
+              : std::unique_ptr<rev::RelativeEncoder>(
+                    std::make_unique<rev::SparkMaxRelativeEncoder>(
+                        sparkMax.GetEncoder()))),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(conversionUnit), feedforward(ff) {
 
@@ -85,7 +90,7 @@ void SparkMaxVelocityController<U>::setVelocity(Velocity_t velocity) {
 template <typename U>
 typename SparkMaxVelocityController<U>::Velocity_t
 SparkMaxVelocityController<U>::getVelocity() {
-  return Velocity_t(RawVelocity_t(sparkMaxEncoder -> GetVelocity()) * conversion);
+  return Velocity_t(RawVelocity_t(sparkMaxEncoder->GetVelocity()) * conversion);
 }
 
 template class SparkMaxVelocityController<units::meters>;

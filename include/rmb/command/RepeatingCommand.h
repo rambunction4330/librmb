@@ -12,30 +12,32 @@
 
 namespace rmb {
 /**
- * Class that will perpetually repeat a command from `Initialize()` to 
- * `End()`. This is helpful for creating an `frc2::SequentialCommand` that 
+ * Class that will perpetually repeat a command from `Initialize()` to
+ * `End()`. This is helpful for creating an `frc2::SequentialCommand` that
  * should repeat perpetually unless interupted.
- **/ 
-class RepeatingCommand : public frc2::CommandHelper<frc2::CommandBase, RepeatingCommand> {
+ **/
+class RepeatingCommand
+    : public frc2::CommandHelper<frc2::CommandBase, RepeatingCommand> {
 public:
   /**
-   * Wraps and takes ownership of a command that will repeate perpetually 
+   * Wraps and takes ownership of a command that will repeate perpetually
    * unless interupted.
-   * 
+   *
    * @param command Command to be wrapped.
    **/
-  RepeatingCommand(std::unique_ptr<frc2::Command> command) : command(std::move(command)) {
+  RepeatingCommand(std::unique_ptr<frc2::Command> command)
+      : command(std::move(command)) {
     AddRequirements(command->GetRequirements());
   }
-  
+
   void Initialize() { command->Initialize(); }
 
-  void Execute() { 
+  void Execute() {
     if (command->IsFinished()) {
       command->End(false);
       command->Initialize();
     }
-    command->Execute(); 
+    command->Execute();
   }
 
   void End(bool interrupted) {}
