@@ -138,16 +138,20 @@ https://codedocs.revrobotics.com/cpp/classrev_1_1_c_a_n_p_i_d_controller.html#a4
    * Creates a SparkMaxPositionController with the specified SparkMax ID, PID
    * configuration, and unit configuration
    * @param deviceID The ID of the target SparkMax motorcontroller
-   * @param pidConfig configuration constants for the SparkMax PID controller. These constants will help you tune
-   *                  your motor such that it runs smooth within the desired bounds.
-   * @param conversion The conversion from the user provided DistanceUnits to radians. 
-   *                   See SparkMaxPositionController<DistanceUnit>::ConversionUnit
-   * 
-   * @param feedForward The Feedforward to be passed to the motor. rmb::noFeedforward<DistanceUnit> is the default
-   * @param followers list of motors to follow this motor. The parent motor will construct the children with the given configuration
-   *                  and will own the followers.
+   * @param pidConfig configuration constants for the SparkMax PID controller.
+   * These constants will help you tune your motor such that it runs smooth
+   * within the desired bounds.
+   * @param conversion The conversion from the user provided DistanceUnits to
+   * radians. See SparkMaxPositionController<DistanceUnit>::ConversionUnit
+   *
+   * @param feedForward The Feedforward to be passed to the motor.
+   * rmb::noFeedforward<DistanceUnit> is the default
+   * @param followers list of motors to follow this motor. The parent motor will
+   * construct the children with the given configuration and will own the
+   * followers.
    * @param alternateEncoder Whether or not to use an alternate encoder
-   * @param ticksPerRevolution The number of ticks per rotation of the alternate encoder
+   * @param ticksPerRevolution The number of ticks per rotation of the alternate
+   * encoder
    * @param motorType the type of motor, Can be kBrushed or kBrushless
    */
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
@@ -244,10 +248,10 @@ https://codedocs.revrobotics.com/cpp/classrev_1_1_c_a_n_p_i_d_controller.html#a4
   Distance_t getMinPosition() override;
 
   /**
-   * Check if the motor is at the specified position within the allowed error-bounds
-   * specified in the PIDConfig struct passed in the constructor.
+   * Check if the motor is at the specified position within the allowed
+   * error-bounds specified in the PIDConfig struct passed in the constructor.
    * @param position The setpoint
-   * @return true if the motor is at the specified position. 
+   * @return true if the motor is at the specified position.
    */
   bool atPosition(Distance_t position);
 
