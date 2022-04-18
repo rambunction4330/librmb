@@ -12,30 +12,30 @@ namespace rmb {
  **/
 template <typename DistanceUnit> class Feedforward {
 public:
-  using Distance_t = units::unit_t<DistanceUnit>;
+  using Distance_t = units::unit_t<DistanceUnit>; /**< User specified distance type*/
   using VelocityUnit =
-      units::compound_unit<DistanceUnit, units::inverse<units::seconds>>;
-  using Velocity_t = units::unit_t<VelocityUnit>;
+      units::compound_unit<DistanceUnit, units::inverse<units::seconds>>; /**< DistanceUnit / Second*/
+  using Velocity_t = units::unit_t<VelocityUnit>; /**< Type declaration for FeedForward<DistanceUnit>::VelocityUnit*/
   using AccelerationUnit =
-      units::compound_unit<VelocityUnit, units::inverse<units::seconds>>;
-  using Acceleration_t = units::unit_t<AccelerationUnit>;
+      units::compound_unit<VelocityUnit, units::inverse<units::seconds>>; /**< VelocityUnit / Second*/
+  using Acceleration_t = units::unit_t<AccelerationUnit>; /**< Type declaration for FeedForward<DistanceUnit>::AccelerationUnit*/
 
-  using KsUnit = units::volts;
-  using Ks_t = units::unit_t<KsUnit>;
+  using KsUnit = units::volts; /**< Static gain is in volts */
+  using Ks_t = units::unit_t<KsUnit>; /**< Type declaration for Feedforward<DistanceUnit>::KsUnit*/
   using KvUnit =
-      units::compound_unit<units::volts, units::inverse<VelocityUnit>>;
-  using Kv_t = units::unit_t<KvUnit>;
+      units::compound_unit<units::volts, units::inverse<VelocityUnit>>; /**< Velocity gain unit is Volts / VelocityUnit*/
+  using Kv_t = units::unit_t<KvUnit>; /**< Type declaration for FeedForward<DistanceUnit>::KvUnit*/
   using KaUnit =
-      units::compound_unit<units::volts, units::inverse<AccelerationUnit>>;
-  using Ka_t = units::unit_t<KaUnit>;
+      units::compound_unit<units::volts, units::inverse<AccelerationUnit>>; /**< Acceleration gain unit is volts / AcclerationUnit*/
+  using Ka_t = units::unit_t<KaUnit>; /**< Type declaration for FeedForward<DistanceUnit>::KaUnit*/
 
   /**
    * Calculates a feedforward voltage at a desired velocity, acceleration, 
    * and distance.
    * 
    * @param velocity Desired Velocity
+   * @param distance Position of Motor (Not always useful).
    * @param acceleration Desired Acceleration
-   * @param Distance Position of Motor (Not always useful).
    **/
   virtual units::volt_t
   calculate(Velocity_t velocity, Distance_t distance = Distance_t(0.0),
