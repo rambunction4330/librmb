@@ -18,19 +18,26 @@ namespace rmb {
 template <typename DistanceUnit>
 class ElevatorFeedforward : public Feedforward<DistanceUnit> {
 public:
-  using Distance_t = typename Feedforward<DistanceUnit>::Distance_t;
-  using VelocityUnit = typename Feedforward<DistanceUnit>::VelocityUnit;
-  using Velocity_t = typename Feedforward<DistanceUnit>::Velocity_t;
-  using AccelerationUnit = typename Feedforward<DistanceUnit>::AccelerationUnit;
-  using Acceleration_t = typename Feedforward<DistanceUnit>::Acceleration_t;
+  using Distance_t = typename Feedforward<DistanceUnit>::Distance_t; /**< @see Feedforward<DistanceUnit>::Distance_t*/
+  using VelocityUnit = typename Feedforward<DistanceUnit>::VelocityUnit; /**< @see Feedforward<DistanceUnit>::VelocityUnit*/
+  using Velocity_t = typename Feedforward<DistanceUnit>::Velocity_t; /**< @see Feedforward<DistanceUnit>::Velocity_t*/
+  using AccelerationUnit = typename Feedforward<DistanceUnit>::AccelerationUnit; /**< @see Feedforward<DistanceUnit>::AccelerationUnit*/
+  using Acceleration_t = typename Feedforward<DistanceUnit>::Acceleration_t; /**< @see Feedforward<DistanceUnit>::Acceleration_t */
 
-  using KsUnit = typename Feedforward<DistanceUnit>::KsUnit;
-  using Ks_t = typename Feedforward<DistanceUnit>::Ks_t;
-  using KvUnit = typename Feedforward<DistanceUnit>::KvUnit;
-  using Kv_t = typename Feedforward<DistanceUnit>::Kv_t;
-  using KaUnit = typename Feedforward<DistanceUnit>::KaUnit;
-  using Ka_t = typename Feedforward<DistanceUnit>::Ka_t;
+  using KsUnit = typename Feedforward<DistanceUnit>::KsUnit; /**< @see Feedforward<DistanceUnit>::KsUnit*/
+  using Ks_t = typename Feedforward<DistanceUnit>::Ks_t;     /**< @see Feedforward<DistanceUnit>::Ks_t*/
+  using KvUnit = typename Feedforward<DistanceUnit>::KvUnit; /**< @see Feedforward<DistanceUnit>::KvUnit*/
+  using Kv_t = typename Feedforward<DistanceUnit>::Kv_t;     /**< @see Feedforward<DistanceUnit>::Kv_t*/
+  using KaUnit = typename Feedforward<DistanceUnit>::KaUnit; /**< @see Feedforward<DistanceUnit>::KaUnit*/
+  using Ka_t = typename Feedforward<DistanceUnit>::Ka_t;     /**< @see Feedforward<DistanceUnit>::Ka_t*/
 
+  /**
+   * Creates an ElevatorFeedforward
+   * @param kS Static gain
+   * @param kG Gravity gain
+   * @param kV Velocity gain
+   * @param kA Acceleration gain
+   */
   ElevatorFeedforward(Ks_t kS, Ks_t kG, Kv_t kV, Ka_t kA)
       : kS(kS), kG(kG), kV(kV), kA(kA) {}
 
@@ -39,8 +46,8 @@ public:
    * and distance.
    * 
    * @param velocity Desired Velocity
+   * @param distance Position of Motor (Not always useful).
    * @param acceleration Desired Acceleration
-   * @param Distance Position of Motor (Not always useful).
    **/
   inline units::volt_t
   calculate(Velocity_t velocity, Distance_t distance = Distance_t(0.0),

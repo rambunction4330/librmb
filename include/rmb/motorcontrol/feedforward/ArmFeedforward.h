@@ -3,6 +3,7 @@
 #include <units/angle.h>
 #include <units/base.h>
 #include <units/voltage.h>
+#include <units/math.h>
 
 #include <wpi/MathExtras.h>
 
@@ -16,20 +17,28 @@ namespace rmb {
  **/
 class ArmFeedforward : public Feedforward<units::radians> {
 public:
-  using Distance_t = typename Feedforward<units::radians>::Distance_t;
-  using VelocityUnit = typename Feedforward<units::radians>::VelocityUnit;
-  using Velocity_t = typename Feedforward<units::radians>::Velocity_t;
+  using Distance_t = typename Feedforward<units::radians>::Distance_t;     /**< @see Feedforward<DistanceUnit>::Distance_t*/
+  using VelocityUnit = typename Feedforward<units::radians>::VelocityUnit; /**< @see Feedforward<DistanceUnit>::VelocityUnit*/
+  using Velocity_t = typename Feedforward<units::radians>::Velocity_t;     /**< @see Feedforward<DistanceUnit>::Velocity_t*/
   using AccelerationUnit =
-      typename Feedforward<units::radians>::AccelerationUnit;
-  using Acceleration_t = typename Feedforward<units::radians>::Acceleration_t;
+      typename Feedforward<units::radians>::AccelerationUnit;              /**< @see Feedforward<DistanceUnit>::AccelerationUnit*/
+  using Acceleration_t = 
+      typename Feedforward<units::radians>::Acceleration_t;                /**< @see Feedforward<DistanceUnit>::Acceleration_t */
 
-  using KsUnit = typename Feedforward<units::radians>::KsUnit;
-  using Ks_t = typename Feedforward<units::radians>::Ks_t;
-  using KvUnit = typename Feedforward<units::radians>::KvUnit;
-  using Kv_t = typename Feedforward<units::radians>::Kv_t;
-  using KaUnit = typename Feedforward<units::radians>::KaUnit;
-  using Ka_t = typename Feedforward<units::radians>::Ka_t;
+  using KsUnit = typename Feedforward<units::radians>::KsUnit; /**< @see Feedforward<DistanceUnit>::KsUnit*/
+  using Ks_t = typename Feedforward<units::radians>::Ks_t;     /**< @see Feedforward<DistanceUnit>::Ks_t*/
+  using KvUnit = typename Feedforward<units::radians>::KvUnit; /**< @see Feedforward<DistanceUnit>::KvUnit*/
+  using Kv_t = typename Feedforward<units::radians>::Kv_t;     /**< @see Feedforward<DistanceUnit>::Kv_t*/
+  using KaUnit = typename Feedforward<units::radians>::KaUnit; /**< @see Feedforward<DistanceUnit>::KaUnit*/
+  using Ka_t = typename Feedforward<units::radians>::Ka_t;     /**< @see Feedforward<DistanceUnit>::Ka_t*/
 
+  /**
+   * Create an ArmFeedforward
+   * @param kS Static gain
+   * @param kCos Cosine gain
+   * @param kV Velocity gain
+   * @param kA Acceleration gain
+   */
   ArmFeedforward(Ks_t kS, Ks_t kCos, Kv_t kV, Ka_t kA)
       : kS(kS), kCos(kCos), kV(kV), kA(kA){};
 
@@ -38,8 +47,8 @@ public:
    * and distance.
    * 
    * @param velocity Desired Velocity
+   * @param position Position of Motor (Not always useful).
    * @param acceleration Desired Acceleration
-   * @param Distance Position of Motor (Not always useful).
    **/
   inline units::volt_t calculate(Velocity_t velocity, Distance_t position,
                                  Acceleration_t acceleration) const override {

@@ -185,3 +185,6 @@ docs/*
 .project.alt.json
 
 compile_commands.json
+
+# Aiden's compile_commands.json generating script
+rioCDGen.py
