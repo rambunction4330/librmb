@@ -178,6 +178,8 @@ docs/*
 !docs/Doxyfile
 !docs/favicon.png
 !docs/favicon.png
+!docs/building.md
+!docs/errors.out
 
 .idea/
 .cache/
