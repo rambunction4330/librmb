@@ -15,7 +15,7 @@ namespace rmb {
 /**
  * Mecanum drive controller. Manages velocity
  * and variables and controls the drivetrain.
- * Also provides getter functionallity to 
+ * Also provides getter functionallity to
  * get velocity and other values.
  */
 class MecanumDrive : public HolonomicDrive {

@@ -18,7 +18,6 @@ namespace rmb {
  */
 class NavxAccelerometerOdometry : public DriveOdometry {
 public:
-
   /**
    * Create a NavxAccelerometerOdometry
    * @param port The SPI port that the gyro is on
