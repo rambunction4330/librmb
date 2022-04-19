@@ -10,7 +10,7 @@ var classrmb_1_1_position_controller =
     [ "getMinPosition", "classrmb_1_1_position_controller.html#a45164e92e303ecd0b39d9481b3fe57bc", null ],
     [ "getPosition", "classrmb_1_1_position_controller.html#ae33d655e3c79114fe5cf747ec12ec6ed", null ],
     [ "getVelocity", "classrmb_1_1_position_controller.html#a3fd2318416850550ef32d941da71f44a", null ],
-    [ "resetRefrence", "classrmb_1_1_position_controller.html#ad521e51484557c6636dce869f97dd002", null ],
+    [ "resetReference", "classrmb_1_1_position_controller.html#a88f19f65ad7b094d0b95996131ed6c66", null ],
     [ "setInverted", "classrmb_1_1_position_controller.html#aaa13b2b997211e032795ea54e57f5c52", null ],
     [ "setMaxPosition", "classrmb_1_1_position_controller.html#a143b2fe8bd6be5f688ff690b03a471ec", null ],
     [ "setMinPosition", "classrmb_1_1_position_controller.html#a72b23357bcd57be8bdb41646c5f39080", null ],

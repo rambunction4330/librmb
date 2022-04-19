@@ -169,8 +169,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a148ef41cf987e23ef20bc84b9862b610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1962f839d2c11548165c649ab9836d68"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#a1962f839d2c11548165c649ab9836d68">getInverted</a> () override</td></tr>
 <tr class="separator:a1962f839d2c11548165c649ab9836d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2c596d1e01916b2cc96511d9c604384"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#ac2c596d1e01916b2cc96511d9c604384">resetRefrence</a> (<a class="el" href="classrmb_1_1_spark_max_position_controller.html#ac6aac9f90d82818e96d447b4d57b0452">Distance_t</a> position) override</td></tr>
-<tr class="separator:ac2c596d1e01916b2cc96511d9c604384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab16f6158a745b30416199f6d45ed433a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#ab16f6158a745b30416199f6d45ed433a">resetReference</a> (<a class="el" href="classrmb_1_1_spark_max_position_controller.html#ac6aac9f90d82818e96d447b4d57b0452">Distance_t</a> position) override</td></tr>
+<tr class="separator:ab16f6158a745b30416199f6d45ed433a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9f33c533ade836f17b3bf688e18b4db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#ad9f33c533ade836f17b3bf688e18b4db">setMaxPosition</a> (<a class="el" href="classrmb_1_1_spark_max_position_controller.html#ac6aac9f90d82818e96d447b4d57b0452">Distance_t</a> max) override</td></tr>
 <tr class="separator:ad9f33c533ade836f17b3bf688e18b4db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2d82d32ff37932b80169fea16cdf77d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#ac6aac9f90d82818e96d447b4d57b0452">Distance_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#ad2d82d32ff37932b80169fea16cdf77d">getMaxPosition</a> () override</td></tr>
@@ -710,7 +710,8 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Gets the position of the motor according to the SparkMax encoder </p><dl class="section return"><dt>Returns</dt><dd>the distance from the reference point in the user defined Distance. The reference point can be set with <a class="el" href="classrmb_1_1_spark_max_position_controller.html">rmb::SparkMaxPositionController</a>&lt; DistanceUnit &gt;::resetRefrence(Distance_t position) </dd></dl>
+<p >Gets the position of the motor according to the SparkMax encoder </p><dl class="section return"><dt>Returns</dt><dd>the distance from the reference point in the user defined Distance. The reference point can be set with sparkMaxPositionController&lt;DistanceUnit&gt;::resetReference(Distance_t
+position) </dd></dl>
 
 <p>Implements <a class="el" href="classrmb_1_1_position_controller.html#ae33d655e3c79114fe5cf747ec12ec6ed">rmb::PositionController&lt; DistanceUnit &gt;</a>.</p>
 
@@ -774,8 +775,8 @@ template&lt;typename DistanceUnit &gt; </div>
 
 </div>
 </div>
-<a id="ac2c596d1e01916b2cc96511d9c604384" name="ac2c596d1e01916b2cc96511d9c604384"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2c596d1e01916b2cc96511d9c604384">&#9670;&nbsp;</a></span>resetRefrence()</h2>
+<a id="ab16f6158a745b30416199f6d45ed433a" name="ab16f6158a745b30416199f6d45ed433a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab16f6158a745b30416199f6d45ed433a">&#9670;&nbsp;</a></span>resetReference()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -786,7 +787,7 @@ template&lt;typename DistanceUnit &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classrmb_1_1_spark_max_position_controller.html">rmb::SparkMaxPositionController</a>&lt; DistanceUnit &gt;::resetRefrence </td>
+          <td class="memname">void <a class="el" href="classrmb_1_1_spark_max_position_controller.html">rmb::SparkMaxPositionController</a>&lt; DistanceUnit &gt;::resetReference </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#ac6aac9f90d82818e96d447b4d57b0452">Distance_t</a>&#160;</td>
           <td class="paramname"><em>position</em></td><td>)</td>
@@ -806,7 +807,7 @@ template&lt;typename DistanceUnit &gt; </div>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classrmb_1_1_position_controller.html#ad521e51484557c6636dce869f97dd002">rmb::PositionController&lt; DistanceUnit &gt;</a>.</p>
+<p>Implements <a class="el" href="classrmb_1_1_position_controller.html#a88f19f65ad7b094d0b95996131ed6c66">rmb::PositionController&lt; DistanceUnit &gt;</a>.</p>
 
 </div>
 </div>
@@ -946,8 +947,8 @@ template&lt;typename DistanceUnit &gt; </div>
 <p >Sets the position of the motor. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">position</td><td>The distance from the reference, or "zero" point to set the motor to in user provided Distance_t. <br  />
- See SparkMaxPositionController&lt;DistanceUnit&gt;::resetReference(Distance_t
-position) </td></tr>
+ See <a class="el" href="classrmb_1_1_spark_max_position_controller.html#ab16f6158a745b30416199f6d45ed433a">SparkMaxPositionController&lt;DistanceUnit&gt;::resetReference(Distance_t
+position)</a> </td></tr>
   </table>
   </dd>
 </dl>
