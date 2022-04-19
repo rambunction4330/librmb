@@ -12,8 +12,18 @@
 #include <rmb/drive/DriveOdometry.h>
 
 namespace rmb {
+
+/**
+ * Odometry manager using the navx gyro board
+ */
 class NavxAccelerometerOdometry : public DriveOdometry {
 public:
+
+  /**
+   * Create a NavxAccelerometerOdometry
+   * @param port The SPI port that the gyro is on
+   * @param initialPosition the position the odometry should start at
+   */
   NavxAccelerometerOdometry(frc::SPI::Port port,
                             const frc::Pose2d &initialPosition = frc::Pose2d());
 
@@ -35,6 +45,7 @@ public:
 
   /**
    * Resets the pose.
+   * @param pose The pose to reset the the odometry to
    * @see getPose()
    * @see updatePose()
    */
