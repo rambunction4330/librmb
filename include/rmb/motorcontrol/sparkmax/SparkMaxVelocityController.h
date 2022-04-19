@@ -15,7 +15,8 @@
 namespace rmb {
 
 /**
- * A wrapper around the SparkMax motorcontroller that allows for the user to set and get the velocity of the motor accurately through PID functionallity
+ * A wrapper around the SparkMax motorcontroller that allows for the user to set
+ * and get the velocity of the motor accurately through PID functionallity
  */
 template <typename DistanceUnit>
 class SparkMaxVelocityController : public VelocityController<DistanceUnit> {
