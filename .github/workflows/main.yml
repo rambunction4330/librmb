@@ -33,6 +33,36 @@ jobs:
       - name: Checkout for Other
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         uses: actions/checkout@v3
+        
+      - name: List commits on the pull request
+        run: |
+          response=$(curl --request GET \
+          --url 'https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/commits' \
+          --header 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'Accept: application/vnd.github.v3+json' \
+          --header 'Content-Type: application/json')
+          
+          echo $response > response.json
+
+      - name: Get latest commit
+        run: |
+          echo "Get length of the array:"
+          length=$(jq 'length' response.json)
+
+          echo "Get index of the latest commit:"
+          index=$(($length - 1))
+
+          echo "Get context of the latest commit:"
+          latest_commit=$(jq --argjson index $index '.[$index]' response.json)
+          echo "$latest_commit"
+
+          echo "Get commit message of the latest commit:"
+          latest_commit_message=$(echo "$latest_commit" | jq -r '.commit.message')
+          echo "$latest_commit_message"
+
+          echo "Get commit SHA of the latest commit:"
+          latest_commit_sha=$(echo "$latest_commit" | jq -r '.sha')
+          echo "$latest_commit_sha"
       
       # Format
       - name: Check code formatting with clang-format
