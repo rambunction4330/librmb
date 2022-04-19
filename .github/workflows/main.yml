@@ -85,6 +85,7 @@ jobs:
       
       - name: Test Run Documentation + Dump Warnings/Errors
         run: |
+          sudo apt install doxygen
           chmod +x scripts/find-not-documented.sh
           ./scripts/find-not-documented.sh
       
