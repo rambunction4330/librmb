@@ -36,13 +36,13 @@ jobs:
         
       - name: List commits on the pull request
         run: |
-          # response=$(
+          response=$(
           curl --request GET \
           --url 'https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/commits' \
           --header 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
           --header 'Accept: application/vnd.github.v3+json' \
-          --header 'Content-Type: application/json'
-          #)
+          --header 'Content-Type: application/json)
+          echo $response > response.json
           
       - name: Get latest commit
         run: |
