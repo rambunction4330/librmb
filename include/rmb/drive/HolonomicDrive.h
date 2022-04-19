@@ -28,7 +28,7 @@ public:
    */
   virtual void driveChassisSpeeds(
       const frc::ChassisSpeeds &chassisSpeeds,
-      const frc::Translation2d &centerofRotation = frc::Translation2d()) = 0;
+      const frc::Translation2d &centerOfRotation = frc::Translation2d()) = 0;
 
   /**
    * A pure virtual member that returns the current

@@ -7,6 +7,10 @@
 #include "rmb/drive/MecanumDrive.h"
 
 namespace rmb {
+
+/**
+ * Mecanum drive odometry manager
+ */
 class MecanumEncoderOdometry : public DriveOdometry {
 public:
   /**
@@ -17,7 +21,7 @@ public:
    * @param initialPose The initial position of the robot
    */
   MecanumEncoderOdometry(MecanumDrive &drive, const frc::Gyro &gyro,
-                         const frc::Pose2d &initalPose = frc::Pose2d());
+                         const frc::Pose2d &initialPose = frc::Pose2d());
 
   /**
    * Getter to return the current pose

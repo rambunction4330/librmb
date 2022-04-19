@@ -11,6 +11,13 @@
 #include "rmb/motorcontrol/VelocityController.h"
 
 namespace rmb {
+
+/**
+ * Mecanum drive controller. Manages velocity
+ * and variables and controls the drivetrain.
+ * Also provides getter functionallity to
+ * get velocity and other values.
+ */
 class MecanumDrive : public HolonomicDrive {
 public:
   /**
@@ -58,7 +65,7 @@ public:
    */
   void driveChassisSpeeds(
       const frc::ChassisSpeeds &chassisSpeeds,
-      const frc::Translation2d &centerofRotation = frc::Translation2d());
+      const frc::Translation2d &centerOfRotation = frc::Translation2d());
 
   /**
    * Function that returns the current chassis speeds
