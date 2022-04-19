@@ -176,8 +176,9 @@ https://codedocs.revrobotics.com/cpp/classrev_1_1_c_a_n_p_i_d_controller.html#a4
   /**
    * Gets the position of the motor according to the SparkMax encoder
    * @return the distance from the reference point in the user defined Distance.
-   * The reference point can be set with 
-   * sparkMaxPositionController<DistanceUnit>::resetReference(Distance_t position)
+   * The reference point can be set with
+   * sparkMaxPositionController<DistanceUnit>::resetReference(Distance_t
+   * position)
    */
   Distance_t getPosition() const override;
 
