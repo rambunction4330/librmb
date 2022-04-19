@@ -176,14 +176,15 @@ https://codedocs.revrobotics.com/cpp/classrev_1_1_c_a_n_p_i_d_controller.html#a4
   /**
    * Gets the position of the motor according to the SparkMax encoder
    * @return the distance from the reference point in the user defined Distance.
-   * The reference point can be set with rmb::SparkMaxPositionController<
-   * DistanceUnit >::resetRefrence(Distance_t position)
+   * The reference point can be set with
+   * sparkMaxPositionController<DistanceUnit>::resetReference(Distance_t
+   * position)
    */
   Distance_t getPosition() const override;
 
   /**
    * Get the raw position(in rotations) of the motor. This is for debug purposes
-   * or advanced users who want to bypass all of the code @theVerySharpFlat has
+   * or advanced users who want to bypass all of the code \@theVerySharpFlat has
    * written.
    * @return raw position(in rotations) of the motor according to the encoder
    */
@@ -217,7 +218,7 @@ https://codedocs.revrobotics.com/cpp/classrev_1_1_c_a_n_p_i_d_controller.html#a4
    * SparkMaxPositionController<DistanceUnit>::setPosition(Distance_t position)
    * calls
    */
-  void resetRefrence(Distance_t position) override;
+  void resetReference(Distance_t position) override;
 
   /**
    * Sets the max allowed position of the motor. If the user attempts to move

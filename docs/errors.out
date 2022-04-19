@@ -34,8 +34,6 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/include/rmb/drive/MecanumEncoderOdometry.h:19: warning: The following parameter of rmb::MecanumEncoderOdometry::MecanumEncoderOdometry(MecanumDrive &drive, const frc::Gyro &gyro, const frc::Pose2d &initalPose=frc::Pose2d()) is not documented:
   parameter 'initalPose'
 /home/runner/work/librmb/librmb/include/rmb/drive/NavxAccelerometerOdometry.h:17: warning: Member NavxAccelerometerOdometry(frc::SPI::Port port, const frc::Pose2d &initialPosition=frc::Pose2d()) (function) of class rmb::NavxAccelerometerOdometry is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:179: warning: explicit link request to 'resetRefrence(Distance_t position)' could not be resolved
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:185: warning: Found unknown command '\theVerySharpFlat'
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:15: warning: Member Distance_t (typedef) of class rmb::TalonFXVelocityController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:16: warning: Member VelocityUnit (typedef) of class rmb::TalonFXVelocityController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:17: warning: Member Velocity_t (typedef) of class rmb::TalonFXVelocityController is not documented.
