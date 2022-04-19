@@ -82,6 +82,21 @@ jobs:
           message: 'Format Commit "${{env.COMMIT_MESSAGE}}"'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Test Run Documentation + Dump Warnings/Errors
+        run: |
+          sudo apt install doxygen
+          chmod +x scripts/find-not-documented.sh
+          ./scripts/find-not-documented.sh
+      
+      - name: Commit Warnings/Errors
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: Documentation Warnings Bot
+          author_email: robot@nonexistantwebsite.com
+          message: 'Update docs warnings'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
       # Install the RoboRio toolchain
       - name: Get toolchain
