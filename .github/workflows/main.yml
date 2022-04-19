@@ -73,7 +73,7 @@ jobs:
         with:
           author_name: Clang Format Robot
           author_email: robot@nonexistantwebsite.com
-          message: ${{env.COMMIT_MESSAGE}}
+          message: 'Format Commit "${{env.COMMIT_MESSAGE}}"'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
