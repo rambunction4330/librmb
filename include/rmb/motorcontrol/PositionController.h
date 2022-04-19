@@ -36,7 +36,7 @@ public:
    * @param position the desired reference point of the position controller in
    * user specified DistanceUnits
    */
-  virtual void resetRefrence(Distance_t position) = 0;
+  virtual void resetReference(Distance_t position) = 0;
 
   /**
    * Set the maximum position that the motor controller can go to.
