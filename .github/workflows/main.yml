@@ -41,8 +41,6 @@ jobs:
           --header 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
           --header 'Accept: application/vnd.github.v3+json' \
           --header 'Content-Type: application/json')
-          
-          echo $response > response.json
 
       - name: Get latest commit
         run: |
@@ -58,11 +56,7 @@ jobs:
 
           echo "Get commit message of the latest commit:"
           latest_commit_message=$(echo "$latest_commit" | jq -r '.commit.message')
-          echo "$latest_commit_message"
-
-          echo "Get commit SHA of the latest commit:"
-          latest_commit_sha=$(echo "$latest_commit" | jq -r '.sha')
-          echo "$latest_commit_sha"
+          echo "LATEST_COMMIT_MESSAGE=$latest_commit_message" >> $GITHUB_ENV
       
       # Format
       - name: Check code formatting with clang-format
@@ -77,13 +71,9 @@ jobs:
         with:
           author_name: Clang Format Robot
           author_email: robot@nonexistantwebsite.com
-          message: ${{github.event.head_commit.message}}
+          message: ${{LATEST_COMMIT_MESSAGE}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Print commit message
-        run: |
-          echo "${{toJSON(github.event)}}"
 
       # Install the RoboRio toolchain
       - name: Get toolchain
