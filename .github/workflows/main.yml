@@ -42,7 +42,6 @@ jobs:
           --header 'Accept: application/vnd.github.v3+json' \
           --header 'Content-Type: application/json')
           
-          echo $response > response.json
       - name: Get latest commit
         run: |
           echo "Get length of the array:"
@@ -63,6 +62,7 @@ jobs:
       
       # Format
       - name: Check code formatting with clang-format
+        if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
         uses: DoozyX/clang-format-lint-action@v0.13
         with:
           source: '.'
@@ -71,6 +71,7 @@ jobs:
           inplace: true
         # continue-on-error: true
       - uses: EndBug/add-and-commit@v4
+        if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
         with:
           author_name: Clang Format Robot
           author_email: robot@nonexistantwebsite.com
