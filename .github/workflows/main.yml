@@ -59,6 +59,7 @@ jobs:
           latest_commit_sha=$(echo "$latest_commit" | jq -r '.sha')
           echo "$latest_commit_sha"
           echo "COMMIT_MESSAGE=$latest_commit_message" >> $GITHUB_ENV
+          rm request.json
       
       # Format
       - name: Check code formatting with clang-format
