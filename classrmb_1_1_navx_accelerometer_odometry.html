@@ -101,6 +101,8 @@ $(document).ready(function(){initNavTree('classrmb_1_1_navx_accelerometer_odomet
   <div class="headertitle"><div class="title">rmb::NavxAccelerometerOdometry Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_navx_accelerometer_odometry_8h_source.html">NavxAccelerometerOdometry.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for rmb::NavxAccelerometerOdometry:</div>
 <div class="dyncontent">
@@ -113,8 +115,7 @@ Inheritance diagram for rmb::NavxAccelerometerOdometry:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad3ffc1faeaae381575f3d8fb99dc2d0b"><td class="memItemLeft" align="right" valign="top"><a id="ad3ffc1faeaae381575f3d8fb99dc2d0b" name="ad3ffc1faeaae381575f3d8fb99dc2d0b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>NavxAccelerometerOdometry</b> (frc::SPI::Port port, const frc::Pose2d &amp;initialPosition=frc::Pose2d())</td></tr>
+<tr class="memitem:ad3ffc1faeaae381575f3d8fb99dc2d0b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_navx_accelerometer_odometry.html#ad3ffc1faeaae381575f3d8fb99dc2d0b">NavxAccelerometerOdometry</a> (frc::SPI::Port port, const frc::Pose2d &amp;initialPosition=frc::Pose2d())</td></tr>
 <tr class="separator:ad3ffc1faeaae381575f3d8fb99dc2d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cb6af9b20c012ce6858a02d9a665b95"><td class="memItemLeft" align="right" valign="top">const frc::Pose2d &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_navx_accelerometer_odometry.html#a4cb6af9b20c012ce6858a02d9a665b95">getPose</a> () const</td></tr>
 <tr class="separator:a4cb6af9b20c012ce6858a02d9a665b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,6 +130,44 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a60a828caf5d74e604e4ef618ae66189b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_drive_odometry.html#a60a828caf5d74e604e4ef618ae66189b">resetPose</a> (const frc::Pose2d &amp;pose=frc::Pose2d())=0</td></tr>
 <tr class="separator:a60a828caf5d74e604e4ef618ae66189b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Odometry manager using the navx gyro board </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad3ffc1faeaae381575f3d8fb99dc2d0b" name="ad3ffc1faeaae381575f3d8fb99dc2d0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3ffc1faeaae381575f3d8fb99dc2d0b">&#9670;&nbsp;</a></span>NavxAccelerometerOdometry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rmb::NavxAccelerometerOdometry::NavxAccelerometerOdometry </td>
+          <td>(</td>
+          <td class="paramtype">frc::SPI::Port&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const frc::Pose2d &amp;&#160;</td>
+          <td class="paramname"><em>initialPosition</em> = <code>frc::Pose2d()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Create a <a class="el" href="classrmb_1_1_navx_accelerometer_odometry.html">NavxAccelerometerOdometry</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The SPI port that the gyro is on </td></tr>
+    <tr><td class="paramname">initialPosition</td><td>the position the odometry should start at </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4cb6af9b20c012ce6858a02d9a665b95" name="a4cb6af9b20c012ce6858a02d9a665b95"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4cb6af9b20c012ce6858a02d9a665b95">&#9670;&nbsp;</a></span>getPose()</h2>
@@ -184,7 +223,13 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Resets the pose. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_navx_accelerometer_odometry.html#a4cb6af9b20c012ce6858a02d9a665b95">getPose()</a> </dd>
+<p >Resets the pose. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pose</td><td>The pose to reset the the odometry to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_navx_accelerometer_odometry.html#a4cb6af9b20c012ce6858a02d9a665b95">getPose()</a> </dd>
 <dd>
 <a class="el" href="classrmb_1_1_navx_accelerometer_odometry.html#abc228408ab0f400cd4197c297fd9fa56">updatePose()</a> </dd></dl>
 

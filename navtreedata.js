@@ -60,8 +60,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_arm_feedforward_8h_source.html",
-"classrmb_1_1_repeating_command.html#a6c112c78a87e24c4a9038704d2eeb76d",
-"structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html#a47f653ac24086ec4ac0ed82ebe7754fc"
+"classrmb_1_1_repeating_command.html",
+"structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html#a061d7e3028415507631083d8a4f55a80"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
