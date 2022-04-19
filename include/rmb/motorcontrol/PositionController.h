@@ -6,7 +6,9 @@
 namespace rmb {
 
 /**
- * Base class for wrappers around vendor API / device specific positionController code. This class provides a standard interface to code that allows you to control the position of a motor.
+ * Base class for wrappers around vendor API / device specific
+ * positionController code. This class provides a standard interface to code
+ * that allows you to control the position of a motor.
  * @tparam User specified distance unit
  */
 template <typename DistanceUnit> class PositionController {
