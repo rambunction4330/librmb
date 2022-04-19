@@ -58,6 +58,7 @@ jobs:
           echo "Get commit SHA of the latest commit:"
           latest_commit_sha=$(echo "$latest_commit" | jq -r '.sha')
           echo "$latest_commit_sha"
+          echo "COMMIT_MESSAGE=$latest_commit_message" >> $GITHUB_ENV
       
       # Format
       - name: Check code formatting with clang-format
@@ -72,7 +73,7 @@ jobs:
         with:
           author_name: Clang Format Robot
           author_email: robot@nonexistantwebsite.com
-          message: ${{env.LATEST_COMMIT_MESSAGE}}
+          message: ${{env.COMMIT_MESSAGE}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
