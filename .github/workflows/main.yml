@@ -44,6 +44,7 @@ jobs:
           
       - name: Get latest commit
         run: |
+          ls
           echo "Get length of the array:"
           length=$(jq 'length' response.json)
           echo "Get index of the latest commit:"
