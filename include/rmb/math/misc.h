@@ -2,7 +2,9 @@
 
 #include <algorithm>
 #include <cmath>
-
+/**
+ * \ingroup rmb
+ */
 namespace rmb {
 
 /**
