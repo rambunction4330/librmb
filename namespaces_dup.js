@@ -19,6 +19,8 @@ var namespaces_dup =
       [ "SparkMaxVelocityController", "classrmb_1_1_spark_max_velocity_controller.html", "classrmb_1_1_spark_max_velocity_controller" ],
       [ "TalonFXVelocityController", "classrmb_1_1_talon_f_x_velocity_controller.html", "classrmb_1_1_talon_f_x_velocity_controller" ],
       [ "TalonSRXVelocityController", "classrmb_1_1_talon_s_r_x_velocity_controller.html", "classrmb_1_1_talon_s_r_x_velocity_controller" ],
-      [ "VelocityController", "classrmb_1_1_velocity_controller.html", "classrmb_1_1_velocity_controller" ]
+      [ "VelocityController", "classrmb_1_1_velocity_controller.html", "classrmb_1_1_velocity_controller" ],
+      [ "map", "misc_8h.html#aab6c32fc8b9a181a77cde7ef3e601d7f", null ],
+      [ "withinRange", "misc_8h.html#ad1412098e7b3220f70701aebc586ad72", null ]
     ] ]
 ];
