@@ -1,5 +1,4 @@
-/**
- * @file 
+/** \file 
  * Miscellaneous/useful math functions
  */
 
