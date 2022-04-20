@@ -1,3 +1,8 @@
+/**
+ * @file 
+ * Miscellaneous/useful math functions
+ */
+
 #pragma once
 
 #include <algorithm>
