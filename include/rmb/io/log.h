@@ -6,6 +6,10 @@
 
 namespace wpi {
 
+/**
+ * Print out a units:: value.
+ * @see raw_ostream &endl(raw_ostream &os)
+ */
 template <typename T>
 raw_ostream &operator<<(raw_ostream &os, units::unit_t<T> val) {
   os << val();
