@@ -1,4 +1,4 @@
-/** \file 
+/** \file misc.h
  * Miscellaneous/useful math functions
  */
 
