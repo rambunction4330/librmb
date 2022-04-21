@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['p_0',['p',['../structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html#a66f25dd61b46ce2f5a9c7cb673086be7',1,'rmb::SparkMaxPositionController::PIDConfig::p()'],['../structrmb_1_1_spark_max_velocity_controller_1_1_p_i_d_config.html#a4464d169f7ac850fe2b5225697da7c6e',1,'rmb::SparkMaxVelocityController::PIDConfig::p()']]],
-  ['pancakerecipe_1',['pancakerecipe',['../md_docs_additional_pancakerecipe.html',1,'']]],
-  ['pidconfig_2',['PIDConfig',['../structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html',1,'rmb::SparkMaxPositionController&lt; DistanceUnit &gt;::PIDConfig'],['../structrmb_1_1_spark_max_velocity_controller_1_1_p_i_d_config.html',1,'rmb::SparkMaxVelocityController&lt; DistanceUnit &gt;::PIDConfig'],['../structrmb_1_1_talon_f_x_velocity_controller_1_1_p_i_d_config.html',1,'rmb::TalonFXVelocityController&lt; DistanceUnit &gt;::PIDConfig'],['../structrmb_1_1_talon_s_r_x_velocity_controller_1_1_p_i_d_config.html',1,'rmb::TalonSRXVelocityController&lt; DistanceUnit &gt;::PIDConfig']]],
-  ['positioncontroller_3',['PositionController',['../classrmb_1_1_position_controller.html',1,'rmb']]]
+  ['operator_3c_3c_0',['operator&lt;&lt;',['../namespacewpi.html#a05181f429e947b0e657d8c04f47c5161',1,'wpi::operator&lt;&lt;(raw_ostream &amp;os, units::unit_t&lt; T &gt; val)'],['../namespacewpi.html#acb797c0c24c2a6baec4d2ffc2d63e260',1,'wpi::operator&lt;&lt;(raw_ostream &amp;os, const T &amp;val)'],['../namespacewpi.html#a3c1d426b2b218024b953032037e28d46',1,'wpi::operator&lt;&lt;(raw_ostream &amp;os, raw_ostream &amp;(*pf)(raw_ostream &amp;))']]]
 ];
