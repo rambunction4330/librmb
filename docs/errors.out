@@ -67,3 +67,4 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:38: warning: Member iMaxAccumulator (variable) of class rmb::TalonSRXVelocityController::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:39: warning: Member allowableError (variable) of class rmb::TalonSRXVelocityController::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:40: warning: Member maxOutput (variable) of class rmb::TalonSRXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/io/log.h:10: warning: Member operator<<(raw_ostream &os, units::unit_t< T > val) (function) of namespace wpi is not documented.
