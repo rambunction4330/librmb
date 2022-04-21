@@ -180,6 +180,7 @@ docs/*
 !docs/favicon.png
 !docs/building.md
 !docs/errors.out
+!docs/doxygen.h
 
 .idea/
 .cache/
@@ -187,6 +188,7 @@ docs/*
 .project.alt.json
 
 compile_commands.json
+compile_flags.txt
 
 # Aiden's compile_commands.json generating script
 rioCDGen.py

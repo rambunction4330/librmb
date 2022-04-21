@@ -11,14 +11,8 @@
 
 #pragma once
 
-/**
- * @brief master namespace
- */
 namespace rmb {
 
-/**
- * @brief trajectory math
- */
 namespace trajectory {
 
 const units::meters_per_second_squared_t g =
