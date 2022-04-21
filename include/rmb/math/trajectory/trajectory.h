@@ -13,15 +13,11 @@
 
 /**
  * @brief master namespace
- *
- * \ingroup rmb
  */
 namespace rmb {
 
 /**
  * @brief trajectory math
- *
- * \ingroup trajectory
  */
 namespace trajectory {
 
