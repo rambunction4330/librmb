@@ -11,6 +11,11 @@
 
 #pragma once
 
+/**
+ * @brief master namespace
+ *
+ * \ingroup rmb
+ */
 namespace rmb {
 
 /**
