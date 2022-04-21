@@ -61,7 +61,7 @@ var NAVTREEINDEX =
 [
 "_arm_feedforward_8h_source.html",
 "classrmb_1_1_repeating_command.html",
-"structrmb_1_1_spark_max_position_controller_1_1_follower.html#a51eb65f7c0f300c3bbf1f64dbcd32e33"
+"structrmb_1_1_spark_max_position_controller_1_1_follower.html#a215c51dfba2f5f4a79b3439a7f4e5521"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

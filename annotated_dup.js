@@ -1,6 +1,6 @@
 var annotated_dup =
 [
-    [ "rmb", null, [
+    [ "rmb", "namespacermb.html", [
       [ "trajectory", "namespacermb_1_1trajectory.html", [
         [ "Trajectory", "structrmb_1_1trajectory_1_1_trajectory.html", "structrmb_1_1trajectory_1_1_trajectory" ]
       ] ],

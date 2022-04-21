@@ -96,6 +96,7 @@ $(document).ready(function(){initNavTree('misc_8h.html',''); initResizable(); })
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">misc.h File Reference</div></div>
 </div><!--header-->
@@ -105,146 +106,24 @@ $(document).ready(function(){initNavTree('misc_8h.html',''); initResizable(); })
 </div>
 <p><a href="misc_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacermb"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacermb.html">rmb</a></td></tr>
+<tr class="memdesc:namespacermb"><td class="mdescLeft">&#160;</td><td class="mdescRight">master namespace <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad1412098e7b3220f70701aebc586ad72"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ad1412098e7b3220f70701aebc586ad72"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="misc_8h.html#ad1412098e7b3220f70701aebc586ad72">rmb::withinRange</a> (T n, T lo, T hi)</td></tr>
+<tr class="memitem:ad1412098e7b3220f70701aebc586ad72"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacermb.html#ad1412098e7b3220f70701aebc586ad72">rmb::withinRange</a> (T n, T lo, T hi)</td></tr>
 <tr class="separator:ad1412098e7b3220f70701aebc586ad72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab6c32fc8b9a181a77cde7ef3e601d7f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aab6c32fc8b9a181a77cde7ef3e601d7f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="misc_8h.html#aab6c32fc8b9a181a77cde7ef3e601d7f">rmb::map</a> (T n, T start1, T stop1, T start2, T stop2, bool withinBounds=true)</td></tr>
+<tr class="memitem:aab6c32fc8b9a181a77cde7ef3e601d7f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacermb.html#aab6c32fc8b9a181a77cde7ef3e601d7f">rmb::map</a> (T n, T start1, T stop1, T start2, T stop2, bool withinBounds=true)</td></tr>
 <tr class="separator:aab6c32fc8b9a181a77cde7ef3e601d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Miscellaneous/useful math functions </p>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="aab6c32fc8b9a181a77cde7ef3e601d7f" name="aab6c32fc8b9a181a77cde7ef3e601d7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab6c32fc8b9a181a77cde7ef3e601d7f">&#9670;&nbsp;</a></span>map()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T rmb::map </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>start1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>stop1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>start2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>stop2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>withinBounds</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >Map a number of one range of numbers to another range of numbers </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>the value to be mapped </td></tr>
-    <tr><td class="paramname">start1</td><td>the lower bound of the current range of n </td></tr>
-    <tr><td class="paramname">stop1</td><td>the upper bound of the current range of n </td></tr>
-    <tr><td class="paramname">start2</td><td>the lower bound of the destination range of n </td></tr>
-    <tr><td class="paramname">stop2</td><td>the upper bound of the destination range of n </td></tr>
-    <tr><td class="paramname">withinBounds</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>n mapped to range [start2, stop2] </dd></dl>
-
-</div>
-</div>
-<a id="ad1412098e7b3220f70701aebc586ad72" name="ad1412098e7b3220f70701aebc586ad72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1412098e7b3220f70701aebc586ad72">&#9670;&nbsp;</a></span>withinRange()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool rmb::withinRange </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>lo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>hi</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >Checks if a value is within raneg </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>the value to check for position in range </td></tr>
-    <tr><td class="paramname">lo</td><td>the lower bound of the range </td></tr>
-    <tr><td class="paramname">hi</td><td>the upper bound of the range </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>whether or not the value is in between lo and hi. true if in between. </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

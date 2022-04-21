@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['map_0',['map',['../misc_8h.html#aab6c32fc8b9a181a77cde7ef3e601d7f',1,'rmb']]],
+  ['map_0',['map',['../namespacermb.html#aab6c32fc8b9a181a77cde7ef3e601d7f',1,'rmb']]],
   ['maxachievableacceleration_1',['maxAchievableAcceleration',['../classrmb_1_1_elevator_feedforward.html#a4b95933e995402a4a75563772cb48e6f',1,'rmb::ElevatorFeedforward::maxAchievableAcceleration()'],['../classrmb_1_1_simple_motor_feedforward.html#afc805ae879ee516593723b28c8693ad2',1,'rmb::SimpleMotorFeedforward::maxAchievableAcceleration()'],['../classrmb_1_1_feedforward.html#a8639967b8e6053e79f50b56fa5c4afed',1,'rmb::Feedforward::maxAchievableAcceleration()'],['../classrmb_1_1_arm_feedforward.html#a11c1ce5f58c607ef1b78beb453cb57dd',1,'rmb::ArmFeedforward::maxAchievableAcceleration(units::volt_t maxVoltage, Velocity_t velocity, Distance_t position) const override']]],
   ['maxachievablevelocity_2',['maxAchievableVelocity',['../classrmb_1_1_arm_feedforward.html#a5190f61cff26c4e67b15dbd8ec8d133e',1,'rmb::ArmFeedforward::maxAchievableVelocity()'],['../classrmb_1_1_elevator_feedforward.html#a0346e9c0dae03678206312231d8872b2',1,'rmb::ElevatorFeedforward::maxAchievableVelocity()'],['../classrmb_1_1_feedforward.html#a3314a5b654765f3c9cb93f30b1281e49',1,'rmb::Feedforward::maxAchievableVelocity()'],['../classrmb_1_1_simple_motor_feedforward.html#a733219e39511dbfb2f3cd6eac1242d09',1,'rmb::SimpleMotorFeedforward::maxAchievableVelocity()']]],
   ['mecanumdrive_3',['MecanumDrive',['../classrmb_1_1_mecanum_drive.html#a224869c0eb40c05d826262456e0a3ab7',1,'rmb::MecanumDrive']]],

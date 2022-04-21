@@ -155,7 +155,7 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aec3457d12ead7b95d45480dbe50b5df6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#aec3457d12ead7b95d45480dbe50b5df6">SparkMaxPositionController</a> (int deviceID)</td></tr>
 <tr class="separator:aec3457d12ead7b95d45480dbe50b5df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f1703ab684a91c8685f179a496d1313"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#a1f1703ab684a91c8685f179a496d1313">SparkMaxPositionController</a> (int deviceID, const <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html">PIDConfig</a> &amp;pidConfig, <a class="el" href="classrmb_1_1_spark_max_position_controller.html#a10b19bb24198f00de8f32011e7a4922b">ConversionUnit_t</a> conversion=<a class="el" href="classrmb_1_1_spark_max_position_controller.html#a10b19bb24198f00de8f32011e7a4922b">ConversionUnit_t</a>(1), const <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt; DistanceUnit &gt; &amp;feedForward=noFeedforward&lt; DistanceUnit &gt;, std::initializer_list&lt; <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_follower.html">Follower</a> &gt; followers={}, bool alternateEncoder=false, int ticksPerRevolution=4096, rev::CANSparkMax::MotorType motorType=rev::CANSparkMax::MotorType::kBrushless)</td></tr>
+<tr class="memitem:a1f1703ab684a91c8685f179a496d1313"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#a1f1703ab684a91c8685f179a496d1313">SparkMaxPositionController</a> (int deviceID, const <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html">PIDConfig</a> &amp;pidConfig, <a class="el" href="classrmb_1_1_spark_max_position_controller.html#a10b19bb24198f00de8f32011e7a4922b">ConversionUnit_t</a> conversion=<a class="el" href="classrmb_1_1_spark_max_position_controller.html#a10b19bb24198f00de8f32011e7a4922b">ConversionUnit_t</a>(1), const <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt; DistanceUnit &gt; &amp;feedForward=<a class="el" href="namespacermb.html#a6bd50d4185bfa255bfae24476d4de575">noFeedforward</a>&lt; DistanceUnit &gt;, std::initializer_list&lt; <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_follower.html">Follower</a> &gt; followers={}, bool alternateEncoder=false, int ticksPerRevolution=4096, rev::CANSparkMax::MotorType motorType=rev::CANSparkMax::MotorType::kBrushless)</td></tr>
 <tr class="separator:a1f1703ab684a91c8685f179a496d1313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f3fe24d4f01bea217dff1849ca9fb88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#a1f3fe24d4f01bea217dff1849ca9fb88">setPosition</a> (<a class="el" href="classrmb_1_1_spark_max_position_controller.html#ac6aac9f90d82818e96d447b4d57b0452">Distance_t</a> position) override</td></tr>
 <tr class="separator:a1f3fe24d4f01bea217dff1849ca9fb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -465,7 +465,7 @@ template&lt;typename DistanceUnit &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt; DistanceUnit &gt; &amp;&#160;</td>
-          <td class="paramname"><em>feedForward</em> = <code>noFeedforward&lt;&#160;DistanceUnit&#160;&gt;</code>, </td>
+          <td class="paramname"><em>feedForward</em> = <code><a class="el" href="namespacermb.html#a6bd50d4185bfa255bfae24476d4de575">noFeedforward</a>&lt;&#160;DistanceUnit&#160;&gt;</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -503,7 +503,7 @@ template&lt;typename DistanceUnit &gt; </div>
     <tr><td class="paramname">deviceID</td><td>The ID of the target SparkMax motorcontroller </td></tr>
     <tr><td class="paramname">pidConfig</td><td>configuration constants for the SparkMax PID controller. These constants will help you tune your motor such that it runs smooth within the desired bounds. </td></tr>
     <tr><td class="paramname">conversion</td><td>The conversion from the user provided DistanceUnits to radians. See <a class="el" href="classrmb_1_1_spark_max_position_controller.html#a2a99f081a78ed274a784a1050ed5c76c">SparkMaxPositionController&lt;DistanceUnit&gt;::ConversionUnit</a></td></tr>
-    <tr><td class="paramname">feedForward</td><td>The <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a> to be passed to the motor. rmb::noFeedforward&lt;DistanceUnit&gt; is the default </td></tr>
+    <tr><td class="paramname">feedForward</td><td>The <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a> to be passed to the motor. <a class="el" href="namespacermb.html#a6bd50d4185bfa255bfae24476d4de575">rmb::noFeedforward&lt;DistanceUnit&gt;</a> is the default </td></tr>
     <tr><td class="paramname">followers</td><td>list of motors to follow this motor. The parent motor will construct the children with the given configuration and will own the followers. </td></tr>
     <tr><td class="paramname">alternateEncoder</td><td>Whether or not to use an alternate encoder </td></tr>
     <tr><td class="paramname">ticksPerRevolution</td><td>The number of ticks per rotation of the alternate encoder </td></tr>
@@ -991,7 +991,7 @@ template&lt;typename DistanceUnit &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>rmb</b></li><li class="navelem"><a class="el" href="classrmb_1_1_spark_max_position_controller.html">SparkMaxPositionController</a></li>
+    <li class="navelem"><a class="el" href="namespacermb.html">rmb</a></li><li class="navelem"><a class="el" href="classrmb_1_1_spark_max_position_controller.html">SparkMaxPositionController</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
