@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <units/angle.h>
@@ -16,7 +17,7 @@ namespace rmb {
  * @tparam DistanceUnit Base unit of distance for feedforward inputs.
  **/
 template <typename DistanceUnit>
-class SimpleMotorFeedforward : public Feedforward<DistanceUnit> {
+class SimpleFeedforward : public Feedforward<DistanceUnit> {
 public:
   using Distance_t = typename Feedforward<DistanceUnit>::
       Distance_t; /**< @see Feedforward<DistanceUnit>::Distance_t*/
@@ -48,7 +49,7 @@ public:
    * @param kV Velocity gain
    * @param kA Acceleration gain
    */
-  SimpleMotorFeedforward(Ks_t kS, Kv_t kV, Ka_t kA) : kS(kS), kV(kV), kA(kA) {}
+  SimpleFeedforward(Ks_t kS, Kv_t kV, Ka_t kA) : kS(kS), kV(kV), kA(kA) {}
 
   /**
    * Calculates a feedforward voltage at a desired velocity, acceleration,
@@ -174,7 +175,7 @@ private:
  * @tparam U Base unit of distance for feedforward.
  */
 template <typename U>
-const SimpleMotorFeedforward<U>
+const SimpleFeedforward<U>
     noFeedforward(typename SimpleMotorFeedforward<U>::Ks_t(0.0),
                   typename SimpleMotorFeedforward<U>::Kv_t(0.0),
                   typename SimpleMotorFeedforward<U>::Ka_t(0.0));
