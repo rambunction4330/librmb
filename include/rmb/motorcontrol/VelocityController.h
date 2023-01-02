@@ -1,14 +1,15 @@
 
 #pragma once
 
-#include <units/velocity.h>
+#include <units/base.h>
+#include <units/time.h>
 
 #include "rmb/motorcontrol/AngularVelocityController.h"
 
 namespace rmb {
 
 /**
- * Interface for controlling a mechanism's linear velocity used by wrappers of 
+ * Interface for controlling a mechanism's velocity used by wrappers of 
  * device specific APIs.
  */
 template <typename DistanceUnit>
@@ -19,31 +20,31 @@ public:
   using Velocity_t = units::unit_t<VelocityUnit>;
 
   /**
-   * Common interface for setting the target linear velocity.
+   * Common interface for setting the target velocity.
    * 
-   * @param velocity The target linear velocity in meters per second.
+   * @param velocity The target velocity in user defined units.
    */
   virtual void setVelocity(Velocity_t velocity) = 0;
 
   /**
-   * Common interface for getting the <b>current</b> linear velocity of the
+   * Common interface for getting the <b>current</b> velocity of the
    * mechanism regardless of target.
    * 
-   * @return The <b>current</b> linear velocity in meters per second.
+   * @return The <b>current</b> velocity in user defined units.
    */
   virtual Velocity_t getVelocity() const = 0;
 
   /**
-   * Common interface for getting the <b>target</b> linear velocity.
+   * Common interface for getting the <b>target</b> velocity.
    * 
-   * @return The <b>target</b> linear velocity in meters per second.
+   * @return The <b>target</b> velocity in user defined units.
    */
   virtual Velocity_t getTargetVelocity() const = 0;
 
   /**
-   * Common interface for getting the <b>current</b> linear velocity error.
+   * Common interface for getting the <b>current</b> velocity error.
    * 
-   * @return The diffrence between the actual and target linear velocitys.
+   * @return The diffrence between the actual and target velocitys.
    */
   virtual Velocity_t getError() const {
     return getVelocity() - getTargetVelocity();
@@ -59,9 +60,9 @@ public:
   virtual bool atTarget() const = 0;
 
   /**
-   * Common interface for getting the <b>current</b> linear position.
+   * Common interface for getting the <b>current</b> position.
    * 
-   * @return The <b>current</b> linear position in meters
+   * @return The <b>current</b> position in user defined units.
    */
   virtual Distance_t getPosition() const = 0;
 
@@ -91,11 +92,10 @@ public:
 
   /**
    * Generates a `AngularVelocityController` to controll the same mechanism
-   * as this controller, but with angular instead of linear units via a linear
-   * conversion factor. Changes to one controller will effect the other since 
-   * they control the same physical mechanism.
+   * as this controller, but with a different tyle of units (almost certainly
+   * angular ie. radians).
    * 
-   * @param conversion conversion from linear to angular units.
+   * @param conversion conversion factor
    */
   template<typename NewDistanceUnit>
   std::unique_ptr<AngularVelocityController> getAngularUnits(units::unit_t<units::compound_unit<NewDistanceUnit, units::inverse<DistanceUnit>>> conversion) {
@@ -124,5 +124,4 @@ class VelocityControllerConverter: public VelocityController<NewDistanceUnit> {
   VelocityController<OldDistanceUnit>& oldController;
   units::unit_t<units::compound_unit<NewDistanceUnit, units::inverse<DistanceUnit>>> conversion;
 };
-
 } // namespace rmb
