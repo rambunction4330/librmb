@@ -85,6 +85,9 @@ public:
    */
   virtual void stop() = 0;
 
+  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
+  using ConversionUnit_t = units::unit_t<ConversionUnit>;
+
   /**
    * Generates a `LinearVelocityController` to controll the same mechanism
    * as this controller, but with linear instead of angular units via a linear
@@ -93,29 +96,33 @@ public:
    * 
    * @param conversion conversion factor from linear to angular units.
    */
-  std::unique_ptr<LinearVelocityController> getLinearUnits(units::unit_t<units::compound_unit<units::radians, units::inverse<units::meters>>> conversion) {
-    return std::unique_ptr<LinearVelocityController>(new AngularToLinearVelocityController(*this, conversion));
+  AngularAsLinearVelocityController asLinear(ConversionUnit_t conversion) {
+    return AngularAsLinearVelocityController(*this, conversion);
   }
 };
 
 // Simple wrapper class to handle unit conversions
-class AngularToLinearVelocityController: public LinearVelocityController {
+class AngularAsLinearVelocityController: public LinearVelocityController {
  public:
-  AngularToLinearVelocityController(AngularVelocityController& angularController, 
-                                    units::unit_t<units::compound_unit<units::radians, units::inverse<units::meters>>> conversion) :
-                                    angularController(angularController), conversion(conversion) {}
+  
+  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
+  using ConversionUnit_t = units::unit_t<ConversionUnit>;
 
-  void setVelocity(units::meters_per_second_t velocity) { angularController.setAngularVelocity(velocity * conversion); }
-  units::meters_per_second_t getVelocity() const  { return angularController.getAngularVelocity() / conversion; }
-  units::meters_per_second_t getTargetVelocity() const { return angularController.getTargetAngularVelocity() / conversion; }
-  bool atTarget() const { return angularController.atTarget(); }
-  units::meter_t getPosition() const { return angularController.getAngularPosition() / conversion; }
-  void setInverted(bool isInverted) { angularController.setInverted(isInverted); }
-  bool getInverted() const { return angularController.getInverted(); }
-  void disable() { angularController.disable(); }
-  void stop() { angularController.stop(); }
+  AngularAsLinearVelocityController(AngularVelocityController& angularController, 
+                                    ConversionUnit_t conversionFactor) :
+                                    angular(angularController), conversion(conversionFactor) {}
+
+  void setVelocity(units::meters_per_second_t velocity) { angular.setAngularVelocity(velocity / conversion); }
+  units::meters_per_second_t getVelocity() const  { return angular.getAngularVelocity() * conversion; }
+  units::meters_per_second_t getTargetVelocity() const { return angular.getTargetAngularVelocity() * conversion; }
+  bool atTarget() const { return angular.atTarget(); }
+  units::meter_t getPosition() const { return angular.getAngularPosition() * conversion; }
+  void setInverted(bool isInverted) { angular.setInverted(isInverted); }
+  bool getInverted() const { return angular.getInverted(); }
+  void disable() { angular.disable(); }
+  void stop() { angular.stop(); }
  private:
-  AngularVelocityController& angularController;
+  AngularVelocityController& angular;
   units::unit_t<units::compound_unit<units::radians, units::inverse<units::meters>>> conversion;
 };
 

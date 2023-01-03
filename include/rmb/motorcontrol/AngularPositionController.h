@@ -85,6 +85,9 @@ public:
    */
   virtual void stop() = 0;
 
+  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
+  using ConversionUnit_t = units::unit_t<ConversionUnit>;
+
   /**
    * Generates a `AngularVelocityController` to controll the same mechanism
    * as this controller, but with angular instead of linear units via a linear
@@ -93,31 +96,34 @@ public:
    * 
    * @param conversion conversion from linear to angular units.
    */
-  std::unique_ptr<LinearPositionController> getLinearUnits(units::unit_t<units::compound_unit<units::radians, units::inverse<units::meters>>> conversion) {
-    return std::unique_ptr<LinearPositionController>(new AngularToLinearPositionController(*this, conversion));
+  AngularAsLinearPositionController asLinear(ConversionUnit_t conversion) {
+    return AngularAsLinearPositionController(*this, conversion);
   }
 };
 
 // Simple wrapper class to handle unit conversions
-class AngularToLinearPositionController : public LinearPositionController {
+class AngularAsLinearPositionController : public LinearPositionController {
 public:
-  AngularToLinearPositionController(AngularPositionController& angularController, 
-                                    units::unit_t<units::compound_unit<units::radians, units::inverse<units::meters>>> conversion) :
-                                    angularController(angularController), conversion(conversion) {}
+  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
+  using ConversionUnit_t = units::unit_t<ConversionUnit>;
 
-  void setPosition(units::meter_t position) { angularController.setAngularPosition(position * conversion); }
-  units::meter_t getPosition() const { return angularController.getAngularPosition() / conversion; }
-  units::meter_t getTargetPosition() const { return angularController.getTargetAngularPosition() / conversion; }
-  bool atTarget() const { return angularController.atTarget(); }
-  units::meters_per_second_t getVelocity() const { return angularController.getAngularVelocity() / conversion; }
-  void setInverted(bool isInverted) { angularController.setInverted(isInverted); }
-  bool getInverted() const {angularController.getInverted(); }
-  void disable() { angularController.disable(); }
-  void stop() { angularController.stop(); }
+  AngularAsLinearPositionController(AngularPositionController& angularController, 
+                                    ConversionUnit_t conversionFactor) :
+                                    angular(angularController), conversion(conversionFactor) {}
+
+  void setPosition(units::meter_t position) { angular.setAngularPosition(position / conversion); }
+  units::meter_t getPosition() const { return angular.getAngularPosition() * conversion; }
+  units::meter_t getTargetPosition() const { return angular.getTargetAngularPosition() * conversion; }
+  bool atTarget() const { return angular.atTarget(); }
+  units::meters_per_second_t getVelocity() const { return angular.getAngularVelocity() * conversion; }
+  void setInverted(bool isInverted) { angular.setInverted(isInverted); }
+  bool getInverted() const {angular.getInverted(); }
+  void disable() { angular.disable(); }
+  void stop() { angular.stop(); }
 
 private:
-  AngularPositionController& angularController;
-  units::unit_t<units::compound_unit<units::radians, units::inverse<units::meters>>> conversion;
+  AngularPositionController& angular;
+  ConversionUnit_t conversion;
 };
 
 } // namespace rmb

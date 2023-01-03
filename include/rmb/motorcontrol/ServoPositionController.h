@@ -6,7 +6,7 @@
 
 #include <frc/Servo.h>
 
-#include "rmb/motorcontrol/PositionController.h"
+#include "rmb/motorcontrol/AngularPositionController.h"
 
 namespace rmb {
 
@@ -14,7 +14,7 @@ namespace rmb {
  * Interface for controlling a mechanism's linear position used by wrappers of 
  * device specific APIs.
  */
-class ServoPositionController : public PositionController<units::radians> {
+class ServoPositionController : public AngularPositionController {
 public:
 
   ServoPositionController(const ServoPositionController&) = delete;
@@ -27,7 +27,7 @@ public:
    * 
    * @param position The target linear position in meters.
    */
-  virtual void setPosition(units::radian_t position) {
+  virtual void setAngularPosition(units::radian_t position) {
     return servo.SetAngle(units::degree_t(position).to<double>() * inversion);
   }
 
@@ -36,7 +36,7 @@ public:
    * 
    * @return The <b>current</b> linear position in meters
    */
-  virtual units::radian_t getPosition() const {
+  virtual units::radian_t getAngularPosition() const {
     return units::degree_t(servo.GetAngle() * inversion);
   }
 
@@ -45,7 +45,7 @@ public:
    * 
    * @return The <b>target</b> linear position in meters.
    */
-  virtual units::radian_t getTargetPosition() const {
+  virtual units::radian_t getTargetAngularPosition() const {
     return units::degree_t(servo.GetAngle() * inversion);
   }
 
@@ -65,7 +65,7 @@ public:
    * 
    * @return The <b>current</b> linear velocity in meters per second.
    */
-  virtual units::radians_per_second_t getVelocity() const {
+  virtual units::radians_per_second_t getAngularVelocity() const {
     return units::radians_per_second_t(0.0);
   }
 
