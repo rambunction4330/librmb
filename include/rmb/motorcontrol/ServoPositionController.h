@@ -11,8 +11,8 @@
 namespace rmb {
 
 /**
- * Interface for controlling a mechanism's linear position used by wrappers of 
- * device specific APIs.
+ * Custom servo obhect the conforms to the `AngularPositionController` 
+ * interface.
  */
 class ServoPositionController : public AngularPositionController {
 public:
@@ -27,17 +27,9 @@ public:
    * 
    * @param position The target linear position in meters.
    */
-  virtual void setAngularPosition(units::radian_t position) {
-    return servo.SetAngle(units::degree_t(position).to<double>() * inversion);
-  }
-
-  /**
-   * Common interface for getting the <b>current</b> linear position.
-   * 
-   * @return The <b>current</b> linear position in meters
-   */
-  virtual units::radian_t getAngularPosition() const {
-    return units::degree_t(servo.GetAngle() * inversion);
+  virtual void setPosition(units::radian_t position) {
+    units::radian_t tagrePosition = std::clamp(position * inversion, minPosition, maxPosition);
+    return servo.SetAngle(units::degree_t(tagrePosition).to<double>());
   }
 
   /**
@@ -45,28 +37,44 @@ public:
    * 
    * @return The <b>target</b> linear position in meters.
    */
-  virtual units::radian_t getTargetAngularPosition() const {
+  virtual units::radian_t getTargetPosition() const {
     return units::degree_t(servo.GetAngle() * inversion);
   }
 
   /**
-   * Common interface for returning whether the mechanism is at the target 
-   * position.
+   * Sets the minimum angular position.
    * 
-   * @return true if it at the target, and false if it is not.
+   * @param min The minimum angular position in radians.
    */
-  virtual bool atTarget() const {
-    return true;
+  virtual void setMinPosition(units::radian_t min) {
+    minPosition = min;
   }
 
   /**
-   * Common interface for getting the <b>current</b> linear velocity of the
-   * mechanism regardless of target.
+   * Gets the minimum angular position.
    * 
-   * @return The <b>current</b> linear velocity in meters per second.
+   * @return The minimum angular position in radians.
    */
-  virtual units::radians_per_second_t getAngularVelocity() const {
-    return units::radians_per_second_t(0.0);
+  virtual units::radian_t getMinPosition() const {
+    return minPosition;
+  }
+
+  /**
+   * Sets the maximum angular position.
+   * 
+   * @param max  The maximum angular position in radians.
+   */
+  virtual void setMaxPosition(units::radian_t max) {
+    maxPosition = max;
+  }
+
+  /**
+   * Gets the maximum angular position.
+   * 
+   * @return The maximum angular position in radians.
+   */
+  virtual units::radian_t getMaxPosition() const {
+    return maxPosition;
   }
 
   /**
@@ -104,5 +112,7 @@ public:
 private:
   frc::Servo servo;
   int inversion = 1;
+  units::radian_t minPosition = 0_deg;
+  units::radian_t maxPosition = 180_deg;
 };
 } // namespace rmb
