@@ -20,46 +20,42 @@ public:
    * 
    * @param position The target angular position in radians.
    */
-  virtual void setAngularPosition(units::radian_t position) = 0;
-
-  /**
-   * Common interface for getting the <b>current</b> angular position.
-   * 
-   * @return the <b>current</b> angular position in radians.
-   */
-  virtual units::radian_t getAngularPosition() const = 0;
+  virtual void setPosition(units::radian_t position) = 0;
 
   /**
    * Common interface for getting the <b>target</b> angular position.
    * 
-   * @return The <b>target</b> angular position in meters.
+   * @return The target angular position in radians.
    */
-  virtual units::radian_t getTargetAngularPosition() const = 0;
+  virtual units::radian_t getTargetPosition() const = 0;
 
   /**
-   * Common interface for getting the <b>current</b> angular velocity error. 
+   * Common interface for setting the minimum angular position.
    * 
-   * @return The diffrence between the actual angular velocity and target 
-   *         angular velocity in radians.
+   * @param min The minimum angular position in radians.
    */
-  units::radian_t getAngularError() const {
-    return getAngularPosition() - getTargetAngularPosition();
-  }
+  virtual void setMinPosition(units::radian_t min) = 0;
 
   /**
-   * Common interface for returning whether the mechanism is at the target 
-   * position.
+   * Common interface for getting the minimum angular position.
    * 
-   * @return true if it at the target, and false if it is not.
+   * @return The minimum angular position in radians.
    */
-  virtual bool atTarget() const = 0;
+  virtual units::radian_t getMinPosition() const = 0;
 
   /**
-   * Common interface for getting the <b>current</b> angular veolcity.
+   * Common interface for setting the maximum angular position.
    * 
-   * @return the <b>current</b> angular velocity in radians per second.
+   * @param max  The maximum angular position in radians.
    */
-  virtual units::radians_per_second_t getAngularVelocity() const = 0;
+  virtual void setMaxPosition(units::radian_t max) = 0;
+
+  /**
+   * Common interface for getting the maximum angular position.
+   * 
+   * @return The maximum angular position in radians.
+   */
+  virtual units::radian_t getMaxPosition() const = 0;
 
   /**
    * Common interface for inverting direction of a mechanism.
@@ -111,11 +107,12 @@ public:
                                     ConversionUnit_t conversionFactor) :
                                     angular(angularController), conversion(conversionFactor) {}
 
-  void setPosition(units::meter_t position) { angular.setAngularPosition(position / conversion); }
-  units::meter_t getPosition() const { return angular.getAngularPosition() * conversion; }
-  units::meter_t getTargetPosition() const { return angular.getTargetAngularPosition() * conversion; }
-  bool atTarget() const { return angular.atTarget(); }
-  units::meters_per_second_t getVelocity() const { return angular.getAngularVelocity() * conversion; }
+  void setPosition(units::meter_t position) { angular.setPosition(position / conversion); }
+  units::meter_t getTargetPosition() const { return angular.getTargetPosition() * conversion; }
+  void setMinPosition(units::meter_t min) { angular.setMinPosition(min / conversion); }
+  units::meter_t getMinPosition() const { return angular.getMinPosition() * conversion; }
+  void setMaxPosition(units::meter_t max) { angular.setMaxPosition(max / conversion); }
+  units::meter_t getMaxPosition() const { return angular.getMaxPosition() * conversion; }
   void setInverted(bool isInverted) { angular.setInverted(isInverted); }
   bool getInverted() const {angular.getInverted(); }
   void disable() { angular.disable(); }

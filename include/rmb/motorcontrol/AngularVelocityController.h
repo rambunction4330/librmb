@@ -19,47 +19,28 @@ public:
    * 
    * @param velocity The target angular velocity in radians per second.
    */
-  virtual void setAngularVelocity(units::radians_per_second_t velocity) = 0;
-
-  /**
-   * Common interface for getting the <b>current</b> angular velocity of the
-   * mechanism regardless of target.
-   * 
-   * @return The <b>current</b> angular velocity in radians per second
-   */
-  virtual units::radians_per_second_t getAngularVelocity() const = 0;
+  virtual void setVelocity(units::radians_per_second_t velocity) = 0;
 
   /**
    * Common interface for getting the <b>target</b> angular velocity.
    * 
    * @return The <b>target</b> angular velocity in radians per second.
    */
-  virtual units::radians_per_second_t getTargetAngularVelocity() const = 0;
+  virtual units::radians_per_second_t getTargetVelocity() const = 0;
 
   /**
-   * Gets the <b>current</b> angular velocity error.
+   * Common interface for setting the maximum angular velocity.
    * 
-   * @return The diffrence between the actual and target angular velocitys.
+   * @param max The maximum angular velocity in radians per second.
    */
-  units::radians_per_second_t getAngularError() const {
-    return getAngularVelocity() - getTargetAngularVelocity(); 
-  }
+  virtual void setMaxVelocity(units::radians_per_second_t max) = 0;
 
   /**
-   * Common interface for returning whether the mechanism is at the target 
-   * velocity. No defualt implementation is given  since an equality check is 
-   * meaningless as some non zero error will always exist.
+   * Common interface for getting the maximum angular velocity.
    * 
-   * @return true if it at the target, and false if it is not.
+   * @return The maximum angular velocity in radianss per second.
    */
-  virtual bool atTarget() const = 0;
-
-  /**
-   * Common interface for getting the <b>current</b> angular position.
-   * 
-   * @return the <b>current</b> angular position in radians.
-   */
-  virtual units::radian_t getAngularPosition() const = 0;
+  virtual units::radians_per_second_t getMaxVelocity() const = 0;
 
   /**
    * Common interface for inverting direction of a mechanism.
@@ -112,11 +93,10 @@ class AngularAsLinearVelocityController: public LinearVelocityController {
                                     ConversionUnit_t conversionFactor) :
                                     angular(angularController), conversion(conversionFactor) {}
 
-  void setVelocity(units::meters_per_second_t velocity) { angular.setAngularVelocity(velocity / conversion); }
-  units::meters_per_second_t getVelocity() const  { return angular.getAngularVelocity() * conversion; }
-  units::meters_per_second_t getTargetVelocity() const { return angular.getTargetAngularVelocity() * conversion; }
-  bool atTarget() const { return angular.atTarget(); }
-  units::meter_t getPosition() const { return angular.getAngularPosition() * conversion; }
+  void setVelocity(units::meters_per_second_t velocity) { angular.setVelocity(velocity / conversion); }
+  units::meters_per_second_t getTargetVelocity() const { return angular.getTargetVelocity() * conversion; }
+  void setMaxVelocity(units::meters_per_second_t max) { angular.setMaxVelocity(max / conversion); }
+  units::meters_per_second_t getMaxVelocity() const { return angular.getMaxVelocity() * conversion; }
   void setInverted(bool isInverted) { angular.setInverted(isInverted); }
   bool getInverted() const { return angular.getInverted(); }
   void disable() { angular.disable(); }

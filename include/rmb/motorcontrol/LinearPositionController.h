@@ -16,7 +16,7 @@ namespace rmb {
 class LinearPositionController {
 public:
 
-  /**
+/**
    * Common interface for setting the target linear position. 
    * 
    * @param position The target linear position in meters.
@@ -24,44 +24,39 @@ public:
   virtual void setPosition(units::meter_t position) = 0;
 
   /**
-   * Common interface for getting the <b>current</b> linear position.
-   * 
-   * @return The <b>current</b> linear position in meters
-   */
-  virtual units::meter_t getPosition() const = 0;
-
-  /**
    * Common interface for getting the <b>target</b> linear position.
    * 
-   * @return The <b>target</b> linear position in meters.
+   * @return The target linear position in meters.
    */
   virtual units::meter_t getTargetPosition() const = 0;
 
   /**
-   * Common interface for getting the <b>current</b> linear position error.
+   * Common interface for setting the minimum linear position.
    * 
-   * @return The diffrence between the actual linear position and target linear 
-   *         position in meters.
+   * @param min The minimum linear position in meters.
    */
-  units::meter_t getError() const {
-    return getPosition() - getTargetPosition();
-  }
+  virtual void setMinPosition(units::meter_t min) = 0;
 
   /**
-   * Common interface for returning whether the mechanism is at the target 
-   * position.
+   * Common interface for getting the minimum linear position.
    * 
-   * @return true if it at the target, and false if it is not.
+   * @return The minimum linear position in meters.
    */
-  virtual bool atTarget() const = 0;
+  virtual units::meter_t getMinPosition() const = 0;
 
   /**
-   * Common interface for getting the <b>current</b> linear velocity of the
-   * mechanism regardless of target.
+   * Common interface for setting the maximum linear position.
    * 
-   * @return The <b>current</b> linear velocity in meters per second.
+   * @param max  The maximum linear position in meters.
    */
-  virtual units::meters_per_second_t getVelocity() const = 0;
+  virtual void setMaxPosition(units::meter_t max) = 0;
+
+  /**
+   * Common interface for getting the maximum linear position.
+   * 
+   * @return The maximum linear position in meters.
+   */
+  virtual units::meter_t getMaxPosition() const = 0;
 
   /**
    * Common interface for inverting direction of a mechanism.
@@ -110,11 +105,12 @@ public:
                                     ConversionUnit_t conversionFactor) :
                                     linear(linearController), conversion(conversionFactor) {}
 
-  void setAngularPosition(units::radian_t position) { linear.setPosition(position / conversion); }
-  units::radian_t getAngularPosition() const { return linear.getPosition() * conversion; }
-  units::radian_t getTargetAngularPosition() const { return linear.getTargetPosition() * conversion; }
-  bool atTarget() const { return linear.atTarget(); }
-  units::radians_per_second_t getAngularVelocity() const { return linear.getVelocity() * conversion; }
+  void setPosition(units::radian_t position) { linear.setPosition(position * conversion); }
+  units::radian_t getTargetPosition() const { return linear.getTargetPosition() / conversion; }
+  void setMinPosition(units::radian_t min) { linear.setMinPosition(min * conversion); }
+  units::radian_t getMinPosition() const { return linear.getMinPosition() / conversion; }
+  void setMaxPosition(units::radian_t max) { linear.setMaxPosition(max * conversion); }
+  units::radian_t getMaxPosition() const { return linear.getMaxPosition() / conversion; }
   void setInverted(bool isInverted) { linear.setInverted(isInverted); }
   bool getInverted() const {linear.getInverted(); }
   void disable() { linear.disable(); }

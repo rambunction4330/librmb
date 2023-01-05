@@ -22,44 +22,25 @@ public:
   virtual void setVelocity(units::meters_per_second_t velocity) = 0;
 
   /**
-   * Common interface for getting the <b>current</b> linear velocity of the
-   * mechanism regardless of target.
+   * Common interface for getting the target linear velocity.
    * 
-   * @return The <b>current</b> linear velocity in meters per second.
-   */
-  virtual units::meters_per_second_t getVelocity() const = 0;
-
-  /**
-   * Common interface for getting the <b>target</b> linear velocity.
-   * 
-   * @return The <b>target</b> linear velocity in meters per second.
+   * @return The target linear velocity in meters per second.
    */
   virtual units::meters_per_second_t getTargetVelocity() const = 0;
 
   /**
-   * Common interface for getting the <b>current</b> linear velocity error.
+   * Common interface for setting the maximum linear velocity.
    * 
-   * @return The diffrence between the actual and target linear velocitys.
+   * @param max The maximum linear velocity in meters per second.
    */
-  virtual units::meters_per_second_t getError() const {
-    return getVelocity() - getTargetVelocity();
-  }
+  virtual void setMaxVelocity(units::meters_per_second_t max) = 0;
 
   /**
-   * Common interface for returning whether the mechanism is at the target 
-   * velocity. No defualt implementation is given  since an equality check is 
-   * meaningless as some non zero error will always exist.
+   * Common interface for getting the maximum linear velocity.
    * 
-   * @return true if it at the target, and false if it is not.
+   * @return The maximum linear velocity in meters per second.
    */
-  virtual bool atTarget() const = 0;
-
-  /**
-   * Common interface for getting the <b>current</b> linear position.
-   * 
-   * @return The <b>current</b> linear position in meters
-   */
-  virtual units::meter_t getPosition() const = 0;
+  virtual units::meters_per_second_t getMaxVelocity() const = 0;
 
   /**
    * Common interface for inverting direction of a mechanism.
@@ -108,11 +89,10 @@ class LinearAsAngularVelocityController: public AngularVelocityController {
                                     ConversionUnit_t conversionFactor) :
                                     linear(linearController), conversion(conversionFactor) {}
 
-  void setAngularVelocity(units::radians_per_second_t velocity) { linear.setVelocity(velocity / conversion); }
-  units::radians_per_second_t getAngularVelocity() const  { return linear.getVelocity() * conversion; }
-  units::radians_per_second_t getTargetAngularVelocity() const { return linear.getTargetVelocity() * conversion; }
-  bool atTarget() const { return linear.atTarget(); }
-  units::radian_t getAngularPosition() const { return linear.getPosition() * conversion; }
+  void setVelocity(units::radians_per_second_t velocity) { linear.setVelocity(velocity * conversion); }
+  units::radians_per_second_t getTargetVelocity() const { return linear.getTargetVelocity() / conversion; }
+  void setMaxVelocity(units::radians_per_second_t max) { linear.setMaxVelocity(max * conversion); }
+  units::radians_per_second_t getMaxVelocity() const { return linear.getMaxVelocity() / conversion; }
   void setInverted(bool isInverted) { linear.setInverted(isInverted); }
   bool getInverted() const { return linear.getInverted(); }
   void disable() { linear.disable(); }
