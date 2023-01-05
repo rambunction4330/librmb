@@ -65,7 +65,7 @@ public:
    */
   virtual void setInverted(bool isInverted) = 0;
 
-    /**
+  /**
    * Common interface for returning the inversion state of a mechanism.
    *
    * @return isInverted The state of inversion, true is inverted.
