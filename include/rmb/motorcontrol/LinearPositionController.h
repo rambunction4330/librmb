@@ -93,7 +93,7 @@ public:
    * 
    * @param conversion conversion from linear to angular units.
    */
-  LinearAsAngularPositionController asAngular(ConversionUnit_t conversion) {
+  LinearAsAngularPositionController asAngularController(ConversionUnit_t conversion) {
     return LinearAsAngularPositionController(*this, conversion);
   }
 };
@@ -101,6 +101,13 @@ public:
 // Simple wrapper class to handle unit conversions
 class LinearAsAngularPositionController : public AngularPositionController {
 public:
+
+  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
+  using ConversionUnit_t = units::unit_t<ConversionUnit>;
+
+  LinearAsAngularPositionController(const LinearAsAngularPositionController&) = default;
+  LinearAsAngularPositionController(LinearAsAngularPositionController&&) = delete;
+
   LinearAsAngularPositionController(LinearPositionController& linearController, 
                                     ConversionUnit_t conversionFactor) :
                                     linear(linearController), conversion(conversionFactor) {}

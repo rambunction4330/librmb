@@ -77,7 +77,7 @@ public:
    * 
    * @param conversion conversion from linear to angular units.
    */
-  LinearAsAngularVelocityController asAngular(ConversionUnit_t conversion) {
+  LinearAsAngularVelocityController asAngularController(ConversionUnit_t conversion) {
     return LinearAsAngularVelocityController(*this, conversion);
   }
 };
@@ -85,6 +85,13 @@ public:
 // Simple wrapper class to handle unit conversions
 class LinearAsAngularVelocityController: public AngularVelocityController {
  public:
+
+  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
+  using ConversionUnit_t = units::unit_t<ConversionUnit>;
+
+  LinearAsAngularVelocityController(const LinearAsAngularVelocityController&) = default;
+  LinearAsAngularVelocityController(LinearAsAngularVelocityController&&) = delete;
+
   LinearAsAngularVelocityController(LinearVelocityController& linearController, 
                                     ConversionUnit_t conversionFactor) :
                                     linear(linearController), conversion(conversionFactor) {}
