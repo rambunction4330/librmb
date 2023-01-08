@@ -1,10 +1,12 @@
 
 #pragma once
 
+#include <memory>
+
 #include <units/angle.h>
-#include <units/angular_velocity.h>
 
 #include "rmb/motorcontrol/LinearPositionController.h"
+#include "rmb/motorcontrol/Conversions.h"
 
 namespace rmb {
 
@@ -84,44 +86,14 @@ public:
 };
 
 /**
- * Generates a `LinearPositionController` to controll the same mechanism
- * as this controller, but with angular instead of linear units via a linear
- * conversion factor. Changes to one controller will effect the other since 
- * they control the same physical mechanism.
+ * Generates a `LinearPositionController` to controller from an 
+ * `AngularPositionController` via a linear conversion factor. The new 
+ * controller takes ownership over the old one.
  * 
- * @param controller 
- * @param conversion conversion from linear to angular units.
+ * @param angularController origional controller the new one is generated from.
+ * @param conversion conversion factor from linear to angular units.
  */
 std::unique_ptr<LinearPositionController> asLinear(std::unique_ptr<AngularPositionController> angularController, 
-                                                   AngularAsLinearPositionController::ConversionUnit_t conversion) {
-  return std::make_unique<AngularAsLinearPositionController>(angularController, conversion);
-}
-
-// Simple wrapper class to handle unit conversions
-class AngularAsLinearPositionController : public LinearPositionController {
-public:
-
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-  using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
-  AngularAsLinearPositionController(std::unique_ptr<AngularPositionController> angularController, 
-                                    ConversionUnit_t conversionFactor) :
-                                    angular(std::move(angularController)), conversion(conversionFactor) {}
-
-  void setPosition(units::meter_t position) { angular->setPosition(position / conversion); }
-  units::meter_t getTargetPosition() const { return angular->getTargetPosition() * conversion; }
-  void setMinPosition(units::meter_t min) { angular->setMinPosition(min / conversion); }
-  units::meter_t getMinPosition() const { return angular->getMinPosition() * conversion; }
-  void setMaxPosition(units::meter_t max) { angular->setMaxPosition(max / conversion); }
-  units::meter_t getMaxPosition() const { return angular->getMaxPosition() * conversion; }
-  void setInverted(bool isInverted) { angular->setInverted(isInverted); }
-  bool getInverted() const { angular->getInverted(); }
-  void disable() { angular->disable(); }
-  void stop() { angular->stop(); }
-
-private:
-  std::unique_ptr<AngularPositionController> angular;
-  ConversionUnit_t conversion;
-};
+                                                   MotorControlConversions::ConversionUnit_t conversion);
 
 } // namespace rmb

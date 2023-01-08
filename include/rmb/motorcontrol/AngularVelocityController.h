@@ -1,9 +1,12 @@
 
 #pragma once
 
+#include <memory>
+
 #include <units/angular_velocity.h>
 
 #include "rmb/motorcontrol/LinearVelocityController.h"
+#include "rmb/motorcontrol/Conversions.h"
 
 namespace rmb {
 
@@ -62,49 +65,21 @@ public:
   virtual void disable() = 0;
 
   /**
-   * Common interface to stop the mechanism until `setVelocity` is called again.
+   * Common interface to stop the mechanism until `setVelocity` is called 
+   * again.
    */
   virtual void stop() = 0;
 };
 
-using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
 /**
- * Generates a `LinearVelocityController` to controll the same mechanism
- * as this controller, but with linear instead of angular units via a linear
- * conversion factor. Changes to one controller will effect the other since 
- * they control the same physical mechanism.
+ * Generates a `LinearVelocityController` to controller from an 
+ * `AngularVelocityController` via a linear conversion factor. The new 
+ * controller takes ownership over the old one.
  * 
+ * @param angularController origional controller the new one is generated from.
  * @param conversion conversion factor from linear to angular units.
  */
 std::unique_ptr<LinearVelocityController> asLinear(std::unique_ptr<AngularVelocityController> angularController,
-                                                   AngularAsLinearVelocityController::ConversionUnit_t conversion) {
-  return std::make_unique<AngularAsLinearVelocityController>(angularController, conversion);
-}
-
-// Simple wrapper class to handle unit conversions
-class AngularAsLinearVelocityController: public LinearVelocityController {
- public:
-  
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-  using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
-  AngularAsLinearVelocityController(std::unique_ptr<AngularVelocityController> angularController, 
-                                    ConversionUnit_t conversionFactor) :
-                                    angular(std::move(angularController)), conversion(conversionFactor) {}
-
-  void setVelocity(units::meters_per_second_t velocity) { angular->setVelocity(velocity / conversion); }
-  units::meters_per_second_t getTargetVelocity() const { return angular->getTargetVelocity() * conversion; }
-  void setMaxVelocity(units::meters_per_second_t max) { angular->setMaxVelocity(max / conversion); }
-  units::meters_per_second_t getMaxVelocity() const { return angular->getMaxVelocity() * conversion; }
-  void setInverted(bool isInverted) { angular->setInverted(isInverted); }
-  bool getInverted() const { return angular->getInverted(); }
-  void disable() { angular->disable(); }
-  void stop() { angular->stop(); }
- private:
-  std::unique_ptr<AngularVelocityController> angular;
-  units::unit_t<units::compound_unit<units::radians, units::inverse<units::meters>>> conversion;
-};
+                                                   MotorControlConversions::ConversionUnit_t conversion);
 
 } // namespace rmb

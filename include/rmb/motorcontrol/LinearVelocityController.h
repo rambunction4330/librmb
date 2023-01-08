@@ -4,6 +4,7 @@
 #include <units/velocity.h>
 
 #include "rmb/motorcontrol/AngularVelocityController.h"
+#include "rmb/motorcontrol/Conversions.h"
 
 namespace rmb {
 
@@ -68,40 +69,14 @@ public:
 };
 
 /**
- * Generates a `AngularVelocityController` to controll the same mechanism
- * as this controller, but with angular instead of linear units via a linear
- * conversion factor. Changes to one controller will effect the other since 
- * they control the same physical mechanism.
+ * Generates a `AngularVelocityController` to controller from an 
+ * `LinearVelocityController` via a linear conversion factor. The new 
+ * controller takes ownership over the old one.
  * 
- * @param conversion conversion from linear to angular units.
+ * @param angularController origional controller the new one is generated from.
+ * @param conversion conversion factor from linear to angular units.
  */
 std::unique_ptr<AngularVelocityController> asAngular(std::unique_ptr<LinearVelocityController> linearController,
-                                            ConversionUnit_t conversion) {
-  return std::make_unique<LinearAsAngularVelocityController>(linearController, conversion);
-}
-
-// Simple wrapper class to handle unit conversions
-class LinearAsAngularVelocityController: public AngularVelocityController {
- public:
-
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-  using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
-  LinearAsAngularVelocityController(std::unique_ptr<LinearVelocityController> linearController, 
-                                    ConversionUnit_t conversionFactor) :
-                                    linear(std::move(linearController)), conversion(conversionFactor) {}
-
-  void setVelocity(units::radians_per_second_t velocity) { linear->setVelocity(velocity * conversion); }
-  units::radians_per_second_t getTargetVelocity() const { return linear->getTargetVelocity() / conversion; }
-  void setMaxVelocity(units::radians_per_second_t max) { linear->setMaxVelocity(max * conversion); }
-  units::radians_per_second_t getMaxVelocity() const { return linear->getMaxVelocity() / conversion; }
-  void setInverted(bool isInverted) { linear->setInverted(isInverted); }
-  bool getInverted() const { return linear->getInverted(); }
-  void disable() { linear->disable(); }
-  void stop() { linear->stop(); }
- private:
-  std::unique_ptr<LinearVelocityController> linear;
-  ConversionUnit_t conversion;
-};
+                                                     MotorControlConversions::ConversionUnit_t conversion);
 
 } // namespace rmb

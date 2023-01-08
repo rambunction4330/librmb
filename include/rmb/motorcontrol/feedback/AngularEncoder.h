@@ -5,6 +5,7 @@
 #include <units/angular_velocity.h>
 
 #include "rmb/motorcontrol/feedback/LinearEncoder.h"
+#include "rmb/motorcontrol/Conversions.h"
 
 namespace rmb {
 class AngularEncoder {
@@ -49,36 +50,13 @@ public:
 };
 
 /**
- * Generates a `LinearAsAngularEncoder` to measure the same mechanism
- * as this controller, but with angular instead of linear units via a linear
- * conversion factor. Changes to one controller will effect the other since 
- * they control the same physical mechanism.
+ * Generates a `LinearEncoder` to controller from an 
+ * `AngularEncoder` via a linear conversion factor. The new 
+ * controller takes ownership over the old one.
  * 
- * @param conversion conversion from linear to angular units.
+ * @param angularController origional controller the new one is generated from.
+ * @param conversion conversion factor from linear to angular units.
  */
 std::unique_ptr<LinearEncoder> asLinear(std::unique_ptr<AngularEncoder> angularEncoder, 
-                                        AngularAsLinearEncoder::ConversionUnit_t conversion) {
-  return std::make_unique<AngularAsLinearEncoder>(angularEncoder, conversion);
-}
-
-// Simple wrapper class to handle unit conversions
-class AngularAsLinearEncoder : public LinearEncoder {
-public:
-
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-  using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
-  AngularAsLinearEncoder(std::unique_ptr<AngularEncoder> angularEncoder, ConversionUnit_t conversionFactor) :
-                         angular(std::move(angularEncoder)), conversion(conversionFactor) {}
-
-  units::meters_per_second_t getVelocity() const { return angular->getVelocity() * conversion; }
-  units::meter_t getPosition() const { return angular->getPosition() * conversion; }
-  void zeroPosition(units::meter_t offset = 0_m) { angular->zeroPosition(offset / conversion); }
-  void setEncoderInverted(bool isInverted) { angular->setEncoderInverted(isInverted); }
-  bool getEncoderInverted() const { return angular->getEncoderInverted(); }
-
-private:
-  std::unique_ptr<AngularEncoder> angular;
-  ConversionUnit_t conversion;
-};
+                                        MotorControlConversions::ConversionUnit_t conversion);
 } // namespace rmb

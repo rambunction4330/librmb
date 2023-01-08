@@ -2,9 +2,9 @@
 #pragma once
 
 #include <units/length.h>
-#include <units/velocity.h>
 
 #include "rmb/motorcontrol/AngularPositionController.h"
+#include "rmb/motorcontrol/Conversions.h"
 
 
 namespace rmb {
@@ -84,43 +84,14 @@ public:
 };
 
 /**
- * Generates a `AngularVelocityController` to controll the same mechanism
- * as this controller, but with angular instead of linear units via a linear
- * conversion factor. Changes to one controller will effect the other since 
- * they control the same physical mechanism.
+ * Generates a `AngularPositionController` to controller from an 
+ * `LinearPositionController` via a linear conversion factor. The new 
+ * controller takes ownership over the old one.
  * 
- * @param conversion conversion from linear to angular units.
+ * @param angularController origional controller the new one is generated from.
+ * @param conversion conversion factor from linear to angular units.
  */
 std::unique_ptr<AngularPositionController> asAngular(std::unique_ptr<LinearPositionController> linearController, 
-                                                     LinearAsAngularPositionController::ConversionUnit_t conversion) {
-  return std::make_unique<LinearAsAngularPositionController>(linearController, conversion);
-}
-
-// Simple wrapper class to handle unit conversions
-class LinearAsAngularPositionController : public AngularPositionController {
-public:
-
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-  using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
-  LinearAsAngularPositionController(std::unique_ptr<LinearPositionController> linearController, 
-                                    ConversionUnit_t conversionFactor) :
-                                    linear(std::move(linearController)), conversion(conversionFactor) {}
-
-  void setPosition(units::radian_t position) { linear->setPosition(position * conversion); }
-  units::radian_t getTargetPosition() const { return linear->getTargetPosition() / conversion; }
-  void setMinPosition(units::radian_t min) { linear->setMinPosition(min * conversion); }
-  units::radian_t getMinPosition() const { return linear->getMinPosition() / conversion; }
-  void setMaxPosition(units::radian_t max) { linear->setMaxPosition(max * conversion); }
-  units::radian_t getMaxPosition() const { return linear->getMaxPosition() / conversion; }
-  void setInverted(bool isInverted) { linear->setInverted(isInverted); }
-  bool getInverted() const { linear->getInverted(); }
-  void disable() { linear->disable(); }
-  void stop() { linear->stop(); }
-
-private:
-  std::unique_ptr<LinearPositionController> linear;
-  ConversionUnit_t conversion;
-};
+                                                     MotorControlConversions::ConversionUnit_t conversion);
 
 } // namespace rmb

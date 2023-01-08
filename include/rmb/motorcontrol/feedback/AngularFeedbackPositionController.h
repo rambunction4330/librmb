@@ -35,52 +35,13 @@ public:
 };
 
 /**
- * Generates a `AngularAsLinearEncoder` to measure the same mechanism as this
- * object, but with linear instead of angular units via a linear
- * conversion factor. Changes to one controller will effect the other since 
- * they measure the same physical mechanism.
+ * Generates a `LinearFeedbackPositionController` to controller from an 
+ * `AngularFeedbackPositionController` via a linear conversion factor. The new 
+ * controller takes ownership over the old one.
  * 
- * @param conversion conversion from linear to angular units.
+ * @param angularController origional controller the new one is generated from.
+ * @param conversion conversion factor from linear to angular units.
  */
 std::unique_ptr<LinearFeedbackPositionController> asLinear(std::unique_ptr<AngularFeedbackPositionController> angularController,
-                                                           AngularAsLinearFeedbackPositionController::ConversionUnit_t conversion) {
-  return std::make_unique<AngularAsLinearFeedbackPositionController>(angularController, conversion);
-}
-
-class AngularAsLinearFeedbackPositionController : public LinearFeedbackPositionController {
-public:
-
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-  using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
-  AngularAsLinearFeedbackPositionController(std::unique_ptr<AngularFeedbackPositionController> angularController, 
-                                            ConversionUnit_t conversionFactor) :
-                                            angular(std::move(angularController)), conversion(conversionFactor) {}
-
-  // Controller Methods
-  void setPosition(units::meter_t position) { angular->setPosition(position / conversion); }
-  units::meter_t getTargetPosition() const { return angular->getTargetPosition() * conversion; }
-  void setMinPosition(units::meter_t min) { angular->setMinPosition(min / conversion); }
-  units::meter_t getMinPosition() const { return angular->getMinPosition() * conversion; }
-  void setMaxPosition(units::meter_t max) { angular->setMaxPosition(max / conversion); }
-  units::meter_t getMaxPosition() const { return angular->getMaxPosition() * conversion; }
-  void setInverted(bool isInverted) { angular->setInverted(isInverted); }
-  bool getInverted() const { angular->getInverted(); }
-  void disable() { angular->disable(); }
-  void stop() { angular->stop(); }
-
-  // Encoder Methods
-  units::meters_per_second_t getVelocity() const { return angular->getVelocity() * conversion; }
-  units::meter_t getPosition() const { return angular->getPosition() * conversion; }
-  void zeroPosition(units::meter_t offset = 0_m) { angular->zeroPosition(offset / conversion); }
-  void setEncoderInverted(bool isInverted) { angular->setEncoderInverted(isInverted); }
-  bool getEncoderInverted() const { return angular->getEncoderInverted(); }
-
-  // Feedback Methods
-  bool atTarget() const { return angular->atTarget(); }
-
-private:
-  std::unique_ptr<AngularFeedbackPositionController> angular;
-  ConversionUnit_t conversion;
-};
+                                                           MotorControlConversions::ConversionUnit_t conversion);
 } // namespace rmb

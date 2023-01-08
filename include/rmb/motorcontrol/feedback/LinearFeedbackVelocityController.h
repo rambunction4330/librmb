@@ -42,54 +42,7 @@ public:
  * 
  * @param conversion conversion from linear to angular units.
  */
-std::unique_ptr<AngularFeedbackVelocityController> asLinear(std::unique_ptr<LinearFeedbackVelocityController> linearController,
-                                                            LinearAsAngularFeedbackVelocityController::ConversionUnit_t conversion) {
-  return std::make_unique<LinearAsAngularFeedbackVelocityController>(linearController, conversion);
-}
-
-class LinearAsAngularFeedbackVelocityController : public AngularFeedbackVelocityController {
-public:
-
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-  using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
-  LinearAsAngularFeedbackVelocityController(const LinearAsAngularFeedbackVelocityController&) = delete;
-  LinearAsAngularFeedbackVelocityController(LinearAsAngularFeedbackVelocityController&&) = default;
-
-  LinearAsAngularFeedbackVelocityController(std::unique_ptr<LinearFeedbackVelocityController> linearController, 
-                                            ConversionUnit_t conversionFactor) :
-                                            linear(std::move(linearController)), conversion(conversionFactor) {}
-
-  // Encoder Methods
-  units::radians_per_second_t getVelocity() const { return linear->getVelocity() / conversion; }
-  units::radian_t getPosition() const { return linear->getPosition() / conversion; }
-  void zeroPosition(units::radian_t offset = 0_m) { linear->zeroPosition(offset * conversion); }
-  void setEncoderInverted(bool isInverted) { linear->setEncoderInverted(isInverted); }
-  bool getEncoderInverted() const { return linear->getEncoderInverted(); }
-
-  // Controller Methods
-  void setVelocity(units::radians_per_second_t position) { linear->setVelocity(position * conversion); }
-  units::radians_per_second_t getTargetVelocity() const { return linear->getTargetVelocity() / conversion; }
-  void setMaxVelocity(units::radians_per_second_t max) { linear->setMaxVelocity(max * conversion); }
-  units::radians_per_second_t getMaxVelocity() const { return linear->getMaxVelocity() / conversion; }
-  void setInverted(bool isInverted) { linear->setInverted(isInverted); }
-  bool getInverted() const { linear->getInverted(); }
-  void disable() { linear->disable(); }
-  void stop() { linear->stop(); }
-
-  // Encoder Methods
-  units::radians_per_second_t getVelocity() const { return linear->getVelocity() * conversion; }
-  units::radian_t getPosition() const { return linear->getPosition() * conversion; }
-  void zeroPosition(units::radian_t offset = 0_rad) { linear->zeroPosition(offset / conversion); }
-  void setEncoderInverted(bool isInverted) { linear->setEncoderInverted(isInverted); }
-  bool getInverted() const { return linear->getEncoderInverted(); }
-
-  // Feedback Methods
-  bool atTarget() const { return linear->atTarget(); }
-
-private:
-  std::unique_ptr<LinearFeedbackVelocityController> linear;
-  ConversionUnit_t conversion;
-};
+std::unique_ptr<AngularFeedbackVelocityController> asAngular(std::unique_ptr<LinearFeedbackVelocityController> linearController,
+                                                             MotorControlConversions::ConversionUnit_t conversion);
 
 } // namespace rmb
