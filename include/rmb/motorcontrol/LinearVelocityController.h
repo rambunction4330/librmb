@@ -65,22 +65,20 @@ public:
    * Common interface to stop the mechanism until `setVelocity` is called again.
    */
   virtual void stop() = 0;
-
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-  using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
-  /**
-   * Generates a `AngularVelocityController` to controll the same mechanism
-   * as this controller, but with angular instead of linear units via a linear
-   * conversion factor. Changes to one controller will effect the other since 
-   * they control the same physical mechanism.
-   * 
-   * @param conversion conversion from linear to angular units.
-   */
-  LinearAsAngularVelocityController asAngularController(ConversionUnit_t conversion) {
-    return LinearAsAngularVelocityController(*this, conversion);
-  }
 };
+
+/**
+ * Generates a `AngularVelocityController` to controll the same mechanism
+ * as this controller, but with angular instead of linear units via a linear
+ * conversion factor. Changes to one controller will effect the other since 
+ * they control the same physical mechanism.
+ * 
+ * @param conversion conversion from linear to angular units.
+ */
+std::unique_ptr<AngularVelocityController> asAngular(std::unique_ptr<LinearVelocityController> linearController,
+                                            ConversionUnit_t conversion) {
+  return std::make_unique<LinearAsAngularVelocityController>(linearController, conversion);
+}
 
 // Simple wrapper class to handle unit conversions
 class LinearAsAngularVelocityController: public AngularVelocityController {
@@ -89,23 +87,20 @@ class LinearAsAngularVelocityController: public AngularVelocityController {
   using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
   using ConversionUnit_t = units::unit_t<ConversionUnit>;
 
-  LinearAsAngularVelocityController(const LinearAsAngularVelocityController&) = default;
-  LinearAsAngularVelocityController(LinearAsAngularVelocityController&&) = delete;
-
-  LinearAsAngularVelocityController(LinearVelocityController& linearController, 
+  LinearAsAngularVelocityController(std::unique_ptr<LinearVelocityController> linearController, 
                                     ConversionUnit_t conversionFactor) :
-                                    linear(linearController), conversion(conversionFactor) {}
+                                    linear(std::move(linearController)), conversion(conversionFactor) {}
 
-  void setVelocity(units::radians_per_second_t velocity) { linear.setVelocity(velocity * conversion); }
-  units::radians_per_second_t getTargetVelocity() const { return linear.getTargetVelocity() / conversion; }
-  void setMaxVelocity(units::radians_per_second_t max) { linear.setMaxVelocity(max * conversion); }
-  units::radians_per_second_t getMaxVelocity() const { return linear.getMaxVelocity() / conversion; }
-  void setInverted(bool isInverted) { linear.setInverted(isInverted); }
-  bool getInverted() const { return linear.getInverted(); }
-  void disable() { linear.disable(); }
-  void stop() { linear.stop(); }
+  void setVelocity(units::radians_per_second_t velocity) { linear->setVelocity(velocity * conversion); }
+  units::radians_per_second_t getTargetVelocity() const { return linear->getTargetVelocity() / conversion; }
+  void setMaxVelocity(units::radians_per_second_t max) { linear->setMaxVelocity(max * conversion); }
+  units::radians_per_second_t getMaxVelocity() const { return linear->getMaxVelocity() / conversion; }
+  void setInverted(bool isInverted) { linear->setInverted(isInverted); }
+  bool getInverted() const { return linear->getInverted(); }
+  void disable() { linear->disable(); }
+  void stop() { linear->stop(); }
  private:
-  LinearVelocityController& linear;
+  std::unique_ptr<LinearVelocityController> linear;
   ConversionUnit_t conversion;
 };
 

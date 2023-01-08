@@ -9,6 +9,7 @@
 namespace rmb {
 class AngularEncoder {
 public:
+
   /**
    * Common interface for returning the angular velocity of an encoder.
    *
@@ -45,43 +46,39 @@ public:
    * @return The state of inversion, true is inverted.
    */
   virtual bool getEncoderInverted() const = 0;
-
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-  using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
-  /**
-   * Generates a `AngularAsLinearEncoder` to measure the same mechanism as this
-   * object, but with linear instead of angular units via a linear
-   * conversion factor. Changes to one controller will effect the other since 
-   * they measure the same physical mechanism.
-   * 
-   * @param conversion conversion from linear to angular units.
-   */
-  AngularAsLinearEncoder asLinearEncoder(ConversionUnit_t conversion) {
-    return AngularAsLinearEncoder(*this, conversion);
-  }
 };
+
+/**
+ * Generates a `LinearAsAngularEncoder` to measure the same mechanism
+ * as this controller, but with angular instead of linear units via a linear
+ * conversion factor. Changes to one controller will effect the other since 
+ * they control the same physical mechanism.
+ * 
+ * @param conversion conversion from linear to angular units.
+ */
+std::unique_ptr<LinearEncoder> asLinear(std::unique_ptr<AngularEncoder> angularEncoder, 
+                                        AngularAsLinearEncoder::ConversionUnit_t conversion) {
+  return std::make_unique<AngularAsLinearEncoder>(angularEncoder, conversion);
+}
 
 // Simple wrapper class to handle unit conversions
 class AngularAsLinearEncoder : public LinearEncoder {
 public:
+
   using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
   using ConversionUnit_t = units::unit_t<ConversionUnit>;
 
-  AngularAsLinearEncoder(const AngularAsLinearEncoder&) = delete;
-  AngularAsLinearEncoder(AngularAsLinearEncoder&&) = default;
+  AngularAsLinearEncoder(std::unique_ptr<AngularEncoder> angularEncoder, ConversionUnit_t conversionFactor) :
+                         angular(std::move(angularEncoder)), conversion(conversionFactor) {}
 
-  AngularAsLinearEncoder(AngularEncoder& angularEncoder, ConversionUnit_t conversionFactor) :
-                         angular(angularEncoder), conversion(conversionFactor) {}
-
-  units::meters_per_second_t getVelocity() const { return angular.getVelocity() * conversion; }
-  units::meter_t getPosition() const { return angular.getPosition() * conversion; }
-  void zeroPosition(units::meter_t offset = 0_m) { angular.zeroPosition(offset / conversion); }
-  void setEncoderInverted(bool isInverted) { angular.setEncoderInverted(isInverted); }
-  bool getEncoderInverted() const { return angular.getEncoderInverted(); }
+  units::meters_per_second_t getVelocity() const { return angular->getVelocity() * conversion; }
+  units::meter_t getPosition() const { return angular->getPosition() * conversion; }
+  void zeroPosition(units::meter_t offset = 0_m) { angular->zeroPosition(offset / conversion); }
+  void setEncoderInverted(bool isInverted) { angular->setEncoderInverted(isInverted); }
+  bool getEncoderInverted() const { return angular->getEncoderInverted(); }
 
 private:
-  AngularEncoder& angular;
+  std::unique_ptr<AngularEncoder> angular;
   ConversionUnit_t conversion;
 };
 } // namespace rmb

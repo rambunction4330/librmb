@@ -43,43 +43,39 @@ public:
    * @return isInverted The state of inversion, true is inverted.
    */
   virtual bool getEncoderInverted() const = 0;
-
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-  using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
-  /**
-   * Generates a `LinearAsAngularEncoder` to measure the same mechanism
-   * as this controller, but with angular instead of linear units via a linear
-   * conversion factor. Changes to one controller will effect the other since 
-   * they control the same physical mechanism.
-   * 
-   * @param conversion conversion from linear to angular units.
-   */
-  LinearAsAngularEncoder asAngularEncoder(ConversionUnit_t conversion) {
-    return LinearAsAngularEncoder(*this, conversion);
-  }
 };
+
+/**
+ * Generates a `LinearAsAngularEncoder` to measure the same mechanism
+ * as this controller, but with angular instead of linear units via a linear
+ * conversion factor. Changes to one controller will effect the other since 
+ * they control the same physical mechanism.
+ * 
+ * @param conversion conversion from linear to angular units.
+ */
+std::unique_ptr<AngularEncoder> asAngular(std::unique_ptr<LinearEncoder> linearEncoder, 
+                                          LinearAsAngularEncoder::ConversionUnit_t conversion) {
+  return std::make_unique<LinearAsAngularEncoder>(linearEncoder, conversion);
+}
 
 // Simple wrapper class to handle unit conversions
 class LinearAsAngularEncoder : public AngularEncoder {
 public:
+
   using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
   using ConversionUnit_t = units::unit_t<ConversionUnit>;
 
-  LinearAsAngularEncoder(const LinearAsAngularEncoder&) = delete;
-  LinearAsAngularEncoder(LinearAsAngularEncoder&&) = default;
+  LinearAsAngularEncoder(std::unique_ptr<LinearEncoder>  linearEncoder, ConversionUnit_t conversionFactor) :
+                         linear(std::move(linearEncoder)), conversion(conversionFactor) {}
 
-  LinearAsAngularEncoder(LinearEncoder& linearEncoder, ConversionUnit_t conversionFactor) :
-                         linear(linearEncoder), conversion(conversionFactor) {}
-
-  units::radians_per_second_t getVelocity() const { return linear.getVelocity() * conversion; }
-  units::radian_t getPosition() const { return linear.getPosition() * conversion; }
-  void zeroPosition(units::radian_t offset = 0_rad) { linear.zeroPosition(offset / conversion); }
-  void setEncoderInverted(bool isInverted) { linear.setEncoderInverted(isInverted); }
-  bool getEncoderInverted() const { return linear.getEncoderInverted(); }
+  units::radians_per_second_t getVelocity() const { return linear->getVelocity() * conversion; }
+  units::radian_t getPosition() const { return linear->getPosition() * conversion; }
+  void zeroPosition(units::radian_t offset = 0_rad) { linear->zeroPosition(offset / conversion); }
+  void setEncoderInverted(bool isInverted) { linear->setEncoderInverted(isInverted); }
+  bool getInverted() const { return linear->getEncoderInverted(); }
 
 private:
-  LinearEncoder& linear;
+  std::unique_ptr<LinearEncoder> linear;
   ConversionUnit_t conversion;
 };
 } // namespace rmb

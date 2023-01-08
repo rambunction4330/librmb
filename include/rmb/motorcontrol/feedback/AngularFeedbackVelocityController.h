@@ -31,22 +31,20 @@ public:
    * @return true is the controller has achived the target velocity.
    */
   virtual bool atTarget() const = 0;
-
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
-  using ConversionUnit_t = units::unit_t<ConversionUnit>;
-
-  /**
-   * Generates a `AngularAsLinearEncoder` to measure the same mechanism as this
-   * object, but with linear instead of angular units via a linear
-   * conversion factor. Changes to one controller will effect the other since 
-   * they measure the same physical mechanism.
-   * 
-   * @param conversion conversion from linear to angular units.
-   */
-  AngularAsLinearFeedbackVelocityController asLinearFeedbackController(ConversionUnit_t conversion) {
-    return AngularAsLinearFeedbackVelocityController(*this, conversion);
-  }
 };
+
+/**
+ * Generates a `AngularAsLinearEncoder` to measure the same mechanism as this
+ * object, but with linear instead of angular units via a linear
+ * conversion factor. Changes to one controller will effect the other since 
+ * they measure the same physical mechanism.
+ * 
+ * @param conversion conversion from linear to angular units.
+ */
+std::unique_ptr<LinearFeedbackVelocityController> asLinear(std::unique_ptr<AngularFeedbackVelocityController> angularController, 
+                                                           AngularAsLinearFeedbackVelocityController::ConversionUnit_t conversion) {
+  return std::make_unique<AngularAsLinearFeedbackVelocityController>(angularController, conversion);
+}
 
 class AngularAsLinearFeedbackVelocityController : public LinearFeedbackVelocityController {
 public:
@@ -54,35 +52,39 @@ public:
   using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
   using ConversionUnit_t = units::unit_t<ConversionUnit>;
 
-  AngularAsLinearFeedbackVelocityController(const AngularAsLinearFeedbackVelocityController&) = delete;
-  AngularAsLinearFeedbackVelocityController(AngularAsLinearFeedbackVelocityController&&) = default;
-
-  AngularAsLinearFeedbackVelocityController(AngularFeedbackVelocityController& angularController, 
+  AngularAsLinearFeedbackVelocityController(std::unique_ptr<AngularFeedbackVelocityController> angularController, 
                                             ConversionUnit_t conversionFactor) :
-                                            angular(angularController), conversion(conversionFactor) {}
+                                            angular(std::move(angularController)), conversion(conversionFactor) {}
 
   // Encoder Methods
-  units::meters_per_second_t getVelocity() const { return angular.getVelocity() * conversion; }
-  units::meter_t getPosition() const { return angular.getPosition() * conversion; }
-  void zeroPosition(units::meter_t offset = 0_m) { angular.zeroPosition(offset / conversion); }
-  void setEncoderInverted(bool isInverted) { angular.setEncoderInverted(isInverted); }
-  bool getEncoderInverted() const { return angular.getEncoderInverted(); }
+  units::meters_per_second_t getVelocity() const { return angular->getVelocity() * conversion; }
+  units::meter_t getPosition() const { return angular->getPosition() * conversion; }
+  void zeroPosition(units::meter_t offset = 0_m) { angular->zeroPosition(offset / conversion); }
+  void setEncoderInverted(bool isInverted) { angular->setEncoderInverted(isInverted); }
+  bool getEncoderInverted() const { return angular->getEncoderInverted(); }
 
   // Controller Methods
-  void setVelocity(units::meters_per_second_t position) { angular.setVelocity(position / conversion); }
-  units::meters_per_second_t getTargetVelocity() const { return angular.getTargetVelocity() * conversion; }
-  void setMaxVelocity(units::meters_per_second_t max) { angular.setMaxVelocity(max / conversion); }
-  units::meters_per_second_t getMaxVelocity() const { return angular.getMaxVelocity() * conversion; }
-  void setInverted(bool isInverted) { angular.setInverted(isInverted); }
-  bool getInverted() const {angular.getInverted(); }
-  void disable() { angular.disable(); }
-  void stop() { angular.stop(); }
+  void setVelocity(units::meters_per_second_t position) { angular->setVelocity(position / conversion); }
+  units::meters_per_second_t getTargetVelocity() const { return angular->getTargetVelocity() * conversion; }
+  void setMaxVelocity(units::meters_per_second_t max) { angular->setMaxVelocity(max / conversion); }
+  units::meters_per_second_t getMaxVelocity() const { return angular->getMaxVelocity() * conversion; }
+  void setInverted(bool isInverted) { angular->setInverted(isInverted); }
+  bool getInverted() const { angular->getInverted(); }
+  void disable() { angular->disable(); }
+  void stop() { angular->stop(); }
+
+  // Encoder Methods
+  units::meters_per_second_t getVelocity() const { return angular->getVelocity() * conversion; }
+  units::meter_t getPosition() const { return angular->getPosition() * conversion; }
+  void zeroPosition(units::meter_t offset = 0_m) { angular->zeroPosition(offset / conversion); }
+  void setEncoderInverted(bool isInverted) { angular->setEncoderInverted(isInverted); }
+  bool getEncoderInverted() const { return angular->getEncoderInverted(); }
 
   // Feedback Methods
-  bool atTarget() const { return angular.atTarget(); }
+  bool atTarget() const { return angular->atTarget(); }
 
 private:
-  AngularFeedbackVelocityController& angular;
+  std::unique_ptr<AngularFeedbackVelocityController> angular;
   ConversionUnit_t conversion;
 };
 
