@@ -3,11 +3,11 @@
 
 #include "rmb/motorcontrol/feedback/LinearEncoder.h"
 #include "rmb/motorcontrol/LinearVelocityController.h"
-#include "rmb/motorcontrol/feedback/AngularFeedbackVelocityController.h"
+#include "rmb/motorcontrol/feedback/AngularVelocityFeedbackController.h"
 
 namespace rmb {
 
-class LinearFeedbackVelocityController : 
+class LinearVelocityFeedbackController : 
 public LinearVelocityController, public LinearEncoder {
 public:
 
@@ -42,7 +42,7 @@ public:
  * 
  * @param conversion conversion from linear to angular units.
  */
-std::unique_ptr<AngularFeedbackVelocityController> asAngular(std::unique_ptr<LinearFeedbackVelocityController> linearController,
+std::unique_ptr<AngularVelocityFeedbackController> asAngular(std::unique_ptr<LinearVelocityFeedbackController> linearController,
                                                              MotorControlConversions::ConversionUnit_t conversion);
 
 } // namespace rmb

@@ -1,9 +1,9 @@
 #include "rmb/motorcontrol/feedback/AngularEncoder.h"
-#include "rmb/motorcontrol/feedback/AngularFeedbackVelocityController.h"
-#include "rmb/motorcontrol/feedback/AngularFeedbackPositionController.h"
+#include "rmb/motorcontrol/feedback/AngularVelocityFeedbackController.h"
+#include "rmb/motorcontrol/feedback/AngularPositionFeedbackController.h"
 #include "rmb/motorcontrol/feedback/LinearEncoder.h"
-#include "rmb/motorcontrol/feedback/LinearFeedbackVelocityController.h"
-#include "rmb/motorcontrol/feedback/LinearFeedbackPositionController.h"
+#include "rmb/motorcontrol/feedback/LinearVelocityFeedbackController.h"
+#include "rmb/motorcontrol/feedback/LinearPositionFeedbackController.h"
 
 namespace rmb {
 // AngularEncoder
@@ -29,16 +29,16 @@ private:
   MotorControlConversions::ConversionUnit_t conversion;
 };
 
-// AngularFeedbackVelocityController
-std::unique_ptr<LinearFeedbackVelocityController> asLinear(std::unique_ptr<AngularFeedbackVelocityController> angularController, 
+// AngularVelocityFeedbackController
+std::unique_ptr<LinearVelocityFeedbackController> asLinear(std::unique_ptr<AngularVelocityFeedbackController> angularController, 
                                                            MotorControlConversions::ConversionUnit_t conversion) {
-  return std::make_unique<AngularAsLinearFeedbackVelocityController>(angularController, conversion);
+  return std::make_unique<AngularAsLinearVelocityFeedbackController>(angularController, conversion);
 }
 
-class AngularAsLinearFeedbackVelocityController : public LinearFeedbackVelocityController {
+class AngularAsLinearVelocityFeedbackController : public LinearVelocityFeedbackController {
 public:
 
-  AngularAsLinearFeedbackVelocityController(std::unique_ptr<AngularFeedbackVelocityController> angularController, 
+  AngularAsLinearVelocityFeedbackController(std::unique_ptr<AngularVelocityFeedbackController> angularController, 
                                             MotorControlConversions::ConversionUnit_t conversionFactor) :
                                             angular(std::move(angularController)), conversion(conversionFactor) {}
 
@@ -70,20 +70,20 @@ public:
   bool atTarget() const { return angular->atTarget(); }
 
 private:
-  std::unique_ptr<AngularFeedbackVelocityController> angular;
+  std::unique_ptr<AngularVelocityFeedbackController> angular;
   MotorControlConversions::ConversionUnit_t conversion;
 };
 
-// AngularFeedbackPositionController
-std::unique_ptr<LinearFeedbackPositionController> asLinear(std::unique_ptr<AngularFeedbackPositionController> angularController,
+// AngularPositionFeedbackController
+std::unique_ptr<LinearPositionFeedbackController> asLinear(std::unique_ptr<AngularPositionFeedbackController> angularController,
                                                            MotorControlConversions::ConversionUnit_t conversion) {
-  return std::make_unique<AngularAsLinearFeedbackPositionController>(angularController, conversion);
+  return std::make_unique<AngularAsLinearPositionFeedbackController>(angularController, conversion);
 }
 
-class AngularAsLinearFeedbackPositionController : public LinearFeedbackPositionController {
+class AngularAsLinearPositionFeedbackController : public LinearPositionFeedbackController {
 public:
 
-  AngularAsLinearFeedbackPositionController(std::unique_ptr<AngularFeedbackPositionController> angularController, 
+  AngularAsLinearPositionFeedbackController(std::unique_ptr<AngularPositionFeedbackController> angularController, 
                                             MotorControlConversions::ConversionUnit_t conversionFactor) :
                                             angular(std::move(angularController)), conversion(conversionFactor) {}
 
@@ -110,7 +110,7 @@ public:
   bool atTarget() const { return angular->atTarget(); }
 
 private:
-  std::unique_ptr<AngularFeedbackPositionController> angular;
+  std::unique_ptr<AngularPositionFeedbackController> angular;
   MotorControlConversions::ConversionUnit_t conversion;
 };
 
@@ -138,16 +138,16 @@ private:
   MotorControlConversions::ConversionUnit_t conversion;
 };
 
-// LinearFeedbackVelocityController
-std::unique_ptr<AngularFeedbackVelocityController> asAngular(std::unique_ptr<LinearFeedbackVelocityController> linearController,
+// LinearVelocityFeedbackController
+std::unique_ptr<AngularVelocityFeedbackController> asAngular(std::unique_ptr<LinearVelocityFeedbackController> linearController,
                                                             MotorControlConversions::ConversionUnit_t conversion) {
-  return std::make_unique<LinearAsAngularFeedbackVelocityController>(linearController, conversion);
+  return std::make_unique<LinearAsAngularVelocityFeedbackController>(linearController, conversion);
 }
 
-class LinearAsAngularFeedbackVelocityController : public AngularFeedbackVelocityController {
+class LinearAsAngularVelocityFeedbackController : public AngularVelocityFeedbackController {
 public:
 
-  LinearAsAngularFeedbackVelocityController(std::unique_ptr<LinearFeedbackVelocityController> linearController, 
+  LinearAsAngularVelocityFeedbackController(std::unique_ptr<LinearVelocityFeedbackController> linearController, 
                                             MotorControlConversions::ConversionUnit_t conversionFactor) :
                                             linear(std::move(linearController)), conversion(conversionFactor) {}
 
@@ -179,20 +179,20 @@ public:
   bool atTarget() const { return linear->atTarget(); }
 
 private:
-  std::unique_ptr<LinearFeedbackVelocityController> linear;
+  std::unique_ptr<LinearVelocityFeedbackController> linear;
   MotorControlConversions::ConversionUnit_t conversion;
 };
 
-// LinearFeedbackPositionController
-std::unique_ptr<AngularFeedbackPositionController> asAngular(std::unique_ptr<LinearFeedbackPositionController> linearController,
+// LinearPositionFeedbackController
+std::unique_ptr<AngularPositionFeedbackController> asAngular(std::unique_ptr<LinearPositionFeedbackController> linearController,
                                                              MotorControlConversions::ConversionUnit_t conversion) {
-  return std::make_unique<LinearAsAngularFeedbackPositionController>(linearController, conversion);
+  return std::make_unique<LinearAsAngularPositionFeedbackController>(linearController, conversion);
 }
 
-class LinearAsAngularFeedbackPositionController : public AngularFeedbackPositionController {
+class LinearAsAngularPositionFeedbackController : public AngularPositionFeedbackController {
 public:
 
-  LinearAsAngularFeedbackPositionController(std::unique_ptr<LinearFeedbackPositionController> linearController, 
+  LinearAsAngularPositionFeedbackController(std::unique_ptr<LinearPositionFeedbackController> linearController, 
                                             MotorControlConversions::ConversionUnit_t conversionFactor) :
                                             linear(std::move(linearController)), conversion(conversionFactor) {}
 
@@ -226,7 +226,7 @@ public:
   bool atTarget() const { return linear->atTarget(); }
 
 private:
-  std::unique_ptr<LinearFeedbackPositionController> linear;
+  std::unique_ptr<LinearPositionFeedbackController> linear;
   MotorControlConversions::ConversionUnit_t conversion;
 };
 
