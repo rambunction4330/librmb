@@ -4,13 +4,12 @@
 #include <units/angle.h>
 #include <units/angular_velocity.h>
 
-#include "rmb/motorcontrol/feedback/LinearEncoder.h"
 #include "rmb/motorcontrol/Conversions.h"
+#include "rmb/motorcontrol/feedback/LinearEncoder.h"
 
 namespace rmb {
 class AngularEncoder {
 public:
-
   /**
    * Common interface for returning the angular velocity of an encoder.
    *
@@ -25,11 +24,11 @@ public:
    */
   virtual units::radian_t getPosition() const = 0;
 
-    /**
+  /**
    * Common interface for zeroing the anguklar positon an encoder so the current
    * position is set to the offset.
    *
-   * @param offset the offset from the current angular position at which to 
+   * @param offset the offset from the current angular position at which to
    *               set the zero position.
    */
   virtual void zeroPosition(units::radian_t offset = 0_rad) = 0;
@@ -50,13 +49,14 @@ public:
 };
 
 /**
- * Generates a `LinearEncoder` to controller from an 
- * `AngularEncoder` via a linear conversion factor. The new 
+ * Generates a `LinearEncoder` to controller from an
+ * `AngularEncoder` via a linear conversion factor. The new
  * controller takes ownership over the old one.
- * 
+ *
  * @param angularController origional controller the new one is generated from.
  * @param conversion conversion factor from linear to angular units.
  */
-std::unique_ptr<LinearEncoder> asLinear(std::unique_ptr<AngularEncoder> angularEncoder, 
-                                        MotorControlConversions::ConversionUnit_t conversion);
+std::unique_ptr<LinearEncoder>
+asLinear(std::unique_ptr<AngularEncoder> angularEncoder,
+         MotorControlConversions::ConversionUnit_t conversion);
 } // namespace rmb
