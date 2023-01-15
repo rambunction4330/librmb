@@ -1,26 +1,53 @@
-warning: ignoring unsupported tag 'PYTHON_DOCSTRING' at line 228, file docs/Doxyfile
-warning: ignoring unsupported tag 'NUM_PROC_THREADS' at line 466, file docs/Doxyfile
-warning: ignoring unsupported tag 'RESOLVE_UNNAMED_PARAMS' at line 536, file docs/Doxyfile
 warning: ignoring unsupported tag 'SHOW_HEADERFILE' at line 609, file docs/Doxyfile
 warning: ignoring unsupported tag 'WARN_IF_INCOMPLETE_DOC' at line 827, file docs/Doxyfile
 warning: ignoring unsupported tag 'DOCSET_FEEDURL' at line 1358, file docs/Doxyfile
 warning: ignoring unsupported tag 'FULL_SIDEBAR' at line 1569, file docs/Doxyfile
 warning: ignoring unsupported tag 'OBFUSCATE_EMAILS' at line 1600, file docs/Doxyfile
-warning: ignoring unsupported tag 'HTML_FORMULA_FORMAT' at line 1611, file docs/Doxyfile
 warning: ignoring unsupported tag 'MATHJAX_VERSION' at line 1659, file docs/Doxyfile
-warning: ignoring unsupported tag 'DOT_UML_DETAILS' at line 2430, file docs/Doxyfile
-warning: ignoring unsupported tag 'DOT_WRAP_THRESHOLD' at line 2439, file docs/Doxyfile
 warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/Doxyfile
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:36: warning: Compound rmb::TalonSRXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:13: warning: Compound rmb::TalonSRXVelocityController is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:36: warning: Compound rmb::TalonFXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/drive/HolonomicPointCommand.h:17: warning: Compound rmb::HolonomicPointCommand is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/AngularEncoder.h:11: warning: Compound rmb::AngularEncoder is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/AngularPositionFeedbackController.h:10: warning: Compound rmb::AngularPositionFeedbackController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/AngularVelocityFeedbackController.h:10: warning: Compound rmb::AngularVelocityFeedbackController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/drive/HolonomicPointCommand.h:16: warning: Compound rmb::HolonomicPointCommand is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/LinearEncoder.h:8: warning: Compound rmb::LinearEncoder is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/LinearPositionFeedbackController.h:10: warning: Compound rmb::LinearPositionFeedbackController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/LinearVelocityFeedbackController.h:10: warning: Compound rmb::LinearVelocityFeedbackController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:13: warning: Compound rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:36: warning: Compound rmb::TalonFXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:13: warning: Compound rmb::TalonSRXVelocityController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:36: warning: Compound rmb::TalonSRXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/LinearEncoder.h:49: warning: argument 'angularController' of command @param is not found in the argument list of rmb::asAngular(std::unique_ptr< LinearEncoder > linearEncoder, MotorControlConversions::ConversionUnit_t conversion)
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/LinearEncoder.h:57: warning: The following parameter of rmb::asAngular(std::unique_ptr< LinearEncoder > linearEncoder, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'linearEncoder'
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/LinearPositionController.h:85: warning: argument 'angularController' of command @param is not found in the argument list of rmb::asAngular(std::unique_ptr< LinearPositionController > linearController, MotorControlConversions::ConversionUnit_t conversion)
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/LinearPositionController.h:93: warning: The following parameter of rmb::asAngular(std::unique_ptr< LinearPositionController > linearController, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'linearController'
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/LinearPositionFeedbackController.h:37: warning: argument 'angularController' of command @param is not found in the argument list of rmb::asAngular(std::unique_ptr< LinearPositionFeedbackController > linearController, MotorControlConversions::ConversionUnit_t conversion)
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/LinearPositionFeedbackController.h:45: warning: The following parameter of rmb::asAngular(std::unique_ptr< LinearPositionFeedbackController > linearController, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'linearController'
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/LinearVelocityController.h:71: warning: argument 'angularController' of command @param is not found in the argument list of rmb::asAngular(std::unique_ptr< LinearVelocityController > linearController, MotorControlConversions::ConversionUnit_t conversion)
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/LinearVelocityController.h:79: warning: The following parameter of rmb::asAngular(std::unique_ptr< LinearVelocityController > linearController, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'linearController'
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/LinearVelocityFeedbackController.h:45: warning: The following parameter of rmb::asAngular(std::unique_ptr< LinearVelocityFeedbackController > linearController, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'linearController'
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/AngularEncoder.h:52: warning: argument 'angularController' of command @param is not found in the argument list of rmb::asLinear(std::unique_ptr< AngularEncoder > angularEncoder, MotorControlConversions::ConversionUnit_t conversion)
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedback/AngularEncoder.h:60: warning: The following parameter of rmb::asLinear(std::unique_ptr< AngularEncoder > angularEncoder, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'angularEncoder'
 /home/runner/work/librmb/librmb/include/rmb/drive/HolonomicPointCommand.h:19: warning: Member HolonomicPointCommand(const frc::Pose2d &pose, HolonomicDrive &drive, const DriveOdometry &odometry, frc::HolonomicDriveController &controller) (function) of class rmb::HolonomicPointCommand is not documented.
 /home/runner/work/librmb/librmb/include/rmb/drive/HolonomicPointCommand.h:23: warning: Member Initialize() override (function) of class rmb::HolonomicPointCommand is not documented.
 /home/runner/work/librmb/librmb/include/rmb/drive/HolonomicPointCommand.h:25: warning: Member Execute() override (function) of class rmb::HolonomicPointCommand is not documented.
 /home/runner/work/librmb/librmb/include/rmb/drive/HolonomicPointCommand.h:27: warning: Member End(bool interrupted) override (function) of class rmb::HolonomicPointCommand is not documented.
 /home/runner/work/librmb/librmb/include/rmb/drive/HolonomicPointCommand.h:29: warning: Member IsFinished() override (function) of class rmb::HolonomicPointCommand is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:23: warning: Member AngularFeedforwardontroller(AngularFeedforwardontroller &&)=default (function) of class rmb::AngularFeedforwardontroller is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:25: warning: Member AngularFeedforwardontroller(std::unique_ptr< frc::MotorController > &&motorController, std::unique_ptr< rmb::Feedforward< units::radians >> &&feedforward) (function) of class rmb::AngularFeedforwardontroller is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:16: warning: expected whitespace after \b command
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:19: warning: end of comment block while expecting command </b>
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:23: warning: Member LinearFeedforwardController(LinearFeedforwardController &&)=default (function) of class rmb::LinearFeedforwardController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:25: warning: Member LinearFeedforwardController(std::unique_ptr< frc::MotorController > &&motorController, std::unique_ptr< rmb::Feedforward< units::meters >> &&feedforward) (function) of class rmb::LinearFeedforwardController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:16: warning: expected whitespace after \b command
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:19: warning: end of comment block while expecting command </b>
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/ServoPositionController.h:20: warning: Member ServoPositionController(ServoPositionController &&)=default (function) of class rmb::ServoPositionController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/ServoPositionController.h:22: warning: Member ServoPositionController(int channel) (function) of class rmb::ServoPositionController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:15: warning: Member Distance_t (typedef) of class rmb::TalonFXVelocityController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:16: warning: Member VelocityUnit (typedef) of class rmb::TalonFXVelocityController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:17: warning: Member Velocity_t (typedef) of class rmb::TalonFXVelocityController is not documented.
@@ -36,14 +63,17 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:44: warning: Member TalonFXVelocityController(int deviceNumber, const ctre::phoenix::motorcontrol::can::TalonFXConfiguration &config, ConversionUnit_t conversion=1) (function) of class rmb::TalonFXVelocityController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:48: warning: Member TalonFXVelocityController(int deviceNumber, const PIDConfig &config, ConversionUnit_t conversion=1) (function) of class rmb::TalonFXVelocityController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:51: warning: Member setVelocity(Velocity_t velocity) override (function) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:37: warning: Member p (variable) of class rmb::TalonFXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:37: warning: Member i (variable) of class rmb::TalonFXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:37: warning: Member d (variable) of class rmb::TalonFXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:37: warning: Member f (variable) of class rmb::TalonFXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:38: warning: Member iZone (variable) of class rmb::TalonFXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:38: warning: Member iMaxAccumulator (variable) of class rmb::TalonFXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:39: warning: Member allowableError (variable) of class rmb::TalonFXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:40: warning: Member maxOutput (variable) of class rmb::TalonFXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:52: warning: Member getVelocity() override (function) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:54: warning: Member setInverted(bool inverted) override (function) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:57: warning: Member getInverted() override (function) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:37: warning: Member p (variable) of struct rmb::TalonFXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:37: warning: Member i (variable) of struct rmb::TalonFXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:37: warning: Member d (variable) of struct rmb::TalonFXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:37: warning: Member f (variable) of struct rmb::TalonFXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:38: warning: Member iZone (variable) of struct rmb::TalonFXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:38: warning: Member iMaxAccumulator (variable) of struct rmb::TalonFXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:39: warning: Member allowableError (variable) of struct rmb::TalonFXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonFXVelocityController.h:40: warning: Member maxOutput (variable) of struct rmb::TalonFXVelocityController::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:15: warning: Member Distance_t (typedef) of class rmb::TalonSRXVelocityController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:16: warning: Member VelocityUnit (typedef) of class rmb::TalonSRXVelocityController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:17: warning: Member Velocity_t (typedef) of class rmb::TalonSRXVelocityController is not documented.
@@ -59,11 +89,14 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:44: warning: Member TalonSRXVelocityController(int deviceNumber, const ctre::phoenix::motorcontrol::can::TalonSRXConfiguration &config, ConversionUnit_t conversion=1) (function) of class rmb::TalonSRXVelocityController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:48: warning: Member TalonSRXVelocityController(int deviceNumber, const PIDConfig &config, ConversionUnit_t conversion=1) (function) of class rmb::TalonSRXVelocityController is not documented.
 /home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:51: warning: Member setVelocity(Velocity_t velocity) override (function) of class rmb::TalonSRXVelocityController is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:37: warning: Member p (variable) of class rmb::TalonSRXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:37: warning: Member i (variable) of class rmb::TalonSRXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:37: warning: Member d (variable) of class rmb::TalonSRXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:37: warning: Member f (variable) of class rmb::TalonSRXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:38: warning: Member iZone (variable) of class rmb::TalonSRXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:38: warning: Member iMaxAccumulator (variable) of class rmb::TalonSRXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:39: warning: Member allowableError (variable) of class rmb::TalonSRXVelocityController::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:40: warning: Member maxOutput (variable) of class rmb::TalonSRXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:52: warning: Member getVelocity() override (function) of class rmb::TalonSRXVelocityController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:54: warning: Member setInverted(bool inverted) override (function) of class rmb::TalonSRXVelocityController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:57: warning: Member getInverted() override (function) of class rmb::TalonSRXVelocityController is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:37: warning: Member p (variable) of struct rmb::TalonSRXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:37: warning: Member i (variable) of struct rmb::TalonSRXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:37: warning: Member d (variable) of struct rmb::TalonSRXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:37: warning: Member f (variable) of struct rmb::TalonSRXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:38: warning: Member iZone (variable) of struct rmb::TalonSRXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:38: warning: Member iMaxAccumulator (variable) of struct rmb::TalonSRXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:39: warning: Member allowableError (variable) of struct rmb::TalonSRXVelocityController::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/include/rmb/motorcontrol/talon/TalonSRXVelocityController.h:40: warning: Member maxOutput (variable) of struct rmb::TalonSRXVelocityController::PIDConfig is not documented.
