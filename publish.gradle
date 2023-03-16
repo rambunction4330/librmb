@@ -1,3 +1,5 @@
+import groovy.json.JsonBuilder
+
 apply plugin: 'maven-publish'
 
 ext.licenseFile = files("$rootDir/LICENSE")
@@ -5,6 +7,8 @@ ext.licenseFile = files("$rootDir/LICENSE")
 def pubVersion = '2023.0.0'
 
 def outputsFolder = file("$buildDir/outputs")
+
+def vendordepJSONFile = file("$buildDir/LibRmb.json")
 
 def versionFile = file("$outputsFolder/version.txt")
 
@@ -23,9 +27,56 @@ task outputVersions() {
     }
 }
 
+task generateVendorJSON() {
+    description = "Generate the vendordep json file"
+    group = 'Build'
+    outputs.files(vendordepJSONFile)
+
+    def uuid = "abcaeed8-c3ff-11ed-afa1-0242ac120002"
+    def repoUrl = "https://rambunction4330.github.io/librmb/repos"
+    def jsonUrl = "https://rambunction4330.github.io/librmb/LibRmb.json"
+
+    def platforms = ["linuxathena"]
+    
+    String vendordepJSON =
+"""{
+    \"fileName\": \"LibRmb.json\",
+    \"name\": \"LibRmb\",
+    \"version\": \"${pubVersion}\",
+    \"uuid\": \"${uuid}\",
+    \"mavenUrls\": [
+        \"${repoUrl}\"
+    ],
+    \"jsonUrl\": \"${jsonUrl}\",
+    \"javaDependencies\": [],
+    \"jniDependencies\": [],
+    \"cppDependencies\": [
+        {
+            \"groupId\": \"com.rambunction4330.lib\",
+            \"artifactId\": \"LibRmb-cpp\",
+            \"version\": \"${pubVersion}\",
+            \"libName\": \"LibRmb\",
+            \"headerClassifier\": \"headers\",
+            \"sharedLibrary\": true,
+            \"skipInvalidPlatforms\": true,
+            \"binaryPlatforms\": [
+                \"linuxathena\"
+            ]
+        }
+    ]
+}
+"""
+
+    doLast {
+        vendordepJSONFile.write vendordepJSON
+   }
+}
+
+
 task libraryBuild() {}
 
 build.dependsOn outputVersions
+build.dependsOn generateVendorJSON
 
 task copyAllOutputs(type: Copy) {
     destinationDir file("$buildDir/allOutputs")
