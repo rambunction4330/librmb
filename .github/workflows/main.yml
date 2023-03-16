@@ -108,4 +108,28 @@ jobs:
       - name: Build
         run: |
           ./gradlew build
+          ./gradlew publish
+          mkdir repos
+          
+      - name: Publish to GitHub Pages
+        if: github.event.pull_request.merged
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          destination_dir: ./repos
+          publish_dir: ./build/repos
+
+      - name: Prepare for vendordep json copying
+        run: |
+          cd build
+          mkdir -p temp
+          cd temp
+          cp ../LibRmb.json .
+
+      - name: Publish vendordep JSON to GitHub Pages
+        if: github.event.pull_request.merged
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/temp
         

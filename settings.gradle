@@ -1,6 +1,6 @@
-import org.gradle.internal.os.OperatingSystem
+//import org.gradle.internal.os.OperatingSystem
 
-pluginManagement {
+/*pluginManagement {
     repositories {
         mavenLocal()
         gradlePluginPortal()
@@ -23,5 +23,12 @@ pluginManagement {
             name 'frcHome'
             url frcHomeMaven
         }
+    }
+}*/
+
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
     }
 }
