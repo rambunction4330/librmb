@@ -108,11 +108,13 @@ jobs:
       - name: Build
         run: |
           ./gradlew build
+          ./gradlew publish
+          mkdir repos
           
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          destination_dir: repos
+          destination_dir: ./repos
           publish_dir: ./build/repos
         
