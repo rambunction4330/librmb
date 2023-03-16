@@ -33,7 +33,7 @@ task generateVendorJSON() {
     outputs.files(vendordepJSONFile)
 
     def uuid = "abcaeed8-c3ff-11ed-afa1-0242ac120002"
-    def repoUrl = "https://rambunction4330.github.io/librmb/repos/release"
+    def repoUrl = "https://rambunction4330.github.io/librmb/repos/releases"
     def jsonUrl = "https://rambunction4330.github.io/librmb/vendordep/LibRmb.json"
 
     def platforms = ["linuxathena"]
