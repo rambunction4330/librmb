@@ -41,19 +41,25 @@
 
 //   using EncoderTick = units::unit<std::ratio<4096, 1>, units::turns>;
 //   using EncoderTick_t = units::unit_t<EncoderTick>;
-//   using EncoderVelocity = units::compound_unit<EncoderTick, units::inverse<units::decisecond>>;
-//   using EncoderVelocity_t  = units::unit_t<EncoderVelocity>;
+//   using EncoderVelocity = units::compound_unit<EncoderTick,
+//   units::inverse<units::decisecond>>; using EncoderVelocity_t  =
+//   units::unit_t<EncoderVelocity>;
 
 //   using MotorConfig = TalonFXVelocityControllerHelper::MotorConfig;
 //   using PIDConfig = TalonFXVelocityControllerHelper::PIDConfig;
-//   using LimitSwitchConfig = TalonFXVelocityControllerHelper::LimitSwitchConfig;
-//   using FeedbackConfig = TalonFXVelocityControllerHelper::FeedbackConfig;
+//   using LimitSwitchConfig =
+//   TalonFXVelocityControllerHelper::LimitSwitchConfig; using FeedbackConfig =
+//   TalonFXVelocityControllerHelper::FeedbackConfig;
 
-//   TalonFXVelocityController(const MotorConfig motorConfig = {}, const PIDConfig pidConfig = {}, 
-//                             const FeedbackConfig feedbackConfig = {}, std::initializer_list<const MotorConfig> followers = {},
-//                             std::function<void(ctre::phoenix::motorcontrol::can::WPI_TalonFX&)> customConfig = [](ctre::phoenix::motorcontrol::can::WPI_TalonFX&) { return 0; });
-
-
+//   TalonFXVelocityController(const MotorConfig motorConfig = {}, const
+//   PIDConfig pidConfig = {},
+//                             const FeedbackConfig feedbackConfig = {},
+//                             std::initializer_list<const MotorConfig>
+//                             followers = {},
+//                             std::function<void(ctre::phoenix::motorcontrol::can::WPI_TalonFX&)>
+//                             customConfig =
+//                             [](ctre::phoenix::motorcontrol::can::WPI_TalonFX&)
+//                             { return 0; });
 
 //   //--------------------------------------------------
 //   // Methods Inherited from AngularVelocityController
@@ -61,21 +67,21 @@
 
 //   /**
 //    * Sets the target angular velocity.
-//    * 
+//    *
 //    * @param velocity The target angular velocity in radians per second.
 //    */
 //   void setVelocity(units::radians_per_second_t velocity) override;
 
 //   /**
 //    * Gets the target angular velocity.
-//    * 
+//    *
 //    * @return The target angular velocity in radians per second.
 //    */
 //   units::radians_per_second_t getTargetVelocity() const override;
 
 //   /**
 //    * Gets the maximum angular velocity.
-//    * 
+//    *
 //    * @return The maximum angular velocity in radians per second.
 //    */
 //   units::radians_per_second_t getMaxVelocity() const override;
@@ -91,7 +97,8 @@
 //   void disable() override;
 
 //   /**
-//    * Common interface to stop the mechanism until `setPosition` is called again.
+//    * Common interface to stop the mechanism until `setPosition` is called
+//    again.
 //    */
 //   void stop() override;
 
@@ -114,10 +121,10 @@
 //   units::radian_t getPosition() const override;
 
 //   /**
-//    * Zeros the angular positon the motor so the current position is set to 
+//    * Zeros the angular positon the motor so the current position is set to
 //    * the offset.
 //    *
-//    * @param offset the offset from the current angular position at which to 
+//    * @param offset the offset from the current angular position at which to
 //    *               set the zero position.
 //    */
 //   void zeroPosition(units::radian_t offset = 0_rad) override;
@@ -128,7 +135,7 @@
 
 //   /**
 //    * Gets the motor's tolerance.
-//    * 
+//    *
 //    * @return the motor's tolerance in radians per second.
 //    */
 //   units::radians_per_second_t getTolerance() const override;
