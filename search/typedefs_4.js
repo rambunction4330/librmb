@@ -1,9 +1,0 @@
-var searchData=
-[
-  ['rawaccel_0',['RawAccel',['../classrmb_1_1_spark_max_position_controller.html#a8886a87ea550b86e4bd10c15ef2d9576',1,'rmb::SparkMaxPositionController::RawAccel()'],['../classrmb_1_1_spark_max_velocity_controller.html#aea7c1715ed70928db3b7f2a3bb63c512',1,'rmb::SparkMaxVelocityController::RawAccel()']]],
-  ['rawaccel_5ft_1',['RawAccel_t',['../classrmb_1_1_spark_max_position_controller.html#ae90df752a0dd83efa9d843b8762ddb61',1,'rmb::SparkMaxPositionController::RawAccel_t()'],['../classrmb_1_1_spark_max_velocity_controller.html#ade9d8f5fd8531fd8c7670047d3250b5c',1,'rmb::SparkMaxVelocityController::RawAccel_t()']]],
-  ['rawunit_2',['RawUnit',['../classrmb_1_1_spark_max_position_controller.html#a053b922cbb5455a699d8b02efdbcaa24',1,'rmb::SparkMaxPositionController::RawUnit()'],['../classrmb_1_1_spark_max_velocity_controller.html#aad3886d3feeb0ec37be3bb53ca2bc992',1,'rmb::SparkMaxVelocityController::RawUnit()']]],
-  ['rawunit_5ft_3',['RawUnit_t',['../classrmb_1_1_spark_max_position_controller.html#aeee983b1c8361bebacf7e0b80c34ffd4',1,'rmb::SparkMaxPositionController::RawUnit_t()'],['../classrmb_1_1_spark_max_velocity_controller.html#a1aa8c83bab73b52e00491907651cd465',1,'rmb::SparkMaxVelocityController::RawUnit_t()']]],
-  ['rawvelocity_4',['RawVelocity',['../classrmb_1_1_spark_max_position_controller.html#a2c7c1c0cfeed326747887561c3a0b0e7',1,'rmb::SparkMaxPositionController::RawVelocity()'],['../classrmb_1_1_spark_max_velocity_controller.html#ac3fda66dc9370cfe16e8d595079042b4',1,'rmb::SparkMaxVelocityController::RawVelocity()']]],
-  ['rawvelocity_5ft_5',['RawVelocity_t',['../classrmb_1_1_spark_max_position_controller.html#a034fceaa82a0a160ee5de7b587f798e5',1,'rmb::SparkMaxPositionController::RawVelocity_t()'],['../classrmb_1_1_spark_max_velocity_controller.html#a8627ab09beda8388489ac77ac89ead12',1,'rmb::SparkMaxVelocityController::RawVelocity_t()']]]
-];

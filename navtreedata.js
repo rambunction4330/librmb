@@ -31,25 +31,8 @@ var NAVTREE =
       [ "Notes", "md_docs_building.html#autotoc_md1", null ],
       [ "Adding to a project", "md_docs_building.html#autotoc_md2", null ]
     ] ],
-    [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
-      [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ]
-      ] ]
-    ] ],
-    [ "Classes", "annotated.html", [
-      [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Typedefs", "functions_type.html", null ]
-      ] ]
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ]
@@ -59,9 +42,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_arm_feedforward_8h_source.html",
-"classrmb_1_1_repeating_command.html",
-"namespacewpi.html"
+"dir_49e56c817e5e54854c35e136979f97ca.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
