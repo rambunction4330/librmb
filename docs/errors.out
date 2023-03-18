@@ -5,5 +5,259 @@ warning: ignoring unsupported tag 'FULL_SIDEBAR' at line 1569, file docs/Doxyfil
 warning: ignoring unsupported tag 'OBFUSCATE_EMAILS' at line 1600, file docs/Doxyfile
 warning: ignoring unsupported tag 'MATHJAX_VERSION' at line 1659, file docs/Doxyfile
 warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/Doxyfile
-warning: tag INPUT: input source 'include/rmb' does not exist
-warning: source 'include/rmb' is not a readable file or directory... skipping.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:15: warning: Compound rmb::AngularAsLinearEncoder is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:45: warning: Compound rmb::AngularAsLinearPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:98: warning: Compound rmb::AngularAsLinearPositionFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:12: warning: Compound rmb::AngularAsLinearVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:47: warning: Compound rmb::AngularAsLinearVelocityFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/AngularEncoder.h:13: warning: Compound rmb::AngularEncoder is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/AngularPositionFeedbackController.h:14: warning: Compound rmb::AngularPositionFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/AngularVelocityFeedbackController.h:14: warning: Compound rmb::AngularVelocityFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:15: warning: Compound rmb::DifferentialDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:154: warning: Compound rmb::LinearAsAngularEncoder is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:116: warning: Compound rmb::LinearAsAngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:237: warning: Compound rmb::LinearAsAngularPositionFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:83: warning: Compound rmb::LinearAsAngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:186: warning: Compound rmb::LinearAsAngularVelocityFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/LinearEncoder.h:12: warning: Compound rmb::LinearEncoder is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/LinearPositionFeedbackController.h:14: warning: Compound rmb::LinearPositionFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/LinearVelocityFeedbackController.h:14: warning: Compound rmb::LinearVelocityFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:9: warning: Compound rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:11: warning: Compound rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:21: warning: Compound rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:9: warning: Compound rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:11: warning: Compound rmb::LogitechJoystick::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:74: warning: Compound rmb::SparkMaxPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:52: warning: Compound rmb::SparkMaxPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:18: warning: Compound rmb::SparkMaxPositionControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:25: warning: Compound rmb::SparkMaxPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:40: warning: Compound rmb::SparkMaxPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:32: warning: Compound rmb::SparkMaxPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:66: warning: Compound rmb::SparkMaxVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:45: warning: Compound rmb::SparkMaxVelocityControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:19: warning: Compound rmb::SparkMaxVelocityControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:26: warning: Compound rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:33: warning: Compound rmb::SparkMaxVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/LinearEncoder.h:39: warning: argument 'angularController' of command @param is not found in the argument list of rmb::asAngular(std::shared_ptr< LinearEncoder > linearEncoder, MotorControlConversions::ConversionUnit_t conversion)
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:177: warning: The following parameter of rmb::asAngular(std::shared_ptr< LinearEncoder > linearEncoder, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'linearEncoder'
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:60: warning: argument 'angularController' of command @param is not found in the argument list of rmb::asAngular(std::shared_ptr< LinearPositionController > linearController, MotorControlConversions::ConversionUnit_t conversion)
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:144: warning: The following parameter of rmb::asAngular(std::shared_ptr< LinearPositionController > linearController, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'linearController'
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/LinearPositionFeedbackController.h:44: warning: argument 'angularController' of command @param is not found in the argument list of rmb::asAngular(std::shared_ptr< LinearPositionFeedbackController > linearController, MotorControlConversions::ConversionUnit_t conversion)
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:283: warning: The following parameter of rmb::asAngular(std::shared_ptr< LinearPositionFeedbackController > linearController, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'linearController'
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:51: warning: argument 'angularController' of command @param is not found in the argument list of rmb::asAngular(std::shared_ptr< LinearVelocityController > linearController, MotorControlConversions::ConversionUnit_t conversion)
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:106: warning: The following parameter of rmb::asAngular(std::shared_ptr< LinearVelocityController > linearController, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'linearController'
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:227: warning: The following parameter of rmb::asAngular(std::shared_ptr< LinearVelocityFeedbackController > linearController, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'linearController'
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/AngularEncoder.h:40: warning: argument 'angularController' of command @param is not found in the argument list of rmb::asLinear(std::shared_ptr< AngularEncoder > angularEncoder, MotorControlConversions::ConversionUnit_t conversion)
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:38: warning: The following parameter of rmb::asLinear(std::shared_ptr< AngularEncoder > angularEncoder, MotorControlConversions::ConversionUnit_t conversion) is not documented:
+  parameter 'angularEncoder'
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:37: warning: Member LogitechGamepad(int channel, double deadZone=0.0, bool squareOutputs=false) (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:42: warning: Member GetLeftX() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:49: warning: Member LeftXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:52: warning: Member LeftXGreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:56: warning: Member GetLeftY() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:64: warning: Member LeftYLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:67: warning: Member LeftYgreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:71: warning: Member GetLeftStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:72: warning: Member GetLeftStickButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:75: warning: Member GetLeftStickButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:78: warning: Member LeftStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:80: warning: Member GetRightX() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:88: warning: Member RightXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:91: warning: Member RightXgreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:95: warning: Member GetRightY() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:103: warning: Member RightYLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:106: warning: Member RightYGearterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:110: warning: Member GetRightStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:111: warning: Member GetRightStickButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:114: warning: Member GetRightStickButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:117: warning: Member RightStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:119: warning: Member GetLeftTrigger() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:126: warning: Member LeftTriggerLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:129: warning: Member LeftTriggergreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:133: warning: Member GetRightTrigger() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:140: warning: Member RightTriggerLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:143: warning: Member RightTriggerGreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:147: warning: Member GetLeftBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:148: warning: Member GetLeftBumperPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:151: warning: Member GetLeftBumperReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:154: warning: Member LeftBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:156: warning: Member GetRightBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:157: warning: Member GetRightBumperPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:160: warning: Member GetRightBumperReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:163: warning: Member RightBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:165: warning: Member GetX() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:166: warning: Member GetXPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:167: warning: Member GetXReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:168: warning: Member X() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:170: warning: Member GetY() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:171: warning: Member GetYPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:172: warning: Member GetYReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:173: warning: Member Y() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:175: warning: Member GetA() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:176: warning: Member GetAPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:177: warning: Member GetAReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:178: warning: Member A() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:180: warning: Member GetB() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:181: warning: Member GetBPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:182: warning: Member GetBReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:183: warning: Member B() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:185: warning: Member GetBackButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:186: warning: Member GetBackButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:189: warning: Member GetBackButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:192: warning: Member BackButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:194: warning: Member GetStartButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:195: warning: Member GetStartButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:198: warning: Member GetStartButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:201: warning: Member StartButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:12: warning: Member leftX (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:13: warning: Member leftY (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:14: warning: Member leftTrigger (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:16: warning: Member rightX (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:17: warning: Member rightY (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:18: warning: Member rightTrigger (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:22: warning: Member leftStick (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:23: warning: Member rightStick (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:25: warning: Member rightBumper (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:26: warning: Member leftBumper (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:28: warning: Member X (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:29: warning: Member Y (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:30: warning: Member A (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:31: warning: Member B (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:33: warning: Member backButton (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:34: warning: Member startButton (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:18: warning: Member LogitechJoystick(int channel, double deadZone=0.0, bool squareOutputs=false) (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:23: warning: Member GetX() const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:31: warning: Member XLessThan(double threshold) const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:34: warning: Member XMoreThan(double threshold) const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:38: warning: Member GetY() const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:46: warning: Member YLessThan(double threshold) const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:50: warning: Member YMoreThan(double threshold) const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:54: warning: Member GetTwist() const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:62: warning: Member TwistLessThan(double threshold) const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:65: warning: Member TwistMoreThan(double threshold) const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:69: warning: Member GetThrottle() const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:74: warning: Member ThrottleLessThan(double threshold) const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:77: warning: Member ThrottleMoreThan(double threshold) const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:81: warning: Member GetTrigger() const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:82: warning: Member GetTriggerPressed() (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:83: warning: Member GetTriggerReleased() (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:84: warning: Member Trigger() const (function) of class rmb::LogitechJoystick is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:12: warning: Member X (variable) of struct rmb::LogitechJoystick::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:13: warning: Member Y (variable) of struct rmb::LogitechJoystick::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:14: warning: Member twist (variable) of struct rmb::LogitechJoystick::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:15: warning: Member throttle (variable) of struct rmb::LogitechJoystick::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:17: warning: Member DifferentialDrive(std::shared_ptr< LinearVelocityController > left, std::shared_ptr< LinearVelocityController > right, frc::DifferentialDriveKinematics kinematics) (function) of class rmb::DifferentialDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:21: warning: Member arcadeDrive(double xSpeed, double zRotation) (function) of class rmb::DifferentialDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:22: warning: Member curvatureDrive(double xSpeed, double zRotation, bool turnInPlace) (function) of class rmb::DifferentialDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:23: warning: Member tankDrive(double leftSpeed, double rightSpeed) (function) of class rmb::DifferentialDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:25: warning: Member driveWheelSpeeds(units::meters_per_second_t leftVelocity, units::meters_per_second_t rightVelocity) (function) of class rmb::DifferentialDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:27: warning: Member driveWheelSpeeds(frc::DifferentialDriveWheelSpeeds wheelSpeeds) (function) of class rmb::DifferentialDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:28: warning: Member driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds) (function) of class rmb::DifferentialDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialOdometry.h:27: warning: argument 'trackWidth' of command @param is not found in the argument list of rmb::DifferentialOdometry::DifferentialOdometry(std::shared_ptr< LinearEncoder > leftEncoder, std::shared_ptr< LinearEncoder > rightEncoder, frc::DifferentialDriveKinematics &kinematics, std::shared_ptr< frc::Gyro > gyro, std::string visionTable, const frc::Pose2d &initalPose=frc::Pose2d())
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialOdometry.h:56: warning: The following parameter of rmb::DifferentialOdometry::DifferentialOdometry(std::shared_ptr< LinearEncoder > leftEncoder, std::shared_ptr< LinearEncoder > rightEncoder, frc::DifferentialDriveKinematics &kinematics, std::shared_ptr< frc::Gyro > gyro, std::string visionTable, const frc::Pose2d &initalPose=frc::Pose2d()) is not documented:
+  parameter 'kinematics'
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialOdometry.h:63: warning: argument 'trackWidth' of command @param is not found in the argument list of rmb::DifferentialOdometry::DifferentialOdometry(std::shared_ptr< LinearEncoder > leftEncoder, std::shared_ptr< LinearEncoder > rightEncoder, frc::DifferentialDriveKinematics &kinematics, std::shared_ptr< frc::Gyro > gyro, const frc::Pose2d &initalPose=frc::Pose2d())
+/home/runner/work/librmb/librmb/src/rmb/drive/DifferentialOdometry.h:80: warning: The following parameter of rmb::DifferentialOdometry::DifferentialOdometry(std::shared_ptr< LinearEncoder > leftEncoder, std::shared_ptr< LinearEncoder > rightEncoder, frc::DifferentialDriveKinematics &kinematics, std::shared_ptr< frc::Gyro > gyro, const frc::Pose2d &initalPose=frc::Pose2d()) is not documented:
+  parameter 'kinematics'
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:14: warning: Member AngularAsLinearVelocityController(std::shared_ptr< AngularVelocityController > angularController, MotorControlConversions::ConversionUnit_t conversionFactor) (function) of class rmb::AngularAsLinearVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:47: warning: Member AngularAsLinearPositionController(std::shared_ptr< AngularPositionController > angularController, MotorControlConversions::ConversionUnit_t conversionFactor) (function) of class rmb::AngularAsLinearPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:85: warning: Member LinearAsAngularVelocityController(std::shared_ptr< LinearVelocityController > linearController, MotorControlConversions::ConversionUnit_t conversionFactor) (function) of class rmb::LinearAsAngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:118: warning: Member LinearAsAngularPositionController(std::shared_ptr< LinearPositionController > linearController, MotorControlConversions::ConversionUnit_t conversionFactor) (function) of class rmb::LinearAsAngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:17: warning: Member AngularAsLinearEncoder(std::shared_ptr< AngularEncoder > angularEncoder, MotorControlConversions::ConversionUnit_t conversionFactor) (function) of class rmb::AngularAsLinearEncoder is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:50: warning: Member AngularAsLinearVelocityFeedbackController(std::shared_ptr< AngularVelocityFeedbackController > angularController, MotorControlConversions::ConversionUnit_t conversionFactor) (function) of class rmb::AngularAsLinearVelocityFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:101: warning: Member AngularAsLinearPositionFeedbackController(std::shared_ptr< AngularPositionFeedbackController > angularController, MotorControlConversions::ConversionUnit_t conversionFactor) (function) of class rmb::AngularAsLinearPositionFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:156: warning: Member LinearAsAngularEncoder(std::shared_ptr< LinearEncoder > linearEncoder, MotorControlConversions::ConversionUnit_t conversionFactor) (function) of class rmb::LinearAsAngularEncoder is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:189: warning: Member LinearAsAngularVelocityFeedbackController(std::shared_ptr< LinearVelocityFeedbackController > linearController, MotorControlConversions::ConversionUnit_t conversionFactor) (function) of class rmb::LinearAsAngularVelocityFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedback/Conversions.cpp:240: warning: Member LinearAsAngularPositionFeedbackController(std::shared_ptr< LinearPositionFeedbackController > linearController, MotorControlConversions::ConversionUnit_t conversionFactor) (function) of class rmb::LinearAsAngularPositionFeedbackController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:23: warning: Member AngularFeedforwardontroller(AngularFeedforwardontroller &&)=default (function) of class rmb::AngularFeedforwardontroller is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:25: warning: Member AngularFeedforwardontroller(std::unique_ptr< frc::MotorController > &&motorController, std::unique_ptr< rmb::Feedforward< units::radians >> &&feedforward) (function) of class rmb::AngularFeedforwardontroller is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:16: warning: expected whitespace after \b command
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:19: warning: end of comment block while expecting command </b>
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:23: warning: Member LinearFeedforwardController(LinearFeedforwardController &&)=default (function) of class rmb::LinearFeedforwardController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:25: warning: Member LinearFeedforwardController(std::unique_ptr< frc::MotorController > &&motorController, std::unique_ptr< rmb::Feedforward< units::meters >> &&feedforward) (function) of class rmb::LinearFeedforwardController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:16: warning: expected whitespace after \b command
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:19: warning: end of comment block while expecting command </b>
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/ServoPositionController.h:20: warning: Member ServoPositionController(ServoPositionController &&)=default (function) of class rmb::ServoPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/ServoPositionController.h:22: warning: Member ServoPositionController(int channel) (function) of class rmb::ServoPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:66: warning: Member MotorConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:67: warning: Member PIDConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:68: warning: Member Range (typedef) of class rmb::SparkMaxPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:69: warning: Member ProfileConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:70: warning: Member EncoderType (typedef) of class rmb::SparkMaxPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:71: warning: Member LimitSwitchConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:72: warning: Member FeedbackConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:88: warning: Member SparkMaxPositionController(const CreateInfo &createInfo) (function) of class rmb::SparkMaxPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:75: warning: Member motorConfig (variable) of struct rmb::SparkMaxPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:76: warning: Member pidConfig (variable) of struct rmb::SparkMaxPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:77: warning: Member feedforward (variable) of struct rmb::SparkMaxPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:79: warning: Member range (variable) of struct rmb::SparkMaxPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:80: warning: Member profileConfig (variable) of struct rmb::SparkMaxPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:81: warning: Member feedbackConfig (variable) of struct rmb::SparkMaxPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:82: warning: Member followers (variable) of struct rmb::SparkMaxPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:59: warning: Member MotorConfig (typedef) of class rmb::SparkMaxVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:60: warning: Member PIDConfig (typedef) of class rmb::SparkMaxVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:61: warning: Member ProfileConfig (typedef) of class rmb::SparkMaxVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:62: warning: Member EncoderType (typedef) of class rmb::SparkMaxVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:63: warning: Member LimitSwitchConfig (typedef) of class rmb::SparkMaxVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:64: warning: Member FeedbackConfig (typedef) of class rmb::SparkMaxVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:77: warning: Member SparkMaxVelocityController(const CreateInfo &createInfo) (function) of class rmb::SparkMaxVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:79: warning: Member getMotor() (function) of class rmb::SparkMaxVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:81: warning: Member getPIDCOntroller() (function) of class rmb::SparkMaxVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:83: warning: Member getFeedbackSensor() (function) of class rmb::SparkMaxVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:67: warning: Member motorConfig (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:68: warning: Member pidConfig (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:69: warning: Member profileConfig (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:70: warning: Member feedbackConfig (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:71: warning: Member followers (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:19: warning: Member id (variable) of struct rmb::SparkMaxPositionControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:20: warning: Member motorType (variable) of struct rmb::SparkMaxPositionControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:22: warning: Member inverted (variable) of struct rmb::SparkMaxPositionControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:26: warning: Member p (variable) of struct rmb::SparkMaxPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:26: warning: Member i (variable) of struct rmb::SparkMaxPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:26: warning: Member d (variable) of struct rmb::SparkMaxPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:26: warning: Member ff (variable) of struct rmb::SparkMaxPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:27: warning: Member tolerance (variable) of struct rmb::SparkMaxPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:28: warning: Member iZone (variable) of struct rmb::SparkMaxPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:28: warning: Member iMaxAccumulator (variable) of struct rmb::SparkMaxPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:29: warning: Member maxOutput (variable) of struct rmb::SparkMaxPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:29: warning: Member minOutput (variable) of struct rmb::SparkMaxPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:33: warning: Member minPosition (variable) of struct rmb::SparkMaxPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:35: warning: Member maxPosition (variable) of struct rmb::SparkMaxPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:37: warning: Member isContinuous (variable) of struct rmb::SparkMaxPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:41: warning: Member useSmartMotion (variable) of struct rmb::SparkMaxPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:42: warning: Member maxVelocity (variable) of struct rmb::SparkMaxPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:43: warning: Member minVelocity (variable) of struct rmb::SparkMaxPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:44: warning: Member maxAcceleration (variable) of struct rmb::SparkMaxPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:45: warning: Member accelStrategy (variable) of struct rmb::SparkMaxPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:53: warning: Member gearRatio (variable) of struct rmb::SparkMaxPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:54: warning: Member encoderType (variable) of struct rmb::SparkMaxPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:55: warning: Member countPerRev (variable) of struct rmb::SparkMaxPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:56: warning: Member forwardSwitch (variable) of struct rmb::SparkMaxPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:56: warning: Member reverseSwitch (variable) of struct rmb::SparkMaxPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:20: warning: Member id (variable) of struct rmb::SparkMaxVelocityControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:21: warning: Member motorType (variable) of struct rmb::SparkMaxVelocityControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:23: warning: Member inverted (variable) of struct rmb::SparkMaxVelocityControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:27: warning: Member p (variable) of struct rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:27: warning: Member i (variable) of struct rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:27: warning: Member d (variable) of struct rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:27: warning: Member ff (variable) of struct rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:28: warning: Member tolerance (variable) of struct rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:29: warning: Member iZone (variable) of struct rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:29: warning: Member iMaxAccumulator (variable) of struct rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:30: warning: Member maxOutput (variable) of struct rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:30: warning: Member minOutput (variable) of struct rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:34: warning: Member useSmartMotion (variable) of struct rmb::SparkMaxVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:35: warning: Member maxVelocity (variable) of struct rmb::SparkMaxVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:36: warning: Member minVelocity (variable) of struct rmb::SparkMaxVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:37: warning: Member maxAcceleration (variable) of struct rmb::SparkMaxVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:38: warning: Member accelStrategy (variable) of struct rmb::SparkMaxVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:46: warning: Member gearRatio (variable) of struct rmb::SparkMaxVelocityControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:47: warning: Member encoderType (variable) of struct rmb::SparkMaxVelocityControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:48: warning: Member countPerRev (variable) of struct rmb::SparkMaxVelocityControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:49: warning: Member forwardSwitch (variable) of struct rmb::SparkMaxVelocityControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:49: warning: Member reverseSwitch (variable) of struct rmb::SparkMaxVelocityControllerHelper::FeedbackConfig is not documented.
