@@ -63,14 +63,18 @@ public:
   using LimitSwitchConfig = SparkMaxVelocityControllerHelper::LimitSwitchConfig;
   using FeedbackConfig = SparkMaxVelocityControllerHelper::FeedbackConfig;
 
+  struct CreateInfo {
+      const MotorConfig motorConfig;
+      const PIDConfig pidConfig = {};
+      const ProfileConfig profileConfig = {};
+      const FeedbackConfig feedbackConfig = {};
+      std::initializer_list<const MotorConfig> followers = {};
+  };
+
   SparkMaxVelocityController(SparkMaxVelocityController &&) = delete;
   SparkMaxVelocityController(const SparkMaxVelocityController &) = delete;
 
-  SparkMaxVelocityController(
-      const MotorConfig motorConfig, const PIDConfig pidConfig = {},
-      const ProfileConfig profileConfig = {},
-      const FeedbackConfig feedbackConfig = {},
-      std::initializer_list<const MotorConfig> followers = {});
+  SparkMaxVelocityController(const CreateInfo& createInfo);
 
   rev::CANSparkMax &getMotor();
 
