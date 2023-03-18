@@ -16,7 +16,8 @@ SparkMaxPositionController::SparkMaxPositionController(
 
   // Restore defaults to ensure a consistent and clean slate.
   sparkMax.RestoreFactoryDefaults();
-  sparkMax.SetSmartCurrentLimit(static_cast<unsigned int>(motorConfig.currentLimit() + 0.5));
+  sparkMax.SetSmartCurrentLimit(
+      static_cast<unsigned int>(motorConfig.currentLimit() + 0.5));
 
   // Motor Configuration
   sparkMax.SetInverted(motorConfig.inverted);
