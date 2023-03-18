@@ -75,7 +75,7 @@ public:
     const MotorConfig motorConfig;
     const PIDConfig pidConfig = {};
     const std::shared_ptr<Feedforward<units::radians>> feedforward =
-      std::make_shared<SimpleFeedforward<units::radians>>();
+        std::make_shared<SimpleFeedforward<units::radians>>();
     const Range range = {};
     const ProfileConfig profileConfig = {};
     const FeedbackConfig feedbackConfig = {};
@@ -85,7 +85,7 @@ public:
   SparkMaxPositionController(SparkMaxPositionController &&) = delete;
   SparkMaxPositionController(const SparkMaxPositionController &) = delete;
 
-  SparkMaxPositionController(const CreateInfo& createInfo);
+  SparkMaxPositionController(const CreateInfo &createInfo);
 
   //--------------------
   // Controller Methods

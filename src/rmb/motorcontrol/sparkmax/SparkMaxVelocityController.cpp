@@ -5,10 +5,12 @@
 
 namespace rmb {
 
-SparkMaxVelocityController::SparkMaxVelocityController(const SparkMaxVelocityController::CreateInfo& createInfo)
+SparkMaxVelocityController::SparkMaxVelocityController(
+    const SparkMaxVelocityController::CreateInfo &createInfo)
     : sparkMax(createInfo.motorConfig.id, createInfo.motorConfig.motorType),
       pidController(sparkMax.GetPIDController()),
-      tolerance(createInfo.pidConfig.tolerance), encoderType(createInfo.feedbackConfig.encoderType),
+      tolerance(createInfo.pidConfig.tolerance),
+      encoderType(createInfo.feedbackConfig.encoderType),
       gearRatio(createInfo.feedbackConfig.gearRatio) {
 
   // Restore defaults to ensure a consistent and clean slate.
@@ -26,7 +28,8 @@ SparkMaxVelocityController::SparkMaxVelocityController(const SparkMaxVelocityCon
   pidController.SetFF(createInfo.pidConfig.ff);
   pidController.SetIZone(createInfo.pidConfig.iZone);
   pidController.SetIMaxAccum(createInfo.pidConfig.iMaxAccumulator);
-  pidController.SetOutputRange(createInfo.pidConfig.minOutput, createInfo.pidConfig.maxOutput);
+  pidController.SetOutputRange(createInfo.pidConfig.minOutput,
+                               createInfo.pidConfig.maxOutput);
 
   // Motion Profiling Configuration
   controlType = rev::CANSparkMax::ControlType::kVelocity;
@@ -41,7 +44,8 @@ SparkMaxVelocityController::SparkMaxVelocityController(const SparkMaxVelocityCon
             createInfo.profileConfig.maxAcceleration)
             .to<double>() *
         gearRatio);
-    pidController.SetSmartMotionAccelStrategy(createInfo.profileConfig.accelStrategy);
+    pidController.SetSmartMotionAccelStrategy(
+        createInfo.profileConfig.accelStrategy);
   }
 
   // Encoder Configuation

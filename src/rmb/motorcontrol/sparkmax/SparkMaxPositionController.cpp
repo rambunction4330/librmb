@@ -1,11 +1,14 @@
 #include "rmb/motorcontrol/sparkmax/SparkMaxPositionController.h"
 
 namespace rmb {
-SparkMaxPositionController::SparkMaxPositionController(const SparkMaxPositionController::CreateInfo& createInfo)
+SparkMaxPositionController::SparkMaxPositionController(
+    const SparkMaxPositionController::CreateInfo &createInfo)
     : sparkMax(createInfo.motorConfig.id, createInfo.motorConfig.motorType),
       pidController(sparkMax.GetPIDController()),
-      tolerance(createInfo.pidConfig.tolerance), feedforward(createInfo.feedforward),
-      minPose(createInfo.range.minPosition), maxPose(createInfo.range.maxPosition),
+      tolerance(createInfo.pidConfig.tolerance),
+      feedforward(createInfo.feedforward),
+      minPose(createInfo.range.minPosition),
+      maxPose(createInfo.range.maxPosition),
       encoderType(createInfo.feedbackConfig.encoderType),
       gearRatio(createInfo.feedbackConfig.gearRatio) {
 
@@ -23,7 +26,8 @@ SparkMaxPositionController::SparkMaxPositionController(const SparkMaxPositionCon
   pidController.SetFF(createInfo.pidConfig.ff);
   pidController.SetIZone(createInfo.pidConfig.iZone);
   pidController.SetIMaxAccum(createInfo.pidConfig.iMaxAccumulator);
-  pidController.SetOutputRange(createInfo.pidConfig.minOutput, createInfo.pidConfig.maxOutput);
+  pidController.SetOutputRange(createInfo.pidConfig.minOutput,
+                               createInfo.pidConfig.maxOutput);
 
   // Range
   if (createInfo.range.isContinuous) {
@@ -47,7 +51,8 @@ SparkMaxPositionController::SparkMaxPositionController(const SparkMaxPositionCon
             createInfo.profileConfig.maxAcceleration)
             .to<double>() *
         gearRatio);
-    pidController.SetSmartMotionAccelStrategy(createInfo.profileConfig.accelStrategy);
+    pidController.SetSmartMotionAccelStrategy(
+        createInfo.profileConfig.accelStrategy);
   }
 
   // Encoder Configuation
