@@ -51,9 +51,9 @@ FalconVelocityController::getTargetVelocity() const {
   return RawVelocityUnit_t(motorcontroller.GetClosedLoopTarget() / gearRatio);
 }
 
-units::radians_per_second_t
-FalconVelocityController::getVelocity() const {
-  return RawVelocityUnit_t(motorcontroller.GetSelectedSensorVelocity() / gearRatio);
+units::radians_per_second_t FalconVelocityController::getVelocity() const {
+  return RawVelocityUnit_t(motorcontroller.GetSelectedSensorVelocity() /
+                           gearRatio);
 }
 
 units::radians_per_second_t FalconVelocityController::getTolerance() const {
@@ -70,7 +70,8 @@ void FalconVelocityController::disable() { motorcontroller.Disable(); }
 void FalconVelocityController::stop() { motorcontroller.StopMotor(); }
 
 units::radian_t FalconVelocityController::getPosition() const {
-  return RawPositionUnit_t(motorcontroller.GetSelectedSensorPosition() / gearRatio);
+  return RawPositionUnit_t(motorcontroller.GetSelectedSensorPosition() /
+                           gearRatio);
 }
 
 void FalconVelocityController::zeroPosition(units::radian_t offset) {

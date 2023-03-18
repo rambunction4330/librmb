@@ -53,16 +53,18 @@ public:
   typedef units::unit<std::ratio<2048, 1>, units::turns> EncoderTick;
   typedef units::unit_t<EncoderTick> EncoderTick_t;
 
-  typedef units::compound_unit<EncoderTick, units::inverse<units::deciseconds>> RawVelocityUnit;
+  typedef units::compound_unit<EncoderTick, units::inverse<units::deciseconds>>
+      RawVelocityUnit;
   typedef units::unit_t<RawVelocityUnit> RawVelocityUnit_t;
 
   typedef units::unit<std::ratio<1, 1>, EncoderTick> RawPositionUnit;
   typedef units::unit_t<RawPositionUnit> RawPositionUnit_t;
 
-  FalconPositionController(FalconPositionControllerHelper::MotorConfig config,
-                           FalconPositionControllerHelper::PIDConfig pidConfig,
-                           FalconPositionControllerHelper::Range range,
-                           FalconPositionControllerHelper::FeedbackConfig feedbackConfig);
+  FalconPositionController(
+      FalconPositionControllerHelper::MotorConfig config,
+      FalconPositionControllerHelper::PIDConfig pidConfig,
+      FalconPositionControllerHelper::Range range,
+      FalconPositionControllerHelper::FeedbackConfig feedbackConfig);
 
   void setPosition(units::radian_t position) override;
 
