@@ -16,7 +16,7 @@ SparkMaxPositionController::SparkMaxPositionController(
 
   // Restore defaults to ensure a consistent and clean slate.
   sparkMax.RestoreFactoryDefaults();
-  sparkMax.SetSmartCurrentLimit(60);
+  sparkMax.SetSmartCurrentLimit(static_cast<unsigned int>(motorConfig.currentLimit() + 0.5));
 
   // Motor Configuration
   sparkMax.SetInverted(motorConfig.inverted);
@@ -31,7 +31,7 @@ SparkMaxPositionController::SparkMaxPositionController(
   pidController.SetOutputRange(pidConfig.minOutput, pidConfig.maxOutput);
 
   // Range
-  if (range.isContinouse) {
+  if (range.isContinuous) {
     pidController.SetPositionPIDWrappingEnabled(true);
     pidController.SetPositionPIDWrappingMinInput(
         units::turn_t(range.minPosition).to<double>() * gearRatio);
