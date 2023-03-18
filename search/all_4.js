@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['rmb_0',['rmb',['../namespacermb.html',1,'']]],
-  ['trajectory_1',['trajectory',['../namespacermb_1_1trajectory.html',1,'rmb']]]
+  ['elevatorfeedforward_0',['ElevatorFeedforward',['../classrmb_1_1_elevator_feedforward.html#ad2f0c605e2ca13936e014f3163ce8902',1,'rmb::ElevatorFeedforward::ElevatorFeedforward()'],['../classrmb_1_1_elevator_feedforward.html',1,'rmb::ElevatorFeedforward&lt; DistanceUnit &gt;']]]
 ];
