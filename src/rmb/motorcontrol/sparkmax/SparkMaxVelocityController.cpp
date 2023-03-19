@@ -6,13 +6,12 @@
 namespace rmb {
 
 SparkMaxVelocityController::SparkMaxVelocityController(
-    const MotorConfig motorConfig, const PIDConfig pidConfig,
-    const ProfileConfig profileConfig, const FeedbackConfig feedbackConfig,
-    std::initializer_list<const MotorConfig> followerList)
-    : sparkMax(motorConfig.id, motorConfig.motorType),
+    const SparkMaxVelocityController::CreateInfo &createInfo)
+    : sparkMax(createInfo.motorConfig.id, createInfo.motorConfig.motorType),
       pidController(sparkMax.GetPIDController()),
-      tolerance(pidConfig.tolerance), encoderType(feedbackConfig.encoderType),
-      gearRatio(feedbackConfig.gearRatio) {
+      tolerance(createInfo.pidConfig.tolerance),
+      encoderType(createInfo.feedbackConfig.encoderType),
+      gearRatio(createInfo.feedbackConfig.gearRatio) {
 
   // Restore defaults to ensure a consistent and clean slate.
   sparkMax.RestoreFactoryDefaults();
@@ -21,31 +20,33 @@ SparkMaxVelocityController::SparkMaxVelocityController(
   sparkMax.SetClosedLoopRampRate(profileConfig.openLoopRampRate());
 
   // Motor Configuration
-  sparkMax.SetInverted(motorConfig.inverted);
+  sparkMax.SetInverted(createInfo.motorConfig.inverted);
 
   // PID Configuration
-  pidController.SetP(pidConfig.p);
-  pidController.SetI(pidConfig.i);
-  pidController.SetD(pidConfig.d);
-  pidController.SetFF(pidConfig.ff);
-  pidController.SetIZone(pidConfig.iZone);
-  pidController.SetIMaxAccum(pidConfig.iMaxAccumulator);
-  pidController.SetOutputRange(pidConfig.minOutput, pidConfig.maxOutput);
+  pidController.SetP(createInfo.pidConfig.p);
+  pidController.SetI(createInfo.pidConfig.i);
+  pidController.SetD(createInfo.pidConfig.d);
+  pidController.SetFF(createInfo.pidConfig.ff);
+  pidController.SetIZone(createInfo.pidConfig.iZone);
+  pidController.SetIMaxAccum(createInfo.pidConfig.iMaxAccumulator);
+  pidController.SetOutputRange(createInfo.pidConfig.minOutput,
+                               createInfo.pidConfig.maxOutput);
 
   // Motion Profiling Configuration
   controlType = rev::CANSparkMax::ControlType::kVelocity;
-  if (profileConfig.useSmartMotion) {
+  if (createInfo.profileConfig.useSmartMotion) {
     controlType = rev::CANSparkMax::ControlType::kSmartVelocity;
     pidController.SetSmartMotionMaxVelocity(
-        units::revolutions_per_minute_t(profileConfig.maxVelocity)
+        units::revolutions_per_minute_t(createInfo.profileConfig.maxVelocity)
             .to<double>() *
         gearRatio);
     pidController.SetSmartMotionMaxAccel(
         units::revolutions_per_minute_per_second_t(
-            profileConfig.maxAcceleration)
+            createInfo.profileConfig.maxAcceleration)
             .to<double>() *
         gearRatio);
-    pidController.SetSmartMotionAccelStrategy(profileConfig.accelStrategy);
+    pidController.SetSmartMotionAccelStrategy(
+        createInfo.profileConfig.accelStrategy);
   }
 
   // Encoder Configuation
@@ -53,16 +54,16 @@ SparkMaxVelocityController::SparkMaxVelocityController(
   case EncoderType::HallSensor:
     encoder = std::make_unique<rev::SparkMaxRelativeEncoder>(
         sparkMax.GetEncoder(rev::SparkMaxRelativeEncoder::Type::kHallSensor,
-                            feedbackConfig.countPerRev));
+                            createInfo.feedbackConfig.countPerRev));
     break;
   case EncoderType::Quadrature:
     encoder = std::make_unique<rev::SparkMaxRelativeEncoder>(
         sparkMax.GetEncoder(rev::SparkMaxRelativeEncoder::Type::kQuadrature,
-                            feedbackConfig.countPerRev));
+                            createInfo.feedbackConfig.countPerRev));
     break;
   case EncoderType::Alternate:
     encoder = std::make_unique<rev::SparkMaxAlternateEncoder>(
-        sparkMax.GetAlternateEncoder(feedbackConfig.countPerRev));
+        sparkMax.GetAlternateEncoder(createInfo.feedbackConfig.countPerRev));
     break;
   case EncoderType::Absolute:
     encoder = std::make_unique<rev::SparkMaxAbsoluteEncoder>(
@@ -74,7 +75,7 @@ SparkMaxVelocityController::SparkMaxVelocityController(
   pidController.SetFeedbackDevice(*encoder);
 
   // Limit Switch Configuaration
-  switch (feedbackConfig.forwardSwitch) {
+  switch (createInfo.feedbackConfig.forwardSwitch) {
   case LimitSwitchConfig::Disabled:
     sparkMax
         .GetForwardLimitSwitch(rev::SparkMaxLimitSwitch::Type::kNormallyOpen)
@@ -92,7 +93,7 @@ SparkMaxVelocityController::SparkMaxVelocityController(
     break;
   }
 
-  switch (feedbackConfig.reverseSwitch) {
+  switch (createInfo.feedbackConfig.reverseSwitch) {
   case LimitSwitchConfig::Disabled:
     sparkMax
         .GetReverseLimitSwitch(rev::SparkMaxLimitSwitch::Type::kNormallyOpen)
@@ -111,7 +112,7 @@ SparkMaxVelocityController::SparkMaxVelocityController(
   }
 
   // Follower Congiguration
-  for (auto &follower : followerList) {
+  for (auto &follower : createInfo.followers) {
     followers.emplace_back(
         std::make_unique<rev::CANSparkMax>(follower.id, follower.motorType));
     followers.back()->Follow(sparkMax, follower.inverted);
