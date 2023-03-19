@@ -6,6 +6,7 @@
 #include <units/angle.h>
 #include <units/angular_acceleration.h>
 #include <units/angular_velocity.h>
+#include <units/current.h>
 
 #include <rev/CANSparkMax.h>
 
@@ -20,6 +21,8 @@ struct MotorConfig {
   rev::CANSparkMax::MotorType motorType =
       rev::CANSparkMax::MotorType::kBrushless;
   bool inverted = false;
+
+  units::ampere_t currentLimit = 40.0_A;
 };
 
 struct PIDConfig {
