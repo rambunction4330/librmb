@@ -112,7 +112,7 @@ jobs:
           mkdir repos
           
       - name: Publish to GitHub Pages
-        if: github.event.pull_request.merged
+        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -127,7 +127,7 @@ jobs:
           cp ../LibRmb.json .
 
       - name: Publish vendordep JSON to GitHub Pages
-        if: github.event.pull_request.merged
+        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

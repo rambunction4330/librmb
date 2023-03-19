@@ -8,6 +8,8 @@
 #include <units/angle.h>
 #include <units/angular_acceleration.h>
 #include <units/angular_velocity.h>
+#include <units/current.h>
+#include <units/time.h>
 
 #include "rmb/motorcontrol/feedback/AngularVelocityFeedbackController.h"
 #include "rmb/motorcontrol/feedforward/Feedforward.h"
@@ -21,6 +23,9 @@ struct MotorConfig {
   rev::CANSparkMax::MotorType motorType =
       rev::CANSparkMax::MotorType::kBrushless;
   bool inverted = false;
+
+  units::ampere_t currentLimit = 40.0_A;
+  units::second_t openLoopRampRate = 0.5_s;
 };
 
 struct PIDConfig {
@@ -37,6 +42,8 @@ struct ProfileConfig {
   units::radians_per_second_squared_t maxAcceleration = 0.0_rad_per_s_sq;
   rev::SparkMaxPIDController::AccelStrategy accelStrategy =
       rev::SparkMaxPIDController::AccelStrategy::kTrapezoidal;
+
+  units::second_t closedLoopRampRate = 0.5_s;
 };
 
 enum EncoderType { HallSensor, Quadrature, Alternate, Absolute };
@@ -63,14 +70,18 @@ public:
   using LimitSwitchConfig = SparkMaxVelocityControllerHelper::LimitSwitchConfig;
   using FeedbackConfig = SparkMaxVelocityControllerHelper::FeedbackConfig;
 
+  struct CreateInfo {
+    const MotorConfig motorConfig;
+    const PIDConfig pidConfig = {};
+    const ProfileConfig profileConfig = {};
+    const FeedbackConfig feedbackConfig = {};
+    std::initializer_list<const MotorConfig> followers = {};
+  };
+
   SparkMaxVelocityController(SparkMaxVelocityController &&) = delete;
   SparkMaxVelocityController(const SparkMaxVelocityController &) = delete;
 
-  SparkMaxVelocityController(
-      const MotorConfig motorConfig, const PIDConfig pidConfig = {},
-      const ProfileConfig profileConfig = {},
-      const FeedbackConfig feedbackConfig = {},
-      std::initializer_list<const MotorConfig> followers = {});
+  SparkMaxVelocityController(const CreateInfo &createInfo);
 
   rev::CANSparkMax &getMotor();
 

@@ -6,6 +6,7 @@
 #include <units/angle.h>
 #include <units/angular_acceleration.h>
 #include <units/angular_velocity.h>
+#include <units/current.h>
 
 #include <rev/CANSparkMax.h>
 
@@ -20,6 +21,8 @@ struct MotorConfig {
   rev::CANSparkMax::MotorType motorType =
       rev::CANSparkMax::MotorType::kBrushless;
   bool inverted = false;
+
+  units::ampere_t currentLimit = 40.0_A;
 };
 
 struct PIDConfig {
@@ -34,7 +37,7 @@ struct Range {
       -std::numeric_limits<units::radian_t>::infinity();
   units::radian_t maxPosition =
       std::numeric_limits<units::radian_t>::infinity();
-  bool isContinouse = false;
+  bool isContinuous = false;
 };
 
 struct ProfileConfig {
@@ -71,16 +74,21 @@ public:
   using LimitSwitchConfig = SparkMaxPositionControllerHelper::LimitSwitchConfig;
   using FeedbackConfig = SparkMaxPositionControllerHelper::FeedbackConfig;
 
+  struct CreateInfo {
+    const MotorConfig motorConfig;
+    const PIDConfig pidConfig = {};
+    const std::shared_ptr<Feedforward<units::radians>> feedforward =
+        std::make_shared<SimpleFeedforward<units::radians>>();
+    const Range range = {};
+    const ProfileConfig profileConfig = {};
+    const FeedbackConfig feedbackConfig = {};
+    std::initializer_list<const MotorConfig> followers = {};
+  };
+
   SparkMaxPositionController(SparkMaxPositionController &&) = delete;
   SparkMaxPositionController(const SparkMaxPositionController &) = delete;
 
-  SparkMaxPositionController(
-      const MotorConfig motorConfig, const PIDConfig pidConfig = {},
-      const std::shared_ptr<Feedforward<units::radians>> feedforward =
-          std::make_shared<SimpleFeedforward<units::radians>>(),
-      const Range range = {}, const ProfileConfig profileConfig = {},
-      const FeedbackConfig feedbackConfig = {},
-      std::initializer_list<const MotorConfig> followers = {});
+  SparkMaxPositionController(const CreateInfo &createInfo);
 
   //--------------------
   // Controller Methods
@@ -91,14 +99,14 @@ public:
    *
    * @param position The target position in radians.
    */
-  void setPosition(units::radian_t position);
+  void setPosition(units::radian_t position) override;
 
   /**
    * Gets the target position.
    *
    * @return The target position in radians.
    */
-  units::radian_t getTargetPosition() const;
+  units::radian_t getTargetPosition() const override;
 
   /**
    * Gets the minimum position.
@@ -117,12 +125,12 @@ public:
   /**
    * Disables the motor.
    */
-  void disable();
+  void disable() override;
 
   /**
    * Stops the motor until `setPosition` is called again.
    */
-  void stop();
+  void stop() override;
 
   //-----------------
   // Encoder Methods
@@ -133,14 +141,14 @@ public:
    *
    * @return The velocity of the motor in radians per second.
    */
-  units::radians_per_second_t getVelocity() const;
+  units::radians_per_second_t getVelocity() const override;
 
   /**
    * Gets the position of the motor.
    *
    * @return The position of the motor in radians.
    */
-  units::radian_t getPosition() const;
+  units::radian_t getPosition() const override;
 
   /**
    * Zeros the positon th emotor so the current position is set to the offset.
@@ -148,7 +156,7 @@ public:
    * @param offset the offset from the current position at which to set the
    *               zero position.
    */
-  void zeroPosition(units::radian_t offset = 0_rad);
+  void zeroPosition(units::radian_t offset = 0_rad) override;
 
   //-----------------------------
   // Feedbakc Controller Methods
@@ -159,7 +167,7 @@ public:
    *
    * @return tolerance in radians
    */
-  units::radian_t getTolerance() const;
+  units::radian_t getTolerance() const override;
 
 private:
   rev::CANSparkMax sparkMax;

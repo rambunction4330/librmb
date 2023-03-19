@@ -189,6 +189,3 @@ docs/*
 
 compile_commands.json
 compile_flags.txt
-
-# Aiden's compile_commands.json generating script
-rioCDGen.py
