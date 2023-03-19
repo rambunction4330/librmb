@@ -4,32 +4,39 @@
 
 namespace rmb {
 
-FalconVelocityController::FalconVelocityController(
-    FalconPositionControllerHelper::MotorConfig config,
-    FalconVelocityControllerHelper::PIDConfig pidConfig,
-    FalconVelocityControllerHelper::ProfileConfig profileConfig,
-    FalconPositionControllerHelper::FeedbackConfig feedbackConfig)
-    : motorcontroller(config.id) {
+FalconVelocityController::FalconVelocityController(const FalconVelocityController::CreateInfo& createInfo)
+    : motorcontroller(createInfo.config.id) {
 
-  motorcontroller.SetInverted(config.inverted);
+  motorcontroller.SetInverted(createInfo.config.inverted);
 
-  motorcontroller.Config_kD(0, pidConfig.d);
-  motorcontroller.Config_kI(0, pidConfig.i);
-  motorcontroller.Config_kP(0, pidConfig.p);
-  motorcontroller.Config_kF(0, pidConfig.ff);
+  motorcontroller.ConfigPeakOutputForward(0, createInfo.openLoopConfig.maxOutput);
+  motorcontroller.ConfigPeakOutputReverse(0, createInfo.openLoopConfig.minOutput);
+  motorcontroller.ConfigOpenloopRamp(createInfo.openLoopConfig.rampRate());
+
+  ctre::phoenix::motorcontrol::StatorCurrentLimitConfiguration currentConfig{}; 
+  currentConfig.currentLimit = createInfo.config.currentLimit();
+  currentConfig.enable = true;
+  currentConfig.triggerThresholdTime = 0;
+  currentConfig.triggerThresholdCurrent = 0.0;
+  motorcontroller.ConfigStatorCurrentLimit(currentConfig);
+
+  motorcontroller.Config_kD(0, createInfo.pidConfig.d);
+  motorcontroller.Config_kI(0, createInfo.pidConfig.i);
+  motorcontroller.Config_kP(0, createInfo.pidConfig.p);
+  motorcontroller.Config_kF(0, createInfo.pidConfig.ff);
   motorcontroller.ConfigAllowableClosedloopError(
-      0, RawVelocityUnit_t(pidConfig.tolerance)());
+      0, RawVelocityUnit_t(createInfo.pidConfig.tolerance)());
+  motorcontroller.ConfigClosedLoopPeakOutput(0, createInfo.pidConfig.closedLoopMaxPercentOutput);
+  motorcontroller.ConfigClosedloopRamp(createInfo.pidConfig.rampRate());
 
-  motorcontroller.Config_IntegralZone(0, pidConfig.iZone);
-  motorcontroller.ConfigMaxIntegralAccumulator(0, pidConfig.iMaxAccumulator);
-  motorcontroller.ConfigPeakOutputForward(0, pidConfig.maxOutput);
-  motorcontroller.ConfigPeakOutputReverse(0, pidConfig.minOutput);
+  motorcontroller.Config_IntegralZone(0, createInfo.pidConfig.iZone);
+  motorcontroller.ConfigMaxIntegralAccumulator(0, createInfo.pidConfig.iMaxAccumulator);
 
-  motorcontroller.ConfigForwardSoftLimitEnable(feedbackConfig.forwardSwitch);
+  motorcontroller.ConfigForwardSoftLimitEnable(createInfo.feedbackConfig.forwardSwitch);
 
-  gearRatio = feedbackConfig.gearRatio;
-  tolerance = pidConfig.tolerance;
-  this->profileConfig = profileConfig;
+  gearRatio = createInfo.feedbackConfig.gearRatio;
+  tolerance = createInfo.pidConfig.tolerance;
+  this->profileConfig = createInfo.profileConfig;
 }
 
 void FalconVelocityController::setVelocity(

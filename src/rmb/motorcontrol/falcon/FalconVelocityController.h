@@ -11,7 +11,14 @@ struct PIDConfig {
   double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
   units::turns_per_second_t tolerance = 0.0_tps;
   double iZone = 0.0, iMaxAccumulator = 0.0;
-  double maxOutput = 1.0, minOutput = -1.0;
+
+  double closedLoopMaxPercentOutput = 1.0;
+  units::second_t rampRate = 1.0_s;
+};
+
+struct OpenLoopConfig {
+  double minOutput = -1.0, maxOutput = 1.0;
+  units::second_t rampRate = 1.0_s;
 };
 
 struct ProfileConfig {
@@ -33,11 +40,15 @@ public:
   typedef units::unit<std::ratio<1, 1>, EncoderTick> RawPositionUnit;
   typedef units::unit_t<RawPositionUnit> RawPositionUnit_t;
 
-  FalconVelocityController(
-      FalconPositionControllerHelper::MotorConfig config,
-      FalconVelocityControllerHelper::PIDConfig pidConfig,
-      FalconVelocityControllerHelper::ProfileConfig profileConfig,
-      FalconPositionControllerHelper::FeedbackConfig feedbackConfig);
+  struct CreateInfo {
+    FalconPositionControllerHelper::MotorConfig config;
+    FalconVelocityControllerHelper::PIDConfig pidConfig;
+    FalconVelocityControllerHelper::ProfileConfig profileConfig;
+    FalconPositionControllerHelper::FeedbackConfig feedbackConfig;
+    FalconVelocityControllerHelper::OpenLoopConfig openLoopConfig;
+  };
+
+  FalconVelocityController(const CreateInfo& createInfo);
 
   //--------------------------------------------------
   // Methods Inherited from AngularVelocityController

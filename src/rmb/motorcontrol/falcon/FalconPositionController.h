@@ -9,19 +9,26 @@
 #include "ctre/phoenix/motorcontrol/can/WPI_TalonFX.h"
 #include "units/base.h"
 #include "units/time.h"
+#include "units/current.h"
 
 namespace rmb {
 namespace FalconPositionControllerHelper {
 struct MotorConfig {
   int id;
   bool inverted = false;
+  
+  units::ampere_t currentLimit;
+};
+
+struct OpenLoopConfig {
+  double minOutput = -1.0, maxOutput = 1.0;
 };
 
 struct PIDConfig {
   double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
   units::turn_t tolerance = 0.0_rad;
   double iZone = 0.0, iMaxAccumulator = 0.0;
-  double maxOutput = 1.0, minOutput = -1.0;
+  double closedLoopMaxPercentOutput = 1.0;
 };
 
 struct Range {
@@ -29,7 +36,7 @@ struct Range {
       -std::numeric_limits<units::radian_t>::infinity();
   units::radian_t maxPosition =
       std::numeric_limits<units::radian_t>::infinity();
-  bool isContinouse = false;
+  bool isContinuous = false;
 };
 
 struct ProfileConfig {
@@ -37,8 +44,6 @@ struct ProfileConfig {
   units::radians_per_second_t maxVelocity = 0.0_rad_per_s,
                               minVelocity = 0.0_rad_per_s;
   units::radians_per_second_squared_t maxAcceleration = 0.0_rad_per_s_sq;
-  /*rev::SparkMaxPIDController::AccelStrategy accelStrategy =
-      rev::SparkMaxPIDController::AccelStrategy::kTrapezoidal;*/
 };
 
 enum LimitSwitchConfig { Disabled, NormalyOpen, NormalyClosed };
@@ -60,11 +65,15 @@ public:
   typedef units::unit<std::ratio<1, 1>, EncoderTick> RawPositionUnit;
   typedef units::unit_t<RawPositionUnit> RawPositionUnit_t;
 
-  FalconPositionController(
-      FalconPositionControllerHelper::MotorConfig config,
-      FalconPositionControllerHelper::PIDConfig pidConfig,
-      FalconPositionControllerHelper::Range range,
-      FalconPositionControllerHelper::FeedbackConfig feedbackConfig);
+  struct CreateInfo {
+      FalconPositionControllerHelper::MotorConfig config;
+      FalconPositionControllerHelper::PIDConfig pidConfig;
+      FalconPositionControllerHelper::Range range;
+      FalconPositionControllerHelper::FeedbackConfig feedbackConfig;
+      FalconPositionControllerHelper::OpenLoopConfig openLoopConfig;
+  };
+
+  FalconPositionController(const CreateInfo& createInfo);
 
   void setPosition(units::radian_t position) override;
 

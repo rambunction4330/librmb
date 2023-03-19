@@ -1,6 +1,7 @@
 #include "FalconPositionController.h"
 #include "ctre/Phoenix.h"
 #include "ctre/phoenix/motorcontrol/ControlMode.h"
+#include "ctre/phoenix/motorcontrol/StatorCurrentLimitConfiguration.h"
 #include "units/angle.h"
 
 namespace ctre {
@@ -9,31 +10,36 @@ using namespace phoenix::motorcontrol::can;
 
 namespace rmb {
 
-FalconPositionController::FalconPositionController(
-    FalconPositionControllerHelper::MotorConfig config,
-    FalconPositionControllerHelper::PIDConfig pidConfig,
-    FalconPositionControllerHelper::Range range,
-    FalconPositionControllerHelper::FeedbackConfig feedbackConfig)
-    : motorcontroller(config.id), range(range) {
+FalconPositionController::FalconPositionController(const FalconPositionController::CreateInfo& createInfo)
+    : motorcontroller(createInfo.config.id), range(createInfo.range) {
 
-  motorcontroller.SetInverted(config.inverted);
+  motorcontroller.SetInverted(createInfo.config.inverted);
 
-  motorcontroller.Config_kD(0, pidConfig.d);
-  motorcontroller.Config_kI(0, pidConfig.i);
-  motorcontroller.Config_kP(0, pidConfig.p);
-  motorcontroller.Config_kF(0, pidConfig.ff);
+  motorcontroller.ConfigPeakOutputForward(0, createInfo.openLoopConfig.maxOutput);
+  motorcontroller.ConfigPeakOutputReverse(0, createInfo.openLoopConfig.minOutput);
+
+  motorcontroller.Config_kD(0, createInfo.pidConfig.d);
+  motorcontroller.Config_kI(0, createInfo.pidConfig.i);
+  motorcontroller.Config_kP(0, createInfo.pidConfig.p);
+  motorcontroller.Config_kF(0, createInfo.pidConfig.ff);
   motorcontroller.ConfigAllowableClosedloopError(
-      0, RawPositionUnit_t(pidConfig.tolerance)());
+      0, RawPositionUnit_t(createInfo.pidConfig.tolerance)());
+  motorcontroller.Config_IntegralZone(0, createInfo.pidConfig.iZone);
+  motorcontroller.ConfigMaxIntegralAccumulator(0, createInfo.pidConfig.iMaxAccumulator);
+  motorcontroller.ConfigClosedLoopPeakOutput(0, createInfo.pidConfig.closedLoopMaxPercentOutput);
 
-  motorcontroller.Config_IntegralZone(0, pidConfig.iZone);
-  motorcontroller.ConfigMaxIntegralAccumulator(0, pidConfig.iMaxAccumulator);
-  motorcontroller.ConfigPeakOutputForward(0, pidConfig.maxOutput);
-  motorcontroller.ConfigPeakOutputReverse(0, pidConfig.minOutput);
+  motorcontroller.ConfigForwardSoftLimitEnable(createInfo.feedbackConfig.forwardSwitch);
 
-  motorcontroller.ConfigForwardSoftLimitEnable(feedbackConfig.forwardSwitch);
+  ctre::phoenix::motorcontrol::StatorCurrentLimitConfiguration currentConfig{}; 
+  currentConfig.currentLimit = createInfo.config.currentLimit();
+  currentConfig.enable = true;
+  currentConfig.triggerThresholdTime = 0;
+  currentConfig.triggerThresholdCurrent = 0.0;
+  motorcontroller.ConfigStatorCurrentLimit(currentConfig);
 
-  gearRatio = feedbackConfig.gearRatio;
-  tolerance = pidConfig.tolerance;
+
+  gearRatio = createInfo.feedbackConfig.gearRatio;
+  tolerance = createInfo.pidConfig.tolerance;
 }
 
 void FalconPositionController::setPosition(units::radian_t position) {
