@@ -10,13 +10,16 @@ using namespace phoenix::motorcontrol::can;
 
 namespace rmb {
 
-FalconPositionController::FalconPositionController(const FalconPositionController::CreateInfo& createInfo)
+FalconPositionController::FalconPositionController(
+    const FalconPositionController::CreateInfo &createInfo)
     : motorcontroller(createInfo.config.id), range(createInfo.range) {
 
   motorcontroller.SetInverted(createInfo.config.inverted);
 
-  motorcontroller.ConfigPeakOutputForward(0, createInfo.openLoopConfig.maxOutput);
-  motorcontroller.ConfigPeakOutputReverse(0, createInfo.openLoopConfig.minOutput);
+  motorcontroller.ConfigPeakOutputForward(0,
+                                          createInfo.openLoopConfig.maxOutput);
+  motorcontroller.ConfigPeakOutputReverse(0,
+                                          createInfo.openLoopConfig.minOutput);
 
   motorcontroller.Config_kD(0, createInfo.pidConfig.d);
   motorcontroller.Config_kI(0, createInfo.pidConfig.i);
@@ -25,18 +28,20 @@ FalconPositionController::FalconPositionController(const FalconPositionControlle
   motorcontroller.ConfigAllowableClosedloopError(
       0, RawPositionUnit_t(createInfo.pidConfig.tolerance)());
   motorcontroller.Config_IntegralZone(0, createInfo.pidConfig.iZone);
-  motorcontroller.ConfigMaxIntegralAccumulator(0, createInfo.pidConfig.iMaxAccumulator);
-  motorcontroller.ConfigClosedLoopPeakOutput(0, createInfo.pidConfig.closedLoopMaxPercentOutput);
+  motorcontroller.ConfigMaxIntegralAccumulator(
+      0, createInfo.pidConfig.iMaxAccumulator);
+  motorcontroller.ConfigClosedLoopPeakOutput(
+      0, createInfo.pidConfig.closedLoopMaxPercentOutput);
 
-  motorcontroller.ConfigForwardSoftLimitEnable(createInfo.feedbackConfig.forwardSwitch);
+  motorcontroller.ConfigForwardSoftLimitEnable(
+      createInfo.feedbackConfig.forwardSwitch);
 
-  ctre::phoenix::motorcontrol::StatorCurrentLimitConfiguration currentConfig{}; 
+  ctre::phoenix::motorcontrol::StatorCurrentLimitConfiguration currentConfig{};
   currentConfig.currentLimit = createInfo.config.currentLimit();
   currentConfig.enable = true;
   currentConfig.triggerThresholdTime = 0;
   currentConfig.triggerThresholdCurrent = 0.0;
   motorcontroller.ConfigStatorCurrentLimit(currentConfig);
-
 
   gearRatio = createInfo.feedbackConfig.gearRatio;
   tolerance = createInfo.pidConfig.tolerance;

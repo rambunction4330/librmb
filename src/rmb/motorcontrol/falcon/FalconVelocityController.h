@@ -48,7 +48,7 @@ public:
     FalconVelocityControllerHelper::OpenLoopConfig openLoopConfig;
   };
 
-  FalconVelocityController(const CreateInfo& createInfo);
+  FalconVelocityController(const CreateInfo &createInfo);
 
   //--------------------------------------------------
   // Methods Inherited from AngularVelocityController

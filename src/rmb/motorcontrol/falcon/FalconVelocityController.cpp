@@ -4,16 +4,19 @@
 
 namespace rmb {
 
-FalconVelocityController::FalconVelocityController(const FalconVelocityController::CreateInfo& createInfo)
+FalconVelocityController::FalconVelocityController(
+    const FalconVelocityController::CreateInfo &createInfo)
     : motorcontroller(createInfo.config.id) {
 
   motorcontroller.SetInverted(createInfo.config.inverted);
 
-  motorcontroller.ConfigPeakOutputForward(0, createInfo.openLoopConfig.maxOutput);
-  motorcontroller.ConfigPeakOutputReverse(0, createInfo.openLoopConfig.minOutput);
+  motorcontroller.ConfigPeakOutputForward(0,
+                                          createInfo.openLoopConfig.maxOutput);
+  motorcontroller.ConfigPeakOutputReverse(0,
+                                          createInfo.openLoopConfig.minOutput);
   motorcontroller.ConfigOpenloopRamp(createInfo.openLoopConfig.rampRate());
 
-  ctre::phoenix::motorcontrol::StatorCurrentLimitConfiguration currentConfig{}; 
+  ctre::phoenix::motorcontrol::StatorCurrentLimitConfiguration currentConfig{};
   currentConfig.currentLimit = createInfo.config.currentLimit();
   currentConfig.enable = true;
   currentConfig.triggerThresholdTime = 0;
@@ -26,13 +29,16 @@ FalconVelocityController::FalconVelocityController(const FalconVelocityControlle
   motorcontroller.Config_kF(0, createInfo.pidConfig.ff);
   motorcontroller.ConfigAllowableClosedloopError(
       0, RawVelocityUnit_t(createInfo.pidConfig.tolerance)());
-  motorcontroller.ConfigClosedLoopPeakOutput(0, createInfo.pidConfig.closedLoopMaxPercentOutput);
+  motorcontroller.ConfigClosedLoopPeakOutput(
+      0, createInfo.pidConfig.closedLoopMaxPercentOutput);
   motorcontroller.ConfigClosedloopRamp(createInfo.pidConfig.rampRate());
 
   motorcontroller.Config_IntegralZone(0, createInfo.pidConfig.iZone);
-  motorcontroller.ConfigMaxIntegralAccumulator(0, createInfo.pidConfig.iMaxAccumulator);
+  motorcontroller.ConfigMaxIntegralAccumulator(
+      0, createInfo.pidConfig.iMaxAccumulator);
 
-  motorcontroller.ConfigForwardSoftLimitEnable(createInfo.feedbackConfig.forwardSwitch);
+  motorcontroller.ConfigForwardSoftLimitEnable(
+      createInfo.feedbackConfig.forwardSwitch);
 
   gearRatio = createInfo.feedbackConfig.gearRatio;
   tolerance = createInfo.pidConfig.tolerance;
