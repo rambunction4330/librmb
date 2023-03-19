@@ -17,7 +17,7 @@ struct MotorConfig {
   int id;
   bool inverted = false;
   
-  units::ampere_t currentLimit;
+  units::ampere_t currentLimit = 40_A;
 };
 
 struct OpenLoopConfig {
