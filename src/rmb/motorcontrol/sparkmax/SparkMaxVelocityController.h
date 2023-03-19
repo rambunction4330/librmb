@@ -24,7 +24,7 @@ struct MotorConfig {
       rev::CANSparkMax::MotorType::kBrushless;
   bool inverted = false;
 
-  units::ampere_t currentLimit;
+  units::ampere_t currentLimit = 40.0_A;
   units::second_t openLoopRampRate = 0.5_s;
 };
 
