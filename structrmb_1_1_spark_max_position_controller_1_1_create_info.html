@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>librmb: rmb::SparkMaxPositionControllerHelper::Range Struct Reference</title>
+<title>librmb: rmb::SparkMaxPositionController::CreateInfo Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,7 +76,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('structrmb_1_1_spark_max_position_controller_helper_1_1_range.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('structrmb_1_1_spark_max_position_controller_1_1_create_info.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -104,51 +104,48 @@ $(document).ready(function(){initNavTree('structrmb_1_1_spark_max_position_contr
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structrmb_1_1_spark_max_position_controller_helper_1_1_range-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">rmb::SparkMaxPositionControllerHelper::Range Struct Reference</div></div>
+<a href="structrmb_1_1_spark_max_position_controller_1_1_create_info-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">rmb::SparkMaxPositionController::CreateInfo Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a9939004eedee3cce547a2edabc975e70"><td class="memItemLeft" align="right" valign="top">units::radian_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrmb_1_1_spark_max_position_controller_helper_1_1_range.html#a9939004eedee3cce547a2edabc975e70">minPosition</a></td></tr>
-<tr class="separator:a9939004eedee3cce547a2edabc975e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4254eddce640afbed232523244913016"><td class="memItemLeft" align="right" valign="top">units::radian_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrmb_1_1_spark_max_position_controller_helper_1_1_range.html#a4254eddce640afbed232523244913016">maxPosition</a></td></tr>
-<tr class="separator:a4254eddce640afbed232523244913016"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2303d40a01c11ca4ec299cefd4c71a86"><td class="memItemLeft" align="right" valign="top"><a id="a2303d40a01c11ca4ec299cefd4c71a86" name="a2303d40a01c11ca4ec299cefd4c71a86"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isContinuous</b> = false</td></tr>
-<tr class="separator:a2303d40a01c11ca4ec299cefd4c71a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af52d0605bd7a687a382eb5e9baed245f"><td class="memItemLeft" align="right" valign="top"><a id="af52d0605bd7a687a382eb5e9baed245f" name="af52d0605bd7a687a382eb5e9baed245f"></a>
+const <a class="el" href="structrmb_1_1_spark_max_position_controller_helper_1_1_motor_config.html">MotorConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><b>motorConfig</b></td></tr>
+<tr class="separator:af52d0605bd7a687a382eb5e9baed245f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a992210726c5a13b80544bbd0a5e01dc5"><td class="memItemLeft" align="right" valign="top"><a id="a992210726c5a13b80544bbd0a5e01dc5" name="a992210726c5a13b80544bbd0a5e01dc5"></a>
+const <a class="el" href="structrmb_1_1_spark_max_position_controller_helper_1_1_p_i_d_config.html">PIDConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pidConfig</b> = {}</td></tr>
+<tr class="separator:a992210726c5a13b80544bbd0a5e01dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1faead3fd08c0c951567d98bf5752f8"><td class="memItemLeft" align="right" valign="top">const std::shared_ptr&lt; <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt; units::radians &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_create_info.html#af1faead3fd08c0c951567d98bf5752f8">feedforward</a></td></tr>
+<tr class="separator:af1faead3fd08c0c951567d98bf5752f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab75443ebf72be656ab0621e1ba3bcdac"><td class="memItemLeft" align="right" valign="top"><a id="ab75443ebf72be656ab0621e1ba3bcdac" name="ab75443ebf72be656ab0621e1ba3bcdac"></a>
+const <a class="el" href="structrmb_1_1_spark_max_position_controller_helper_1_1_range.html">Range</a>&#160;</td><td class="memItemRight" valign="bottom"><b>range</b> = {}</td></tr>
+<tr class="separator:ab75443ebf72be656ab0621e1ba3bcdac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc2a6bda65de80118892fdfec389c7a4"><td class="memItemLeft" align="right" valign="top"><a id="abc2a6bda65de80118892fdfec389c7a4" name="abc2a6bda65de80118892fdfec389c7a4"></a>
+const <a class="el" href="structrmb_1_1_spark_max_position_controller_helper_1_1_profile_config.html">ProfileConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><b>profileConfig</b> = {}</td></tr>
+<tr class="separator:abc2a6bda65de80118892fdfec389c7a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf2ce7a071306aea428dbf88bc86ce32"><td class="memItemLeft" align="right" valign="top"><a id="abf2ce7a071306aea428dbf88bc86ce32" name="abf2ce7a071306aea428dbf88bc86ce32"></a>
+const <a class="el" href="structrmb_1_1_spark_max_position_controller_helper_1_1_feedback_config.html">FeedbackConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><b>feedbackConfig</b> = {}</td></tr>
+<tr class="separator:abf2ce7a071306aea428dbf88bc86ce32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cca54af652030d91986e3941b603430"><td class="memItemLeft" align="right" valign="top"><a id="a9cca54af652030d91986e3941b603430" name="a9cca54af652030d91986e3941b603430"></a>
+std::initializer_list&lt; const <a class="el" href="structrmb_1_1_spark_max_position_controller_helper_1_1_motor_config.html">MotorConfig</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>followers</b> = {}</td></tr>
+<tr class="separator:a9cca54af652030d91986e3941b603430"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a4254eddce640afbed232523244913016" name="a4254eddce640afbed232523244913016"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4254eddce640afbed232523244913016">&#9670;&#160;</a></span>maxPosition</h2>
+<a id="af1faead3fd08c0c951567d98bf5752f8" name="af1faead3fd08c0c951567d98bf5752f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1faead3fd08c0c951567d98bf5752f8">&#9670;&#160;</a></span>feedforward</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">units::radian_t rmb::SparkMaxPositionControllerHelper::Range::maxPosition</td>
+          <td class="memname">const std::shared_ptr&lt;<a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt;units::radians&gt; &gt; rmb::SparkMaxPositionController::CreateInfo::feedforward</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">      std::numeric_limits&lt;units::radian_t&gt;::infinity()</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a9939004eedee3cce547a2edabc975e70" name="a9939004eedee3cce547a2edabc975e70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9939004eedee3cce547a2edabc975e70">&#9670;&#160;</a></span>minPosition</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">units::radian_t rmb::SparkMaxPositionControllerHelper::Range::minPosition</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">      -std::numeric_limits&lt;units::radian_t&gt;::infinity()</div>
+<div class="line">        std::make_shared&lt;SimpleFeedforward&lt;units::radians&gt;&gt;()</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -160,7 +157,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>isContinuous</b> = fa
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespacermb.html">rmb</a></li><li class="navelem"><b>SparkMaxPositionControllerHelper</b></li><li class="navelem"><a class="el" href="structrmb_1_1_spark_max_position_controller_helper_1_1_range.html">Range</a></li>
+    <li class="navelem"><a class="el" href="namespacermb.html">rmb</a></li><li class="navelem"><a class="el" href="classrmb_1_1_spark_max_position_controller.html">SparkMaxPositionController</a></li><li class="navelem"><a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_create_info.html">CreateInfo</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

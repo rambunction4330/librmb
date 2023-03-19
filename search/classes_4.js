@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['feedbackconfig_0',['FeedbackConfig',['../structrmb_1_1_spark_max_position_controller_helper_1_1_feedback_config.html',1,'rmb::SparkMaxPositionControllerHelper::FeedbackConfig'],['../structrmb_1_1_spark_max_velocity_controller_helper_1_1_feedback_config.html',1,'rmb::SparkMaxVelocityControllerHelper::FeedbackConfig']]],
-  ['feedforward_1',['Feedforward',['../classrmb_1_1_feedforward.html',1,'rmb']]],
-  ['feedforward_3c_20units_3a_3aradians_20_3e_2',['Feedforward&lt; units::radians &gt;',['../classrmb_1_1_feedforward.html',1,'rmb']]]
+  ['elevatorfeedforward_0',['ElevatorFeedforward',['../classrmb_1_1_elevator_feedforward.html',1,'rmb']]]
 ];

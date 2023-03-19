@@ -1,5 +1,6 @@
 var classrmb_1_1_spark_max_velocity_controller =
 [
+    [ "CreateInfo", "structrmb_1_1_spark_max_velocity_controller_1_1_create_info.html", null ],
     [ "disable", "classrmb_1_1_spark_max_velocity_controller.html#aea6f1c72ff44df8957968c0aea7ed921", null ],
     [ "getPosition", "classrmb_1_1_spark_max_velocity_controller.html#aea830bc54ae333c86fa4fe5f90895fd5", null ],
     [ "getTargetVelocity", "classrmb_1_1_spark_max_velocity_controller.html#ac054b39bde89ce6ea361c2d8b45ad850", null ],

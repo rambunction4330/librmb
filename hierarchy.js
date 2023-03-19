@@ -28,6 +28,8 @@ var hierarchy =
       [ "rmb::LogitechGamepad", "classrmb_1_1_logitech_gamepad.html", null ],
       [ "rmb::LogitechJoystick", "classrmb_1_1_logitech_joystick.html", null ]
     ] ],
+    [ "rmb::SparkMaxPositionController::CreateInfo", "structrmb_1_1_spark_max_position_controller_1_1_create_info.html", null ],
+    [ "rmb::SparkMaxVelocityController::CreateInfo", "structrmb_1_1_spark_max_velocity_controller_1_1_create_info.html", null ],
     [ "rmb::DifferentialDrive", "classrmb_1_1_differential_drive.html", null ],
     [ "rmb::DriveOdometry", "classrmb_1_1_drive_odometry.html", [
       [ "rmb::DifferentialOdometry", "classrmb_1_1_differential_odometry.html", null ]
