@@ -8,15 +8,14 @@
 
 #include "ctre/phoenix/motorcontrol/can/WPI_TalonFX.h"
 #include "units/base.h"
-#include "units/time.h"
 #include "units/current.h"
+#include "units/time.h"
 
 namespace rmb {
 namespace FalconPositionControllerHelper {
 struct MotorConfig {
   int id;
   bool inverted = false;
-  
   units::ampere_t currentLimit = 40_A;
 };
 
@@ -66,14 +65,14 @@ public:
   typedef units::unit_t<RawPositionUnit> RawPositionUnit_t;
 
   struct CreateInfo {
-      FalconPositionControllerHelper::MotorConfig config;
-      FalconPositionControllerHelper::PIDConfig pidConfig;
-      FalconPositionControllerHelper::Range range;
-      FalconPositionControllerHelper::FeedbackConfig feedbackConfig;
-      FalconPositionControllerHelper::OpenLoopConfig openLoopConfig;
+    FalconPositionControllerHelper::MotorConfig config;
+    FalconPositionControllerHelper::PIDConfig pidConfig;
+    FalconPositionControllerHelper::Range range;
+    FalconPositionControllerHelper::FeedbackConfig feedbackConfig;
+    FalconPositionControllerHelper::OpenLoopConfig openLoopConfig;
   };
 
-  FalconPositionController(const CreateInfo& createInfo);
+  FalconPositionController(const CreateInfo &createInfo);
 
   void setPosition(units::radian_t position) override;
 
