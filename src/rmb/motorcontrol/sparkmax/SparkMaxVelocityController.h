@@ -25,6 +25,7 @@ struct MotorConfig {
   bool inverted = false;
 
   units::ampere_t currentLimit;
+  units::second_t openLoopRampRate = 0.5_s;
 };
 
 struct PIDConfig {
@@ -43,7 +44,6 @@ struct ProfileConfig {
       rev::SparkMaxPIDController::AccelStrategy::kTrapezoidal;
 
   units::second_t closedLoopRampRate = 0.5_s;
-  units::second_t openLoopRampRate = 0.5_s;
 };
 
 enum EncoderType { HallSensor, Quadrature, Alternate, Absolute };

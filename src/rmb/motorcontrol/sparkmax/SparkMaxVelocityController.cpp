@@ -18,7 +18,7 @@ SparkMaxVelocityController::SparkMaxVelocityController(
   sparkMax.SetSmartCurrentLimit(
       static_cast<unsigned int>(createInfo.motorConfig.currentLimit() + 0.5));
   sparkMax.SetOpenLoopRampRate(createInfo.profileConfig.closedLoopRampRate());
-  sparkMax.SetClosedLoopRampRate(createInfo.profileConfig.openLoopRampRate());
+  sparkMax.SetClosedLoopRampRate(createInfo.motorConfig.openLoopRampRate());
 
   // Motor Configuration
   sparkMax.SetInverted(createInfo.motorConfig.inverted);
