@@ -2,24 +2,24 @@
 
 #include <frc/drive/DifferentialDrive.h>
 
+#include <networktables/DoubleArrayTopic.h>
 #include <networktables/NetworkTable.h>
 #include <networktables/NetworkTableInstance.h>
-#include <networktables/DoubleArrayTopic.h>
 
 namespace rmb {
 
 DifferentialDrive::DifferentialDrive(
-  std::unique_ptr<LinearVelocityController> left, 
-  std::unique_ptr<LinearVelocityController> right,
-  const frc::Gyro& gyro, frc::DifferentialDriveKinematics kinematics,
-  frc::RamseteController ramseteController, std::string visionTable,
-  const frc::Pose2d &initalPose) : 
-  left(std::move(left)), right(std::move(right)), gyro(gyro), kinematics(kinematics), 
-  ramseteController(ramseteController), 
-  poseEstimator(kinematics, gyro.GetRotation2d(), left->getPosition(), 
-                right->getPosition(), initalPose){
+    std::unique_ptr<LinearVelocityController> left,
+    std::unique_ptr<LinearVelocityController> right, const frc::Gyro &gyro,
+    frc::DifferentialDriveKinematics kinematics,
+    frc::RamseteController ramseteController, std::string visionTable,
+    const frc::Pose2d &initalPose)
+    : left(std::move(left)), right(std::move(right)), gyro(gyro),
+      kinematics(kinematics), ramseteController(ramseteController),
+      poseEstimator(kinematics, gyro.GetRotation2d(), left->getPosition(),
+                    right->getPosition(), initalPose) {
 
- // Get vision table.
+  // Get vision table.
   nt::NetworkTableInstance inst = nt::NetworkTableInstance::GetDefault();
   auto table = inst.GetTable(visionTable);
 
@@ -71,15 +71,14 @@ DifferentialDrive::DifferentialDrive(
 }
 
 DifferentialDrive::DifferentialDrive(
-  std::unique_ptr<LinearVelocityController> left, 
-  std::unique_ptr<LinearVelocityController> right,
-  const frc::Gyro& gyro, frc::DifferentialDriveKinematics kinematics,
-  frc::RamseteController ramseteController,
-  const frc::Pose2d &initalPose) : 
-  left(std::move(left)), right(std::move(right)), gyro(gyro), 
-  kinematics(kinematics), ramseteController(ramseteController), 
-  poseEstimator(kinematics, gyro.GetRotation2d(), left->getPosition(), 
-                right->getPosition(), initalPose){}
+    std::unique_ptr<LinearVelocityController> left,
+    std::unique_ptr<LinearVelocityController> right, const frc::Gyro &gyro,
+    frc::DifferentialDriveKinematics kinematics,
+    frc::RamseteController ramseteController, const frc::Pose2d &initalPose)
+    : left(std::move(left)), right(std::move(right)), gyro(gyro),
+      kinematics(kinematics), ramseteController(ramseteController),
+      poseEstimator(kinematics, gyro.GetRotation2d(), left->getPosition(),
+                    right->getPosition(), initalPose) {}
 
 DifferentialDrive::~DifferentialDrive() {
   // Remove listeners.

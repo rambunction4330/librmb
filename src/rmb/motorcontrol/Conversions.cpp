@@ -20,21 +20,15 @@ public:
     angular->setVelocity(velocity / conversion);
   }
 
-  units::meters_per_second_t getTargetVelocity() const override{
+  units::meters_per_second_t getTargetVelocity() const override {
     return angular->getTargetVelocity() * conversion;
   }
 
-  void setPower(double power) override { 
-    angular->setPower(power); 
-  }
+  void setPower(double power) override { angular->setPower(power); }
 
-  void disable() override { 
-    angular->disable(); 
-  }
+  void disable() override { angular->disable(); }
 
-  void stop() override { 
-    angular->stop(); 
-  }
+  void stop() override { angular->stop(); }
 
   units::meters_per_second_t getVelocity() const override {
     return angular->getVelocity() * conversion;
@@ -48,7 +42,6 @@ public:
     angular->zeroPosition(offset / conversion);
   }
 
-
   units::meters_per_second_t getTolerance() const override {
     return angular->getTolerance() * conversion;
   }
@@ -58,12 +51,12 @@ private:
   AngularVelocityController::ConversionUnit_t conversion;
 };
 
-std::unique_ptr<LinearVelocityController> 
+std::unique_ptr<LinearVelocityController>
 asLinear(std::unique_ptr<AngularVelocityController> angularController,
-          AngularVelocityController::ConversionUnit_t conversion) {
+         AngularVelocityController::ConversionUnit_t conversion) {
 
   return std::make_unique<AngularAsLinearVelocityController>(
-           std::move(angularController), conversion);
+      std::move(angularController), conversion);
 }
 
 //---------------------------
@@ -97,13 +90,9 @@ public:
     return angular->getMaxPosition() * conversion;
   }
 
-  void disable() override { 
-    angular->disable(); 
-  }
+  void disable() override { angular->disable(); }
 
-  void stop() override { 
-    angular->stop(); 
-  }
+  void stop() override { angular->stop(); }
 
   units::meters_per_second_t getVelocity() const override {
     return angular->getVelocity() * conversion;
@@ -126,12 +115,12 @@ private:
   AngularPositionController::ConversionUnit_t conversion;
 };
 
-std::unique_ptr<LinearPositionController> 
+std::unique_ptr<LinearPositionController>
 asLinear(std::unique_ptr<AngularPositionController> angularController,
          AngularPositionController::ConversionUnit_t conversion) {
 
   return std::make_unique<AngularAsLinearPositionController>(
-           std::move(angularController), conversion);
+      std::move(angularController), conversion);
 }
 
 //--------------------------
@@ -153,17 +142,11 @@ public:
     return linear->getTargetVelocity() / conversion;
   }
 
-  void setPower(double power) override { 
-    linear->setPower(power); 
-  }
+  void setPower(double power) override { linear->setPower(power); }
 
-  void disable() override { 
-    linear->disable(); 
-  }
+  void disable() override { linear->disable(); }
 
-  void stop() override { 
-    linear->stop(); 
-  }
+  void stop() override { linear->stop(); }
 
   units::radians_per_second_t getVelocity() const override {
     return linear->getVelocity() / conversion;
@@ -186,12 +169,12 @@ private:
   LinearVelocityController::ConversionUnit_t conversion;
 };
 
-std::unique_ptr<AngularVelocityController> 
+std::unique_ptr<AngularVelocityController>
 asAngular(std::unique_ptr<LinearVelocityController> linearController,
           LinearVelocityController::ConversionUnit_t conversion) {
 
   return std::make_unique<LinearAsAngularVelocityController>(
-           std::move(linearController), conversion);
+      std::move(linearController), conversion);
 }
 
 //--------------------------
@@ -225,13 +208,9 @@ public:
     return linear->getMaxPosition() / conversion;
   }
 
-  void disable() { 
-    linear->disable(); 
-  }
+  void disable() { linear->disable(); }
 
-  void stop() { 
-    linear->stop(); 
-  }
+  void stop() { linear->stop(); }
 
   units::radians_per_second_t getVelocity() const override {
     return linear->getVelocity() / conversion;
@@ -254,11 +233,11 @@ private:
   LinearPositionController::ConversionUnit_t conversion;
 };
 
-std::unique_ptr<AngularPositionController> 
+std::unique_ptr<AngularPositionController>
 asAngular(std::unique_ptr<LinearPositionController> linearController,
           LinearPositionController::ConversionUnit_t conversion) {
 
   return std::make_unique<LinearAsAngularPositionController>(
-           std::move(linearController), conversion);
+      std::move(linearController), conversion);
 }
 } // namespace rmb
