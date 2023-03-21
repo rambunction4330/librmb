@@ -156,12 +156,14 @@ void DifferentialDrive::resetPose(const frc::Pose2d &pose) {
                               right->getPosition(), pose);
 }
 
-frc2::CommandPtr 
-DifferentialDrive::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list<frc2::Subsystem*> subsystems) {
-  return frc2::RamseteCommand(trajectory, [this]() { return getPose(); }, 
-                              ramseteController, kinematics, 
-                              [this](auto l, auto r) { driveWheelSpeeds(l, r); }, 
-                              subsystems).ToPtr();
+frc2::CommandPtr DifferentialDrive::followWPILibTrajectory(
+    frc::Trajectory trajectory,
+    std::initializer_list<frc2::Subsystem *> subsystems) {
+  return frc2::RamseteCommand(
+             trajectory, [this]() { return getPose(); }, ramseteController,
+             kinematics, [this](auto l, auto r) { driveWheelSpeeds(l, r); },
+             subsystems)
+      .ToPtr();
 }
 
 } // namespace rmb
