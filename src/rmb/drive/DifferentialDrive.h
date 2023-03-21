@@ -96,22 +96,22 @@ public:
    * Updates the current position of the robot using latency compensated vision
    * data.
    *
-   * @param poseEstimate The estimated position of the robot from vision. 
-   * @param time         The time at which the data that produces this 
+   * @param poseEstimate The estimated position of the robot from vision.
+   * @param time         The time at which the data that produces this
    *                     estimate was captures. This is an absolute time with
-   *                     with the zero eposh being the same as wpi::Now() and 
-   *                     nt::Now(). This is usually extracted from network 
-   *                     tables. 
+   *                     with the zero eposh being the same as wpi::Now() and
+   *                     nt::Now(). This is usually extracted from network
+   *                     tables.
    */
   void addVisionMeasurments(const frc::Pose2d &poseEstimate,
                             units::second_t time) override;
 
   /**
-   * Change accuratly vision data is expected to be. 
+   * Change accuratly vision data is expected to be.
    *
    * @param standardDevs The standar deviation of vision measurments. This is
-   *                     by how much teh actual robot positioon varies from 
-   *                     the actual posiotion of the robot. A larger value 
+   *                     by how much teh actual robot positioon varies from
+   *                     the actual posiotion of the robot. A larger value
    *                     means less acurate data. These are in units of meters
    *                     and radians ordered X, Y, Theta.
    */
