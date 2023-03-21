@@ -8,8 +8,8 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:66: warning: Compound rmb::AngularAsLinearPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:12: warning: Compound rmb::AngularAsLinearVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:23: warning: Compound rmb::DifferentialDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:180: warning: Compound rmb::LinearAsAngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:126: warning: Compound rmb::LinearAsAngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:182: warning: Compound rmb::LinearAsAngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:128: warning: Compound rmb::LinearAsAngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:9: warning: Compound rmb::LogitechGamepad is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:11: warning: Compound rmb::LogitechGamepad::Axes is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:21: warning: Compound rmb::LogitechGamepad::Buttons is not documented.
@@ -26,11 +26,11 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:21: warning: Compound rmb::SparkMaxVelocityControllerHelper::MotorConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:31: warning: Compound rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:38: warning: Compound rmb::SparkMaxVelocityControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:229: warning: The following parameter of rmb::asAngular(std::unique_ptr< LinearPositionController > linearController, LinearPositionController::ConversionUnit_t conversion) is not documented:
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:233: warning: The following parameter of rmb::asAngular(std::unique_ptr< LinearPositionController > linearController, LinearPositionController::ConversionUnit_t conversion) is not documented:
   parameter 'linearController'
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:169: warning: The following parameter of rmb::asAngular(std::unique_ptr< LinearVelocityController > linearController, LinearVelocityController::ConversionUnit_t conversion) is not documented:
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:171: warning: The following parameter of rmb::asAngular(std::unique_ptr< LinearVelocityController > linearController, LinearVelocityController::ConversionUnit_t conversion) is not documented:
   parameter 'linearController'
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:115: warning: The following parameter of rmb::asLinear(std::unique_ptr< AngularPositionController > angularController, AngularPositionController::ConversionUnit_t conversion) is not documented:
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:117: warning: The following parameter of rmb::asLinear(std::unique_ptr< AngularPositionController > angularController, AngularPositionController::ConversionUnit_t conversion) is not documented:
   parameter 'angularController'
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:55: warning: The following parameter of rmb::asLinear(std::unique_ptr< AngularVelocityController > angularController, AngularVelocityController::ConversionUnit_t conversion) is not documented:
   parameter 'angularController'
@@ -141,22 +141,22 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:56: warning: Member getWheelSpeeds() const (function) of class rmb::DifferentialDrive is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:58: warning: Member driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds) (function) of class rmb::DifferentialDrive is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:59: warning: Member getChassisSpeeds() const (function) of class rmb::DifferentialDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:107: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:109: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:110: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:14: warning: Member AngularAsLinearVelocityController(std::unique_ptr< AngularVelocityController > angularController, AngularVelocityController::ConversionUnit_t conversionFactor) (function) of class rmb::AngularAsLinearVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:106: warning: Member ConversionUnit (typedef) of class rmb::LinearVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:108: warning: Member ConversionUnit_t (typedef) of class rmb::LinearVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:68: warning: Member AngularAsLinearPositionController(std::unique_ptr< AngularPositionController > angularController, AngularPositionController::ConversionUnit_t conversionFactor) (function) of class rmb::AngularAsLinearPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:115: warning: Member ConversionUnit (typedef) of class rmb::LinearPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:117: warning: Member ConversionUnit_t (typedef) of class rmb::LinearPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:128: warning: Member LinearAsAngularVelocityController(std::unique_ptr< LinearVelocityController > linearController, LinearVelocityController::ConversionUnit_t conversionFactor) (function) of class rmb::LinearAsAngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:120: warning: Member ConversionUnit (typedef) of class rmb::LinearPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:122: warning: Member ConversionUnit_t (typedef) of class rmb::LinearPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:130: warning: Member LinearAsAngularVelocityController(std::unique_ptr< LinearVelocityController > linearController, LinearVelocityController::ConversionUnit_t conversionFactor) (function) of class rmb::LinearAsAngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:110: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:182: warning: Member LinearAsAngularPositionController(std::unique_ptr< LinearPositionController > linearController, LinearPositionController::ConversionUnit_t conversionFactor) (function) of class rmb::LinearAsAngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:107: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:109: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Conversions.cpp:184: warning: Member LinearAsAngularPositionController(std::unique_ptr< LinearPositionController > linearController, LinearPositionController::ConversionUnit_t conversionFactor) (function) of class rmb::LinearAsAngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:23: warning: Member AngularFeedforwardontroller(AngularFeedforwardontroller &&)=default (function) of class rmb::AngularFeedforwardontroller is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:25: warning: Member AngularFeedforwardontroller(std::unique_ptr< frc::MotorController > &&motorController, std::unique_ptr< rmb::Feedforward< units::radians >> &&feedforward) (function) of class rmb::AngularFeedforwardontroller is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:110: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
@@ -169,14 +169,14 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:108: warning: Member ConversionUnit_t (typedef) of class rmb::LinearVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:16: warning: expected whitespace after \b command
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:19: warning: end of comment block while expecting command </b>
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:115: warning: Member ConversionUnit (typedef) of class rmb::LinearPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:117: warning: Member ConversionUnit_t (typedef) of class rmb::LinearPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:120: warning: Member ConversionUnit (typedef) of class rmb::LinearPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:122: warning: Member ConversionUnit_t (typedef) of class rmb::LinearPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:106: warning: Member ConversionUnit (typedef) of class rmb::LinearVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:108: warning: Member ConversionUnit_t (typedef) of class rmb::LinearVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/ServoPositionController.h:20: warning: Member ServoPositionController(ServoPositionController &&)=default (function) of class rmb::ServoPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/ServoPositionController.h:22: warning: Member ServoPositionController(int channel) (function) of class rmb::ServoPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:107: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:109: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:69: warning: Member MotorConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:70: warning: Member PIDConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:71: warning: Member Range (typedef) of class rmb::SparkMaxPositionController is not documented.
@@ -184,8 +184,8 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:73: warning: Member EncoderType (typedef) of class rmb::SparkMaxPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:74: warning: Member LimitSwitchConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:75: warning: Member FeedbackConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:107: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:109: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:91: warning: Member SparkMaxPositionController(const CreateInfo &createInfo) (function) of class rmb::SparkMaxPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:78: warning: Member motorConfig (variable) of struct rmb::SparkMaxPositionController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:79: warning: Member pidConfig (variable) of struct rmb::SparkMaxPositionController::CreateInfo is not documented.
