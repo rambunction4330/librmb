@@ -98,39 +98,39 @@ public:
 
   frc2::CommandPtr followWPILibTrajectory(
       frc::Trajectory trajectory,
-      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
   frc2::CommandPtr followWPILibTrajectoryGroup(
       std::vector<frc::Trajectory> trajectoryGroup,
-      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
-  frc2::CommandPtr
-  followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory,
-                     std::initializer_list<frc2::Subsystem *> driveRequirments) override;
+  frc2::CommandPtr followPPTrajectory(
+      pathplanner::PathPlannerTrajectory trajectory,
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
   frc2::CommandPtr followPPTrajectoryGroup(
       std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
-      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
   frc2::CommandPtr followPPTrajectoryWithEvents(
       pathplanner::PathPlannerTrajectory trajectory,
       std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
   frc2::CommandPtr followPPTrajectoryGroupWithEvents(
       std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
       std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
   frc2::CommandPtr fullPPAuto(
       pathplanner::PathPlannerTrajectory trajectory,
       std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
   frc2::CommandPtr fullPPAuto(
       std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
       std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
 private:
   //-----------------
@@ -154,9 +154,9 @@ private:
   //---------------
 
   /**
-   * Network Tables subscriber for vision positon predictions.
+   * Network Tables subscriber for vision position predictions.
    *
-   * Datya is sent in a three entry double array ordered X, Y, Theta. X and Y
+   * Data is sent in a three entry double array ordered X, Y, Theta. X and Y
    * are in meters and Theta is in radians.
    */
   nt::DoubleArraySubscriber poseSubscriber;
@@ -166,16 +166,16 @@ private:
    *
    * Data is sent in a three entry double array ordered X, Y, Theta. X and Y
    * are in meters and Theta is in radians. The standard deviations are a
-   * measure of how much the reported positon typically deviates from the true
-   * positon. Larger values denote less accuracy in vision data, while smaller
+   * measure of how much the reported position typically deviates from the true
+   * position. Larger values denote less accuracy in vision data, while smaller
    * values denote higher accuracy.
    */
   nt::DoubleArraySubscriber stdDevSubscriber;
 
-  /** Handle for keeping track of vision posion callback for position. */
+  /** Handle for keeping track of vision position callback for position. */
   NT_Listener poseListener;
 
-  /** Handle for keeping track of vision positon standard deviations callback
+  /** Handle for keeping track of vision position standard deviations callback
    * for position.
    */
   NT_Listener stdDevListener;

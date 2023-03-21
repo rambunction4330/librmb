@@ -169,30 +169,30 @@ void DifferentialDrive::resetPose(const frc::Pose2d &pose) {
 
 frc2::CommandPtr DifferentialDrive::followWPILibTrajectory(
     frc::Trajectory trajectory,
-    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+    std::initializer_list<frc2::Subsystem *> driveRequirements) {
 
   return frc2::RamseteCommand(
              trajectory, [this]() { return getPose(); }, ramseteController,
              kinematics, [this](auto l, auto r) { driveWheelSpeeds(l, r); },
-             driveRequirments)
+             driveRequirements)
       .ToPtr();
 }
 
 frc2::CommandPtr DifferentialDrive::followPPTrajectory(
     pathplanner::PathPlannerTrajectory trajectory,
-    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+    std::initializer_list<frc2::Subsystem *> driveRequirements) {
 
   return pathplanner::PPRamseteCommand(
              trajectory, [this]() { return getPose(); }, ramseteController,
              kinematics, [this](auto l, auto r) { driveWheelSpeeds(l, r); },
-             driveRequirments)
+             driveRequirements)
       .ToPtr();
 }
 
 frc2::CommandPtr DifferentialDrive::fullPPAuto(
     std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
     std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+    std::initializer_list<frc2::Subsystem *> driveRequirements) {
 
   if (trajectoryGroup.size() < 1) {
     return frc2::cmd::None();
@@ -213,7 +213,7 @@ frc2::CommandPtr DifferentialDrive::fullPPAuto(
     commands.emplace_back(
         autoBuilder.stopEventGroup(trajectory.getStartStopEvent()));
     commands.emplace_back(
-        followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirments));
+        followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirements));
   }
 
   commands.emplace_back(
