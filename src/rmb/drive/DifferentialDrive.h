@@ -105,9 +105,9 @@ public:
       std::vector<frc::Trajectory> trajectoryGroup,
       std::initializer_list<frc2::Subsystem *> driveRequirements);
 
-  frc2::CommandPtr
-  followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory,
-                     std::initializer_list<frc2::Subsystem *> driveRequirements);
+  frc2::CommandPtr followPPTrajectory(
+      pathplanner::PathPlannerTrajectory trajectory,
+      std::initializer_list<frc2::Subsystem *> driveRequirements);
 
   frc2::CommandPtr followPPTrajectoryGroup(
       std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
