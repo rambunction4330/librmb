@@ -105,9 +105,9 @@ public:
       std::vector<frc::Trajectory> trajectoryGroup,
       std::initializer_list<frc2::Subsystem *> driveRequirments);
 
-  frc2::CommandPtr
-  followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory,
-                     std::initializer_list<frc2::Subsystem *> driveRequirments);
+  frc2::CommandPtr followPPTrajectory(
+      pathplanner::PathPlannerTrajectory trajectory,
+      std::initializer_list<frc2::Subsystem *> driveRequirments);
 
   frc2::CommandPtr followPPTrajectoryGroup(
       std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
@@ -123,7 +123,15 @@ public:
       std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
       std::initializer_list<frc2::Subsystem *> driveRequirments);
 
-  frc2::CommandPtr followPPFullAuto();
+  frc2::CommandPtr fullPPAuto(
+      pathplanner::PathPlannerTrajectory trajectory,
+      std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
+      std::initializer_list<frc2::Subsystem *> driveRequirments);
+  
+    frc2::CommandPtr fullPPAuto(
+      std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
+      std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
+      std::initializer_list<frc2::Subsystem *> driveRequirments);
 
 private:
   //-----------------
