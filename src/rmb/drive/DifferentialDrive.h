@@ -1,6 +1,7 @@
 
 #pragma once
 
+#include <initializer_list>
 #include <memory>
 #include <mutex>
 #include <string>
@@ -19,6 +20,8 @@
 #include <networktables/NetworkTable.h>
 
 #include <frc2/command/CommandPtr.h>
+
+#include <pathplanner/lib/PathPlannerTrajectory.h>
 
 #include "rmb/motorcontrol/LinearVelocityController.h"
 
@@ -95,8 +98,10 @@ public:
   // TODO: Add Trajectoyr Following Methods
 
   frc2::CommandPtr followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list<frc2::Subsystem*> subsystems);
-  // frc2::ComnandPtr followPPTrajectory();
-  // frc2::CommandPtr followPPTrajectoryGroup();
+  frc2::CommandPtr followWPILibTrajectoryGroup(std::vector<frc::Trajectory> trajectoryGroup, std::initializer_list<frc2::Subsystem*> subsystems);
+
+  frc2::CommandPtr followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list<frc2::Subsystem*> subsystems);
+  frc2::CommandPtr followPPTrajectoryGroup(std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup, std::initializer_list<frc2::Subsystem*> subsystems);
   // frc2::CommandPtr followPPTrajectoryWithEvents();
   // frc2::CommandPtr followPPFullAuto();
 

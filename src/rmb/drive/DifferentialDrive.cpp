@@ -1,5 +1,4 @@
 #include "rmb/drive/DifferentialDrive.h"
-#include "frc2/command/Subsystem.h"
 
 #include <frc/drive/DifferentialDrive.h>
 
@@ -8,7 +7,13 @@
 #include <networktables/NetworkTable.h>
 #include <networktables/NetworkTableInstance.h>
 
+#include <frc2/command/Subsystem.h>
+#include <frc2/command/CommandPtr.h>
 #include <frc2/command/RamseteCommand.h>
+#include <frc2/command/Commands.h>
+
+#include <pathplanner/lib/commands/PPRamseteCommand.h>
+#include <pathplanner/lib/auto/RamseteAutoBuilder.h>
 
 namespace rmb {
 
@@ -163,5 +168,35 @@ DifferentialDrive::followWPILibTrajectory(frc::Trajectory trajectory, std::initi
                               [this](auto l, auto r) { driveWheelSpeeds(l, r); }, 
                               subsystems).ToPtr();
 }
+
+frc2::CommandPtr 
+DifferentialDrive::followWPILibTrajectoryGroup(std::vector<frc::Trajectory> trajectoryGroup, std::initializer_list<frc2::Subsystem*> subsystems) {
+  std::vector<frc2::CommandPtr> followCommands;
+
+  for (auto trajectory : trajectoryGroup) {
+    followCommands.emplace_back(followWPILibTrajectory(trajectory, subsystems));
+  }
+
+  return frc2::cmd::Sequence(std::move(followCommands));
+}
+
+frc2::CommandPtr DifferentialDrive::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list<frc2::Subsystem*> subsystems) {
+  return pathplanner::PPRamseteCommand(trajectory, [this]() { return getPose(); }, 
+                                       ramseteController, kinematics, 
+                                       [this](auto l, auto r) { driveWheelSpeeds(l, r); }, 
+                                       subsystems).ToPtr();
+}
+
+frc2::CommandPtr DifferentialDrive::followPPTrajectoryGroup(std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup, std::initializer_list<frc2::Subsystem*> subsystems) {
+  std::vector<frc2::CommandPtr> followCommands;
+
+  for (auto trajectory : trajectoryGroup) {
+    followCommands.emplace_back(followPPTrajectory(trajectory, subsystems));
+  }
+
+  return frc2::cmd::Sequence(std::move(followCommands));
+}
+
+
 
 } // namespace rmb
