@@ -97,9 +97,9 @@ public:
 
   // TODO: Add Trajectoyr Following Methods
 
-  frc2::CommandPtr
-  followWPILibTrajectory(frc::Trajectory trajectory,
-                         std::initializer_list<frc2::Subsystem *> driveRequirments);
+  frc2::CommandPtr followWPILibTrajectory(
+      frc::Trajectory trajectory,
+      std::initializer_list<frc2::Subsystem *> driveRequirments);
 
   frc2::CommandPtr followWPILibTrajectoryGroup(
       std::vector<frc::Trajectory> trajectoryGroup,
@@ -118,10 +118,10 @@ public:
       std::unordered_map<std::string, std::shared_ptr<frc2::Command>> evenMap,
       std::initializer_list<frc2::Subsystem *> driveRequirments);
 
-frc2::CommandPtr followPPTrajectoryGroupWithEvents(
-    std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
-    std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-    std::initializer_list<frc2::Subsystem *> driveRequirments);
+  frc2::CommandPtr followPPTrajectoryGroupWithEvents(
+      std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
+      std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
+      std::initializer_list<frc2::Subsystem *> driveRequirments);
 
   frc2::CommandPtr followPPFullAuto();
 

@@ -12,8 +12,8 @@
 #include <frc2/command/RamseteCommand.h>
 #include <frc2/command/Subsystem.h>
 
-#include <pathplanner/lib/commands/PPRamseteCommand.h>
 #include <pathplanner/lib/commands/FollowPathWithEvents.h>
+#include <pathplanner/lib/commands/PPRamseteCommand.h>
 #include <unordered_map>
 
 namespace rmb {
@@ -180,7 +180,8 @@ frc2::CommandPtr DifferentialDrive::followWPILibTrajectoryGroup(
   std::vector<frc2::CommandPtr> followCommands;
 
   for (auto trajectory : trajectoryGroup) {
-    followCommands.emplace_back(followWPILibTrajectory(trajectory, driveRequirments));
+    followCommands.emplace_back(
+        followWPILibTrajectory(trajectory, driveRequirments));
   }
 
   return frc2::cmd::Sequence(std::move(followCommands));
@@ -204,7 +205,8 @@ frc2::CommandPtr DifferentialDrive::followPPTrajectoryGroup(
   std::vector<frc2::CommandPtr> followCommands;
 
   for (auto trajectory : trajectoryGroup) {
-    followCommands.emplace_back(followPPTrajectory(trajectory, driveRequirments));
+    followCommands.emplace_back(
+        followPPTrajectory(trajectory, driveRequirments));
   }
 
   return frc2::cmd::Sequence(std::move(followCommands));
@@ -215,8 +217,10 @@ frc2::CommandPtr DifferentialDrive::followPPTrajectoryWithEvents(
     std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
     std::initializer_list<frc2::Subsystem *> driveRequirments) {
 
-  return pathplanner::FollowPathWithEvents(followPPTrajectory(trajectory, driveRequirments).Unwrap(), 
-             trajectory.getMarkers(), eventMap).ToPtr();
+  return pathplanner::FollowPathWithEvents(
+             followPPTrajectory(trajectory, driveRequirments).Unwrap(),
+             trajectory.getMarkers(), eventMap)
+      .ToPtr();
 }
 
 frc2::CommandPtr DifferentialDrive::followPPTrajectoryGroupWithEvents(
@@ -227,12 +231,11 @@ frc2::CommandPtr DifferentialDrive::followPPTrajectoryGroupWithEvents(
   std::vector<frc2::CommandPtr> followCommands;
 
   for (auto trajectory : trajectoryGroup) {
-    followCommands.emplace_back(followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirments));
+    followCommands.emplace_back(
+        followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirments));
   }
 
   return frc2::cmd::Sequence(std::move(followCommands));
 }
-
-
 
 } // namespace rmb
