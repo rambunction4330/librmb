@@ -186,27 +186,27 @@ public:
       LinearPositionController::ConversionUnit_t conversionFactor)
       : linear(std::move(linearController)), conversion(conversionFactor) {}
 
-  void setPosition(units::radian_t position) {
+  void setPosition(units::radian_t position) override {
     linear->setPosition(position * conversion);
   }
 
-  units::radian_t getTargetPosition() const {
+  units::radian_t getTargetPosition() const override {
     return linear->getTargetPosition() / conversion;
   }
 
   void setPower(double power) override { linear->setPower(power); }
 
-  units::radian_t getMinPosition() const {
+  units::radian_t getMinPosition() const override {
     return linear->getMinPosition() / conversion;
   }
 
-  units::radian_t getMaxPosition() const {
+  units::radian_t getMaxPosition() const override {
     return linear->getMaxPosition() / conversion;
   }
 
-  void disable() { linear->disable(); }
+  void disable() override { linear->disable(); }
 
-  void stop() { linear->stop(); }
+  void stop() override { linear->stop(); }
 
   units::radians_per_second_t getVelocity() const override {
     return linear->getVelocity() / conversion;

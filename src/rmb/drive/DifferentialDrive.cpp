@@ -1,10 +1,14 @@
 #include "rmb/drive/DifferentialDrive.h"
+#include "frc2/command/Subsystem.h"
 
 #include <frc/drive/DifferentialDrive.h>
 
+#include <initializer_list>
 #include <networktables/DoubleArrayTopic.h>
 #include <networktables/NetworkTable.h>
 #include <networktables/NetworkTableInstance.h>
+
+#include <frc2/command/RamseteCommand.h>
 
 namespace rmb {
 
@@ -150,6 +154,14 @@ void DifferentialDrive::resetPose(const frc::Pose2d &pose) {
   std::lock_guard<std::mutex> lock(visionThreadMutex);
   poseEstimator.ResetPosition(gyro.GetRotation2d(), left->getPosition(),
                               right->getPosition(), pose);
+}
+
+frc2::CommandPtr 
+DifferentialDrive::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list<frc2::Subsystem*> subsystems) {
+  return frc2::RamseteCommand(trajectory, [this]() { return getPose(); }, 
+                              ramseteController, kinematics, 
+                              [this](auto l, auto r) { driveWheelSpeeds(l, r); }, 
+                              subsystems).ToPtr();
 }
 
 } // namespace rmb

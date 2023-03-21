@@ -7,15 +7,18 @@
 
 #include <units/velocity.h>
 
-#include <frc/controller/RamseteController.h>
-#include <frc/estimator/DifferentialDrivePoseEstimator.h>
-#include <frc/interfaces/Gyro.h>
 #include <frc/kinematics/ChassisSpeeds.h>
-#include <frc/kinematics/DifferentialDriveKinematics.h>
 #include <frc/kinematics/DifferentialDriveWheelSpeeds.h>
+#include <frc/kinematics/DifferentialDriveKinematics.h>
+#include <frc/interfaces/Gyro.h>
+#include <frc/estimator/DifferentialDrivePoseEstimator.h>
+#include <frc/controller/RamseteController.h>
+#include <frc/trajectory/Trajectory.h>
 
 #include <networktables/DoubleArrayTopic.h>
 #include <networktables/NetworkTable.h>
+
+#include <frc2/command/CommandPtr.h>
 
 #include "rmb/motorcontrol/LinearVelocityController.h"
 
@@ -23,7 +26,7 @@ namespace rmb {
 class DifferentialDrive {
 public:
   DifferentialDrive(const DifferentialDrive &) = delete;
-  DifferentialDrive(DifferentialDrive &&) = default;
+  DifferentialDrive(DifferentialDrive &&) = delete;
 
   DifferentialDrive(std::unique_ptr<LinearVelocityController> left,
                     std::unique_ptr<LinearVelocityController> right,
@@ -91,7 +94,7 @@ public:
 
   // TODO: Add Trajectoyr Following Methods
 
-  // frc2::CommandPtr followWPILibTrajectory();
+  frc2::CommandPtr followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list<frc2::Subsystem*> subsystems);
   // frc2::ComnandPtr followPPTrajectory();
   // frc2::CommandPtr followPPTrajectoryGroup();
   // frc2::CommandPtr followPPTrajectoryWithEvents();
