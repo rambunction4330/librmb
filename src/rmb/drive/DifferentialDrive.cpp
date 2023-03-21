@@ -12,8 +12,9 @@
 #include <frc2/command/RamseteCommand.h>
 #include <frc2/command/Subsystem.h>
 
-#include <pathplanner/lib/auto/RamseteAutoBuilder.h>
 #include <pathplanner/lib/commands/PPRamseteCommand.h>
+#include <pathplanner/lib/commands/FollowPathWithEvents.h>
+#include <unordered_map>
 
 namespace rmb {
 
@@ -163,21 +164,23 @@ void DifferentialDrive::resetPose(const frc::Pose2d &pose) {
 
 frc2::CommandPtr DifferentialDrive::followWPILibTrajectory(
     frc::Trajectory trajectory,
-    std::initializer_list<frc2::Subsystem *> subsystems) {
+    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+
   return frc2::RamseteCommand(
              trajectory, [this]() { return getPose(); }, ramseteController,
              kinematics, [this](auto l, auto r) { driveWheelSpeeds(l, r); },
-             subsystems)
+             driveRequirments)
       .ToPtr();
 }
 
 frc2::CommandPtr DifferentialDrive::followWPILibTrajectoryGroup(
     std::vector<frc::Trajectory> trajectoryGroup,
-    std::initializer_list<frc2::Subsystem *> subsystems) {
+    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+
   std::vector<frc2::CommandPtr> followCommands;
 
   for (auto trajectory : trajectoryGroup) {
-    followCommands.emplace_back(followWPILibTrajectory(trajectory, subsystems));
+    followCommands.emplace_back(followWPILibTrajectory(trajectory, driveRequirments));
   }
 
   return frc2::cmd::Sequence(std::move(followCommands));
@@ -185,24 +188,51 @@ frc2::CommandPtr DifferentialDrive::followWPILibTrajectoryGroup(
 
 frc2::CommandPtr DifferentialDrive::followPPTrajectory(
     pathplanner::PathPlannerTrajectory trajectory,
-    std::initializer_list<frc2::Subsystem *> subsystems) {
+    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+
   return pathplanner::PPRamseteCommand(
              trajectory, [this]() { return getPose(); }, ramseteController,
              kinematics, [this](auto l, auto r) { driveWheelSpeeds(l, r); },
-             subsystems)
+             driveRequirments)
       .ToPtr();
 }
 
 frc2::CommandPtr DifferentialDrive::followPPTrajectoryGroup(
     std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
-    std::initializer_list<frc2::Subsystem *> subsystems) {
+    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+
   std::vector<frc2::CommandPtr> followCommands;
 
   for (auto trajectory : trajectoryGroup) {
-    followCommands.emplace_back(followPPTrajectory(trajectory, subsystems));
+    followCommands.emplace_back(followPPTrajectory(trajectory, driveRequirments));
   }
 
   return frc2::cmd::Sequence(std::move(followCommands));
 }
+
+frc2::CommandPtr DifferentialDrive::followPPTrajectoryWithEvents(
+    pathplanner::PathPlannerTrajectory trajectory,
+    std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
+    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+
+  return pathplanner::FollowPathWithEvents(followPPTrajectory(trajectory, driveRequirments).Unwrap(), 
+             trajectory.getMarkers(), eventMap).ToPtr();
+}
+
+frc2::CommandPtr DifferentialDrive::followPPTrajectoryGroupWithEvents(
+    std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
+    std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
+    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+
+  std::vector<frc2::CommandPtr> followCommands;
+
+  for (auto trajectory : trajectoryGroup) {
+    followCommands.emplace_back(followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirments));
+  }
+
+  return frc2::cmd::Sequence(std::move(followCommands));
+}
+
+
 
 } // namespace rmb

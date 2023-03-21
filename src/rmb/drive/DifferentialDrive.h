@@ -99,19 +99,31 @@ public:
 
   frc2::CommandPtr
   followWPILibTrajectory(frc::Trajectory trajectory,
-                         std::initializer_list<frc2::Subsystem *> subsystems);
+                         std::initializer_list<frc2::Subsystem *> driveRequirments);
+
   frc2::CommandPtr followWPILibTrajectoryGroup(
       std::vector<frc::Trajectory> trajectoryGroup,
-      std::initializer_list<frc2::Subsystem *> subsystems);
+      std::initializer_list<frc2::Subsystem *> driveRequirments);
 
   frc2::CommandPtr
   followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory,
-                     std::initializer_list<frc2::Subsystem *> subsystems);
+                     std::initializer_list<frc2::Subsystem *> driveRequirments);
+
   frc2::CommandPtr followPPTrajectoryGroup(
       std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
-      std::initializer_list<frc2::Subsystem *> subsystems);
-  // frc2::CommandPtr followPPTrajectoryWithEvents();
-  // frc2::CommandPtr followPPFullAuto();
+      std::initializer_list<frc2::Subsystem *> driveRequirments);
+
+  frc2::CommandPtr followPPTrajectoryWithEvents(
+      pathplanner::PathPlannerTrajectory trajectory,
+      std::unordered_map<std::string, std::shared_ptr<frc2::Command>> evenMap,
+      std::initializer_list<frc2::Subsystem *> driveRequirments);
+
+frc2::CommandPtr followPPTrajectoryGroupWithEvents(
+    std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
+    std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
+    std::initializer_list<frc2::Subsystem *> driveRequirments);
+
+  frc2::CommandPtr followPPFullAuto();
 
 private:
   //-----------------
