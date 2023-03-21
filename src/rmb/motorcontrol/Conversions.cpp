@@ -12,30 +12,58 @@ namespace rmb {
 class AngularAsLinearVelocityController : public LinearVelocityController {
 public:
   AngularAsLinearVelocityController(
-      std::shared_ptr<AngularVelocityController> angularController,
-      MotorControlConversions::ConversionUnit_t conversionFactor)
-      : angular(angularController), conversion(conversionFactor) {}
+      std::unique_ptr<AngularVelocityController> angularController,
+      AngularVelocityController::ConversionUnit_t conversionFactor)
+      : angular(std::move(angularController)), conversion(conversionFactor) {}
 
-  void setVelocity(units::meters_per_second_t velocity) {
+  void setVelocity(units::meters_per_second_t velocity) override {
     angular->setVelocity(velocity / conversion);
   }
-  units::meters_per_second_t getTargetVelocity() const {
+
+  units::meters_per_second_t getTargetVelocity() const override{
     return angular->getTargetVelocity() * conversion;
   }
-  void setPower(double power) { angular->setPower(power); }
-  void disable() { angular->disable(); }
-  void stop() { angular->stop(); }
+
+  void setPower(double power) override { 
+    angular->setPower(power); 
+  }
+
+  void disable() override { 
+    angular->disable(); 
+  }
+
+  void stop() override { 
+    angular->stop(); 
+  }
+
+  units::meters_per_second_t getVelocity() const override {
+    return angular->getVelocity() * conversion;
+  }
+
+  units::meter_t getPosition() const override {
+    return angular->getPosition() * conversion;
+  }
+
+  void zeroPosition(units::meter_t offset) override {
+    angular->zeroPosition(offset / conversion);
+  }
+
+
+  units::meters_per_second_t getTolerance() const override {
+    return angular->getTolerance() * conversion;
+  }
 
 private:
-  std::shared_ptr<AngularVelocityController> angular;
-  MotorControlConversions::ConversionUnit_t conversion;
+  std::unique_ptr<AngularVelocityController> angular;
+  AngularVelocityController::ConversionUnit_t conversion;
 };
 
-std::shared_ptr<LinearVelocityController>
-asLinear(std::shared_ptr<AngularVelocityController> angularController,
-         MotorControlConversions::ConversionUnit_t conversion) {
-  return std::make_shared<AngularAsLinearVelocityController>(angularController,
-                                                             conversion);
+std::unique_ptr<LinearVelocityController> 
+asLinear(std::unique_ptr<AngularVelocityController> angularController,
+          AngularVelocityController::ConversionUnit_t conversion) {
+
+  return std::make_unique<AngularAsLinearVelocityController>(
+           std::move(angularController), conversion);
 }
 
 //---------------------------
@@ -45,35 +73,61 @@ asLinear(std::shared_ptr<AngularVelocityController> angularController,
 class AngularAsLinearPositionController : public LinearPositionController {
 public:
   AngularAsLinearPositionController(
-      std::shared_ptr<AngularPositionController> angularController,
-      MotorControlConversions::ConversionUnit_t conversionFactor)
-      : angular(angularController), conversion(conversionFactor) {}
+      std::unique_ptr<AngularPositionController> angularController,
+      AngularPositionController::ConversionUnit_t conversionFactor)
+      : angular(std::move(angularController)), conversion(conversionFactor) {}
 
-  void setPosition(units::meter_t position) {
+  void setPosition(units::meter_t position) override {
     angular->setPosition(position / conversion);
   }
-  units::meter_t getTargetPosition() const {
+
+  units::meter_t getTargetPosition() const override {
     return angular->getTargetPosition() * conversion;
   }
-  units::meter_t getMinPosition() const {
+
+  units::meter_t getMinPosition() const override {
     return angular->getMinPosition() * conversion;
   }
-  units::meter_t getMaxPosition() const {
+
+  units::meter_t getMaxPosition() const override {
     return angular->getMaxPosition() * conversion;
   }
-  void disable() { angular->disable(); }
-  void stop() { angular->stop(); }
+
+  void disable() override { 
+    angular->disable(); 
+  }
+
+  void stop() override { 
+    angular->stop(); 
+  }
+
+  units::meters_per_second_t getVelocity() const override {
+    return angular->getVelocity() * conversion;
+  }
+
+  units::meter_t getPosition() const override {
+    return angular->getPosition() * conversion;
+  }
+
+  void zeroPosition(units::meter_t offset) override {
+    angular->zeroPosition(offset / conversion);
+  }
+
+  units::meter_t getTolerance() const override {
+    return angular->getTolerance() * conversion;
+  }
 
 private:
-  std::shared_ptr<AngularPositionController> angular;
-  MotorControlConversions::ConversionUnit_t conversion;
+  std::unique_ptr<AngularPositionController> angular;
+  AngularPositionController::ConversionUnit_t conversion;
 };
 
-std::shared_ptr<LinearPositionController>
-asLinear(std::shared_ptr<AngularPositionController> angularController,
-         MotorControlConversions::ConversionUnit_t conversion) {
-  return std::make_shared<AngularAsLinearPositionController>(angularController,
-                                                             conversion);
+std::unique_ptr<LinearPositionController> 
+asLinear(std::unique_ptr<AngularPositionController> angularController,
+         AngularPositionController::ConversionUnit_t conversion) {
+
+  return std::make_unique<AngularAsLinearPositionController>(
+           std::move(angularController), conversion);
 }
 
 //--------------------------
@@ -83,30 +137,57 @@ asLinear(std::shared_ptr<AngularPositionController> angularController,
 class LinearAsAngularVelocityController : public AngularVelocityController {
 public:
   LinearAsAngularVelocityController(
-      std::shared_ptr<LinearVelocityController> linearController,
-      MotorControlConversions::ConversionUnit_t conversionFactor)
-      : linear(linearController), conversion(conversionFactor) {}
+      std::unique_ptr<LinearVelocityController> linearController,
+      LinearVelocityController::ConversionUnit_t conversionFactor)
+      : linear(std::move(linearController)), conversion(conversionFactor) {}
 
-  void setVelocity(units::radians_per_second_t velocity) {
+  void setVelocity(units::radians_per_second_t velocity) override {
     linear->setVelocity(velocity * conversion);
   }
-  units::radians_per_second_t getTargetVelocity() const {
+
+  units::radians_per_second_t getTargetVelocity() const override {
     return linear->getTargetVelocity() / conversion;
   }
-  void setPower(double power) { linear->setPower(power); }
-  void disable() { linear->disable(); }
-  void stop() { linear->stop(); }
+
+  void setPower(double power) override { 
+    linear->setPower(power); 
+  }
+
+  void disable() override { 
+    linear->disable(); 
+  }
+
+  void stop() override { 
+    linear->stop(); 
+  }
+
+  units::radians_per_second_t getVelocity() const override {
+    return linear->getVelocity() / conversion;
+  }
+
+  units::radian_t getPosition() const override {
+    return linear->getPosition() / conversion;
+  }
+
+  void zeroPosition(units::radian_t offset) override {
+    linear->zeroPosition(offset * conversion);
+  }
+
+  units::radians_per_second_t getTolerance() const override {
+    return linear->getTolerance() / conversion;
+  }
 
 private:
-  std::shared_ptr<LinearVelocityController> linear;
-  MotorControlConversions::ConversionUnit_t conversion;
+  std::unique_ptr<LinearVelocityController> linear;
+  LinearVelocityController::ConversionUnit_t conversion;
 };
 
-std::shared_ptr<AngularVelocityController>
-asAngular(std::shared_ptr<LinearVelocityController> linearController,
-          MotorControlConversions::ConversionUnit_t conversion) {
-  return std::make_shared<LinearAsAngularVelocityController>(linearController,
-                                                             conversion);
+std::unique_ptr<AngularVelocityController> 
+asAngular(std::unique_ptr<LinearVelocityController> linearController,
+          LinearVelocityController::ConversionUnit_t conversion) {
+
+  return std::make_unique<LinearAsAngularVelocityController>(
+           std::move(linearController), conversion);
 }
 
 //--------------------------
@@ -116,34 +197,60 @@ asAngular(std::shared_ptr<LinearVelocityController> linearController,
 class LinearAsAngularPositionController : public AngularPositionController {
 public:
   LinearAsAngularPositionController(
-      std::shared_ptr<LinearPositionController> linearController,
-      MotorControlConversions::ConversionUnit_t conversionFactor)
-      : linear(linearController), conversion(conversionFactor) {}
+      std::unique_ptr<LinearPositionController> linearController,
+      LinearPositionController::ConversionUnit_t conversionFactor)
+      : linear(std::move(linearController)), conversion(conversionFactor) {}
 
   void setPosition(units::radian_t position) {
     linear->setPosition(position * conversion);
   }
+
   units::radian_t getTargetPosition() const {
     return linear->getTargetPosition() / conversion;
   }
+
   units::radian_t getMinPosition() const {
     return linear->getMinPosition() / conversion;
   }
+
   units::radian_t getMaxPosition() const {
     return linear->getMaxPosition() / conversion;
   }
-  void disable() { linear->disable(); }
-  void stop() { linear->stop(); }
+
+  void disable() { 
+    linear->disable(); 
+  }
+
+  void stop() { 
+    linear->stop(); 
+  }
+
+  units::radians_per_second_t getVelocity() const override {
+    return linear->getVelocity() / conversion;
+  }
+
+  units::radian_t getPosition() const override {
+    return linear->getPosition() / conversion;
+  }
+
+  void zeroPosition(units::radian_t offset) override {
+    linear->zeroPosition(offset * conversion);
+  }
+
+  units::radian_t getTolerance() const override {
+    return linear->getTolerance() / conversion;
+  }
 
 private:
-  std::shared_ptr<LinearPositionController> linear;
-  MotorControlConversions::ConversionUnit_t conversion;
+  std::unique_ptr<LinearPositionController> linear;
+  LinearPositionController::ConversionUnit_t conversion;
 };
 
-std::shared_ptr<AngularPositionController>
-asAngular(std::shared_ptr<LinearPositionController> linearController,
-          MotorControlConversions::ConversionUnit_t conversion) {
-  return std::make_shared<LinearAsAngularPositionController>(linearController,
-                                                             conversion);
+std::unique_ptr<AngularPositionController> 
+asAngular(std::unique_ptr<LinearPositionController> linearController,
+          LinearPositionController::ConversionUnit_t conversion) {
+
+  return std::make_unique<LinearAsAngularPositionController>(
+           std::move(linearController), conversion);
 }
 } // namespace rmb

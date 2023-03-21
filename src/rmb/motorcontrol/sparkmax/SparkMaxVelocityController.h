@@ -11,7 +11,7 @@
 #include <units/current.h>
 #include <units/time.h>
 
-#include "rmb/motorcontrol/feedback/AngularVelocityFeedbackController.h"
+#include "rmb/motorcontrol/AngularVelocityController.h"
 #include "rmb/motorcontrol/feedforward/Feedforward.h"
 #include "rmb/motorcontrol/feedforward/SimpleFeedforward.h"
 
@@ -61,7 +61,7 @@ struct FeedbackConfig {
  * A wrapper around the SparkMax motorcontroller so that it can complies with
  * the `AngularVelocityFeedbackController` interface.
  */
-class SparkMaxVelocityController : public AngularVelocityFeedbackController {
+class SparkMaxVelocityController : public AngularVelocityController {
 public:
   using MotorConfig = SparkMaxVelocityControllerHelper::MotorConfig;
   using PIDConfig = SparkMaxVelocityControllerHelper::PIDConfig;

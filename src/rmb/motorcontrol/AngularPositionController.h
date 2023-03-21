@@ -4,8 +4,9 @@
 #include <memory>
 
 #include <units/angle.h>
-
-#include "rmb/motorcontrol/Conversions.h"
+#include <units/angular_velocity.h>
+#include <units/length.h>
+#include <units/math.h>
 
 namespace rmb {
 
@@ -54,18 +55,68 @@ public:
    * Common interface to stop the mechanism until `setPosition` is called again.
    */
   virtual void stop() = 0;
+
+    /**
+   * Common interface for returning the angular velocity of an encoder.
+   *
+   * @return The velocity of the encoder in radians per second.
+   */
+  virtual units::radians_per_second_t getVelocity() const = 0;
+
+  /**
+   * Common interface for returning the angular position of an encoder.
+   *
+   * @return The position of the encoder in radians.
+   */
+  virtual units::radian_t getPosition() const = 0;
+
+  /**
+   * Common interface for zeroing the anguklar positon an encoder so the current
+   * position is set to the offset.
+   *
+   * @param offset the offset from the current angular position at which to
+   *               set the zero position.
+   */
+  virtual void zeroPosition(units::radian_t offset = 0_rad) = 0;
+
+  /**
+   * Common interface for getting a controllers tolerance
+   */
+  virtual units::radian_t getTolerance() const = 0;
+
+  /**
+   * Common interface for getting the error between the velocities controllers
+   * target velocity and the actual velocity measured by the encoder.
+   *
+   * @return position error in radians per second.
+   */
+  virtual units::radian_t getError() const {
+    return getPosition() - getTargetPosition();
+  }
+
+  /**
+   * Common interface for getting whether the mechanism has achived it's
+   * target velocity.
+   *
+   * @return true is the controller has achived the target velocity.
+   */
+  virtual bool atTarget() const {
+    return units::math::abs(getError()) < getTolerance();
+  }
+
+  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
+  using ConversionUnit_t = units::unit_t<ConversionUnit>;
 };
 
 /**
- * Generates a `LinearPositionController` to controller from an
- * `AngularPositionController` via a linear conversion factor. The new
- * controller takes ownership over the old one.
- *
- * @param angularController origional controller the new one is generated from.
- * @param conversion conversion factor from linear to angular units.
- */
-std::shared_ptr<LinearPositionController>
-asLinear(std::shared_ptr<AngularPositionController> angularController,
-         MotorControlConversions::ConversionUnit_t conversion);
+  * Generates a `linearVelocityController` from a `AngularVelocityController` 
+  * via a proportional conversion factor. The new controller takes ownership 
+  * over the old one so this function can only be called at construction.
+  *
+  * @param conversion conversion factor from linear to angular units such as a 
+  *                   wheel diameter.
+  */
+std::unique_ptr<LinearPositionController> asLinear(std::unique_ptr<AngularPositionController> angularController, 
+                                                   AngularPositionController::ConversionUnit_t conversion);
 
 } // namespace rmb

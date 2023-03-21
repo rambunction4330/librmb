@@ -10,7 +10,7 @@
 
 #include <rev/CANSparkMax.h>
 
-#include "rmb/motorcontrol/feedback/AngularPositionFeedbackController.h"
+#include "rmb/motorcontrol/AngularPositionController.h"
 #include "rmb/motorcontrol/feedforward/SimpleFeedforward.h"
 
 namespace rmb {
@@ -64,7 +64,7 @@ struct FeedbackConfig {
  * A wrapper around the SparkMax motorcontroller that allows for the user to set
  * and get the position of the motor accurately through PID functionallity
  */
-class SparkMaxPositionController : public AngularPositionFeedbackController {
+class SparkMaxPositionController : public AngularPositionController {
 public:
   using MotorConfig = SparkMaxPositionControllerHelper::MotorConfig;
   using PIDConfig = SparkMaxPositionControllerHelper::PIDConfig;
