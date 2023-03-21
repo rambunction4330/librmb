@@ -38,6 +38,11 @@ public:
   virtual units::meter_t getTargetPosition() const = 0;
 
   /**
+   * Common interface for setting a mechanism's raw power output.
+   */
+  virtual void setPower(double power) = 0;
+
+  /**
    * Common interface for getting the minimum linear position.
    *
    * @return The minimum linear position in meters.

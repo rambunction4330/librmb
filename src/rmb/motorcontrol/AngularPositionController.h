@@ -33,6 +33,11 @@ public:
   virtual units::radian_t getTargetPosition() const = 0;
 
   /**
+   * Common interface for setting a mechanism's raw power output.
+   */
+  virtual void setPower(double power) = 0;
+
+  /**
    * Common interface for getting the minimum angular position.
    *
    * @return The minimum angular position in radians.

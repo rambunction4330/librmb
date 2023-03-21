@@ -141,6 +141,11 @@ units::radian_t SparkMaxPositionController::getTargetPosition() const {
   return targetPosition;
 }
 
+void SparkMaxPositionController::setPower(double power) {
+  targetPosition = 0.0_rad;
+  sparkMax.Set(power);
+}
+
 units::radian_t SparkMaxPositionController::getMinPosition() const {
   return minPose;
 }

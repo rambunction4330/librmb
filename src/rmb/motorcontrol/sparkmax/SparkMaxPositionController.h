@@ -109,6 +109,11 @@ public:
   units::radian_t getTargetPosition() const override;
 
   /**
+   * Common interface for setting a mechanism's raw power output.
+   */
+  virtual void setPower(double power) override;
+
+  /**
    * Gets the minimum position.
    *
    * @return The minimum position in radians.

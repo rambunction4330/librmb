@@ -85,6 +85,10 @@ public:
     return angular->getTargetPosition() * conversion;
   }
 
+  void setPower(double power) override { 
+    angular->setPower(power); 
+  }
+
   units::meter_t getMinPosition() const override {
     return angular->getMinPosition() * conversion;
   }
@@ -207,6 +211,10 @@ public:
 
   units::radian_t getTargetPosition() const {
     return linear->getTargetPosition() / conversion;
+  }
+
+  void setPower(double power) override { 
+    linear->setPower(power); 
   }
 
   units::radian_t getMinPosition() const {
