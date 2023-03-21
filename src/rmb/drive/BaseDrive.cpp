@@ -59,7 +59,7 @@ BaseDrive::BaseDrive(std::string visionTable) {
 BaseDrive::~BaseDrive() {
   // Remove listeners.
   nt::RemoveListener(poseListener);
-  nt::RemoveListener(stdDevListener); 
+  nt::RemoveListener(stdDevListener);
 }
 
 frc2::CommandPtr BaseDrive::followWPILibTrajectoryGroup(

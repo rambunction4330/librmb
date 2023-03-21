@@ -98,7 +98,8 @@ public:
    *
    * @return The updated position.
    */
-  void addVisionMeasurments(const frc::Pose2d &poseEstimate, units::second_t time) override;
+  void addVisionMeasurments(const frc::Pose2d &poseEstimate,
+                            units::second_t time) override;
 
   /**
    * Updates the current position of the robot using encoder and gyroscope

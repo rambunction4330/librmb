@@ -29,8 +29,8 @@ DifferentialDrive::DifferentialDrive(
     frc::DifferentialDriveKinematics kinematics,
     frc::RamseteController ramseteController, std::string visionTable,
     const frc::Pose2d &initalPose)
-    : BaseDrive(visionTable), left(std::move(left)), right(std::move(right)), gyro(gyro),
-      kinematics(kinematics), ramseteController(ramseteController),
+    : BaseDrive(visionTable), left(std::move(left)), right(std::move(right)),
+      gyro(gyro), kinematics(kinematics), ramseteController(ramseteController),
       poseEstimator(kinematics, gyro.GetRotation2d(), left->getPosition(),
                     right->getPosition(), initalPose) {}
 
@@ -110,7 +110,8 @@ void DifferentialDrive::resetPose(const frc::Pose2d &pose) {
                               right->getPosition(), pose);
 }
 
-void DifferentialDrive::addVisionMeasurments(const frc::Pose2d &poseEstimate, units::second_t time) {
+void DifferentialDrive::addVisionMeasurments(const frc::Pose2d &poseEstimate,
+                                             units::second_t time) {
   std::lock_guard<std::mutex> lock(visionThreadMutex);
   poseEstimator.AddVisionMeasurement(poseEstimate, time);
 }
