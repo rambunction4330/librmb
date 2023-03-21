@@ -7,13 +7,13 @@
 #include <networktables/NetworkTable.h>
 #include <networktables/NetworkTableInstance.h>
 
-#include <frc2/command/Subsystem.h>
 #include <frc2/command/CommandPtr.h>
-#include <frc2/command/RamseteCommand.h>
 #include <frc2/command/Commands.h>
+#include <frc2/command/RamseteCommand.h>
+#include <frc2/command/Subsystem.h>
 
-#include <pathplanner/lib/commands/PPRamseteCommand.h>
 #include <pathplanner/lib/auto/RamseteAutoBuilder.h>
+#include <pathplanner/lib/commands/PPRamseteCommand.h>
 
 namespace rmb {
 
@@ -171,8 +171,9 @@ frc2::CommandPtr DifferentialDrive::followWPILibTrajectory(
       .ToPtr();
 }
 
-frc2::CommandPtr 
-DifferentialDrive::followWPILibTrajectoryGroup(std::vector<frc::Trajectory> trajectoryGroup, std::initializer_list<frc2::Subsystem*> subsystems) {
+frc2::CommandPtr DifferentialDrive::followWPILibTrajectoryGroup(
+    std::vector<frc::Trajectory> trajectoryGroup,
+    std::initializer_list<frc2::Subsystem *> subsystems) {
   std::vector<frc2::CommandPtr> followCommands;
 
   for (auto trajectory : trajectoryGroup) {
@@ -182,14 +183,19 @@ DifferentialDrive::followWPILibTrajectoryGroup(std::vector<frc::Trajectory> traj
   return frc2::cmd::Sequence(std::move(followCommands));
 }
 
-frc2::CommandPtr DifferentialDrive::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list<frc2::Subsystem*> subsystems) {
-  return pathplanner::PPRamseteCommand(trajectory, [this]() { return getPose(); }, 
-                                       ramseteController, kinematics, 
-                                       [this](auto l, auto r) { driveWheelSpeeds(l, r); }, 
-                                       subsystems).ToPtr();
+frc2::CommandPtr DifferentialDrive::followPPTrajectory(
+    pathplanner::PathPlannerTrajectory trajectory,
+    std::initializer_list<frc2::Subsystem *> subsystems) {
+  return pathplanner::PPRamseteCommand(
+             trajectory, [this]() { return getPose(); }, ramseteController,
+             kinematics, [this](auto l, auto r) { driveWheelSpeeds(l, r); },
+             subsystems)
+      .ToPtr();
 }
 
-frc2::CommandPtr DifferentialDrive::followPPTrajectoryGroup(std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup, std::initializer_list<frc2::Subsystem*> subsystems) {
+frc2::CommandPtr DifferentialDrive::followPPTrajectoryGroup(
+    std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
+    std::initializer_list<frc2::Subsystem *> subsystems) {
   std::vector<frc2::CommandPtr> followCommands;
 
   for (auto trajectory : trajectoryGroup) {
@@ -198,7 +204,5 @@ frc2::CommandPtr DifferentialDrive::followPPTrajectoryGroup(std::vector<pathplan
 
   return frc2::cmd::Sequence(std::move(followCommands));
 }
-
-
 
 } // namespace rmb
