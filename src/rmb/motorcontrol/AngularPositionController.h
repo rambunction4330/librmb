@@ -56,7 +56,7 @@ public:
    */
   virtual void stop() = 0;
 
-    /**
+  /**
    * Common interface for returning the angular velocity of an encoder.
    *
    * @return The velocity of the encoder in radians per second.
@@ -104,19 +104,21 @@ public:
     return units::math::abs(getError()) < getTolerance();
   }
 
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
+  using ConversionUnit =
+      units::compound_unit<units::meters, units::inverse<units::radians>>;
   using ConversionUnit_t = units::unit_t<ConversionUnit>;
 };
 
 /**
-  * Generates a `linearVelocityController` from a `AngularVelocityController` 
-  * via a proportional conversion factor. The new controller takes ownership 
-  * over the old one so this function can only be called at construction.
-  *
-  * @param conversion conversion factor from linear to angular units such as a 
-  *                   wheel diameter.
-  */
-std::unique_ptr<LinearPositionController> asLinear(std::unique_ptr<AngularPositionController> angularController, 
-                                                   AngularPositionController::ConversionUnit_t conversion);
+ * Generates a `linearVelocityController` from a `AngularVelocityController`
+ * via a proportional conversion factor. The new controller takes ownership
+ * over the old one so this function can only be called at construction.
+ *
+ * @param conversion conversion factor from linear to angular units such as a
+ *                   wheel diameter.
+ */
+std::unique_ptr<LinearPositionController>
+asLinear(std::unique_ptr<AngularPositionController> angularController,
+         AngularPositionController::ConversionUnit_t conversion);
 
 } // namespace rmb

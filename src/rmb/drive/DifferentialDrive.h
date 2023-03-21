@@ -2,17 +2,17 @@
 #pragma once
 
 #include <memory>
-#include <string>
 #include <mutex>
+#include <string>
 
 #include <units/velocity.h>
 
-#include <frc/kinematics/DifferentialDriveKinematics.h>
-#include <frc/kinematics/DifferentialDriveWheelSpeeds.h>
-#include <frc/kinematics/ChassisSpeeds.h>
-#include <frc/interfaces/Gyro.h>
 #include <frc/controller/RamseteController.h>
 #include <frc/estimator/DifferentialDrivePoseEstimator.h>
+#include <frc/interfaces/Gyro.h>
+#include <frc/kinematics/ChassisSpeeds.h>
+#include <frc/kinematics/DifferentialDriveKinematics.h>
+#include <frc/kinematics/DifferentialDriveWheelSpeeds.h>
 
 #include <networktables/DoubleArrayTopic.h>
 #include <networktables/NetworkTable.h>
@@ -22,13 +22,12 @@
 namespace rmb {
 class DifferentialDrive {
 public:
-
-  DifferentialDrive(const DifferentialDrive&) = delete;
-  DifferentialDrive(DifferentialDrive&&) = default;
+  DifferentialDrive(const DifferentialDrive &) = delete;
+  DifferentialDrive(DifferentialDrive &&) = default;
 
   DifferentialDrive(std::unique_ptr<LinearVelocityController> left,
                     std::unique_ptr<LinearVelocityController> right,
-                    const frc::Gyro& gyro,
+                    const frc::Gyro &gyro,
                     frc::DifferentialDriveKinematics kinematics,
                     frc::RamseteController ramseteController,
                     std::string visionTable,
@@ -36,7 +35,7 @@ public:
 
   DifferentialDrive(std::unique_ptr<LinearVelocityController> left,
                     std::unique_ptr<LinearVelocityController> right,
-                    const frc::Gyro& gyro,
+                    const frc::Gyro &gyro,
                     frc::DifferentialDriveKinematics kinematics,
                     frc::RamseteController ramseteController,
                     const frc::Pose2d &initalPose = frc::Pose2d());
@@ -70,8 +69,8 @@ public:
 
   /**
    * Updates the current position of the robot using encoder and gyroscope
-   * data. 
-   * 
+   * data.
+   *
    * *Note:* Vision estimations are updated on a separate thread generated at
    * object construction.
    *
@@ -99,13 +98,12 @@ public:
   // frc2::CommandPtr followPPFullAuto();
 
 private:
-
   //-----------------
   // Drive Variables
   //-----------------
 
   std::unique_ptr<LinearVelocityController> left, right;
-  const frc::Gyro& gyro;
+  const frc::Gyro &gyro;
   frc::DifferentialDriveKinematics kinematics;
   frc::RamseteController ramseteController;
 

@@ -8,7 +8,6 @@
 #include <units/length.h>
 #include <units/math.h>
 
-
 namespace rmb {
 
 class LinearVelocityController;
@@ -19,7 +18,6 @@ class LinearVelocityController;
  */
 class AngularVelocityController {
 public:
-
   //***************
   // Motor Control
   //***************
@@ -109,18 +107,20 @@ public:
   // Conversions
   //*************
 
-  using ConversionUnit = units::compound_unit<units::meters, units::inverse<units::radians>>;
+  using ConversionUnit =
+      units::compound_unit<units::meters, units::inverse<units::radians>>;
   using ConversionUnit_t = units::unit_t<ConversionUnit>;
 };
 
 /**
-  * Generates a `linearVelocityController` from a `AngularVelocityController` 
-  * via a proportional conversion factor. The new controller takes ownership 
-  * over the old one so this function can only be called at construction.
-  *
-  * @param conversion conversion factor from linear to angular units such as a 
-  *                   wheel diameter.
-  */
-std::unique_ptr<LinearVelocityController> asLinear(std::unique_ptr<AngularVelocityController> angularController, 
-                                                   AngularVelocityController::ConversionUnit_t conversion);
+ * Generates a `linearVelocityController` from a `AngularVelocityController`
+ * via a proportional conversion factor. The new controller takes ownership
+ * over the old one so this function can only be called at construction.
+ *
+ * @param conversion conversion factor from linear to angular units such as a
+ *                   wheel diameter.
+ */
+std::unique_ptr<LinearVelocityController>
+asLinear(std::unique_ptr<AngularVelocityController> angularController,
+         AngularVelocityController::ConversionUnit_t conversion);
 } // namespace rmb
