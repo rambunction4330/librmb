@@ -1,8 +1,10 @@
 #pragma once
 
 #include "FalconPositionController.h"
+#include "ctre/phoenix/sensors/WPI_CANCoder.h"
 #include "rmb/motorcontrol/feedback/AngularVelocityFeedbackController.h"
 #include "units/angular_velocity.h"
+#include <optional>
 
 namespace rmb {
 
@@ -30,15 +32,26 @@ struct ProfileConfig {
 
 class FalconVelocityController : public AngularVelocityFeedbackController {
 public:
-  typedef units::unit<std::ratio<2048, 1>, units::turns> EncoderTick;
-  typedef units::unit_t<EncoderTick> EncoderTick_t;
+  typedef units::unit<std::ratio<2048, 1>, units::turns> InternalEncoderTick;
+  typedef units::unit_t<InternalEncoderTick> InternalEncoderTick_t;
 
-  typedef units::compound_unit<EncoderTick, units::inverse<units::deciseconds>>
-      RawVelocityUnit;
-  typedef units::unit_t<RawVelocityUnit> RawVelocityUnit_t;
+  typedef units::compound_unit<InternalEncoderTick, units::inverse<units::deciseconds>>
+      RawInternalVelocityUnit;
+  typedef units::unit_t<RawInternalVelocityUnit> RawInternalVelocityUnit_t;
 
-  typedef units::unit<std::ratio<1, 1>, EncoderTick> RawPositionUnit;
-  typedef units::unit_t<RawPositionUnit> RawPositionUnit_t;
+  typedef units::unit<std::ratio<1, 1>, InternalEncoderTick> RawInternalPositionUnit;
+  typedef units::unit_t<RawInternalPositionUnit> RawInternalPositionUnit_t;
+
+  //-------------CANCoder Units---------------------------------------------------
+  typedef units::unit<std::ratio<4096, 1>, units::turns> CANCoderTick;
+  typedef units::unit_t<CANCoderTick> CANCoderTick_t;
+
+  typedef units::compound_unit<CANCoderTick, units::inverse<units::deciseconds>>
+      RawCANCoderVelocityUnit;
+  typedef units::unit_t<RawCANCoderVelocityUnit> RawCANCoderVelocityUnit_t;
+
+  typedef units::unit<std::ratio<1, 1>, CANCoderTick> RawCANCoderPositionUnit;
+  typedef units::unit_t<RawCANCoderPositionUnit> RawCANCoderPositionUnit_t;
 
   struct CreateInfo {
     FalconPositionControllerHelper::MotorConfig config;
@@ -46,6 +59,7 @@ public:
     FalconVelocityControllerHelper::ProfileConfig profileConfig;
     FalconPositionControllerHelper::FeedbackConfig feedbackConfig;
     FalconVelocityControllerHelper::OpenLoopConfig openLoopConfig;
+    FalconPositionControllerHelper::CANCoderConfig canCoderConfig;
   };
 
   FalconVelocityController(const CreateInfo &createInfo);
@@ -130,6 +144,10 @@ private:
   units::radians_per_second_t tolerance = 0.0_tps;
 
   FalconVelocityControllerHelper::ProfileConfig profileConfig;
+
+  const bool usingCANCoder;
+
+  std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
 };
 
 } // namespace rmb

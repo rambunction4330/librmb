@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
 #include "rmb/motorcontrol/AngularPositionController.h"
 #include "rmb/motorcontrol/feedback/AngularPositionFeedbackController.h"
 #include "units/angle.h"
@@ -7,9 +8,12 @@
 #include "units/angular_velocity.h"
 
 #include "ctre/phoenix/motorcontrol/can/WPI_TalonFX.h"
+#include "ctre/phoenix/sensors/WPI_CANCoder.h"
+
 #include "units/base.h"
 #include "units/current.h"
 #include "units/time.h"
+#include <optional>
 
 namespace rmb {
 namespace FalconPositionControllerHelper {
@@ -51,18 +55,42 @@ struct FeedbackConfig {
   double gearRatio = 1.0;
   LimitSwitchConfig forwardSwitch = Disabled, reverseSwitch = Disabled;
 };
+
+struct CANCoderConfig {
+  enum RemoteSlot { RemoteSlot0 = 0, RemoteSlot1 = 1 };
+
+  bool useCANCoder = false;
+  int id;
+
+  int remoteSensorSlot; /*< Can be 0 or 1 depending on RemoteSlot0 or
+                           RemoteSlot1*/
+};
+
 } // namespace FalconPositionControllerHelper
 class FalconPositionController : public AngularPositionFeedbackController {
 public:
-  typedef units::unit<std::ratio<2048, 1>, units::turns> EncoderTick;
-  typedef units::unit_t<EncoderTick> EncoderTick_t;
+  //-------------Integrated Encoder Units-----------------------------------------
+  typedef units::unit<std::ratio<2048, 1>, units::turns> IntegratedEncoderTick;
+  typedef units::unit_t<IntegratedEncoderTick> IntegratedEncoderTick_t;
 
-  typedef units::compound_unit<EncoderTick, units::inverse<units::deciseconds>>
+  typedef units::compound_unit<IntegratedEncoderTick, units::inverse<units::deciseconds>>
       RawVelocityUnit;
-  typedef units::unit_t<RawVelocityUnit> RawVelocityUnit_t;
+  typedef units::unit_t<RawVelocityUnit> RawIntegratedVelocityUnit_t;
 
-  typedef units::unit<std::ratio<1, 1>, EncoderTick> RawPositionUnit;
-  typedef units::unit_t<RawPositionUnit> RawPositionUnit_t;
+  typedef units::unit<std::ratio<1, 1>, IntegratedEncoderTick> RawPositionUnit;
+  typedef units::unit_t<RawPositionUnit> RawIntegratedPositionUnit_t;
+
+
+  //-------------CANCoder Units---------------------------------------------------
+  typedef units::unit<std::ratio<4096, 1>, units::turns> CANCoderTick;
+  typedef units::unit_t<CANCoderTick> CANCoderTick_t;
+
+  typedef units::compound_unit<CANCoderTick, units::inverse<units::deciseconds>>
+      RawCANCoderVelocityUnit;
+  typedef units::unit_t<RawCANCoderVelocityUnit> RawCANCoderVelocityUnit_t;
+
+  typedef units::unit<std::ratio<1, 1>, CANCoderTick> RawCANCoderPositionUnit;
+  typedef units::unit_t<RawCANCoderPositionUnit> RawCANCoderPositionUnit_t;
 
   struct CreateInfo {
     FalconPositionControllerHelper::MotorConfig config;
@@ -70,6 +98,7 @@ public:
     FalconPositionControllerHelper::Range range;
     FalconPositionControllerHelper::FeedbackConfig feedbackConfig;
     FalconPositionControllerHelper::OpenLoopConfig openLoopConfig;
+    FalconPositionControllerHelper::CANCoderConfig canCoderConfig;
   };
 
   FalconPositionController(const CreateInfo &createInfo);
@@ -97,6 +126,8 @@ public:
 private:
   mutable ctre::phoenix::motorcontrol::can::WPI_TalonFX motorcontroller;
 
+  std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
+
   FalconPositionControllerHelper::Range range;
 
   float gearRatio = 0.0;
@@ -104,5 +135,7 @@ private:
   units::radian_t offset = 0_rad;
 
   units::radian_t tolerance = 0.0_rad;
+
+  const bool usingCANCoder;
 };
 } // namespace rmb
