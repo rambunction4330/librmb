@@ -23,10 +23,11 @@
 
 #include <pathplanner/lib/PathPlannerTrajectory.h>
 
+#include "rmb/drive/BaseDrive.h"
 #include "rmb/motorcontrol/LinearVelocityController.h"
 
 namespace rmb {
-class DifferentialDrive {
+class DifferentialDrive : public BaseDrive {
 public:
   DifferentialDrive(const DifferentialDrive &) = delete;
   DifferentialDrive(DifferentialDrive &&) = delete;
@@ -61,8 +62,8 @@ public:
   void driveWheelSpeeds(frc::DifferentialDriveWheelSpeeds wheelSpeeds);
   frc::DifferentialDriveWheelSpeeds getWheelSpeeds() const;
 
-  void driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds);
-  frc::ChassisSpeeds getChassisSpeeds() const;
+  void driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds) override;
+  frc::ChassisSpeeds getChassisSpeeds() const override;
 
   //------------------
   // Odometry Methods
@@ -71,7 +72,7 @@ public:
   /**
    * Returns the current poition without modifying it.
    */
-  frc::Pose2d getPose() const;
+  frc::Pose2d getPose() const override;
 
   /**
    * Updates the current position of the robot using encoder and gyroscope
@@ -82,56 +83,54 @@ public:
    *
    * @return The updated position.
    */
-  frc::Pose2d updatePose();
+  frc::Pose2d updatePose() override;
 
   /**
    * Resets the estimated robot poition.
    *
    * @return The position to reset the robots estimated position to.
    */
-  void resetPose(const frc::Pose2d &pose = frc::Pose2d());
+  void resetPose(const frc::Pose2d &pose = frc::Pose2d()) override;
 
   //----------------------
   // Trajectory Following
   //----------------------
 
-  // TODO: Add Trajectoyr Following Methods
-
   frc2::CommandPtr followWPILibTrajectory(
       frc::Trajectory trajectory,
-      std::initializer_list<frc2::Subsystem *> driveRequirments);
+      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
 
   frc2::CommandPtr followWPILibTrajectoryGroup(
       std::vector<frc::Trajectory> trajectoryGroup,
-      std::initializer_list<frc2::Subsystem *> driveRequirments);
+      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
 
   frc2::CommandPtr
   followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory,
-                     std::initializer_list<frc2::Subsystem *> driveRequirments);
+                     std::initializer_list<frc2::Subsystem *> driveRequirments) override;
 
   frc2::CommandPtr followPPTrajectoryGroup(
       std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
-      std::initializer_list<frc2::Subsystem *> driveRequirments);
+      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
 
   frc2::CommandPtr followPPTrajectoryWithEvents(
       pathplanner::PathPlannerTrajectory trajectory,
-      std::unordered_map<std::string, std::shared_ptr<frc2::Command>> evenMap,
-      std::initializer_list<frc2::Subsystem *> driveRequirments);
+      std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
+      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
 
   frc2::CommandPtr followPPTrajectoryGroupWithEvents(
       std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
       std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-      std::initializer_list<frc2::Subsystem *> driveRequirments);
+      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
 
   frc2::CommandPtr fullPPAuto(
       pathplanner::PathPlannerTrajectory trajectory,
       std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-      std::initializer_list<frc2::Subsystem *> driveRequirments);
+      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
 
   frc2::CommandPtr fullPPAuto(
       std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
       std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-      std::initializer_list<frc2::Subsystem *> driveRequirments);
+      std::initializer_list<frc2::Subsystem *> driveRequirments) override;
 
 private:
   //-----------------
