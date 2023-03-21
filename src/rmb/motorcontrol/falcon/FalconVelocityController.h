@@ -35,14 +35,17 @@ public:
   typedef units::unit<std::ratio<2048, 1>, units::turns> InternalEncoderTick;
   typedef units::unit_t<InternalEncoderTick> InternalEncoderTick_t;
 
-  typedef units::compound_unit<InternalEncoderTick, units::inverse<units::deciseconds>>
+  typedef units::compound_unit<InternalEncoderTick,
+                               units::inverse<units::deciseconds>>
       RawInternalVelocityUnit;
   typedef units::unit_t<RawInternalVelocityUnit> RawInternalVelocityUnit_t;
 
-  typedef units::unit<std::ratio<1, 1>, InternalEncoderTick> RawInternalPositionUnit;
+  typedef units::unit<std::ratio<1, 1>, InternalEncoderTick>
+      RawInternalPositionUnit;
   typedef units::unit_t<RawInternalPositionUnit> RawInternalPositionUnit_t;
 
-  //-------------CANCoder Units---------------------------------------------------
+  //-------------CANCoder
+  //Units---------------------------------------------------
   typedef units::unit<std::ratio<4096, 1>, units::turns> CANCoderTick;
   typedef units::unit_t<CANCoderTick> CANCoderTick_t;
 
