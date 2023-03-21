@@ -8,7 +8,7 @@ namespace rmb {
 frc2::CommandPtr BaseDrive::followWPILibTrajectoryGroup(
     std::vector<frc::Trajectory> trajectoryGroup,
     std::initializer_list<frc2::Subsystem *> driveRequirments) {
-  
+
   std::vector<frc2::CommandPtr> followCommands;
 
   for (auto trajectory : trajectoryGroup) {
@@ -39,8 +39,8 @@ frc2::CommandPtr BaseDrive::followPPTrajectoryWithEvents(
     std::initializer_list<frc2::Subsystem *> driveRequirments) {
 
   return pathplanner::FollowPathWithEvents(
-              followPPTrajectory(trajectory, driveRequirments).Unwrap(),
-              trajectory.getMarkers(), eventMap)
+             followPPTrajectory(trajectory, driveRequirments).Unwrap(),
+             trajectory.getMarkers(), eventMap)
       .ToPtr();
 }
 
@@ -68,4 +68,4 @@ frc2::CommandPtr BaseDrive::fullPPAuto(
   trajectoryGroup.push_back(trajectory);
   return fullPPAuto(trajectoryGroup, eventMap, driveRequirments);
 }
-}
+} // namespace rmb

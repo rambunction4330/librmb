@@ -10,15 +10,14 @@
 #include <networktables/DoubleArrayTopic.h>
 #include <networktables/NetworkTable.h>
 
-#include <frc2/command/Subsystem.h>
 #include <frc2/command/CommandPtr.h>
+#include <frc2/command/Subsystem.h>
 
 #include <pathplanner/lib/PathPlannerTrajectory.h>
 
 namespace rmb {
 class BaseDrive {
 public:
-
   //---------------
   // Drive Methods
   //---------------
@@ -67,7 +66,7 @@ public:
    * Generates a command to follow WPILib Trajectory.
    *
    * @param trajectory       The trajectory to follow.
-   * @param driveRequirments The subsystems required for driving the robot 
+   * @param driveRequirments The subsystems required for driving the robot
    *                         (ie. the one that contains this class)
    *
    * @return The command to follow a trajectory.
@@ -77,12 +76,12 @@ public:
       std::initializer_list<frc2::Subsystem *> driveRequirments) = 0;
 
   /**
-   * Generates a command to follow a vector of WPILib Trajectories. This is 
-   * helpful if the robot should stop in the middle of a path or changes 
+   * Generates a command to follow a vector of WPILib Trajectories. This is
+   * helpful if the robot should stop in the middle of a path or changes
    * direction.
    *
    * @param trajectorygroup  The vector of trajectories to follow.
-   * @param driveRequirments The subsystems required for driving the robot 
+   * @param driveRequirments The subsystems required for driving the robot
    *                         (ie. the one that contains this class)
    *
    * @return The command to follow a list of trajectories.
@@ -95,22 +94,22 @@ public:
    * Generates a command to follow PathPlanner Trajectory.
    *
    * @param trajectory       The trajectory to follow.
-   * @param driveRequirments The subsystems required for driving the robot 
+   * @param driveRequirments The subsystems required for driving the robot
    *                         (ie. the one that contains this class)
    *
    * @return The command to follow a trajectory.
    */
-  virtual frc2::CommandPtr
-  followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory,
-                     std::initializer_list<frc2::Subsystem *> driveRequirments) = 0;
+  virtual frc2::CommandPtr followPPTrajectory(
+      pathplanner::PathPlannerTrajectory trajectory,
+      std::initializer_list<frc2::Subsystem *> driveRequirments) = 0;
 
   /**
-   * Generates a command to follow a vector of PathPlanner Trajectories. This 
-   * is helpful if the robot should stop in the middle of a path or changes 
+   * Generates a command to follow a vector of PathPlanner Trajectories. This
+   * is helpful if the robot should stop in the middle of a path or changes
    * direction.
    *
    * @param trajectorygroup  The vector of trajectories to follow.
-   * @param driveRequirments The subsystems required for driving the robot 
+   * @param driveRequirments The subsystems required for driving the robot
    *                         (ie. the one that contains this class)
    *
    * @return The command to follow a list of trajectories.
@@ -120,14 +119,14 @@ public:
       std::initializer_list<frc2::Subsystem *> driveRequirments);
 
   /**
-   * Generates a command to follow a PathPlanner Trajectories with events. 
-   * When each event is triggered, the robot will execute the corosponding 
+   * Generates a command to follow a PathPlanner Trajectories with events.
+   * When each event is triggered, the robot will execute the corosponding
    * commmand in the event map while continuing to follow the path.
    *
    * @param trajectory       The trajectory to follow.
-   * @param evenMap          Used to map event names to thier corosponding 
+   * @param evenMap          Used to map event names to thier corosponding
    *                         commands for execution during the trajectory.
-   * @param driveRequirments The subsystems required for driving the robot 
+   * @param driveRequirments The subsystems required for driving the robot
    *                         (ie. the one that contains this class)
    *
    * @return The command to follow a trajectory with events.
@@ -138,15 +137,15 @@ public:
       std::initializer_list<frc2::Subsystem *> driveRequirments);
 
   /**
-   * Generates a command to follow a vector of PathPlanner Trajectories with 
-   * events. When each event is triggered, the robot will execute the 
-   * corosponding commmand in the event map while continuing to follow the 
+   * Generates a command to follow a vector of PathPlanner Trajectories with
+   * events. When each event is triggered, the robot will execute the
+   * corosponding commmand in the event map while continuing to follow the
    * path.
    *
    * @param trajectoryGroup  The vector of trajectories to follow.
-   * @param evenMap          Used to map event names to thier corosponding 
+   * @param evenMap          Used to map event names to thier corosponding
    *                         commands for execution during the trajectories.
-   * @param driveRequirments The subsystems required for driving the robot 
+   * @param driveRequirments The subsystems required for driving the robot
    *                         (ie. the one that contains this class)
    *
    * @return The command to follow a list of trajectories with events.
@@ -157,14 +156,14 @@ public:
       std::initializer_list<frc2::Subsystem *> driveRequirments);
 
   /**
-   * Generates a command to complete a full autonomouse routine generated by 
-   * PathPlanner. Beyond just a path with events, this includes resetting the 
+   * Generates a command to complete a full autonomouse routine generated by
+   * PathPlanner. Beyond just a path with events, this includes resetting the
    * position at the start of the path and executing stop events.
    *
    * @param trajectory       The trajectory to follow.
-   * @param evenMap          Used to map event names to thier corosponding 
+   * @param evenMap          Used to map event names to thier corosponding
    *                         commands for execution during the trajectories.
-   * @param driveRequirments The subsystems required for driving the robot 
+   * @param driveRequirments The subsystems required for driving the robot
    *                         (ie. the one that contains this class)
    *
    * @return The command to follow a full autonomus routine.
@@ -175,14 +174,14 @@ public:
       std::initializer_list<frc2::Subsystem *> driveRequirments);
 
   /**
-   * Generates a command to complete a full autonomouse routine generated by 
-   * PathPlanner. Beyond just a path with events, this includes resetting the 
+   * Generates a command to complete a full autonomouse routine generated by
+   * PathPlanner. Beyond just a path with events, this includes resetting the
    * position at the start of the path and executing stop events.
    *
    * @param trajectoryGroup  The vector of trajectories to follow.
-   * @param evenMap          Used to map event names to thier corosponding 
+   * @param evenMap          Used to map event names to thier corosponding
    *                         commands for execution during the trajectories.
-   * @param driveRequirments The subsystems required for driving the robot 
+   * @param driveRequirments The subsystems required for driving the robot
    *                         (ie. the one that contains this class)
    *
    * @return The command to follow a full autonomus routine.
