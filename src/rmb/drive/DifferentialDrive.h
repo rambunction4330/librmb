@@ -92,6 +92,22 @@ public:
    */
   void resetPose(const frc::Pose2d &pose = frc::Pose2d()) override;
 
+  /**
+   * Updates the current position of the robot using encoder and gyroscope
+   * data.
+   *
+   * @return The updated position.
+   */
+  void addVisionMeasurments(const frc::Pose2d &poseEstimate, units::second_t time) override;
+
+  /**
+   * Updates the current position of the robot using encoder and gyroscope
+   * data.
+   *
+   * @return The updated position.
+   */
+  void setVisionSTDevs(wpi::array<double, 3> standardDevs) override;
+
   //----------------------
   // Trajectory Following
   //----------------------
@@ -148,39 +164,5 @@ private:
 
   /** Object to handle the math behind pose estimation. */
   frc::DifferentialDrivePoseEstimator poseEstimator;
-
-  //---------------
-  // Vision Thread
-  //---------------
-
-  /**
-   * Network Tables subscriber for vision position predictions.
-   *
-   * Data is sent in a three entry double array ordered X, Y, Theta. X and Y
-   * are in meters and Theta is in radians.
-   */
-  nt::DoubleArraySubscriber poseSubscriber;
-
-  /**
-   * Network Tables subscriber for the standard deviation of vision predictions.
-   *
-   * Data is sent in a three entry double array ordered X, Y, Theta. X and Y
-   * are in meters and Theta is in radians. The standard deviations are a
-   * measure of how much the reported position typically deviates from the true
-   * position. Larger values denote less accuracy in vision data, while smaller
-   * values denote higher accuracy.
-   */
-  nt::DoubleArraySubscriber stdDevSubscriber;
-
-  /** Handle for keeping track of vision position callback for position. */
-  NT_Listener poseListener;
-
-  /** Handle for keeping track of vision position standard deviations callback
-   * for position.
-   */
-  NT_Listener stdDevListener;
-
-  /** mutex to protect position estimations between vision threads. */
-  mutable std::mutex visionThreadMutex;
 };
 } // namespace rmb
