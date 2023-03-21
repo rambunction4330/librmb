@@ -93,19 +93,27 @@ public:
   void resetPose(const frc::Pose2d &pose = frc::Pose2d()) override;
 
   /**
-   * Updates the current position of the robot using encoder and gyroscope
+   * Updates the current position of the robot using latency compensated vision
    * data.
    *
-   * @return The updated position.
+   * @param poseEstimate The estimated position of the robot from vision. 
+   * @param time         The time at which the data that produces this 
+   *                     estimate was captures. This is an absolute time with
+   *                     with the zero eposh being the same as wpi::Now() and 
+   *                     nt::Now(). This is usually extracted from network 
+   *                     tables. 
    */
   void addVisionMeasurments(const frc::Pose2d &poseEstimate,
                             units::second_t time) override;
 
   /**
-   * Updates the current position of the robot using encoder and gyroscope
-   * data.
+   * Change accuratly vision data is expected to be. 
    *
-   * @return The updated position.
+   * @param standardDevs The standar deviation of vision measurments. This is
+   *                     by how much teh actual robot positioon varies from 
+   *                     the actual posiotion of the robot. A larger value 
+   *                     means less acurate data. These are in units of meters
+   *                     and radians ordered X, Y, Theta.
    */
   void setVisionSTDevs(wpi::array<double, 3> standardDevs) override;
 
