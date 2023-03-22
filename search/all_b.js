@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['range_0',['Range',['../structrmb_1_1_spark_max_position_controller_helper_1_1_range.html',1,'rmb::SparkMaxPositionControllerHelper']]],
-  ['resetpose_1',['resetPose',['../classrmb_1_1_differential_odometry.html#afce4f4b7120c216e44a3cd2a449df53f',1,'rmb::DifferentialOdometry::resetPose()'],['../classrmb_1_1_drive_odometry.html#a60a828caf5d74e604e4ef618ae66189b',1,'rmb::DriveOdometry::resetPose()']]],
-  ['rmb_2',['rmb',['../namespacermb.html',1,'']]],
-  ['trajectory_3',['trajectory',['../namespacermb_1_1trajectory.html',1,'rmb']]]
+  ['pancakerecipe_0',['pancakerecipe',['../md_docs_additional_pancakerecipe.html',1,'']]],
+  ['pidconfig_1',['PIDConfig',['../structrmb_1_1_spark_max_position_controller_helper_1_1_p_i_d_config.html',1,'rmb::SparkMaxPositionControllerHelper::PIDConfig'],['../structrmb_1_1_spark_max_velocity_controller_helper_1_1_p_i_d_config.html',1,'rmb::SparkMaxVelocityControllerHelper::PIDConfig']]],
+  ['poselistener_2',['poseListener',['../classrmb_1_1_base_drive.html#a602d9cfc27c3fdf706d05031cec8fd03',1,'rmb::BaseDrive']]],
+  ['posesubscriber_3',['poseSubscriber',['../classrmb_1_1_base_drive.html#ad9ded7c66c6f67e02ccdaa5e4b2f9a8a',1,'rmb::BaseDrive']]],
+  ['profileconfig_4',['ProfileConfig',['../structrmb_1_1_spark_max_position_controller_helper_1_1_profile_config.html',1,'rmb::SparkMaxPositionControllerHelper::ProfileConfig'],['../structrmb_1_1_spark_max_velocity_controller_helper_1_1_profile_config.html',1,'rmb::SparkMaxVelocityControllerHelper::ProfileConfig']]]
 ];

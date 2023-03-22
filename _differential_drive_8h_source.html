@@ -108,38 +108,151 @@ $(document).ready(function(){initNavTree('_differential_drive_8h_source.html',''
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;units/velocity.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;frc/kinematics/ChassisSpeeds.h&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;frc/kinematics/DifferentialDriveKinematics.h&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;frc/kinematics/DifferentialDriveWheelSpeeds.h&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;rmb/motorcontrol/LinearVelocityController.h&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacermb.html">rmb</a> {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html">   15</a></span><span class="keyword">class </span><a class="code hl_class" href="classrmb_1_1_differential_drive.html">DifferentialDrive</a> {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <a class="code hl_class" href="classrmb_1_1_differential_drive.html">DifferentialDrive</a>(std::shared_ptr&lt;LinearVelocityController&gt; left,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>                    std::shared_ptr&lt;LinearVelocityController&gt; right,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                    frc::DifferentialDriveKinematics kinematics);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keywordtype">void</span> arcadeDrive(<span class="keywordtype">double</span> xSpeed, <span class="keywordtype">double</span> zRotation);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keywordtype">void</span> curvatureDrive(<span class="keywordtype">double</span> xSpeed, <span class="keywordtype">double</span> zRotation, <span class="keywordtype">bool</span> turnInPlace);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keywordtype">void</span> tankDrive(<span class="keywordtype">double</span> leftSpeed, <span class="keywordtype">double</span> rightSpeed);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keywordtype">void</span> driveWheelSpeeds(units::meters_per_second_t leftVelocity,</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                        units::meters_per_second_t rightVelocity);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keywordtype">void</span> driveWheelSpeeds(frc::DifferentialDriveWheelSpeeds wheelSpeeds);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordtype">void</span> driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  std::shared_ptr&lt;LinearVelocityController&gt; left, right;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  frc::DifferentialDriveKinematics kinematics;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>} <span class="comment">// namespace rmb</span></div>
-<div class="ttc" id="aclassrmb_1_1_differential_drive_html"><div class="ttname"><a href="classrmb_1_1_differential_drive.html">rmb::DifferentialDrive</a></div><div class="ttdef"><b>Definition:</b> DifferentialDrive.h:15</div></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;initializer_list&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;units/velocity.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;frc/controller/RamseteController.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;frc/estimator/DifferentialDrivePoseEstimator.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;frc/interfaces/Gyro.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;frc/kinematics/ChassisSpeeds.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;frc/kinematics/DifferentialDriveKinematics.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;frc/kinematics/DifferentialDriveWheelSpeeds.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;frc/trajectory/Trajectory.h&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;networktables/DoubleArrayTopic.h&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;networktables/NetworkTable.h&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;frc2/command/CommandPtr.h&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;pathplanner/lib/PathPlannerTrajectory.h&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;rmb/drive/BaseDrive.h&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;rmb/motorcontrol/LinearVelocityController.h&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacermb.html">rmb</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html">   36</a></span><span class="keyword">class </span><a class="code hl_class" href="classrmb_1_1_differential_drive.html">DifferentialDrive</a> : <span class="keyword">public</span> <a class="code hl_class" href="classrmb_1_1_base_drive.html">BaseDrive</a> {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <a class="code hl_class" href="classrmb_1_1_differential_drive.html">DifferentialDrive</a>(<span class="keyword">const</span> <a class="code hl_class" href="classrmb_1_1_differential_drive.html">DifferentialDrive</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <a class="code hl_class" href="classrmb_1_1_differential_drive.html">DifferentialDrive</a>(<a class="code hl_class" href="classrmb_1_1_differential_drive.html">DifferentialDrive</a> &amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a86fddd47b060d3c7d77b5d6c841d5224">   55</a></span>  <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a86fddd47b060d3c7d77b5d6c841d5224">DifferentialDrive</a>(std::unique_ptr&lt;LinearVelocityController&gt; left,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                    std::unique_ptr&lt;LinearVelocityController&gt; right,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                    std::shared_ptr&lt;const frc::Gyro&gt; gyro,</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                    frc::DifferentialDriveKinematics kinematics,</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                    frc::RamseteController ramseteController,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                    std::string visionTable,</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                    <span class="keyword">const</span> frc::Pose2d &amp;initalPose = frc::Pose2d());</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a22ec70cedd2d172af154d4a48d643435">   75</a></span>  <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a22ec70cedd2d172af154d4a48d643435">DifferentialDrive</a>(std::unique_ptr&lt;LinearVelocityController&gt; left,</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                    std::unique_ptr&lt;LinearVelocityController&gt; right,</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                    std::shared_ptr&lt;const frc::Gyro&gt; gyro,</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                    frc::DifferentialDriveKinematics kinematics,</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                    frc::RamseteController ramseteController,</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                    <span class="keyword">const</span> frc::Pose2d &amp;initalPose = frc::Pose2d());</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="comment">//---------------</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  <span class="comment">// Drive Methods</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="comment">//---------------</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#aab5477a5ed769b53858990920ebb1989">   96</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_differential_drive.html#aab5477a5ed769b53858990920ebb1989">arcadeDrive</a>(<span class="keywordtype">double</span> xSpeed, <span class="keywordtype">double</span> zRotation);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a68b58ade5e65a3e35ca633da81eac99e">  110</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a68b58ade5e65a3e35ca633da81eac99e">curvatureDrive</a>(<span class="keywordtype">double</span> xSpeed, <span class="keywordtype">double</span> zRotation, <span class="keywordtype">bool</span> turnInPlace);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a304ad46f7bdf75a9aca602e7a70b04ef">  122</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a304ad46f7bdf75a9aca602e7a70b04ef">tankDrive</a>(<span class="keywordtype">double</span> leftSpeed, <span class="keywordtype">double</span> rightSpeed);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a5c19f2f4b4ef3906674237d2f3b79593">  130</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a5c19f2f4b4ef3906674237d2f3b79593">driveWheelSpeeds</a>(units::meters_per_second_t leftVelocity,</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                        units::meters_per_second_t rightVelocity);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a841ecdc9e75277efd8f8a21007228145">  138</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a841ecdc9e75277efd8f8a21007228145">driveWheelSpeeds</a>(frc::DifferentialDriveWheelSpeeds wheelSpeeds);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#af766d5f6bbe7a881395bd1b8f07f9421">  143</a></span>  frc::DifferentialDriveWheelSpeeds <a class="code hl_function" href="classrmb_1_1_differential_drive.html#af766d5f6bbe7a881395bd1b8f07f9421">getWheelSpeeds</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a06dfc5657c9e259beef6ffb30d370eac">  150</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a06dfc5657c9e259beef6ffb30d370eac">driveChassisSpeeds</a>(frc::ChassisSpeeds chassisSpeeds) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a9752740b755f26817ea46bad3243a46f">  155</a></span>  frc::ChassisSpeeds <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a9752740b755f26817ea46bad3243a46f">getChassisSpeeds</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="comment">//------------------</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  <span class="comment">// Odometry Methods</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  <span class="comment">//------------------</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#af367b116264fb96f5f213b75fa0725e6">  164</a></span>  frc::Pose2d <a class="code hl_function" href="classrmb_1_1_differential_drive.html#af367b116264fb96f5f213b75fa0725e6">getPose</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#aa9526e907bb637bb8d148a6838aeea97">  175</a></span>  frc::Pose2d <a class="code hl_function" href="classrmb_1_1_differential_drive.html#aa9526e907bb637bb8d148a6838aeea97">updatePose</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a7146b7f3ff5d257e310ac082808e2e34">  182</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a7146b7f3ff5d257e310ac082808e2e34">resetPose</a>(<span class="keyword">const</span> frc::Pose2d &amp;pose = frc::Pose2d()) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a86abc35bd6c00f2948c1e03081ad24e6">  195</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a86abc35bd6c00f2948c1e03081ad24e6">addVisionMeasurments</a>(<span class="keyword">const</span> frc::Pose2d &amp;poseEstimate,</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                            units::second_t time) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a4aeffebdc588dbdee8ed48915e9abb42">  207</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a4aeffebdc588dbdee8ed48915e9abb42">setVisionSTDevs</a>(wpi::array&lt;double, 3&gt; standardDevs) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  <span class="comment">//----------------------</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  <span class="comment">// Trajectory Following</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  <span class="comment">//----------------------</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#aa7e062e777df6af126494e38135fc79a">  218</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classrmb_1_1_differential_drive.html#aa7e062e777df6af126494e38135fc79a">isHolonomic</a>()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#a4796fdb366d12a5d66ac8f5dde96d2ab">  229</a></span>  frc2::CommandPtr <a class="code hl_function" href="classrmb_1_1_differential_drive.html#a4796fdb366d12a5d66ac8f5dde96d2ab">followWPILibTrajectory</a>(</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>      frc::Trajectory trajectory,</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>      std::initializer_list&lt;frc2::Subsystem *&gt; driveRequirements) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#aa79fa22ae808702e4cc43ba8e3f9116f">  242</a></span>  frc2::CommandPtr <a class="code hl_function" href="classrmb_1_1_differential_drive.html#aa79fa22ae808702e4cc43ba8e3f9116f">followPPTrajectory</a>(</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>      pathplanner::PathPlannerTrajectory trajectory,</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>      std::initializer_list&lt;frc2::Subsystem *&gt; driveRequirements) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="classrmb_1_1_differential_drive.html#afe9d1de5f1324e0b68b7e4d4f4ccb0c2">  259</a></span>  frc2::CommandPtr <a class="code hl_function" href="classrmb_1_1_differential_drive.html#afe9d1de5f1324e0b68b7e4d4f4ccb0c2">fullPPAuto</a>(</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>      std::vector&lt;pathplanner::PathPlannerTrajectory&gt; trajectoryGroup,</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>      std::unordered_map&lt;std::string, std::shared_ptr&lt;frc2::Command&gt;&gt; eventMap,</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>      std::initializer_list&lt;frc2::Subsystem *&gt; driveRequirements) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>  <span class="comment">//-----------------</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>  <span class="comment">// Drive Variables</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>  <span class="comment">//-----------------</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>  std::unique_ptr&lt;LinearVelocityController&gt; left;</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>  std::unique_ptr&lt;LinearVelocityController&gt; right;</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>  std::shared_ptr&lt;const frc::Gyro&gt; gyro;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>  frc::DifferentialDriveKinematics kinematics;</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>  frc::RamseteController ramseteController;</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>  <span class="comment">//-------------------</span></div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>  <span class="comment">// Odometry Variables</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>  <span class="comment">//-------------------</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>  frc::DifferentialDrivePoseEstimator poseEstimator;</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>};</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>} <span class="comment">// namespace rmb</span></div>
+<div class="ttc" id="aclassrmb_1_1_base_drive_html"><div class="ttname"><a href="classrmb_1_1_base_drive.html">rmb::BaseDrive</a></div><div class="ttdef"><b>Definition:</b> BaseDrive.h:28</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html"><div class="ttname"><a href="classrmb_1_1_differential_drive.html">rmb::DifferentialDrive</a></div><div class="ttdef"><b>Definition:</b> DifferentialDrive.h:36</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a06dfc5657c9e259beef6ffb30d370eac"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a06dfc5657c9e259beef6ffb30d370eac">rmb::DifferentialDrive::driveChassisSpeeds</a></div><div class="ttdeci">void driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds) override</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a22ec70cedd2d172af154d4a48d643435"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a22ec70cedd2d172af154d4a48d643435">rmb::DifferentialDrive::DifferentialDrive</a></div><div class="ttdeci">DifferentialDrive(std::unique_ptr&lt; LinearVelocityController &gt; left, std::unique_ptr&lt; LinearVelocityController &gt; right, std::shared_ptr&lt; const frc::Gyro &gt; gyro, frc::DifferentialDriveKinematics kinematics, frc::RamseteController ramseteController, const frc::Pose2d &amp;initalPose=frc::Pose2d())</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a304ad46f7bdf75a9aca602e7a70b04ef"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a304ad46f7bdf75a9aca602e7a70b04ef">rmb::DifferentialDrive::tankDrive</a></div><div class="ttdeci">void tankDrive(double leftSpeed, double rightSpeed)</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a4796fdb366d12a5d66ac8f5dde96d2ab"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a4796fdb366d12a5d66ac8f5dde96d2ab">rmb::DifferentialDrive::followWPILibTrajectory</a></div><div class="ttdeci">frc2::CommandPtr followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements) override</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a4aeffebdc588dbdee8ed48915e9abb42"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a4aeffebdc588dbdee8ed48915e9abb42">rmb::DifferentialDrive::setVisionSTDevs</a></div><div class="ttdeci">void setVisionSTDevs(wpi::array&lt; double, 3 &gt; standardDevs) override</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a5c19f2f4b4ef3906674237d2f3b79593"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a5c19f2f4b4ef3906674237d2f3b79593">rmb::DifferentialDrive::driveWheelSpeeds</a></div><div class="ttdeci">void driveWheelSpeeds(units::meters_per_second_t leftVelocity, units::meters_per_second_t rightVelocity)</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a68b58ade5e65a3e35ca633da81eac99e"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a68b58ade5e65a3e35ca633da81eac99e">rmb::DifferentialDrive::curvatureDrive</a></div><div class="ttdeci">void curvatureDrive(double xSpeed, double zRotation, bool turnInPlace)</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a7146b7f3ff5d257e310ac082808e2e34"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a7146b7f3ff5d257e310ac082808e2e34">rmb::DifferentialDrive::resetPose</a></div><div class="ttdeci">void resetPose(const frc::Pose2d &amp;pose=frc::Pose2d()) override</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a841ecdc9e75277efd8f8a21007228145"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a841ecdc9e75277efd8f8a21007228145">rmb::DifferentialDrive::driveWheelSpeeds</a></div><div class="ttdeci">void driveWheelSpeeds(frc::DifferentialDriveWheelSpeeds wheelSpeeds)</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a86abc35bd6c00f2948c1e03081ad24e6"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a86abc35bd6c00f2948c1e03081ad24e6">rmb::DifferentialDrive::addVisionMeasurments</a></div><div class="ttdeci">void addVisionMeasurments(const frc::Pose2d &amp;poseEstimate, units::second_t time) override</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a86fddd47b060d3c7d77b5d6c841d5224"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a86fddd47b060d3c7d77b5d6c841d5224">rmb::DifferentialDrive::DifferentialDrive</a></div><div class="ttdeci">DifferentialDrive(std::unique_ptr&lt; LinearVelocityController &gt; left, std::unique_ptr&lt; LinearVelocityController &gt; right, std::shared_ptr&lt; const frc::Gyro &gt; gyro, frc::DifferentialDriveKinematics kinematics, frc::RamseteController ramseteController, std::string visionTable, const frc::Pose2d &amp;initalPose=frc::Pose2d())</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_a9752740b755f26817ea46bad3243a46f"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#a9752740b755f26817ea46bad3243a46f">rmb::DifferentialDrive::getChassisSpeeds</a></div><div class="ttdeci">frc::ChassisSpeeds getChassisSpeeds() const override</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_aa79fa22ae808702e4cc43ba8e3f9116f"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#aa79fa22ae808702e4cc43ba8e3f9116f">rmb::DifferentialDrive::followPPTrajectory</a></div><div class="ttdeci">frc2::CommandPtr followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements) override</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_aa7e062e777df6af126494e38135fc79a"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#aa7e062e777df6af126494e38135fc79a">rmb::DifferentialDrive::isHolonomic</a></div><div class="ttdeci">bool isHolonomic() const override</div><div class="ttdef"><b>Definition:</b> DifferentialDrive.h:218</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_aa9526e907bb637bb8d148a6838aeea97"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#aa9526e907bb637bb8d148a6838aeea97">rmb::DifferentialDrive::updatePose</a></div><div class="ttdeci">frc::Pose2d updatePose() override</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_aab5477a5ed769b53858990920ebb1989"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#aab5477a5ed769b53858990920ebb1989">rmb::DifferentialDrive::arcadeDrive</a></div><div class="ttdeci">void arcadeDrive(double xSpeed, double zRotation)</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_af367b116264fb96f5f213b75fa0725e6"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#af367b116264fb96f5f213b75fa0725e6">rmb::DifferentialDrive::getPose</a></div><div class="ttdeci">frc::Pose2d getPose() const override</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_af766d5f6bbe7a881395bd1b8f07f9421"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#af766d5f6bbe7a881395bd1b8f07f9421">rmb::DifferentialDrive::getWheelSpeeds</a></div><div class="ttdeci">frc::DifferentialDriveWheelSpeeds getWheelSpeeds() const</div></div>
+<div class="ttc" id="aclassrmb_1_1_differential_drive_html_afe9d1de5f1324e0b68b7e4d4f4ccb0c2"><div class="ttname"><a href="classrmb_1_1_differential_drive.html#afe9d1de5f1324e0b68b7e4d4f4ccb0c2">rmb::DifferentialDrive::fullPPAuto</a></div><div class="ttdeci">frc2::CommandPtr fullPPAuto(std::vector&lt; pathplanner::PathPlannerTrajectory &gt; trajectoryGroup, std::unordered_map&lt; std::string, std::shared_ptr&lt; frc2::Command &gt; &gt; eventMap, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements) override</div></div>
 <div class="ttc" id="anamespacermb_html"><div class="ttname"><a href="namespacermb.html">rmb</a></div><div class="ttdoc">the master namespace of librmb</div><div class="ttdef"><b>Definition:</b> LogitechGamepad.h:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

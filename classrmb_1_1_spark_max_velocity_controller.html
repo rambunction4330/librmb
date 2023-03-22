@@ -118,9 +118,7 @@ Inheritance diagram for rmb::SparkMaxVelocityController:</div>
  <div class="center">
   <img src="classrmb_1_1_spark_max_velocity_controller.png" usemap="#rmb::SparkMaxVelocityController_map" alt=""/>
   <map id="rmb::SparkMaxVelocityController_map" name="rmb::SparkMaxVelocityController_map">
-<area href="classrmb_1_1_angular_velocity_feedback_controller.html" alt="rmb::AngularVelocityFeedbackController" shape="rect" coords="126,56,368,80"/>
-<area href="classrmb_1_1_angular_velocity_controller.html" alt="rmb::AngularVelocityController" shape="rect" coords="0,0,242,24"/>
-<area href="classrmb_1_1_angular_encoder.html" alt="rmb::AngularEncoder" shape="rect" coords="252,0,494,24"/>
+<area href="classrmb_1_1_angular_velocity_controller.html" alt="rmb::AngularVelocityController" shape="rect" coords="0,0,198,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -149,6 +147,13 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>LimitSwitchConfig</b
 <tr class="memitem:a1fb5c96ee00ea7cfad80ef93df26fe95"><td class="memItemLeft" align="right" valign="top"><a id="a1fb5c96ee00ea7cfad80ef93df26fe95" name="a1fb5c96ee00ea7cfad80ef93df26fe95"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>FeedbackConfig</b> = <a class="el" href="structrmb_1_1_spark_max_velocity_controller_helper_1_1_feedback_config.html">SparkMaxVelocityControllerHelper::FeedbackConfig</a></td></tr>
 <tr class="separator:a1fb5c96ee00ea7cfad80ef93df26fe95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_classrmb_1_1_angular_velocity_controller"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classrmb_1_1_angular_velocity_controller')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classrmb_1_1_angular_velocity_controller.html">rmb::AngularVelocityController</a></td></tr>
+<tr class="memitem:a9e0fabcadade69f349472172f15ed4a8 inherit pub_types_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top"><a id="a9e0fabcadade69f349472172f15ed4a8" name="a9e0fabcadade69f349472172f15ed4a8"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>ConversionUnit</b> = units::compound_unit&lt; units::meters, units::inverse&lt; units::radians &gt; &gt;</td></tr>
+<tr class="separator:a9e0fabcadade69f349472172f15ed4a8 inherit pub_types_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2efabe79ec0b8ef328ac1e269c84ac6 inherit pub_types_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top"><a id="af2efabe79ec0b8ef328ac1e269c84ac6" name="af2efabe79ec0b8ef328ac1e269c84ac6"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>ConversionUnit_t</b> = units::unit_t&lt; ConversionUnit &gt;</td></tr>
+<tr class="separator:af2efabe79ec0b8ef328ac1e269c84ac6 inherit pub_types_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -174,49 +179,49 @@ std::unique_ptr&lt; rev::MotorFeedbackSensor &gt; &amp;&#160;</td><td class="mem
 <tr class="separator:ae598961cd097ba5adc1e72f393db4fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac054b39bde89ce6ea361c2d8b45ad850"><td class="memItemLeft" align="right" valign="top">units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#ac054b39bde89ce6ea361c2d8b45ad850">getTargetVelocity</a> () const override</td></tr>
 <tr class="separator:ac054b39bde89ce6ea361c2d8b45ad850"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a788b386e4a57c90a7342e804a09957f8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a788b386e4a57c90a7342e804a09957f8">setPower</a> (double power) override</td></tr>
-<tr class="separator:a788b386e4a57c90a7342e804a09957f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea6f1c72ff44df8957968c0aea7ed921"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#aea6f1c72ff44df8957968c0aea7ed921">disable</a> () override</td></tr>
-<tr class="separator:aea6f1c72ff44df8957968c0aea7ed921"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aace47959200775962bdd0cda7f8d22a2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#aace47959200775962bdd0cda7f8d22a2">stop</a> () override</td></tr>
-<tr class="separator:aace47959200775962bdd0cda7f8d22a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a975110e2946a1f71e56c5ac983d23beb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a975110e2946a1f71e56c5ac983d23beb">setPower</a> (double power) override</td></tr>
+<tr class="separator:a975110e2946a1f71e56c5ac983d23beb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf4e028dc9dc0b735a8ec97831f3885b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#adf4e028dc9dc0b735a8ec97831f3885b">disable</a> () override</td></tr>
+<tr class="separator:adf4e028dc9dc0b735a8ec97831f3885b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f96df2ae1e66aafce82c66f0298ac4a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a4f96df2ae1e66aafce82c66f0298ac4a">stop</a> () override</td></tr>
+<tr class="separator:a4f96df2ae1e66aafce82c66f0298ac4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6bf74f4d89f52363e25000a5c642b5c"><td class="memItemLeft" align="right" valign="top">units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#ac6bf74f4d89f52363e25000a5c642b5c">getVelocity</a> () const override</td></tr>
 <tr class="separator:ac6bf74f4d89f52363e25000a5c642b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea830bc54ae333c86fa4fe5f90895fd5"><td class="memItemLeft" align="right" valign="top">units::radian_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#aea830bc54ae333c86fa4fe5f90895fd5">getPosition</a> () const override</td></tr>
 <tr class="separator:aea830bc54ae333c86fa4fe5f90895fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a145ad06d6e2051f2359b500d85b5d985"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a145ad06d6e2051f2359b500d85b5d985">zeroPosition</a> (units::radian_t offset=0_rad) override</td></tr>
 <tr class="separator:a145ad06d6e2051f2359b500d85b5d985"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2cc64e57e798fbfbd9be7d3c5777605"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#ab2cc64e57e798fbfbd9be7d3c5777605">getTolerance</a> () const override</td></tr>
-<tr class="separator:ab2cc64e57e798fbfbd9be7d3c5777605"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classrmb_1_1_angular_velocity_feedback_controller"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classrmb_1_1_angular_velocity_feedback_controller')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classrmb_1_1_angular_velocity_feedback_controller.html">rmb::AngularVelocityFeedbackController</a></td></tr>
-<tr class="memitem:ad44e4abcc0f815f656d432a42c7cca9e inherit pub_methods_classrmb_1_1_angular_velocity_feedback_controller"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_feedback_controller.html#ad44e4abcc0f815f656d432a42c7cca9e">getTolerance</a> () const =0</td></tr>
-<tr class="separator:ad44e4abcc0f815f656d432a42c7cca9e inherit pub_methods_classrmb_1_1_angular_velocity_feedback_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8b0c5b1ada6a0d173fe05efbb7c8f8a inherit pub_methods_classrmb_1_1_angular_velocity_feedback_controller"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_feedback_controller.html#ae8b0c5b1ada6a0d173fe05efbb7c8f8a">getError</a> () const</td></tr>
-<tr class="separator:ae8b0c5b1ada6a0d173fe05efbb7c8f8a inherit pub_methods_classrmb_1_1_angular_velocity_feedback_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1a171935964e30d7a063f24b7e0fa72 inherit pub_methods_classrmb_1_1_angular_velocity_feedback_controller"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_feedback_controller.html#af1a171935964e30d7a063f24b7e0fa72">atTarget</a> () const</td></tr>
-<tr class="separator:af1a171935964e30d7a063f24b7e0fa72 inherit pub_methods_classrmb_1_1_angular_velocity_feedback_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f3c9fa2749359762c842059340c1c77"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a3f3c9fa2749359762c842059340c1c77">setVelocity</a> (units::radians_per_second_t velocity)=0</td></tr>
-<tr class="separator:a3f3c9fa2749359762c842059340c1c77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3dadfb077d820c814961e51d120deb85"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a3dadfb077d820c814961e51d120deb85">getTargetVelocity</a> () const =0</td></tr>
-<tr class="separator:a3dadfb077d820c814961e51d120deb85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53d47dc09b248c7a26bcdfd16e9c3800"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a53d47dc09b248c7a26bcdfd16e9c3800">setPower</a> (double power)=0</td></tr>
-<tr class="separator:a53d47dc09b248c7a26bcdfd16e9c3800"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a626ebd875afa1ca75991d5b068e43d17"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a626ebd875afa1ca75991d5b068e43d17">disable</a> ()=0</td></tr>
-<tr class="separator:a626ebd875afa1ca75991d5b068e43d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b3b8ef29b82108df64cb09530ef8e71"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a6b3b8ef29b82108df64cb09530ef8e71">stop</a> ()=0</td></tr>
-<tr class="separator:a6b3b8ef29b82108df64cb09530ef8e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab91e20106ed83a47aeadfda814853634"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_encoder.html#ab91e20106ed83a47aeadfda814853634">getVelocity</a> () const =0</td></tr>
-<tr class="separator:ab91e20106ed83a47aeadfda814853634"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1de74884c8c818de12873e703be2dea7"><td class="memItemLeft" align="right" valign="top">virtual units::radian_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_encoder.html#a1de74884c8c818de12873e703be2dea7">getPosition</a> () const =0</td></tr>
-<tr class="separator:a1de74884c8c818de12873e703be2dea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1df782796c03de045efe61d8031393d4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_encoder.html#a1df782796c03de045efe61d8031393d4">zeroPosition</a> (units::radian_t offset=0_rad)=0</td></tr>
-<tr class="separator:a1df782796c03de045efe61d8031393d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32af83b436470b7b6239371d02d38af2"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a32af83b436470b7b6239371d02d38af2">getTolerance</a> () const override</td></tr>
+<tr class="separator:a32af83b436470b7b6239371d02d38af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classrmb_1_1_angular_velocity_controller"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classrmb_1_1_angular_velocity_controller')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classrmb_1_1_angular_velocity_controller.html">rmb::AngularVelocityController</a></td></tr>
+<tr class="memitem:a3f3c9fa2749359762c842059340c1c77 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a3f3c9fa2749359762c842059340c1c77">setVelocity</a> (units::radians_per_second_t velocity)=0</td></tr>
+<tr class="separator:a3f3c9fa2749359762c842059340c1c77 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dadfb077d820c814961e51d120deb85 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a3dadfb077d820c814961e51d120deb85">getTargetVelocity</a> () const =0</td></tr>
+<tr class="separator:a3dadfb077d820c814961e51d120deb85 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53d47dc09b248c7a26bcdfd16e9c3800 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a53d47dc09b248c7a26bcdfd16e9c3800">setPower</a> (double power)=0</td></tr>
+<tr class="separator:a53d47dc09b248c7a26bcdfd16e9c3800 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a626ebd875afa1ca75991d5b068e43d17 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a626ebd875afa1ca75991d5b068e43d17">disable</a> ()=0</td></tr>
+<tr class="separator:a626ebd875afa1ca75991d5b068e43d17 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b3b8ef29b82108df64cb09530ef8e71 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a6b3b8ef29b82108df64cb09530ef8e71">stop</a> ()=0</td></tr>
+<tr class="separator:a6b3b8ef29b82108df64cb09530ef8e71 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2f2c30f8ad23e022a33f47392c20fe9 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#af2f2c30f8ad23e022a33f47392c20fe9">getVelocity</a> () const =0</td></tr>
+<tr class="separator:af2f2c30f8ad23e022a33f47392c20fe9 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5521f7d3941931c274776b7ab9be5db2 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top">virtual units::radian_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a5521f7d3941931c274776b7ab9be5db2">getPosition</a> () const =0</td></tr>
+<tr class="separator:a5521f7d3941931c274776b7ab9be5db2 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dc22af48d1f9003166664d543ee9087 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a3dc22af48d1f9003166664d543ee9087">zeroPosition</a> (units::radian_t offset=0_rad)=0</td></tr>
+<tr class="separator:a3dc22af48d1f9003166664d543ee9087 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a744a9e72ec2aa28d4277e78ddd2511d0 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a744a9e72ec2aa28d4277e78ddd2511d0">getTolerance</a> () const =0</td></tr>
+<tr class="separator:a744a9e72ec2aa28d4277e78ddd2511d0 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb4676ddcce64a7eae8a30ee8fd9ebb0 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#adb4676ddcce64a7eae8a30ee8fd9ebb0">getError</a> () const</td></tr>
+<tr class="separator:adb4676ddcce64a7eae8a30ee8fd9ebb0 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e383ee31093a1bcf3646aa70579cd88 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a8e383ee31093a1bcf3646aa70579cd88">atTarget</a> () const</td></tr>
+<tr class="separator:a8e383ee31093a1bcf3646aa70579cd88 inherit pub_methods_classrmb_1_1_angular_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A wrapper around the SparkMax motorcontroller so that it can complies with the <code><a class="el" href="classrmb_1_1_angular_velocity_feedback_controller.html">AngularVelocityFeedbackController</a></code> interface. </p>
+<div class="textblock"><p>A wrapper around the SparkMax motorcontroller so that it can complies with the <code>AngularVelocityFeedbackController</code> interface. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aea6f1c72ff44df8957968c0aea7ed921" name="aea6f1c72ff44df8957968c0aea7ed921"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea6f1c72ff44df8957968c0aea7ed921">&#9670;&#160;</a></span>disable()</h2>
+<a id="adf4e028dc9dc0b735a8ec97831f3885b" name="adf4e028dc9dc0b735a8ec97831f3885b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf4e028dc9dc0b735a8ec97831f3885b">&#9670;&#160;</a></span>disable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,7 +230,7 @@ std::unique_ptr&lt; rev::MotorFeedbackSensor &gt; &amp;&#160;</td><td class="mem
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void rmb::SparkMaxVelocityController::disable </td>
+          <td class="memname">virtual void rmb::SparkMaxVelocityController::disable </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -268,7 +273,7 @@ std::unique_ptr&lt; rev::MotorFeedbackSensor &gt; &amp;&#160;</td><td class="mem
 <p>Gets the angular position of an motor.</p>
 <dl class="section return"><dt>Returns</dt><dd>The position of the motor in radians. </dd></dl>
 
-<p>Implements <a class="el" href="classrmb_1_1_angular_encoder.html#a1de74884c8c818de12873e703be2dea7">rmb::AngularEncoder</a>.</p>
+<p>Implements <a class="el" href="classrmb_1_1_angular_velocity_controller.html#a5521f7d3941931c274776b7ab9be5db2">rmb::AngularVelocityController</a>.</p>
 
 </div>
 </div>
@@ -301,8 +306,8 @@ std::unique_ptr&lt; rev::MotorFeedbackSensor &gt; &amp;&#160;</td><td class="mem
 
 </div>
 </div>
-<a id="ab2cc64e57e798fbfbd9be7d3c5777605" name="ab2cc64e57e798fbfbd9be7d3c5777605"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2cc64e57e798fbfbd9be7d3c5777605">&#9670;&#160;</a></span>getTolerance()</h2>
+<a id="a32af83b436470b7b6239371d02d38af2" name="a32af83b436470b7b6239371d02d38af2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32af83b436470b7b6239371d02d38af2">&#9670;&#160;</a></span>getTolerance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -311,7 +316,7 @@ std::unique_ptr&lt; rev::MotorFeedbackSensor &gt; &amp;&#160;</td><td class="mem
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">units::radians_per_second_t rmb::SparkMaxVelocityController::getTolerance </td>
+          <td class="memname">virtual units::radians_per_second_t rmb::SparkMaxVelocityController::getTolerance </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -326,7 +331,7 @@ std::unique_ptr&lt; rev::MotorFeedbackSensor &gt; &amp;&#160;</td><td class="mem
 <p>Gets the motor's tolerance.</p>
 <dl class="section return"><dt>Returns</dt><dd>the motor's tolerance in radians per second. </dd></dl>
 
-<p>Implements <a class="el" href="classrmb_1_1_angular_velocity_feedback_controller.html#ad44e4abcc0f815f656d432a42c7cca9e">rmb::AngularVelocityFeedbackController</a>.</p>
+<p>Implements <a class="el" href="classrmb_1_1_angular_velocity_controller.html#a744a9e72ec2aa28d4277e78ddd2511d0">rmb::AngularVelocityController</a>.</p>
 
 </div>
 </div>
@@ -355,12 +360,12 @@ std::unique_ptr&lt; rev::MotorFeedbackSensor &gt; &amp;&#160;</td><td class="mem
 <p>Gets the angular velocity of the motor.</p>
 <dl class="section return"><dt>Returns</dt><dd>The velocity of the motor in radians per second. </dd></dl>
 
-<p>Implements <a class="el" href="classrmb_1_1_angular_encoder.html#ab91e20106ed83a47aeadfda814853634">rmb::AngularEncoder</a>.</p>
+<p>Implements <a class="el" href="classrmb_1_1_angular_velocity_controller.html#af2f2c30f8ad23e022a33f47392c20fe9">rmb::AngularVelocityController</a>.</p>
 
 </div>
 </div>
-<a id="a788b386e4a57c90a7342e804a09957f8" name="a788b386e4a57c90a7342e804a09957f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a788b386e4a57c90a7342e804a09957f8">&#9670;&#160;</a></span>setPower()</h2>
+<a id="a975110e2946a1f71e56c5ac983d23beb" name="a975110e2946a1f71e56c5ac983d23beb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a975110e2946a1f71e56c5ac983d23beb">&#9670;&#160;</a></span>setPower()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -369,7 +374,7 @@ std::unique_ptr&lt; rev::MotorFeedbackSensor &gt; &amp;&#160;</td><td class="mem
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void rmb::SparkMaxVelocityController::setPower </td>
+          <td class="memname">virtual void rmb::SparkMaxVelocityController::setPower </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>power</em></td><td>)</td>
@@ -423,8 +428,8 @@ std::unique_ptr&lt; rev::MotorFeedbackSensor &gt; &amp;&#160;</td><td class="mem
 
 </div>
 </div>
-<a id="aace47959200775962bdd0cda7f8d22a2" name="aace47959200775962bdd0cda7f8d22a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aace47959200775962bdd0cda7f8d22a2">&#9670;&#160;</a></span>stop()</h2>
+<a id="a4f96df2ae1e66aafce82c66f0298ac4a" name="a4f96df2ae1e66aafce82c66f0298ac4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f96df2ae1e66aafce82c66f0298ac4a">&#9670;&#160;</a></span>stop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -433,7 +438,7 @@ std::unique_ptr&lt; rev::MotorFeedbackSensor &gt; &amp;&#160;</td><td class="mem
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void rmb::SparkMaxVelocityController::stop </td>
+          <td class="memname">virtual void rmb::SparkMaxVelocityController::stop </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -482,13 +487,12 @@ std::unique_ptr&lt; rev::MotorFeedbackSensor &gt; &amp;&#160;</td><td class="mem
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classrmb_1_1_angular_encoder.html#a1df782796c03de045efe61d8031393d4">rmb::AngularEncoder</a>.</p>
+<p>Implements <a class="el" href="classrmb_1_1_angular_velocity_controller.html#a3dc22af48d1f9003166664d543ee9087">rmb::AngularVelocityController</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/rmb/motorcontrol/sparkmax/<a class="el" href="_spark_max_velocity_controller_8h_source.html">SparkMaxVelocityController.h</a></li>
-<li>src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

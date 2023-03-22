@@ -6,8 +6,6 @@ var classrmb_1_1_servo_position_controller =
     [ "getMinPosition", "classrmb_1_1_servo_position_controller.html#a021906542fd8b0077c6d80a15ef43a7b", null ],
     [ "getTargetPosition", "classrmb_1_1_servo_position_controller.html#a34b993048b508c17911a5e5fd26adf67", null ],
     [ "setInverted", "classrmb_1_1_servo_position_controller.html#a54d3b24e6e657b54440723cd6f49f180", null ],
-    [ "setMaxPosition", "classrmb_1_1_servo_position_controller.html#afc433076da84162befcf1eba2405aad5", null ],
-    [ "setMinPosition", "classrmb_1_1_servo_position_controller.html#a0f0ce162eb982bf4879533e65f6ff70b", null ],
     [ "setPosition", "classrmb_1_1_servo_position_controller.html#aa5fff866b78e168ceda2e4557faafe1a", null ],
     [ "stop", "classrmb_1_1_servo_position_controller.html#a4f45480a5f9fb067f8c75e16707222e4", null ]
 ];

@@ -9,6 +9,7 @@ var classrmb_1_1_spark_max_position_controller =
     [ "getTolerance", "classrmb_1_1_spark_max_position_controller.html#a5c91d6a5218d27415642b31102878800", null ],
     [ "getVelocity", "classrmb_1_1_spark_max_position_controller.html#a2df2d086ed07ba5d1d75e59bed5efd78", null ],
     [ "setPosition", "classrmb_1_1_spark_max_position_controller.html#a69e1596471c34fa194eb326ae7d92764", null ],
+    [ "setPower", "classrmb_1_1_spark_max_position_controller.html#a98bb9917b0bb7c7500a2315e5c322b83", null ],
     [ "stop", "classrmb_1_1_spark_max_position_controller.html#a39ba508886060a8d0532ae8dd7cd9fd0", null ],
     [ "zeroPosition", "classrmb_1_1_spark_max_position_controller.html#a592e4363d496fcbd4acb5cba91e70059", null ]
 ];

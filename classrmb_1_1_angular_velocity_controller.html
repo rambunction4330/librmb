@@ -103,6 +103,7 @@ $(document).ready(function(){initNavTree('classrmb_1_1_angular_velocity_controll
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classrmb_1_1_angular_velocity_controller-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">rmb::AngularVelocityController Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
@@ -116,14 +117,20 @@ Inheritance diagram for rmb::AngularVelocityController:</div>
  <div class="center">
   <img src="classrmb_1_1_angular_velocity_controller.png" usemap="#rmb::AngularVelocityController_map" alt=""/>
   <map id="rmb::AngularVelocityController_map" name="rmb::AngularVelocityController_map">
-<area href="classrmb_1_1_angular_feedforwardontroller.html" alt="rmb::AngularFeedforwardontroller" shape="rect" coords="0,56,293,80"/>
-<area href="classrmb_1_1_angular_velocity_feedback_controller.html" alt="rmb::AngularVelocityFeedbackController" shape="rect" coords="303,56,596,80"/>
-<area href="classrmb_1_1_linear_as_angular_velocity_controller.html" alt="rmb::LinearAsAngularVelocityController" shape="rect" coords="606,56,899,80"/>
-<area href="classrmb_1_1_linear_as_angular_velocity_feedback_controller.html" alt="rmb::LinearAsAngularVelocityFeedbackController" shape="rect" coords="151,112,444,136"/>
-<area href="classrmb_1_1_spark_max_velocity_controller.html" alt="rmb::SparkMaxVelocityController" shape="rect" coords="454,112,747,136"/>
+<area href="classrmb_1_1_angular_feedforwardontroller.html" alt="rmb::AngularFeedforwardontroller" shape="rect" coords="0,56,204,80"/>
+<area href="classrmb_1_1_spark_max_velocity_controller.html" alt="rmb::SparkMaxVelocityController" shape="rect" coords="214,56,418,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a9e0fabcadade69f349472172f15ed4a8"><td class="memItemLeft" align="right" valign="top"><a id="a9e0fabcadade69f349472172f15ed4a8" name="a9e0fabcadade69f349472172f15ed4a8"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>ConversionUnit</b> = units::compound_unit&lt; units::meters, units::inverse&lt; units::radians &gt; &gt;</td></tr>
+<tr class="separator:a9e0fabcadade69f349472172f15ed4a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2efabe79ec0b8ef328ac1e269c84ac6"><td class="memItemLeft" align="right" valign="top"><a id="af2efabe79ec0b8ef328ac1e269c84ac6" name="af2efabe79ec0b8ef328ac1e269c84ac6"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>ConversionUnit_t</b> = units::unit_t&lt; ConversionUnit &gt;</td></tr>
+<tr class="separator:af2efabe79ec0b8ef328ac1e269c84ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3f3c9fa2749359762c842059340c1c77"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a3f3c9fa2749359762c842059340c1c77">setVelocity</a> (units::radians_per_second_t velocity)=0</td></tr>
@@ -136,10 +143,49 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a626ebd875afa1ca75991d5b068e43d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b3b8ef29b82108df64cb09530ef8e71"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a6b3b8ef29b82108df64cb09530ef8e71">stop</a> ()=0</td></tr>
 <tr class="separator:a6b3b8ef29b82108df64cb09530ef8e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2f2c30f8ad23e022a33f47392c20fe9"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#af2f2c30f8ad23e022a33f47392c20fe9">getVelocity</a> () const =0</td></tr>
+<tr class="separator:af2f2c30f8ad23e022a33f47392c20fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5521f7d3941931c274776b7ab9be5db2"><td class="memItemLeft" align="right" valign="top">virtual units::radian_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a5521f7d3941931c274776b7ab9be5db2">getPosition</a> () const =0</td></tr>
+<tr class="separator:a5521f7d3941931c274776b7ab9be5db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dc22af48d1f9003166664d543ee9087"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a3dc22af48d1f9003166664d543ee9087">zeroPosition</a> (units::radian_t offset=0_rad)=0</td></tr>
+<tr class="separator:a3dc22af48d1f9003166664d543ee9087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a744a9e72ec2aa28d4277e78ddd2511d0"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a744a9e72ec2aa28d4277e78ddd2511d0">getTolerance</a> () const =0</td></tr>
+<tr class="separator:a744a9e72ec2aa28d4277e78ddd2511d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb4676ddcce64a7eae8a30ee8fd9ebb0"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#adb4676ddcce64a7eae8a30ee8fd9ebb0">getError</a> () const</td></tr>
+<tr class="separator:adb4676ddcce64a7eae8a30ee8fd9ebb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e383ee31093a1bcf3646aa70579cd88"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_angular_velocity_controller.html#a8e383ee31093a1bcf3646aa70579cd88">atTarget</a> () const</td></tr>
+<tr class="separator:a8e383ee31093a1bcf3646aa70579cd88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for controlling a mechanism's angular velocity used by wrappers of device specific APIs. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8e383ee31093a1bcf3646aa70579cd88" name="a8e383ee31093a1bcf3646aa70579cd88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e383ee31093a1bcf3646aa70579cd88">&#9670;&#160;</a></span>atTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool rmb::AngularVelocityController::atTarget </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for getting whether the mechanism has achived it's target velocity.</p>
+<dl class="section return"><dt>Returns</dt><dd>true is the controller has achived the target velocity. </dd></dl>
+
+</div>
+</div>
 <a id="a626ebd875afa1ca75991d5b068e43d17" name="a626ebd875afa1ca75991d5b068e43d17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a626ebd875afa1ca75991d5b068e43d17">&#9670;&#160;</a></span>disable()</h2>
 
@@ -164,7 +210,63 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Common interface for disabling a mechanism. </p>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_linear_as_angular_velocity_controller.html#ad5b1cc94fa095ad3670148ea08289f79">rmb::LinearAsAngularVelocityController</a>, <a class="el" href="classrmb_1_1_linear_as_angular_velocity_feedback_controller.html#ab93d1f813564023aeda07443f077be65">rmb::LinearAsAngularVelocityFeedbackController</a>, <a class="el" href="classrmb_1_1_angular_feedforwardontroller.html#a3148383743eafd10e1575cabddcb31ed">rmb::AngularFeedforwardontroller</a>, and <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#aea6f1c72ff44df8957968c0aea7ed921">rmb::SparkMaxVelocityController</a>.</p>
+<p>Implemented in <a class="el" href="classrmb_1_1_angular_feedforwardontroller.html#a3148383743eafd10e1575cabddcb31ed">rmb::AngularFeedforwardontroller</a>, and <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#adf4e028dc9dc0b735a8ec97831f3885b">rmb::SparkMaxVelocityController</a>.</p>
+
+</div>
+</div>
+<a id="adb4676ddcce64a7eae8a30ee8fd9ebb0" name="adb4676ddcce64a7eae8a30ee8fd9ebb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb4676ddcce64a7eae8a30ee8fd9ebb0">&#9670;&#160;</a></span>getError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::radians_per_second_t rmb::AngularVelocityController::getError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for getting the error between the velocities controllers target velocity and the actual velocity measured by the encoder.</p>
+<dl class="section return"><dt>Returns</dt><dd>position error in radians per second. </dd></dl>
+
+</div>
+</div>
+<a id="a5521f7d3941931c274776b7ab9be5db2" name="a5521f7d3941931c274776b7ab9be5db2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5521f7d3941931c274776b7ab9be5db2">&#9670;&#160;</a></span>getPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::radian_t rmb::AngularVelocityController::getPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for returning the angular position of an encoder.</p>
+<dl class="section return"><dt>Returns</dt><dd>The position of the encoder in radians. </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#aea830bc54ae333c86fa4fe5f90895fd5">rmb::SparkMaxVelocityController</a>.</p>
 
 </div>
 </div>
@@ -193,7 +295,64 @@ Public Member Functions</h2></td></tr>
 <p>Common interface for getting the <b>target</b> angular velocity.</p>
 <dl class="section return"><dt>Returns</dt><dd>The <b>target</b> angular velocity in radians per second. </dd></dl>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_linear_as_angular_velocity_controller.html#a67b82b605acc11825a22f0e5aa69d05a">rmb::LinearAsAngularVelocityController</a>, <a class="el" href="classrmb_1_1_linear_as_angular_velocity_feedback_controller.html#ad53cec4242b691d1389c923deb763d91">rmb::LinearAsAngularVelocityFeedbackController</a>, <a class="el" href="classrmb_1_1_angular_feedforwardontroller.html#a2d4a95c108aca4732b82f8543a268e28">rmb::AngularFeedforwardontroller</a>, and <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#ac054b39bde89ce6ea361c2d8b45ad850">rmb::SparkMaxVelocityController</a>.</p>
+<p>Implemented in <a class="el" href="classrmb_1_1_angular_feedforwardontroller.html#a2d4a95c108aca4732b82f8543a268e28">rmb::AngularFeedforwardontroller</a>, and <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#ac054b39bde89ce6ea361c2d8b45ad850">rmb::SparkMaxVelocityController</a>.</p>
+
+</div>
+</div>
+<a id="a744a9e72ec2aa28d4277e78ddd2511d0" name="a744a9e72ec2aa28d4277e78ddd2511d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a744a9e72ec2aa28d4277e78ddd2511d0">&#9670;&#160;</a></span>getTolerance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::radians_per_second_t rmb::AngularVelocityController::getTolerance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for getting a controllers tolerance </p>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a32af83b436470b7b6239371d02d38af2">rmb::SparkMaxVelocityController</a>.</p>
+
+</div>
+</div>
+<a id="af2f2c30f8ad23e022a33f47392c20fe9" name="af2f2c30f8ad23e022a33f47392c20fe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2f2c30f8ad23e022a33f47392c20fe9">&#9670;&#160;</a></span>getVelocity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::radians_per_second_t rmb::AngularVelocityController::getVelocity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for returning the angular velocity of an encoder.</p>
+<dl class="section return"><dt>Returns</dt><dd>The velocity of the encoder in radians per second. </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#ac6bf74f4d89f52363e25000a5c642b5c">rmb::SparkMaxVelocityController</a>.</p>
 
 </div>
 </div>
@@ -222,7 +381,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Common interface for setting a mechanism's raw power output. </p>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_linear_as_angular_velocity_controller.html#a9fce783dfa91d425c2b1aa582c019721">rmb::LinearAsAngularVelocityController</a>, <a class="el" href="classrmb_1_1_linear_as_angular_velocity_feedback_controller.html#aa86c42f65fcdb3e497bfd906dd2d05a3">rmb::LinearAsAngularVelocityFeedbackController</a>, and <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a788b386e4a57c90a7342e804a09957f8">rmb::SparkMaxVelocityController</a>.</p>
+<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a975110e2946a1f71e56c5ac983d23beb">rmb::SparkMaxVelocityController</a>.</p>
 
 </div>
 </div>
@@ -257,7 +416,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_linear_as_angular_velocity_controller.html#a8470dca7b76f81a60080b6299ef31f41">rmb::LinearAsAngularVelocityController</a>, <a class="el" href="classrmb_1_1_linear_as_angular_velocity_feedback_controller.html#a334b86c6239ef674dacf02f4ee6f75ff">rmb::LinearAsAngularVelocityFeedbackController</a>, <a class="el" href="classrmb_1_1_angular_feedforwardontroller.html#a95628381a891ac98d7eebddc8cb9a3f7">rmb::AngularFeedforwardontroller</a>, and <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#ae598961cd097ba5adc1e72f393db4fdf">rmb::SparkMaxVelocityController</a>.</p>
+<p>Implemented in <a class="el" href="classrmb_1_1_angular_feedforwardontroller.html#a95628381a891ac98d7eebddc8cb9a3f7">rmb::AngularFeedforwardontroller</a>, and <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#ae598961cd097ba5adc1e72f393db4fdf">rmb::SparkMaxVelocityController</a>.</p>
 
 </div>
 </div>
@@ -285,7 +444,42 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Common interface to stop the mechanism until <code>setPosition</code> is called again. </p>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_linear_as_angular_velocity_controller.html#ab4fb5c4a427ab296430575f2e0da5aee">rmb::LinearAsAngularVelocityController</a>, <a class="el" href="classrmb_1_1_linear_as_angular_velocity_feedback_controller.html#a50def9ecc323f7abf73893ce16d332d5">rmb::LinearAsAngularVelocityFeedbackController</a>, <a class="el" href="classrmb_1_1_angular_feedforwardontroller.html#af75b0aa0cc37977e2a37a1886af35307">rmb::AngularFeedforwardontroller</a>, and <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#aace47959200775962bdd0cda7f8d22a2">rmb::SparkMaxVelocityController</a>.</p>
+<p>Implemented in <a class="el" href="classrmb_1_1_angular_feedforwardontroller.html#af75b0aa0cc37977e2a37a1886af35307">rmb::AngularFeedforwardontroller</a>, and <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a4f96df2ae1e66aafce82c66f0298ac4a">rmb::SparkMaxVelocityController</a>.</p>
+
+</div>
+</div>
+<a id="a3dc22af48d1f9003166664d543ee9087" name="a3dc22af48d1f9003166664d543ee9087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dc22af48d1f9003166664d543ee9087">&#9670;&#160;</a></span>zeroPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void rmb::AngularVelocityController::zeroPosition </td>
+          <td>(</td>
+          <td class="paramtype">units::radian_t&#160;</td>
+          <td class="paramname"><em>offset</em> = <code>0_rad</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for zeroing the anguklar positon an encoder so the current position is set to the offset.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>the offset from the current angular position at which to set the zero position. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a145ad06d6e2051f2359b500d85b5d985">rmb::SparkMaxVelocityController</a>.</p>
 
 </div>
 </div>

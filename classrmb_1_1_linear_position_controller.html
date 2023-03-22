@@ -103,6 +103,7 @@ $(document).ready(function(){initNavTree('classrmb_1_1_linear_position_controlle
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classrmb_1_1_linear_position_controller-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">rmb::LinearPositionController Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
@@ -110,24 +111,24 @@ $(document).ready(function(){initNavTree('classrmb_1_1_linear_position_controlle
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_linear_position_controller_8h_source.html">rmb/motorcontrol/LinearPositionController.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for rmb::LinearPositionController:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classrmb_1_1_linear_position_controller.png" usemap="#rmb::LinearPositionController_map" alt=""/>
-  <map id="rmb::LinearPositionController_map" name="rmb::LinearPositionController_map">
-<area href="classrmb_1_1_angular_as_linear_position_controller.html" alt="rmb::AngularAsLinearPositionController" shape="rect" coords="0,56,291,80"/>
-<area href="classrmb_1_1_linear_position_feedback_controller.html" alt="rmb::LinearPositionFeedbackController" shape="rect" coords="301,56,592,80"/>
-<area href="classrmb_1_1_angular_as_linear_position_feedback_controller.html" alt="rmb::AngularAsLinearPositionFeedbackController" shape="rect" coords="301,112,592,136"/>
-  </map>
-</div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:af2539e1cf7f3b79562cd784147109fc1"><td class="memItemLeft" align="right" valign="top"><a id="af2539e1cf7f3b79562cd784147109fc1" name="af2539e1cf7f3b79562cd784147109fc1"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>ConversionUnit</b> = units::compound_unit&lt; units::meters, units::inverse&lt; units::radians &gt; &gt;</td></tr>
+<tr class="separator:af2539e1cf7f3b79562cd784147109fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5d18ec65645c4385d7f8cbd6a5e08e3"><td class="memItemLeft" align="right" valign="top"><a id="ad5d18ec65645c4385d7f8cbd6a5e08e3" name="ad5d18ec65645c4385d7f8cbd6a5e08e3"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>ConversionUnit_t</b> = units::unit_t&lt; ConversionUnit &gt;</td></tr>
+<tr class="separator:ad5d18ec65645c4385d7f8cbd6a5e08e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aaf323933124c4c6ab7aad5a9eab19cab"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#aaf323933124c4c6ab7aad5a9eab19cab">setPosition</a> (units::meter_t position)=0</td></tr>
 <tr class="separator:aaf323933124c4c6ab7aad5a9eab19cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac103c7b35b38907f4757591aba91481d"><td class="memItemLeft" align="right" valign="top">virtual units::meter_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#ac103c7b35b38907f4757591aba91481d">getTargetPosition</a> () const =0</td></tr>
 <tr class="separator:ac103c7b35b38907f4757591aba91481d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33283ddb78271d79857f66981f7ac7f9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#a33283ddb78271d79857f66981f7ac7f9">setPower</a> (double power)=0</td></tr>
+<tr class="separator:a33283ddb78271d79857f66981f7ac7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88e5ec8998866a8db8f70ed6887c8662"><td class="memItemLeft" align="right" valign="top">virtual units::meter_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#a88e5ec8998866a8db8f70ed6887c8662">getMinPosition</a> () const =0</td></tr>
 <tr class="separator:a88e5ec8998866a8db8f70ed6887c8662"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3737f6c444df53f6f55624bdd79d3c1"><td class="memItemLeft" align="right" valign="top">virtual units::meter_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#af3737f6c444df53f6f55624bdd79d3c1">getMaxPosition</a> () const =0</td></tr>
@@ -136,10 +137,49 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae0b39896d1bce7c6ffdcceac030187f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a77a545e9021db417d7ad84e4740037"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#a1a77a545e9021db417d7ad84e4740037">stop</a> ()=0</td></tr>
 <tr class="separator:a1a77a545e9021db417d7ad84e4740037"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c9c78c942a812f940d6b43f4b3bfc8f"><td class="memItemLeft" align="right" valign="top">virtual units::meters_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#a2c9c78c942a812f940d6b43f4b3bfc8f">getVelocity</a> () const =0</td></tr>
+<tr class="separator:a2c9c78c942a812f940d6b43f4b3bfc8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af40230d206d3898b34c6878ab113c59c"><td class="memItemLeft" align="right" valign="top">virtual units::meter_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#af40230d206d3898b34c6878ab113c59c">getPosition</a> () const =0</td></tr>
+<tr class="separator:af40230d206d3898b34c6878ab113c59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07d71aab97e2c1bd2a1fac80a82b08fc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#a07d71aab97e2c1bd2a1fac80a82b08fc">zeroPosition</a> (units::meter_t offset=0_m)=0</td></tr>
+<tr class="separator:a07d71aab97e2c1bd2a1fac80a82b08fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d7e20f23cabb69c10569570274e8a0"><td class="memItemLeft" align="right" valign="top">virtual units::meter_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#ae5d7e20f23cabb69c10569570274e8a0">getTolerance</a> () const =0</td></tr>
+<tr class="separator:ae5d7e20f23cabb69c10569570274e8a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e9feff1cf0d5282ffea912f20dfd558"><td class="memItemLeft" align="right" valign="top">virtual units::meter_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#a9e9feff1cf0d5282ffea912f20dfd558">getError</a> () const</td></tr>
+<tr class="separator:a9e9feff1cf0d5282ffea912f20dfd558"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd16373a256440a2041a49e5b1c6c113"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_linear_position_controller.html#abd16373a256440a2041a49e5b1c6c113">atTarget</a> () const</td></tr>
+<tr class="separator:abd16373a256440a2041a49e5b1c6c113"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for controlling a mechanism's linear position used by wrappers of device specific APIs. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="abd16373a256440a2041a49e5b1c6c113" name="abd16373a256440a2041a49e5b1c6c113"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd16373a256440a2041a49e5b1c6c113">&#9670;&#160;</a></span>atTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool rmb::LinearPositionController::atTarget </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for getting whether the mechanism has achived it's target velocity.</p>
+<dl class="section return"><dt>Returns</dt><dd>true is the controller has achived the target velocity. </dd></dl>
+
+</div>
+</div>
 <a id="ae0b39896d1bce7c6ffdcceac030187f5" name="ae0b39896d1bce7c6ffdcceac030187f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae0b39896d1bce7c6ffdcceac030187f5">&#9670;&#160;</a></span>disable()</h2>
 
@@ -164,7 +204,32 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Common interface for disabling a mechanism. </p>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_angular_as_linear_position_controller.html#a936355279fd1d93638cb900cd7d57d47">rmb::AngularAsLinearPositionController</a>, and <a class="el" href="classrmb_1_1_angular_as_linear_position_feedback_controller.html#a6e81ab0e18580c2832c4d2d93a498b60">rmb::AngularAsLinearPositionFeedbackController</a>.</p>
+</div>
+</div>
+<a id="a9e9feff1cf0d5282ffea912f20dfd558" name="a9e9feff1cf0d5282ffea912f20dfd558"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e9feff1cf0d5282ffea912f20dfd558">&#9670;&#160;</a></span>getError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::meter_t rmb::LinearPositionController::getError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for getting the error between the velocities controllers target velocity and the actual velocity measured by the encoder.</p>
+<dl class="section return"><dt>Returns</dt><dd>position error in radians per second. </dd></dl>
 
 </div>
 </div>
@@ -193,8 +258,6 @@ Public Member Functions</h2></td></tr>
 <p>Common interface for getting the maximum linear position.</p>
 <dl class="section return"><dt>Returns</dt><dd>The maximum linear position in meters. </dd></dl>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_angular_as_linear_position_controller.html#a5dfac5e8e3cc55561883e8fc51e27395">rmb::AngularAsLinearPositionController</a>, and <a class="el" href="classrmb_1_1_angular_as_linear_position_feedback_controller.html#aabb1ee3e5d71f09f0e911c58b2988304">rmb::AngularAsLinearPositionFeedbackController</a>.</p>
-
 </div>
 </div>
 <a id="a88e5ec8998866a8db8f70ed6887c8662" name="a88e5ec8998866a8db8f70ed6887c8662"></a>
@@ -222,7 +285,32 @@ Public Member Functions</h2></td></tr>
 <p>Common interface for getting the minimum linear position.</p>
 <dl class="section return"><dt>Returns</dt><dd>The minimum linear position in meters. </dd></dl>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_angular_as_linear_position_controller.html#a8da110b1cccd18db9b0d36796a1ec6cf">rmb::AngularAsLinearPositionController</a>, and <a class="el" href="classrmb_1_1_angular_as_linear_position_feedback_controller.html#a159af3e2e748dbd000a45b792d86f0cb">rmb::AngularAsLinearPositionFeedbackController</a>.</p>
+</div>
+</div>
+<a id="af40230d206d3898b34c6878ab113c59c" name="af40230d206d3898b34c6878ab113c59c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af40230d206d3898b34c6878ab113c59c">&#9670;&#160;</a></span>getPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::meter_t rmb::LinearPositionController::getPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for returning the linear position of an encoder.</p>
+<dl class="section return"><dt>Returns</dt><dd>The position of the encoder in meters. </dd></dl>
 
 </div>
 </div>
@@ -251,7 +339,58 @@ Public Member Functions</h2></td></tr>
 <p>Common interface for getting the <b>target</b> linear position.</p>
 <dl class="section return"><dt>Returns</dt><dd>The target linear position in meters. </dd></dl>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_angular_as_linear_position_controller.html#a3cb3c354d1239ce677666a711ed5324b">rmb::AngularAsLinearPositionController</a>, and <a class="el" href="classrmb_1_1_angular_as_linear_position_feedback_controller.html#aae9cd0150bd1aa8a863a26e9fed3ceea">rmb::AngularAsLinearPositionFeedbackController</a>.</p>
+</div>
+</div>
+<a id="ae5d7e20f23cabb69c10569570274e8a0" name="ae5d7e20f23cabb69c10569570274e8a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5d7e20f23cabb69c10569570274e8a0">&#9670;&#160;</a></span>getTolerance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::meter_t rmb::LinearPositionController::getTolerance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for getting a controllers tolerance </p>
+
+</div>
+</div>
+<a id="a2c9c78c942a812f940d6b43f4b3bfc8f" name="a2c9c78c942a812f940d6b43f4b3bfc8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c9c78c942a812f940d6b43f4b3bfc8f">&#9670;&#160;</a></span>getVelocity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::meters_per_second_t rmb::LinearPositionController::getVelocity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for returning the linear velocity of an encoder.</p>
+<dl class="section return"><dt>Returns</dt><dd>The velocity of the encoder in meters per second. </dd></dl>
 
 </div>
 </div>
@@ -286,7 +425,32 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_angular_as_linear_position_controller.html#af1549f19791cae35d0e738f0a717a7fb">rmb::AngularAsLinearPositionController</a>, and <a class="el" href="classrmb_1_1_angular_as_linear_position_feedback_controller.html#a58858ab0821aace6a4c5ad2c9f27b669">rmb::AngularAsLinearPositionFeedbackController</a>.</p>
+</div>
+</div>
+<a id="a33283ddb78271d79857f66981f7ac7f9" name="a33283ddb78271d79857f66981f7ac7f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33283ddb78271d79857f66981f7ac7f9">&#9670;&#160;</a></span>setPower()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void rmb::LinearPositionController::setPower </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>power</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for setting a mechanism's raw power output. </p>
 
 </div>
 </div>
@@ -314,7 +478,38 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Common interface to stop the mechanism until <code>setPosition</code> is called again. </p>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_angular_as_linear_position_controller.html#a296c9160d17405c71ea9ee457ee871aa">rmb::AngularAsLinearPositionController</a>, and <a class="el" href="classrmb_1_1_angular_as_linear_position_feedback_controller.html#abc64852ad061f84d9dd82e93acce0a01">rmb::AngularAsLinearPositionFeedbackController</a>.</p>
+</div>
+</div>
+<a id="a07d71aab97e2c1bd2a1fac80a82b08fc" name="a07d71aab97e2c1bd2a1fac80a82b08fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07d71aab97e2c1bd2a1fac80a82b08fc">&#9670;&#160;</a></span>zeroPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void rmb::LinearPositionController::zeroPosition </td>
+          <td>(</td>
+          <td class="paramtype">units::meter_t&#160;</td>
+          <td class="paramname"><em>offset</em> = <code>0_m</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Common interface for zeroing the linear positon an encoder so the current position is set to the offset.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>the offset from the current angular position at which to set the zero position. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
