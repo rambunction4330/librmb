@@ -903,12 +903,12 @@ INPUT_ENCODING         = UTF-8
 # comment), *.py, *.pyw, *.f90, *.f95, *.f03, *.f08, *.f18, *.f, *.for, *.vhd,
 # *.vhdl, *.ucf, *.qsf and *.ice.
 
-FILE_PATTERNS          = *.c \
-                         *.cc \
-                         *.cxx \
-                         *.cpp \
-                         *.c++ \
-                         *.java \
+# FILE_PATTERNS          = *.c \
+#                          *.cc \
+#                          *.cxx \
+#                          *.cpp \
+#                          *.c++ \
+FILE_PATTERNS          = *.java \
                          *.ii \
                          *.ixx \
                          *.ipp \

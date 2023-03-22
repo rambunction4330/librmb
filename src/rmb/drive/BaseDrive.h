@@ -20,10 +20,30 @@
 #include <pathplanner/lib/PathPlannerTrajectory.h>
 
 namespace rmb {
+
+/**
+ * Base interface for robot drive classes that can handle automatic updating 
+ * of vision based odometry and more complex path following.
+ */
 class BaseDrive {
 public:
+
   BaseDrive() = default;
 
+  // TODO: Modify yable for compatability with LimeLight.
+
+  /**
+   * Constructs a base drive class capable of automatically listening for 
+   * vision based odometry over the network via NetworkTables. 
+   *
+   * @param visionTable Path to NetworkTables table for listening for vision
+   *                    based odometry updates. This table whould include two 
+   *                    DoubleArrayTopics. One titled `pose` with three entries 
+   *                    ordered X, Y, Theta in meters and radians. The other 
+   *                    should be names `stDev` with three entris again ordered 
+   *                    X, Y, Theta with units meters and radians. Always 
+   *                    update stDev before pose.
+   */
   BaseDrive(std::string visionTable);
 
   ~BaseDrive();
