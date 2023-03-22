@@ -25,7 +25,7 @@ namespace rmb {
 
 DifferentialDrive::DifferentialDrive(
     std::unique_ptr<LinearVelocityController> left,
-    std::unique_ptr<LinearVelocityController> right, 
+    std::unique_ptr<LinearVelocityController> right,
     std::shared_ptr<const frc::Gyro> gyro,
     frc::DifferentialDriveKinematics kinematics,
     frc::RamseteController ramseteController, std::string visionTable,
