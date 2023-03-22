@@ -211,6 +211,13 @@ public:
   //----------------------
 
   /**
+   * Returns wherther the drive train is holonomic, meanign can move in all 
+   * directions. This is nessesry for determining how to rezero a robot at the
+   * beginning of a path.
+   */
+  bool isHolonomic() const override { return false; }
+
+  /**
    * Generates a command to follow WPILib Trajectory.
    *
    * @param trajectory       The trajectory to follow.

@@ -1,8 +1,12 @@
 #include "rmb/drive/BaseDrive.h"
+#include "frc/kinematics/DifferentialDriveKinematics.h"
+
+#include <typeinfo>
 
 #include <frc2/command/Commands.h>
 
 #include <pathplanner/lib/commands/FollowPathWithEvents.h>
+#include <pathplanner/lib/auto/RamseteAutoBuilder.h>
 
 namespace rmb {
 BaseDrive::BaseDrive(std::string visionTable) {
@@ -125,4 +129,46 @@ frc2::CommandPtr BaseDrive::fullPPAuto(
   trajectoryGroup.push_back(trajectory);
   return fullPPAuto(trajectoryGroup, eventMap, driveRequirments);
 }
+
+frc2::CommandPtr BaseDrive::fullPPAuto(
+    std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
+    std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
+    std::initializer_list<frc2::Subsystem *> driveRequirements) {
+
+  if (trajectoryGroup.size() < 1) {
+    return frc2::cmd::None();
+  }
+
+  // Dummy auto builder just used to generate stop commands so teh undrlying 
+  // the actual type does not matter.
+  pathplanner::RamseteAutoBuilder autoBuilder(
+      []() { return frc::Pose2d(); }, [](auto) {}, {},
+      frc::DifferentialDriveKinematics(0.0_m), [](auto, auto) {}, 
+      eventMap, {});
+
+  std::vector<frc2::CommandPtr> commands;
+
+  if (isHolonomic()) {
+    commands.emplace_back(frc2::InstantCommand([this, trajectoryGroup]() {
+      resetPose(trajectoryGroup.front().getInitialHolonomicPose());
+    }));
+  } else {
+    commands.emplace_back(frc2::InstantCommand([this, trajectoryGroup]() {
+      resetPose(trajectoryGroup.front().getInitialPose());
+    }));
+  }
+
+  for (auto trajectory : trajectoryGroup) {
+    commands.emplace_back(
+        autoBuilder.stopEventGroup(trajectory.getStartStopEvent()));
+    commands.emplace_back(
+        followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirements));
+  }
+
+  commands.emplace_back(
+      autoBuilder.stopEventGroup(trajectoryGroup.back().getEndStopEvent()));
+
+  return frc2::cmd::Sequence(std::move(commands));
+}
+
 } // namespace rmb

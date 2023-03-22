@@ -26,7 +26,7 @@ namespace rmb {
  * of vision based odometry and more complex path following.
  */
 class BaseDrive {
-public:
+ protected:
   BaseDrive() = default;
 
   // TODO: Modify yable for compatability with LimeLight.
@@ -46,6 +46,8 @@ public:
   BaseDrive(std::string visionTable);
 
   ~BaseDrive();
+
+ public:
 
   //---------------
   // Drive Methods
@@ -115,6 +117,13 @@ public:
   //----------------------
   // Trajectory Following
   //----------------------
+
+  /**
+   * Returns wherther the drive train is holonomic, meanign can move in all 
+   * directions. This is nessesry for determining how to rezero a robot at the
+   * beginning of a path.
+   */
+  virtual bool isHolonomic() const = 0;
 
   /**
    * Generates a command to follow WPILib Trajectory.
@@ -243,7 +252,7 @@ public:
   virtual frc2::CommandPtr fullPPAuto(
       std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
       std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-      std::initializer_list<frc2::Subsystem *> driveRequirments) = 0;
+      std::initializer_list<frc2::Subsystem *> driveRequirments);
 
 protected:
   //---------------
