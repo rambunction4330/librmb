@@ -3,9 +3,10 @@
 
 #include <memory>
 
+#include <units/angle.h>
 #include <units/length.h>
-
-#include "rmb/motorcontrol/Conversions.h"
+#include <units/math.h>
+#include <units/velocity.h>
 
 namespace rmb {
 
@@ -17,6 +18,10 @@ class AngularPositionController;
  */
 class LinearPositionController {
 public:
+  //***************
+  // Motor Control
+  //***************
+
   /**
    * Common interface for setting the target linear position.
    *
@@ -30,6 +35,11 @@ public:
    * @return The target linear position in meters.
    */
   virtual units::meter_t getTargetPosition() const = 0;
+
+  /**
+   * Common interface for setting a mechanism's raw power output.
+   */
+  virtual void setPower(double power) = 0;
 
   /**
    * Common interface for getting the minimum linear position.
@@ -54,18 +64,76 @@ public:
    * Common interface to stop the mechanism until `setPosition` is called again.
    */
   virtual void stop() = 0;
+
+  //**********
+  // Feedback
+  //**********
+
+  /**
+   * Common interface for returning the linear velocity of an encoder.
+   *
+   * @return The velocity of the encoder in meters per second.
+   */
+  virtual units::meters_per_second_t getVelocity() const = 0;
+
+  /**
+   * Common interface for returning the linear position of an encoder.
+   *
+   * @return The position of the encoder in meters.
+   */
+  virtual units::meter_t getPosition() const = 0;
+
+  /**
+   * Common interface for zeroing the linear positon an encoder so the current
+   * position is set to the offset.
+   *
+   * @param offset the offset from the current angular position at which to
+   *               set the zero position.
+   */
+  virtual void zeroPosition(units::meter_t offset = 0_m) = 0;
+
+  /**
+   * Common interface for getting a controllers tolerance
+   */
+  virtual units::meter_t getTolerance() const = 0;
+
+  /**
+   * Common interface for getting the error between the velocities controllers
+   * target velocity and the actual velocity measured by the encoder.
+   *
+   * @return position error in radians per second.
+   */
+  virtual units::meter_t getError() const {
+    return getPosition() - getTargetPosition();
+  }
+
+  /**
+   * Common interface for getting whether the mechanism has achived it's
+   * target velocity.
+   *
+   * @return true is the controller has achived the target velocity.
+   */
+  virtual bool atTarget() const {
+    return units::math::abs(getError()) < getTolerance();
+  }
+
+  using ConversionUnit =
+      units::compound_unit<units::meters, units::inverse<units::radians>>;
+  using ConversionUnit_t = units::unit_t<ConversionUnit>;
 };
 
 /**
- * Generates a `AngularPositionController` to controller from an
- * `LinearPositionController` via a linear conversion factor. The new
- * controller takes ownership over the old one.
+ * Generates a `AngularVelocityController` from a `LinearVelocityController`
+ * via a proportional conversion factor. The new controller takes ownership
+ * over the old one.
  *
- * @param angularController origional controller the new one is generated from.
- * @param conversion conversion factor from linear to angular units.
+ * @param linearController Controller in linear units form which to create an
+ *                         angular controller
+ * @param conversion       Conversion factor from linear to angular units such
+ * as a wheel diameter.
  */
-std::shared_ptr<AngularPositionController>
-asAngular(std::shared_ptr<LinearPositionController> linearController,
-          MotorControlConversions::ConversionUnit_t conversion);
+std::unique_ptr<AngularPositionController>
+asAngular(std::unique_ptr<LinearPositionController> linearController,
+          LinearPositionController::ConversionUnit_t conversion);
 
 } // namespace rmb
