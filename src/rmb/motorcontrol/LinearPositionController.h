@@ -127,10 +127,10 @@ public:
  * via a proportional conversion factor. The new controller takes ownership
  * over the old one.
  *
- * @param linearController Controller in linear units form which to create an 
+ * @param linearController Controller in linear units form which to create an
  *                         angular controller
- * @param conversion       Conversion factor from linear to angular units such as a
- *                         wheel diameter.
+ * @param conversion       Conversion factor from linear to angular units such
+ * as a wheel diameter.
  */
 std::unique_ptr<AngularPositionController>
 asAngular(std::unique_ptr<LinearPositionController> linearController,

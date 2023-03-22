@@ -119,7 +119,7 @@ public:
  * via a proportional conversion factor. The new controller takes ownership
  * over the old one.
  *
- * @param angularController Controller in angular units form which to create a 
+ * @param angularController Controller in angular units form which to create a
  *                          linear controller
  * @param conversion        conversion factor from linear to angular units such
  *                          as a wheel diameter.
