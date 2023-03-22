@@ -211,7 +211,7 @@ public:
   //----------------------
 
   /**
-   * Returns wherther the drive train is holonomic, meanign can move in all 
+   * Returns wherther the drive train is holonomic, meanign can move in all
    * directions. This is nessesry for determining how to rezero a robot at the
    * beginning of a path.
    */
