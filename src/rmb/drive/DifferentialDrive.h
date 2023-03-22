@@ -30,27 +30,26 @@ namespace rmb {
 
 /**
  * Class to manage most aspects of a differential drivetrain from basic teleop
- * drive funtions to odometry and full path following for both WPILib and 
+ * drive funtions to odometry and full path following for both WPILib and
  * PathPlanner trajectories.
  */
 class DifferentialDrive : public BaseDrive {
 public:
-
   DifferentialDrive(const DifferentialDrive &) = delete;
   DifferentialDrive(DifferentialDrive &&) = delete;
 
   /**
-   * Constructs a DifferentialDrive object that automatically incorrperates 
+   * Constructs a DifferentialDrive object that automatically incorrperates
    * vision measurments over the network for odometry.
-   *    
+   *
    * @param left              Controls and monitors left side wheel speeds.
    * @param right             Controls and monitors right side wheel speeds.
    * @param gyro              Monitors the robots heading for odometry.
-   * @param kinematics        Kinematic modle for converting from wheel states 
+   * @param kinematics        Kinematic modle for converting from wheel states
    *                          to chassis states.
    * @param ramseteController Feedbakc controller for keeping the robot on path.
-   * @param visionTable       Path to the NetworkTables table for listening 
-   *                          for vision updates.                        
+   * @param visionTable       Path to the NetworkTables table for listening
+   *                          for vision updates.
    * @param initialPose       Starting position of the robot for odometry.
    */
   DifferentialDrive(std::unique_ptr<LinearVelocityController> left,
@@ -62,13 +61,13 @@ public:
                     const frc::Pose2d &initalPose = frc::Pose2d());
 
   /**
-   * Constructs a DifferentialDrive object that **does not** sutomatically 
+   * Constructs a DifferentialDrive object that **does not** sutomatically
    * incorrperates vision measurments over the network for odometry.
    *
    * @param left              Controls and monitors left side wheel speeds.
    * @param right             Controls and monitors right side wheel speeds.
    * @param gyro              Monitors the robots heading for odometry.
-   * @param kinematics        Kinematic modle for converting from wheel states 
+   * @param kinematics        Kinematic modle for converting from wheel states
    *                          to chassis states.
    * @param ramseteController Feedbakc controller for keeping the robot on path.
    * @param initialPose       Starting position of the robot for odometry.
@@ -85,10 +84,10 @@ public:
   //---------------
 
   /**
-   * Drives the robot according to the arcade algorithm which the xSpeed is 
-   * added ot both sides while rotation is addef ot the left and subtracted 
-   * from the right. This tends to be the most natural method for a human 
-   * driver, but is quite useless for autonomouse driving since  the speed of 
+   * Drives the robot according to the arcade algorithm which the xSpeed is
+   * added ot both sides while rotation is addef ot the left and subtracted
+   * from the right. This tends to be the most natural method for a human
+   * driver, but is quite useless for autonomouse driving since  the speed of
    * the motors is not controlled, just the power output.
    *
    * @param xSpeed      Desired forward "speed" of the robot form -1.0 to +1.0.
@@ -97,28 +96,28 @@ public:
   void arcadeDrive(double xSpeed, double zRotation);
 
   /**
-   * Drives the robot according to the curvature algorithm in which the turning 
-   * radius of the robot is independedn from the forward speed. This is most 
-   * useful for teleoperated driving as the speed of the motors is not 
-   * controlled, just  the power output of each motor. This is more natural 
+   * Drives the robot according to the curvature algorithm in which the turning
+   * radius of the robot is independedn from the forward speed. This is most
+   * useful for teleoperated driving as the speed of the motors is not
+   * controlled, just  the power output of each motor. This is more natural
    * for human input, but far less accurate for autonomus driving.
    *
    * @param xSpeed      Desired forward "speed" of the robot form -1.0 to +1.0.
    * @param zRotation   Desired turnign rat eof teh robot from -1.0 to +1.0.
-   * @param turnInPlace When true, the robot defaults back to an arcade drive 
+   * @param turnInPlace When true, the robot defaults back to an arcade drive
    *                    so teh robot can turn in place.
    */
   void curvatureDrive(double xSpeed, double zRotation, bool turnInPlace);
 
   /**
-   * Drives the robot according to the tank algorithm where the power of the 
-   * motor on each side of the robot is directly controlled.This is most 
-   * useful for teleoperated driving as the speed of the motors is not 
-   * controlled, just  the power output of each motor. This is more natural 
+   * Drives the robot according to the tank algorithm where the power of the
+   * motor on each side of the robot is directly controlled.This is most
+   * useful for teleoperated driving as the speed of the motors is not
+   * controlled, just  the power output of each motor. This is more natural
    * for human input, but far less accurate for autonomus driving.
    *
    * @param leftSpeed  Desired power or the left motor from -1.0 to +1.0.
-   * @param rightSpeed Desired power or the right motor from -1.0 to +1.0. 
+   * @param rightSpeed Desired power or the right motor from -1.0 to +1.0.
    */
   void tankDrive(double leftSpeed, double rightSpeed);
 
@@ -260,14 +259,14 @@ private:
   // Drive Variables
   //-----------------
 
-  /** 
-   * Controls and monitors the speeds of the wheels on the left side of the 
+  /**
+   * Controls and monitors the speeds of the wheels on the left side of the
    * robot. */
   std::unique_ptr<LinearVelocityController> left;
 
-  /** 
-   * Controls and monitors the speeds of the wheels on the right side of the 
-   * robot. 
+  /**
+   * Controls and monitors the speeds of the wheels on the right side of the
+   * robot.
    */
   std::unique_ptr<LinearVelocityController> right;
 
@@ -290,7 +289,7 @@ private:
   // Odometry Variables
   //-------------------
 
-  /** 
+  /**
    * Object to handle the math behind pose estimation.
    */
   frc::DifferentialDrivePoseEstimator poseEstimator;
