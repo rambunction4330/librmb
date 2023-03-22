@@ -5,8 +5,8 @@
 
 #include <frc2/command/Commands.h>
 
-#include <pathplanner/lib/commands/FollowPathWithEvents.h>
 #include <pathplanner/lib/auto/RamseteAutoBuilder.h>
+#include <pathplanner/lib/commands/FollowPathWithEvents.h>
 
 namespace rmb {
 BaseDrive::BaseDrive(std::string visionTable) {
@@ -143,8 +143,7 @@ frc2::CommandPtr BaseDrive::fullPPAuto(
   // the actual type does not matter.
   pathplanner::RamseteAutoBuilder autoBuilder(
       []() { return frc::Pose2d(); }, [](auto) {}, {},
-      frc::DifferentialDriveKinematics(0.0_m), [](auto, auto) {}, 
-      eventMap, {});
+      frc::DifferentialDriveKinematics(0.0_m), [](auto, auto) {}, eventMap, {});
 
   std::vector<frc2::CommandPtr> commands;
 

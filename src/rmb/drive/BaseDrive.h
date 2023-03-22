@@ -26,7 +26,7 @@ namespace rmb {
  * of vision based odometry and more complex path following.
  */
 class BaseDrive {
- protected:
+protected:
   BaseDrive() = default;
 
   // TODO: Modify yable for compatability with LimeLight.
@@ -47,8 +47,7 @@ class BaseDrive {
 
   ~BaseDrive();
 
- public:
-
+public:
   //---------------
   // Drive Methods
   //---------------
@@ -119,7 +118,7 @@ class BaseDrive {
   //----------------------
 
   /**
-   * Returns wherther the drive train is holonomic, meanign can move in all 
+   * Returns wherther the drive train is holonomic, meanign can move in all
    * directions. This is nessesry for determining how to rezero a robot at the
    * beginning of a path.
    */
