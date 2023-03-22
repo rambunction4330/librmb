@@ -25,23 +25,25 @@ namespace rmb {
 
 DifferentialDrive::DifferentialDrive(
     std::unique_ptr<LinearVelocityController> left,
-    std::unique_ptr<LinearVelocityController> right, const frc::Gyro &gyro,
+    std::unique_ptr<LinearVelocityController> right, 
+    std::shared_ptr<const frc::Gyro> gyro,
     frc::DifferentialDriveKinematics kinematics,
     frc::RamseteController ramseteController, std::string visionTable,
     const frc::Pose2d &initalPose)
     : BaseDrive(visionTable), left(std::move(left)), right(std::move(right)),
       gyro(gyro), kinematics(kinematics), ramseteController(ramseteController),
-      poseEstimator(kinematics, gyro.GetRotation2d(), left->getPosition(),
+      poseEstimator(kinematics, gyro->GetRotation2d(), left->getPosition(),
                     right->getPosition(), initalPose) {}
 
 DifferentialDrive::DifferentialDrive(
     std::unique_ptr<LinearVelocityController> left,
-    std::unique_ptr<LinearVelocityController> right, const frc::Gyro &gyro,
+    std::unique_ptr<LinearVelocityController> right,
+    std::shared_ptr<const frc::Gyro> gyro,
     frc::DifferentialDriveKinematics kinematics,
     frc::RamseteController ramseteController, const frc::Pose2d &initalPose)
     : left(std::move(left)), right(std::move(right)), gyro(gyro),
       kinematics(kinematics), ramseteController(ramseteController),
-      poseEstimator(kinematics, gyro.GetRotation2d(), left->getPosition(),
+      poseEstimator(kinematics, gyro->GetRotation2d(), left->getPosition(),
                     right->getPosition(), initalPose) {}
 
 void DifferentialDrive::arcadeDrive(double xSpeed, double zRotation) {
@@ -99,14 +101,14 @@ frc::Pose2d DifferentialDrive::getPose() const {
 frc::Pose2d DifferentialDrive::updatePose() {
   // Lock thread for saftey and updte position
   std::lock_guard<std::mutex> lock(visionThreadMutex);
-  return poseEstimator.Update(gyro.GetRotation2d(), left->getPosition(),
+  return poseEstimator.Update(gyro->GetRotation2d(), left->getPosition(),
                               right->getPosition());
 }
 
 void DifferentialDrive::resetPose(const frc::Pose2d &pose) {
   // Lock thread for saftey and reset position
   std::lock_guard<std::mutex> lock(visionThreadMutex);
-  poseEstimator.ResetPosition(gyro.GetRotation2d(), left->getPosition(),
+  poseEstimator.ResetPosition(gyro->GetRotation2d(), left->getPosition(),
                               right->getPosition(), pose);
 }
 

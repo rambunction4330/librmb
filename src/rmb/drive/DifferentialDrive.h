@@ -55,7 +55,7 @@ public:
    */
   DifferentialDrive(std::unique_ptr<LinearVelocityController> left,
                     std::unique_ptr<LinearVelocityController> right,
-                    std::shared_ptr<frc::Gyro> gyro,
+                    std::shared_ptr<const frc::Gyro> gyro,
                     frc::DifferentialDriveKinematics kinematics,
                     frc::RamseteController ramseteController,
                     std::string visionTable,
@@ -75,7 +75,7 @@ public:
    */
   DifferentialDrive(std::unique_ptr<LinearVelocityController> left,
                     std::unique_ptr<LinearVelocityController> right,
-                    std::shared_ptr<frc::Gyro> gyro,
+                    std::shared_ptr<const frc::Gyro> gyro,
                     frc::DifferentialDriveKinematics kinematics,
                     frc::RamseteController ramseteController,
                     const frc::Pose2d &initalPose = frc::Pose2d());
@@ -274,7 +274,7 @@ private:
   /**
    * Gyroscope to monitor the heading of the robot.
    */
-  const frc::Gyro &gyro;
+  std::shared_ptr<const frc::Gyro> gyro;
 
   /**
    * Kinematics to convert from wheel motion to chassis motion and visa versa.
