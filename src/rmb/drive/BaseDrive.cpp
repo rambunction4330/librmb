@@ -139,7 +139,7 @@ frc2::CommandPtr BaseDrive::fullPPAuto(
     return frc2::cmd::None();
   }
 
-  // Dummy auto builder just used to generate stop commands so the underlying 
+  // Dummy auto builder just used to generate stop commands so the underlying
   // the actual type does not matter.
   pathplanner::RamseteAutoBuilder autoBuilder(
       []() { return frc::Pose2d(); }, [](auto) {}, {},
