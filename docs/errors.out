@@ -21,14 +21,6 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:21: warning: Compound rmb::SparkMaxVelocityControllerHelper::MotorConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:31: warning: Compound rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:38: warning: Compound rmb::SparkMaxVelocityControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:134: warning: The following parameter of rmb::asAngular(std::unique_ptr< LinearPositionController > linearController, LinearPositionController::ConversionUnit_t conversion) is not documented:
-  parameter 'linearController'
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:120: warning: The following parameter of rmb::asAngular(std::unique_ptr< LinearVelocityController > linearController, LinearVelocityController::ConversionUnit_t conversion) is not documented:
-  parameter 'linearController'
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:126: warning: The following parameter of rmb::asLinear(std::unique_ptr< AngularPositionController > angularController, AngularPositionController::ConversionUnit_t conversion) is not documented:
-  parameter 'angularController'
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:124: warning: The following parameter of rmb::asLinear(std::unique_ptr< AngularVelocityController > angularController, AngularVelocityController::ConversionUnit_t conversion) is not documented:
-  parameter 'angularController'
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:37: warning: Member LogitechGamepad(int channel, double deadZone=0.0, bool squareOutputs=false) (function) of class rmb::LogitechGamepad is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:42: warning: Member GetLeftX() const (function) of class rmb::LogitechGamepad is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:49: warning: Member LeftXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
