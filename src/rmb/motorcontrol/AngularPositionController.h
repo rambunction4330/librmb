@@ -117,10 +117,12 @@ public:
 /**
  * Generates a `linearVelocityController` from a `AngularVelocityController`
  * via a proportional conversion factor. The new controller takes ownership
- * over the old one so this function can only be called at construction.
+ * over the old one.
  *
- * @param conversion conversion factor from linear to angular units such as a
- *                   wheel diameter.
+ * @param angularController Controller in angular units form which to create a 
+ *                          linear controller
+ * @param conversion        conversion factor from linear to angular units such
+ *                          as a wheel diameter.
  */
 std::unique_ptr<LinearPositionController>
 asLinear(std::unique_ptr<AngularPositionController> angularController,
