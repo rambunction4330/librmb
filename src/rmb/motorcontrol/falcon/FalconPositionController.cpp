@@ -23,6 +23,7 @@ FalconPositionController::FalconPositionController(
                                           createInfo.openLoopConfig.maxOutput);
   motorcontroller.ConfigPeakOutputReverse(0,
                                           createInfo.openLoopConfig.minOutput);
+  motorcontroller.ConfigOpenloopRamp(createInfo.openLoopConfig.rampRate());
 
   motorcontroller.Config_kD(0, createInfo.pidConfig.d);
   motorcontroller.Config_kI(0, createInfo.pidConfig.i);

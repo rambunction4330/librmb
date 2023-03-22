@@ -42,6 +42,7 @@ FalconVelocityController::FalconVelocityController(
   motorcontroller.ConfigForwardSoftLimitEnable(
       createInfo.feedbackConfig.forwardSwitch);
 
+
   if (createInfo.canCoderConfig.useCANCoder) {
     canCoder.emplace(createInfo.canCoderConfig.id);
 

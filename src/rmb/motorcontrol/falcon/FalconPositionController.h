@@ -25,6 +25,7 @@ struct MotorConfig {
 
 struct OpenLoopConfig {
   double minOutput = -1.0, maxOutput = 1.0;
+  units::second_t rampRate = 1.0_s;
 };
 
 struct PIDConfig {
@@ -32,6 +33,8 @@ struct PIDConfig {
   units::turn_t tolerance = 0.0_rad;
   double iZone = 0.0, iMaxAccumulator = 0.0;
   double closedLoopMaxPercentOutput = 1.0;
+
+  units::second_t rampRate = 1.0_s;
 };
 
 struct Range {
