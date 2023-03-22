@@ -45,7 +45,7 @@ public:
   typedef units::unit_t<RawInternalPositionUnit> RawInternalPositionUnit_t;
 
   //-------------CANCoder
-  //Units---------------------------------------------------
+  // Units---------------------------------------------------
   typedef units::unit<std::ratio<4096, 1>, units::turns> CANCoderTick;
   typedef units::unit_t<CANCoderTick> CANCoderTick_t;
 

@@ -73,7 +73,7 @@ struct CANCoderConfig {
 class FalconPositionController : public AngularPositionFeedbackController {
 public:
   //-------------Integrated Encoder
-  //Units-----------------------------------------
+  // Units-----------------------------------------
   typedef units::unit<std::ratio<2048, 1>, units::turns> IntegratedEncoderTick;
   typedef units::unit_t<IntegratedEncoderTick> IntegratedEncoderTick_t;
 
@@ -86,7 +86,7 @@ public:
   typedef units::unit_t<RawPositionUnit> RawIntegratedPositionUnit_t;
 
   //-------------CANCoder
-  //Units---------------------------------------------------
+  // Units---------------------------------------------------
   typedef units::unit<std::ratio<4096, 1>, units::turns> CANCoderTick;
   typedef units::unit_t<CANCoderTick> CANCoderTick_t;
 
