@@ -6,17 +6,17 @@
 #include <mutex>
 #include <string>
 
-#include <units/velocity.h>
 #include <units/angle.h>
+#include <units/velocity.h>
 
+#include <frc/controller/HolonomicDriveController.h>
+#include <frc/estimator/SwerveDrivePoseEstimator.h>
 #include <frc/geometry/Rotation2d.h>
 #include <frc/interfaces/Gyro.h>
 #include <frc/kinematics/ChassisSpeeds.h>
-#include <frc/kinematics/SwerveModuleState.h>
-#include <frc/kinematics/SwerveModulePosition.h>
 #include <frc/kinematics/SwerveDriveKinematics.h>
-#include <frc/estimator/SwerveDrivePoseEstimator.h>
-#include <frc/controller/HolonomicDriveController.h>
+#include <frc/kinematics/SwerveModulePosition.h>
+#include <frc/kinematics/SwerveModuleState.h>
 #include <frc/trajectory/Trajectory.h>
 
 #include <frc2/command/CommandPtr.h>
@@ -32,11 +32,10 @@ namespace rmb {
  * Class to manage most aspects of a swerve drivetrain from basic teleop
  * drive funtions to odometry and full path following for both WPILib and
  * PathPlanner trajectories.
- * 
+ *
  * @tparam NumModules Number fo swerve modules on the drivetrain.
  */
-template <size_t NumModules>
-class SwerveDrive : public BaseDrive {
+template <size_t NumModules> class SwerveDrive : public BaseDrive {
 public:
   SwerveDrive(const SwerveDrive &) = delete;
   SwerveDrive(SwerveDrive &&) = delete;
@@ -47,7 +46,8 @@ public:
    *
    * @param modules             Array of swerve modules aprt of the drivetrain.
    * @param gyro                Monitors the robots heading for odometry.
-   * @param holonomicController Feedbakc controller for keeping the robot on path.
+   * @param holonomicController Feedbakc controller for keeping the robot on
+   * path.
    * @param visionTable         Path to the NetworkTables table for listening
    *                            for vision updates.
    * @param initialPose         Starting position of the robot for odometry.
@@ -59,12 +59,12 @@ public:
               const frc::Pose2d &initalPose = frc::Pose2d());
 
   /**
-   * Constructs a SwerveDrive object that **does not** automatically 
+   * Constructs a SwerveDrive object that **does not** automatically
    * incorrperates vision measurments over the network for odometry.
    *
    * @param modules             Array of swerve modules aprt of the drivetrain.
    * @param gyro                Monitors the robots heading for odometry.
-   * @param holonomicController Feedbakc controller for keeping the robot on 
+   * @param holonomicController Feedbakc controller for keeping the robot on
    *                            path.
    * @param initialPose         Starting position of the robot for odometry.
    */
@@ -73,20 +73,20 @@ public:
               frc::HolonomicDriveController holonomicController,
               const frc::Pose2d &initalPose = frc::Pose2d());
 
-  
-  
-  void driveCatesian(double xSpeed, double ySpeed, double zRotation, bool fieldOriented);
+  void driveCatesian(double xSpeed, double ySpeed, double zRotation,
+                     bool fieldOriented);
 
-  void drivePolar(double speed, const frc::Rotation2d& angle, double zRotation, bool fieldOriented);
+  void drivePolar(double speed, const frc::Rotation2d &angle, double zRotation,
+                  bool fieldOriented);
 
   void driveModulePower(std::array<SwerveModulePower, NumModules> powers);
-  
+
   void driveModuleStates(std::array<frc::SwerveModuleState, NumModules> states);
 
   std::array<frc::SwerveModuleState, NumModules> getModuleStates() const;
 
   std::array<frc::SwerveModulePosition, NumModules> getModulePositions() const;
-  
+
   /**
    * Drives the robot via the speeds of the Chassis.
    *
@@ -222,8 +222,8 @@ private:
    */
   frc::SwerveDrivePoseEstimator<NumModules> poseEstimator;
 
-  /** 
-   * Mutex to protect position estimations between vision threads. 
+  /**
+   * Mutex to protect position estimations between vision threads.
    */
   mutable std::mutex visionThreadMutex;
 };

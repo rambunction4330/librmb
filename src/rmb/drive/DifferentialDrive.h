@@ -279,8 +279,8 @@ private:
    */
   frc::DifferentialDrivePoseEstimator poseEstimator;
 
-  /** 
-   * Mutex to protect position estimations between vision threads. 
+  /**
+   * Mutex to protect position estimations between vision threads.
    */
   mutable std::mutex visionThreadMutex;
 };
