@@ -284,8 +284,5 @@ protected:
    * for position.
    */
   NT_Listener stdDevListener;
-
-  /** mutex to protect position estimations between vision threads. */
-  mutable std::mutex visionThreadMutex;
 };
 } // namespace rmb

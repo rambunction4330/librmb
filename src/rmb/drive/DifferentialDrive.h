@@ -278,5 +278,10 @@ private:
    * Object to handle the math behind pose estimation.
    */
   frc::DifferentialDrivePoseEstimator poseEstimator;
+
+  /** 
+   * Mutex to protect position estimations between vision threads. 
+   */
+  mutable std::mutex visionThreadMutex;
 };
 } // namespace rmb

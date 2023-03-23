@@ -37,8 +37,6 @@ BaseDrive::BaseDrive(std::string visionTable) {
 
         units::second_t time = units::microsecond_t(rawData.time);
 
-        // Lock mutex for thread saftey and add vision.
-        std::lock_guard<std::mutex> lock(visionThreadMutex);
         addVisionMeasurments(pose, time);
       });
 
@@ -54,8 +52,6 @@ BaseDrive::BaseDrive(std::string visionTable) {
                            return;
                          }
 
-                         // Lock mutex for thread saftey and add vision.
-                         std::lock_guard<std::mutex> lock(visionThreadMutex);
                          setVisionSTDevs({rawData[0], rawData[1], rawData[2]});
                        });
 }
