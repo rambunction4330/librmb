@@ -145,37 +145,4 @@ frc2::CommandPtr DifferentialDrive::followPPTrajectory(
       .ToPtr();
 }
 
-frc2::CommandPtr DifferentialDrive::fullPPAuto(
-    std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
-    std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-    std::initializer_list<frc2::Subsystem *> driveRequirements) {
-
-  if (trajectoryGroup.size() < 1) {
-    return frc2::cmd::None();
-  }
-
-  // Dummy auto builder just used to generate stop commands.
-  pathplanner::RamseteAutoBuilder autoBuilder(
-      []() { return frc::Pose2d(); }, [](auto) {}, ramseteController,
-      kinematics, [](auto, auto) {}, eventMap, {});
-
-  std::vector<frc2::CommandPtr> commands;
-
-  commands.emplace_back(frc2::InstantCommand([this, trajectoryGroup]() {
-    resetPose(trajectoryGroup.front().getInitialPose());
-  }));
-
-  for (auto trajectory : trajectoryGroup) {
-    commands.emplace_back(
-        autoBuilder.stopEventGroup(trajectory.getStartStopEvent()));
-    commands.emplace_back(
-        followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirements));
-  }
-
-  commands.emplace_back(
-      autoBuilder.stopEventGroup(trajectoryGroup.back().getEndStopEvent()));
-
-  return frc2::cmd::Sequence(std::move(commands));
-}
-
 } // namespace rmb
