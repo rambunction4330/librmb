@@ -5,8 +5,8 @@
 #include <units/angle.h>
 
 #include <frc/geometry/Translation2d.h>
-#include <frc/kinematics/SwerveModuleState.h>
 #include <frc/kinematics/SwerveModulePosition.h>
+#include <frc/kinematics/SwerveModuleState.h>
 
 #include "frc/drive/RobotDriveBase.h"
 #include "frc/geometry/Rotation2d.h"
@@ -17,19 +17,19 @@ namespace rmb {
 
 /**
  * Open loop state of a swerve module.
- * 
- * This is often useful for teleoperated driving since it tends to more 
- * natural for a human driver to controll the power of a motor in open loop 
- * operation rather than the velocity in a closed loop mode (closed loop 
+ *
+ * This is often useful for teleoperated driving since it tends to more
+ * natural for a human driver to controll the power of a motor in open loop
+ * operation rather than the velocity in a closed loop mode (closed loop
  * operation is, of course, not possible for angle control).
  */
 struct SwerveModulePower {
- double power; /* <- Power to drive swerve module at. */
- frc::Rotation2d angle; /* <- Angel to drive swerve module at. */
+  double power;          /* <- Power to drive swerve module at. */
+  frc::Rotation2d angle; /* <- Angel to drive swerve module at. */
 
-  /** 
-   * Minimize the change in heading the desired power would require by 
-   * potentially reversing the direction the wheel spins so the furthest a 
+  /**
+   * Minimize the change in heading the desired power would require by
+   * potentially reversing the direction the wheel spins so the furthest a
    * wheel will ever rotate is 90 degrees.
    *
    * @param desiredPower The desired power.
@@ -37,8 +37,8 @@ struct SwerveModulePower {
    *
    * @return Optomized module power.
    */
- static SwerveModulePower Optimize(const SwerveModulePower& desiredPower, 
-                                   const frc::Rotation2d& currentAngle);
+  static SwerveModulePower Optimize(const SwerveModulePower &desiredPower,
+                                    const frc::Rotation2d &currentAngle);
 };
 
 /**
@@ -46,21 +46,20 @@ struct SwerveModulePower {
  */
 class SwerveModule {
 public:
-
-  SwerveModule(const SwerveModule&) = delete;
-  SwerveModule(SwerveModule&&) = default;
+  SwerveModule(const SwerveModule &) = delete;
+  SwerveModule(SwerveModule &&) = default;
 
   /**
    * Constructs a SwerveModule object for controlling module states.
    *
    * @param angularController Controller of the angle of module.
    * @param angularController Controller of the velocioty of module.
-   * @param moduleTranslation the position of teh modlue reletive to the 
+   * @param moduleTranslation the position of teh modlue reletive to the
    *                          center of the robot for kinematics.
    */
   SwerveModule(std::unique_ptr<AngularPositionController> angularController,
                std::unique_ptr<LinearVelocityController> velocityController,
-               const frc::Translation2d& moduleTranslation);
+               const frc::Translation2d &moduleTranslation);
 
   /**
    * Sets the desired state of the swerve module.
@@ -68,15 +67,15 @@ public:
    * @param velocity The desired speed of the swerve module.
    * @param angle    The desired angle of the swerve module.
    */
-  void setState(const units::meters_per_second_t& velocity, 
-                const frc::Rotation2d& angle);
+  void setState(const units::meters_per_second_t &velocity,
+                const frc::Rotation2d &angle);
 
   /**
    * Sets the desired state of the swerve module.
    *
    * @param state The desired state of the module.
    */
-  void setState(const frc::SwerveModuleState& state);
+  void setState(const frc::SwerveModuleState &state);
 
   /**
    * Returns the current state of the module.
@@ -84,38 +83,37 @@ public:
   frc::SwerveModuleState getState() const;
 
   /**
-   * Returns the current position of teh module useful for more accurate 
+   * Returns the current position of teh module useful for more accurate
    * odometry.
    */
   frc::SwerveModulePosition getPosition() const;
 
   /**
    * Sets the desired open loop powerof the swerve module. Tghis is helpful
-   * for teleoperated driving as drivers tend power based control to be more 
+   * for teleoperated driving as drivers tend power based control to be more
    * natural.
    *
    * @param power The desired power output of the swerve module.
    * @param angle The desired angle of the swerve module.
    */
-  void setPower(double power, const frc::Rotation2d& angle);
+  void setPower(double power, const frc::Rotation2d &angle);
 
   /**
    * Sets the desired open loop powerof the swerve module. Tghis is helpful
-   * for teleoperated driving as drivers tend power based control to be more 
+   * for teleoperated driving as drivers tend power based control to be more
    * natural.
    *
    * @param power The desired power output of the swerve module.
    */
-  void setPower(const SwerveModulePower& power);
+  void setPower(const SwerveModulePower &power);
 
   /**
    * Returns the position fo the module reletive to the center of the robot
    * for kinematics.
    */
-  const frc::Translation2d& getModuleTranslation() const;
+  const frc::Translation2d &getModuleTranslation() const;
 
 private:
-
   /**
    * Controls the angle of the module.
    */
@@ -127,9 +125,9 @@ private:
   std::unique_ptr<LinearVelocityController> velocityController;
 
   /**
-   * The position fo the module reletive to the center of the robot for 
+   * The position fo the module reletive to the center of the robot for
    * kinematics.
    */
   frc::Translation2d moduleTranslation;
 };
-}
+} // namespace rmb
