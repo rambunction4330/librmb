@@ -42,7 +42,9 @@ struct Range {
       -std::numeric_limits<units::radian_t>::infinity();
   units::radian_t maxPosition =
       std::numeric_limits<units::radian_t>::infinity();
+
   bool isContinuous = false;
+  units::radian_t continuousLowerBound = 0_rad; // The upper bound is +1 turn from the lower bound
 };
 
 struct ProfileConfig {
@@ -142,5 +144,7 @@ private:
   units::radian_t tolerance = 0.0_rad;
 
   const bool usingCANCoder;
+
+  const units::radian_t continuousFeedbackLowerBound;
 };
 } // namespace rmb

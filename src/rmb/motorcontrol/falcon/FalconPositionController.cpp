@@ -16,7 +16,8 @@ namespace rmb {
 FalconPositionController::FalconPositionController(
     const FalconPositionController::CreateInfo &createInfo)
     : motorcontroller(createInfo.config.id), range(createInfo.range),
-      usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
+      usingCANCoder(createInfo.canCoderConfig.useCANCoder),
+      continuousFeedbackLowerBound(createInfo.range.continuousLowerBound) {
 
   motorcontroller.SetInverted(createInfo.config.inverted);
 
@@ -85,6 +86,8 @@ void FalconPositionController::setPosition(units::radian_t position) {
     targetPosition = range.minPosition;
   }
 
+  targetPosition -= continuousFeedbackLowerBound;
+
   if (usingCANCoder) {
     motorcontroller.Set(
         ctre::phoenix::motorcontrol::ControlMode::Position,
@@ -98,10 +101,12 @@ void FalconPositionController::setPosition(units::radian_t position) {
 
 units::radian_t FalconPositionController::getTargetPosition() const {
   if (usingCANCoder) {
-    return RawCANCoderPositionUnit_t(motorcontroller.GetClosedLoopTarget()) /
+    return (RawCANCoderPositionUnit_t(motorcontroller.GetClosedLoopTarget()) +
+            continuousFeedbackLowerBound) /
            gearRatio;
   } else {
-    return RawIntegratedPositionUnit_t(motorcontroller.GetClosedLoopTarget()) /
+    return (RawIntegratedPositionUnit_t(motorcontroller.GetClosedLoopTarget()) +
+            continuousFeedbackLowerBound) /
            gearRatio;
   }
 }
@@ -131,20 +136,22 @@ units::radians_per_second_t FalconPositionController::getVelocity() const {
 units::radian_t FalconPositionController::getPosition() const {
   if (usingCANCoder) {
     return RawCANCoderPositionUnit_t(
-        motorcontroller.GetSelectedSensorPosition() / gearRatio);
+               motorcontroller.GetSelectedSensorPosition() / gearRatio) +
+           continuousFeedbackLowerBound;
   } else {
     return RawIntegratedPositionUnit_t(
-        motorcontroller.GetSelectedSensorPosition() / gearRatio);
+               motorcontroller.GetSelectedSensorPosition() / gearRatio) +
+           continuousFeedbackLowerBound;
   }
 }
 
 void FalconPositionController::zeroPosition(units::radian_t offset) {
   if (usingCANCoder) {
-    motorcontroller.SetSelectedSensorPosition(
-        RawCANCoderPositionUnit_t(offset * gearRatio)());
+    motorcontroller.SetSelectedSensorPosition(RawCANCoderPositionUnit_t(
+        (offset - continuousFeedbackLowerBound) * gearRatio)());
   } else {
-    motorcontroller.SetSelectedSensorPosition(
-        RawIntegratedPositionUnit_t(offset * gearRatio)());
+    motorcontroller.SetSelectedSensorPosition(RawIntegratedPositionUnit_t(
+        (offset - continuousFeedbackLowerBound) * gearRatio)());
   }
 }
 
