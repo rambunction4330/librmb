@@ -3,6 +3,7 @@
 #include "ctre/phoenix/motorcontrol/ControlMode.h"
 #include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
 #include "ctre/phoenix/motorcontrol/StatorCurrentLimitConfiguration.h"
+#include "ctre/phoenix/sensors/CANCoder.h"
 #include "units/angle.h"
 #include <iostream>
 
@@ -68,6 +69,8 @@ FalconPositionController::FalconPositionController(
         canCoder.value(), createInfo.canCoderConfig.remoteSensorSlot);
     motorcontroller.ConfigSelectedFeedbackSensor(device, 0, 0);
   }
+
+  motorcontroller.ConfigFeedbackNotContinuous(!createInfo.range.isContinuous);
 
   gearRatio = createInfo.feedbackConfig.gearRatio;
   tolerance = createInfo.pidConfig.tolerance;
