@@ -52,7 +52,7 @@ def findCompiler() -> str:
 
 def findOptionsTXT() -> str():
     name = os.path.join(
-        f"compileLibrmb{buildType}SharedLibraryLibrmbCpp", "options.txt")
+        f"compileFrcUserProgram{buildType}ExecutableFrcUserProgramCpp", "options.txt")
     for root, dirs, files in os.walk(os.getcwd()):
         for file in files:
             if name in os.path.join(root, file):
@@ -117,7 +117,7 @@ def generateCompileCommands(compilerPath: str, optionString: str):
 def main():
 
     # find compiler
-    print("searching for compiler... ", end="", flush=True)
+    print("searching for compiler... ", end="")
     compilerPath = findCompiler()
     if compilerPath == None:
         print("Failed to find compiler!")
@@ -125,7 +125,7 @@ def main():
     print(f"using {compilerPath}")
 
     # find the options.txt file which lists the compile options
-    print("searching for options.txt...", end="", flush=True)
+    print("searching for options.txt...", end="")
     optionsFilePath = findOptionsTXT()
     if optionsFilePath == None:
         print("Could not find options.txt. Perhaps you need to build?")
@@ -133,7 +133,7 @@ def main():
     print(f"using {optionsFilePath}")
 
     # get the options
-    print("getting compiler options... ", end="", flush=True)
+    print("getting compiler options... ", end="")
     compilerOptions = getOptionString(optionsFilePath)
     if compilerOptions == None:
         print("could not get compiler options for some reason!")

@@ -26,9 +26,12 @@
     }
 }*/
 
+
 pluginManagement {
     repositories {
         mavenLocal()
         gradlePluginPortal()
     }
 }
+
+include "testbench"
