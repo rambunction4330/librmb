@@ -145,6 +145,6 @@ private:
 
   const bool usingCANCoder;
 
-  const units::radian_t continuousFeedbackLowerBound;
+  units::radian_t continuousFeedbackLowerBound;
 };
 } // namespace rmb

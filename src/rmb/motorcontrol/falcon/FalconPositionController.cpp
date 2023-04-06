@@ -17,7 +17,9 @@ FalconPositionController::FalconPositionController(
     const FalconPositionController::CreateInfo &createInfo)
     : motorcontroller(createInfo.config.id), range(createInfo.range),
       usingCANCoder(createInfo.canCoderConfig.useCANCoder),
-      continuousFeedbackLowerBound(createInfo.range.continuousLowerBound) {
+      continuousFeedbackLowerBound(createInfo.range.isContinuous
+                                       ? createInfo.range.continuousLowerBound
+                                       : 0.0_rad) {
 
   motorcontroller.SetInverted(createInfo.config.inverted);
 
