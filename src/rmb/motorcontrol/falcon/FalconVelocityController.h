@@ -32,7 +32,7 @@ struct ProfileConfig {
 
 class FalconVelocityController : public AngularVelocityFeedbackController {
 public:
-  typedef units::unit<std::ratio<2048, 1>, units::turns> InternalEncoderTick;
+  typedef units::unit<std::ratio<1, 2048>, units::turns> InternalEncoderTick;
   typedef units::unit_t<InternalEncoderTick> InternalEncoderTick_t;
 
   typedef units::compound_unit<InternalEncoderTick,
@@ -46,7 +46,7 @@ public:
 
   //-------------CANCoder
   // Units---------------------------------------------------
-  typedef units::unit<std::ratio<4096, 1>, units::turns> CANCoderTick;
+  typedef units::unit<std::ratio<1, 4096>, units::turns> CANCoderTick;
   typedef units::unit_t<CANCoderTick> CANCoderTick_t;
 
   typedef units::compound_unit<CANCoderTick, units::inverse<units::deciseconds>>
