@@ -76,7 +76,7 @@ class FalconPositionController : public AngularPositionFeedbackController {
 public:
   //-------------Integrated Encoder
   // Units-----------------------------------------
-  typedef units::unit<std::ratio<2048, 1>, units::turns> IntegratedEncoderTick;
+  typedef units::unit<std::ratio<1, 2048>, units::turns> IntegratedEncoderTick;
   typedef units::unit_t<IntegratedEncoderTick> IntegratedEncoderTick_t;
 
   typedef units::compound_unit<IntegratedEncoderTick,
@@ -89,7 +89,7 @@ public:
 
   //-------------CANCoder
   // Units---------------------------------------------------
-  typedef units::unit<std::ratio<4096, 1>, units::turns> CANCoderTick;
+  typedef units::unit<std::ratio<1, 4096>, units::turns> CANCoderTick;
   typedef units::unit_t<CANCoderTick> CANCoderTick_t;
 
   typedef units::compound_unit<CANCoderTick, units::inverse<units::deciseconds>>
