@@ -1,13 +1,13 @@
 #pragma once
 
+#include <optional>
+
 #include "FalconPositionController.h"
 #include "ctre/phoenix/sensors/WPI_CANCoder.h"
 #include "rmb/motorcontrol/feedback/AngularVelocityFeedbackController.h"
 #include "units/angular_velocity.h"
-#include <optional>
 
 namespace rmb {
-
 namespace FalconVelocityControllerHelper {
 struct PIDConfig {
   double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;

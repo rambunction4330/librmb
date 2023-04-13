@@ -112,6 +112,8 @@ public:
 
   void setPosition(units::radian_t position) override;
 
+  void setPower(double power);
+
   units::radian_t getTargetPosition() const override;
 
   units::radian_t getMinPosition() const override;

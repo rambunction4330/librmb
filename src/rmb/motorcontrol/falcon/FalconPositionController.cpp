@@ -23,10 +23,8 @@ FalconPositionController::FalconPositionController(
 
   motorcontroller.SetInverted(createInfo.config.inverted);
 
-  motorcontroller.ConfigPeakOutputForward(0,
-                                          createInfo.openLoopConfig.maxOutput);
-  motorcontroller.ConfigPeakOutputReverse(0,
-                                          createInfo.openLoopConfig.minOutput);
+  motorcontroller.ConfigPeakOutputForward(createInfo.openLoopConfig.maxOutput);
+  motorcontroller.ConfigPeakOutputReverse(createInfo.openLoopConfig.minOutput);
   motorcontroller.ConfigOpenloopRamp(createInfo.openLoopConfig.rampRate());
 
   motorcontroller.Config_kD(0, createInfo.pidConfig.d);
@@ -75,6 +73,12 @@ FalconPositionController::FalconPositionController(
 
   motorcontroller.ConfigFeedbackNotContinuous(!createInfo.range.isContinuous);
 
+  if (usingCANCoder) {
+    motorcontroller.ConfigAllowableClosedloopError(0, RawIntegratedPositionUnit_t(createInfo.pidConfig.tolerance)());
+  } else {
+    motorcontroller.ConfigAllowableClosedloopError(0, RawCANCoderPositionUnit_t(createInfo.pidConfig.tolerance)());
+  }
+
   gearRatio = createInfo.feedbackConfig.gearRatio;
   tolerance = createInfo.pidConfig.tolerance;
 }
@@ -95,9 +99,14 @@ void FalconPositionController::setPosition(units::radian_t position) {
         ctre::phoenix::motorcontrol::ControlMode::Position,
         (RawCANCoderPositionUnit_t(targetPosition) * gearRatio)());
   } else {
+    std::cout << "turn_t position: " << ((units::turn_t)targetPosition)()
+              << std::endl;
     motorcontroller.Set(
         ctre::phoenix::motorcontrol::ControlMode::Position,
         (RawIntegratedPositionUnit_t(targetPosition) * gearRatio)());
+    std::cout << "setpoint: "
+              << (RawIntegratedPositionUnit_t(targetPosition) * gearRatio)()
+              << std::endl;
   }
 }
 
@@ -159,6 +168,11 @@ void FalconPositionController::zeroPosition(units::radian_t offset) {
 
 units::radian_t FalconPositionController::getTolerance() const {
   return tolerance;
+}
+
+void FalconPositionController::setPower(double power) {
+  motorcontroller.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,
+                      power);
 }
 
 } // namespace rmb

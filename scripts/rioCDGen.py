@@ -52,7 +52,7 @@ def findCompiler() -> str:
 
 def findOptionsTXT() -> str():
     name = os.path.join(
-        f"compileLibrmb{buildType}SharedLibraryLibrmbCpp", "options.txt")
+        f"compileLibRmb{buildType}SharedLibraryLibRmbCpp", "options.txt")
     for root, dirs, files in os.walk(os.getcwd()):
         for file in files:
             if name in os.path.join(root, file):

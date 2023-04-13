@@ -10,12 +10,12 @@ FalconVelocityController::FalconVelocityController(
     : motorcontroller(createInfo.config.id),
       usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
 
+  motorcontroller.ConfigFactoryDefault();
+
   motorcontroller.SetInverted(createInfo.config.inverted);
 
-  motorcontroller.ConfigPeakOutputForward(0,
-                                          createInfo.openLoopConfig.maxOutput);
-  motorcontroller.ConfigPeakOutputReverse(0,
-                                          createInfo.openLoopConfig.minOutput);
+  motorcontroller.ConfigPeakOutputForward(createInfo.openLoopConfig.maxOutput);
+  motorcontroller.ConfigPeakOutputReverse(createInfo.openLoopConfig.minOutput);
   motorcontroller.ConfigOpenloopRamp(createInfo.openLoopConfig.rampRate());
 
   ctre::phoenix::motorcontrol::StatorCurrentLimitConfiguration currentConfig{};
