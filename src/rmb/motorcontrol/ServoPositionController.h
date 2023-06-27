@@ -11,7 +11,7 @@
 namespace rmb {
 
 /**
- * Custom servo obhect the conforms to the `AngularPositionController`
+ * Custom servo object the conforms to the `AngularPositionController`
  * interface.
  */
 class ServoPositionController : public AngularPositionController {
@@ -42,25 +42,11 @@ public:
   }
 
   /**
-   * Sets the minimum angular position.
-   *
-   * @param min The minimum angular position in radians.
-   */
-  virtual void setMinPosition(units::radian_t min) { minPosition = min; }
-
-  /**
    * Gets the minimum angular position.
    *
    * @return The minimum angular position in radians.
    */
   virtual units::radian_t getMinPosition() const { return minPosition; }
-
-  /**
-   * Sets the maximum angular position.
-   *
-   * @param max  The maximum angular position in radians.
-   */
-  virtual void setMaxPosition(units::radian_t max) { maxPosition = max; }
 
   /**
    * Gets the maximum angular position.
