@@ -48,7 +48,8 @@ void Robot::RobotInit() {
       .range = {.minPosition =
                     -(units::radian_t)std::numeric_limits<double>::infinity(),
                 .maxPosition =
-                    (units::radian_t)std::numeric_limits<double>::infinity(), .isContinuous = false},
+                    (units::radian_t)std::numeric_limits<double>::infinity(),
+                .isContinuous = false},
       .feedbackConfig =
           {
               .gearRatio = 12.8,
@@ -98,9 +99,8 @@ void Robot::TestPeriodic() {
   std::cout << "position: "
             << ((units::degree_t)positionController->getPosition())()
             << std::endl;
-  std::cout <<
-  ((units::turns_per_second_t)velocityController->getVelocity())()
-             << std::endl;
+  std::cout << ((units::turns_per_second_t)velocityController->getVelocity())()
+            << std::endl;
 }
 
 void Robot::TestExit() {}

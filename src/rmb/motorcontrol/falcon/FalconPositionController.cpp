@@ -105,9 +105,8 @@ void FalconPositionController::setPosition(units::radian_t position) {
   }
 
   if (usingCANCoder) {
-    motorcontroller.Set(
-        ctre::phoenix::motorcontrol::ControlMode::Position,
-        (RawCANCoderPositionUnit_t(targetPosition))());
+    motorcontroller.Set(ctre::phoenix::motorcontrol::ControlMode::Position,
+                        (RawCANCoderPositionUnit_t(targetPosition))());
   } else {
     motorcontroller.Set(
         ctre::phoenix::motorcontrol::ControlMode::Position,
