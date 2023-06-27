@@ -34,7 +34,8 @@ struct PIDConfig {
   double iZone = 0.0, iMaxAccumulator = 0.0;
   double closedLoopMaxPercentOutput = 1.0;
 
-  units::second_t rampRate = 1.0_s;
+  units::second_t rampRate = 0.0_s; /*< Amount of time it takes to go from 0 to
+                                       full throttle. 0_s disables*/
 };
 
 struct Range {
@@ -43,11 +44,16 @@ struct Range {
   units::radian_t maxPosition =
       std::numeric_limits<units::radian_t>::infinity();
 
-  bool isContinuous = false;
+  bool isContinuous =
+      true; /*< If false, the encoder will keep track of overflow, meaning the
+                position value of the internal encoder, say will go from 2047 to
+                2048 to 2049 as you keep turning it. Otherwise it will go from
+                2047 to 0*/
 };
 
 struct ProfileConfig {
-  bool useSmartMotion = false;
+  bool useSmartMotion =
+      false; /*< Note to future users: Don't use smart motion!*/
   units::radians_per_second_t maxVelocity = 0.0_rad_per_s,
                               minVelocity = 0.0_rad_per_s;
   units::radians_per_second_squared_t maxAcceleration = 0.0_rad_per_s_sq;
@@ -105,30 +111,78 @@ public:
     FalconPositionControllerHelper::FeedbackConfig feedbackConfig;
     FalconPositionControllerHelper::OpenLoopConfig openLoopConfig;
     FalconPositionControllerHelper::CANCoderConfig canCoderConfig;
-    };
+  };
 
+  /**
+   * Creates a Falcon position FalconPositionController
+   * @param createInfo CreateInfo struct used to initialize the position
+   * controller
+   */
   FalconPositionController(const CreateInfo &createInfo);
 
+  /**
+   * Sets a closed loop position setpoint on the falcon to the given position
+   * @param position The position setpoint
+   */
   void setPosition(units::radian_t position) override;
 
+  /**
+   * Sets open loop power on the motor
+   * @param power The power target supplied to the motor. Must be in range
+   * [0.0, 1.0]
+   */
   void setPower(double power);
 
+  /**
+   * Queries the Phoenix API for the current set point of the motor
+   */
   units::radian_t getTargetPosition() const override;
 
+  /**
+   * Get the minium position of the motor
+   * @return The minimum position in a units::angle value
+   */
   units::radian_t getMinPosition() const override;
 
+  /**
+   * Get the maximum position of the motor
+   * @return The maximum position of the motor in a units::angle value
+   */
   units::radian_t getMaxPosition() const override;
 
+  /**
+   * Disables the motor
+   */
   void disable() override;
 
+  /**
+   * Stops the motor
+   */
   void stop() override;
 
+  /**
+   * Get the current velocity of the motor
+   * @return The velocity of the motor in a units::angular_velocity container
+   */
   units::radians_per_second_t getVelocity() const override;
 
+  /**
+   * Get the current position of the motor
+   * @return The current position of the motor as measured by the selected
+   *         sensor
+   */
   units::radian_t getPosition() const override;
 
+  /**
+   * Sets the reference position
+   * @param offset The position to reset the reference to. Defaults to 0
+   */
   void zeroPosition(units::radian_t offset = 0_rad) override;
 
+  /**
+   * Get the closed loop position tolerance
+   * @return The tolerance in a units::angle container
+   */
   units::radian_t getTolerance() const override;
 
 private:
