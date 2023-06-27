@@ -5,6 +5,7 @@
 #include "Robot.h"
 #include "rmb/motorcontrol/falcon/FalconPositionController.h"
 #include "rmb/motorcontrol/falcon/FalconVelocityController.h"
+#include "units/angle.h"
 
 #include <frc2/command/CommandScheduler.h>
 #include <limits>
@@ -16,13 +17,15 @@ void Robot::RobotInit() {
   rmb::FalconVelocityController::CreateInfo createInfo{
       .config =
           {
-              .id = 2,
+              .id = 10,
               .inverted = false,
           },
       .pidConfig =
           {
-              .d = 0.0,
-              .ff = 0.045,
+              .p = 0.130,
+              .i = 0.0001,
+              .d = 0.5,
+              .ff = 0.00,
               .closedLoopMaxPercentOutput = 1.0,
           },
       .profileConfig = {.maxVelocity = 100_tps,
@@ -36,18 +39,22 @@ void Robot::RobotInit() {
   };
 
   rmb::FalconPositionController::CreateInfo positionControllerCreateInfo{
-      .config = {.id = 1, .inverted = false},
-      .pidConfig = {.p = 0.100, .d = 0.5, .ff = 0.000, .tolerance = 0.5_deg},
+      .config = {.id = 12, .inverted = false},
+      .pidConfig = {.p = 1.000f,
+                    .i = 0.0f,
+                    .d = 1.0f,
+                    .ff = 0.000,
+                    .tolerance = 0.1_deg},
       .range = {.minPosition =
                     -(units::radian_t)std::numeric_limits<double>::infinity(),
                 .maxPosition =
-                    (units::radian_t)std::numeric_limits<double>::infinity()},
+                    (units::radian_t)std::numeric_limits<double>::infinity(), .isContinuous = false},
       .feedbackConfig =
           {
               .gearRatio = 12.8,
           },
       .openLoopConfig = {},
-      .canCoderConfig = {.useCANCoder = false},
+      .canCoderConfig = {.useCANCoder = true, .id = 11, .remoteSensorSlot = 0},
   };
 
   velocityController =
@@ -83,17 +90,17 @@ void Robot::TestInit() {
 }
 
 void Robot::TestPeriodic() {
-  // velocityController->setVelocity(2_tps);
-  velocityController->setPower(0.5);
+  velocityController->setVelocity(10_tps);
+  // velocityController->setPower(0.5);
 
   // positionController->setPower(0.2);
   positionController->setPosition(0.25_tr);
   std::cout << "position: "
-            << ((units::turn_t)positionController->getPosition())()
+            << ((units::degree_t)positionController->getPosition())()
             << std::endl;
-  // std::cout <<
-  // ((units::turns_per_second_t)velocityController->getVelocity())()
-  //           << std::endl;
+  std::cout <<
+  ((units::turns_per_second_t)velocityController->getVelocity())()
+             << std::endl;
 }
 
 void Robot::TestExit() {}

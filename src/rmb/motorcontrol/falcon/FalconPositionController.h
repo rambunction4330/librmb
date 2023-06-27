@@ -44,7 +44,6 @@ struct Range {
       std::numeric_limits<units::radian_t>::infinity();
 
   bool isContinuous = false;
-  units::radian_t continuousLowerBound = 0_rad; // The upper bound is +1 turn from the lower bound
 };
 
 struct ProfileConfig {
@@ -106,7 +105,7 @@ public:
     FalconPositionControllerHelper::FeedbackConfig feedbackConfig;
     FalconPositionControllerHelper::OpenLoopConfig openLoopConfig;
     FalconPositionControllerHelper::CANCoderConfig canCoderConfig;
-  };
+    };
 
   FalconPositionController(const CreateInfo &createInfo);
 
@@ -146,7 +145,5 @@ private:
   units::radian_t tolerance = 0.0_rad;
 
   const bool usingCANCoder;
-
-  units::radian_t continuousFeedbackLowerBound;
 };
 } // namespace rmb

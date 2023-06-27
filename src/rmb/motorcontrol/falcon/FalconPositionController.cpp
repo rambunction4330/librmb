@@ -3,7 +3,9 @@
 #include "ctre/phoenix/motorcontrol/ControlMode.h"
 #include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
 #include "ctre/phoenix/motorcontrol/StatorCurrentLimitConfiguration.h"
+#include "ctre/phoenix/motorcontrol/can/BaseMotorController.h"
 #include "ctre/phoenix/sensors/CANCoder.h"
+#include "ctre/phoenix/sensors/SensorTimeBase.h"
 #include "units/angle.h"
 #include <iostream>
 
@@ -16,10 +18,9 @@ namespace rmb {
 FalconPositionController::FalconPositionController(
     const FalconPositionController::CreateInfo &createInfo)
     : motorcontroller(createInfo.config.id), range(createInfo.range),
-      usingCANCoder(createInfo.canCoderConfig.useCANCoder),
-      continuousFeedbackLowerBound(createInfo.range.isContinuous
-                                       ? createInfo.range.continuousLowerBound
-                                       : 0.0_rad) {
+      usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
+
+  motorcontroller.ConfigFactoryDefault();
 
   motorcontroller.SetInverted(createInfo.config.inverted);
 
@@ -32,7 +33,7 @@ FalconPositionController::FalconPositionController(
   motorcontroller.Config_kP(0, createInfo.pidConfig.p);
   motorcontroller.Config_kF(0, createInfo.pidConfig.ff);
   motorcontroller.ConfigAllowableClosedloopError(
-      0, RawIntegratedPositionUnit_t(createInfo.pidConfig.tolerance)());
+      0, 0); // RawIntegratedPositionUnit_t(createInfo.pidConfig.tolerance)());
   motorcontroller.Config_IntegralZone(0, createInfo.pidConfig.iZone);
   motorcontroller.ConfigMaxIntegralAccumulator(
       0, createInfo.pidConfig.iMaxAccumulator);
@@ -51,6 +52,11 @@ FalconPositionController::FalconPositionController(
 
   if (createInfo.canCoderConfig.useCANCoder) {
     canCoder.emplace(createInfo.canCoderConfig.id);
+    canCoder->ConfigFactoryDefault();
+    canCoder->ConfigAbsoluteSensorRange(
+        ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360);
+    canCoder->ConfigFeedbackCoefficient(
+        1.0, "ticks", ctre::phoenix::sensors::SensorTimeBase::PerSecond);
 
     FeedbackDevice device;
     switch (createInfo.canCoderConfig.remoteSensorSlot) {
@@ -69,14 +75,19 @@ FalconPositionController::FalconPositionController(
     motorcontroller.ConfigRemoteFeedbackFilter(
         canCoder.value(), createInfo.canCoderConfig.remoteSensorSlot);
     motorcontroller.ConfigSelectedFeedbackSensor(device, 0, 0);
+    motorcontroller.ConfigIntegratedSensorAbsoluteRange(
+        ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360);
+    motorcontroller.ConfigSelectedFeedbackCoefficient(1.0f);
   }
 
   motorcontroller.ConfigFeedbackNotContinuous(!createInfo.range.isContinuous);
 
   if (usingCANCoder) {
-    motorcontroller.ConfigAllowableClosedloopError(0, RawIntegratedPositionUnit_t(createInfo.pidConfig.tolerance)());
+    motorcontroller.ConfigAllowableClosedloopError(
+        0, RawIntegratedPositionUnit_t(createInfo.pidConfig.tolerance)());
   } else {
-    motorcontroller.ConfigAllowableClosedloopError(0, RawCANCoderPositionUnit_t(createInfo.pidConfig.tolerance)());
+    motorcontroller.ConfigAllowableClosedloopError(
+        0, RawCANCoderPositionUnit_t(createInfo.pidConfig.tolerance)());
   }
 
   gearRatio = createInfo.feedbackConfig.gearRatio;
@@ -92,32 +103,23 @@ void FalconPositionController::setPosition(units::radian_t position) {
     targetPosition = range.minPosition;
   }
 
-  targetPosition -= continuousFeedbackLowerBound;
-
   if (usingCANCoder) {
     motorcontroller.Set(
         ctre::phoenix::motorcontrol::ControlMode::Position,
-        (RawCANCoderPositionUnit_t(targetPosition) * gearRatio)());
+        (RawCANCoderPositionUnit_t(targetPosition))());
   } else {
-    std::cout << "turn_t position: " << ((units::turn_t)targetPosition)()
-              << std::endl;
     motorcontroller.Set(
         ctre::phoenix::motorcontrol::ControlMode::Position,
         (RawIntegratedPositionUnit_t(targetPosition) * gearRatio)());
-    std::cout << "setpoint: "
-              << (RawIntegratedPositionUnit_t(targetPosition) * gearRatio)()
-              << std::endl;
   }
 }
 
 units::radian_t FalconPositionController::getTargetPosition() const {
   if (usingCANCoder) {
-    return (RawCANCoderPositionUnit_t(motorcontroller.GetClosedLoopTarget()) +
-            continuousFeedbackLowerBound) /
-           gearRatio;
+    return (RawCANCoderPositionUnit_t(motorcontroller.GetClosedLoopTarget()));
   } else {
-    return (RawIntegratedPositionUnit_t(motorcontroller.GetClosedLoopTarget()) +
-            continuousFeedbackLowerBound) /
+    return (RawIntegratedPositionUnit_t(
+               motorcontroller.GetClosedLoopTarget())) /
            gearRatio;
   }
 }
@@ -137,7 +139,7 @@ void FalconPositionController::stop() { motorcontroller.StopMotor(); }
 units::radians_per_second_t FalconPositionController::getVelocity() const {
   if (usingCANCoder) {
     return RawCANCoderVelocityUnit_t(
-        motorcontroller.GetSelectedSensorVelocity() / gearRatio);
+        motorcontroller.GetSelectedSensorVelocity());
   } else {
     return RawIntegratedVelocityUnit_t(
         motorcontroller.GetSelectedSensorVelocity() / gearRatio);
@@ -147,22 +149,19 @@ units::radians_per_second_t FalconPositionController::getVelocity() const {
 units::radian_t FalconPositionController::getPosition() const {
   if (usingCANCoder) {
     return RawCANCoderPositionUnit_t(
-               motorcontroller.GetSelectedSensorPosition() / gearRatio) +
-           continuousFeedbackLowerBound;
+        motorcontroller.GetSelectedSensorPosition());
   } else {
     return RawIntegratedPositionUnit_t(
-               motorcontroller.GetSelectedSensorPosition() / gearRatio) +
-           continuousFeedbackLowerBound;
+        motorcontroller.GetSelectedSensorPosition() / gearRatio);
   }
 }
 
 void FalconPositionController::zeroPosition(units::radian_t offset) {
   if (usingCANCoder) {
-    motorcontroller.SetSelectedSensorPosition(RawCANCoderPositionUnit_t(
-        (offset - continuousFeedbackLowerBound) * gearRatio)());
+    canCoder->SetPosition(RawCANCoderPositionUnit_t(offset)());
   } else {
-    motorcontroller.SetSelectedSensorPosition(RawIntegratedPositionUnit_t(
-        (offset - continuousFeedbackLowerBound) * gearRatio)());
+    motorcontroller.SetSelectedSensorPosition(
+        RawIntegratedPositionUnit_t(offset * gearRatio)());
   }
 }
 

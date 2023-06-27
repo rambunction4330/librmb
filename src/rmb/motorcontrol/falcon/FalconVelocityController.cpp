@@ -80,9 +80,8 @@ void FalconVelocityController::setVelocity(
   }
 
   if (usingCANCoder) {
-    motorcontroller.Set(
-        ctre::phoenix::motorcontrol::ControlMode::Velocity,
-        (RawCANCoderVelocityUnit_t(targetVelocity * gearRatio))());
+    motorcontroller.Set(ctre::phoenix::motorcontrol::ControlMode::Velocity,
+                        (RawCANCoderVelocityUnit_t(targetVelocity))());
   } else {
     motorcontroller.Set(
         ctre::phoenix::motorcontrol::ControlMode::Velocity,
@@ -93,8 +92,7 @@ void FalconVelocityController::setVelocity(
 units::radians_per_second_t
 FalconVelocityController::getTargetVelocity() const {
   if (usingCANCoder) {
-    return RawCANCoderVelocityUnit_t(motorcontroller.GetClosedLoopTarget() /
-                                     gearRatio);
+    return RawCANCoderVelocityUnit_t(motorcontroller.GetClosedLoopTarget());
   } else {
     return RawInternalVelocityUnit_t(motorcontroller.GetClosedLoopTarget() /
                                      gearRatio);
@@ -104,7 +102,7 @@ FalconVelocityController::getTargetVelocity() const {
 units::radians_per_second_t FalconVelocityController::getVelocity() const {
   if (usingCANCoder) {
     return RawCANCoderVelocityUnit_t(
-        motorcontroller.GetSelectedSensorVelocity() / gearRatio);
+        motorcontroller.GetSelectedSensorVelocity());
   } else {
     return RawInternalVelocityUnit_t(
         motorcontroller.GetSelectedSensorVelocity() / gearRatio);
@@ -136,8 +134,7 @@ units::radian_t FalconVelocityController::getPosition() const {
 
 void FalconVelocityController::zeroPosition(units::radian_t offset) {
   if (usingCANCoder) {
-    motorcontroller.SetSelectedSensorPosition(
-        RawCANCoderPositionUnit_t(offset * gearRatio)());
+    canCoder->SetPosition(RawCANCoderPositionUnit_t(offset)());
   } else {
     motorcontroller.SetSelectedSensorPosition(
         RawInternalPositionUnit_t(offset * gearRatio)());
