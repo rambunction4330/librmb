@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['updatepose_0',['updatePose',['../classrmb_1_1_base_drive.html#a63dfd5bcec2b5c1406370b9bb120158a',1,'rmb::BaseDrive::updatePose()'],['../classrmb_1_1_differential_drive.html#aa9526e907bb637bb8d148a6838aeea97',1,'rmb::DifferentialDrive::updatePose()']]]
+  ['tankdrive_0',['tankDrive',['../classrmb_1_1_differential_drive.html#a304ad46f7bdf75a9aca602e7a70b04ef',1,'rmb::DifferentialDrive']]]
 ];

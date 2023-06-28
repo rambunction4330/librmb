@@ -8,6 +8,8 @@ var namespacermb =
     [ "BaseDrive", "classrmb_1_1_base_drive.html", "classrmb_1_1_base_drive" ],
     [ "DifferentialDrive", "classrmb_1_1_differential_drive.html", "classrmb_1_1_differential_drive" ],
     [ "ElevatorFeedforward", "classrmb_1_1_elevator_feedforward.html", "classrmb_1_1_elevator_feedforward" ],
+    [ "FalconPositionController", "classrmb_1_1_falcon_position_controller.html", "classrmb_1_1_falcon_position_controller" ],
+    [ "FalconVelocityController", "classrmb_1_1_falcon_velocity_controller.html", "classrmb_1_1_falcon_velocity_controller" ],
     [ "Feedforward", "classrmb_1_1_feedforward.html", "classrmb_1_1_feedforward" ],
     [ "LinearFeedforwardController", "classrmb_1_1_linear_feedforward_controller.html", "classrmb_1_1_linear_feedforward_controller" ],
     [ "LinearPositionController", "classrmb_1_1_linear_position_controller.html", "classrmb_1_1_linear_position_controller" ],

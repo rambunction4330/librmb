@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['range_0',['Range',['../structrmb_1_1_spark_max_position_controller_helper_1_1_range.html',1,'rmb::SparkMaxPositionControllerHelper']]]
+  ['pidconfig_0',['PIDConfig',['../structrmb_1_1_falcon_position_controller_helper_1_1_p_i_d_config.html',1,'rmb::FalconPositionControllerHelper::PIDConfig'],['../structrmb_1_1_falcon_velocity_controller_helper_1_1_p_i_d_config.html',1,'rmb::FalconVelocityControllerHelper::PIDConfig'],['../structrmb_1_1_spark_max_position_controller_helper_1_1_p_i_d_config.html',1,'rmb::SparkMaxPositionControllerHelper::PIDConfig'],['../structrmb_1_1_spark_max_velocity_controller_helper_1_1_p_i_d_config.html',1,'rmb::SparkMaxVelocityControllerHelper::PIDConfig']]],
+  ['profileconfig_1',['ProfileConfig',['../structrmb_1_1_falcon_position_controller_helper_1_1_profile_config.html',1,'rmb::FalconPositionControllerHelper::ProfileConfig'],['../structrmb_1_1_falcon_velocity_controller_helper_1_1_profile_config.html',1,'rmb::FalconVelocityControllerHelper::ProfileConfig'],['../structrmb_1_1_spark_max_position_controller_helper_1_1_profile_config.html',1,'rmb::SparkMaxPositionControllerHelper::ProfileConfig'],['../structrmb_1_1_spark_max_velocity_controller_helper_1_1_profile_config.html',1,'rmb::SparkMaxVelocityControllerHelper::ProfileConfig']]]
 ];

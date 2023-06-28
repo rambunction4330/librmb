@@ -25,11 +25,11 @@
 var NAVTREE =
 [
   [ "librmb", "index.html", [
-    [ "pancakerecipe", "md_docs_additional_pancakerecipe.html", null ],
-    [ "Building", "md_docs_building.html", [
+    [ "pancakerecipe", "md_docs_2additional_2pancakerecipe.html", null ],
+    [ "Building", "md_docs_2building.html", [
       [ "Building", "index.html#autotoc_md3", null ],
-      [ "Notes", "md_docs_building.html#autotoc_md1", null ],
-      [ "Adding to a project", "md_docs_building.html#autotoc_md2", null ]
+      [ "Notes", "md_docs_2building.html#autotoc_md1", null ],
+      [ "Adding to a project", "md_docs_2building.html#autotoc_md2", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -58,8 +58,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_angular_feedforward_controller_8h_source.html",
-"classrmb_1_1_elevator_feedforward.html#a9c3425caaa91582983cf6c99409bac1c",
-"functions_k.html"
+"classrmb_1_1_elevator_feedforward.html#a9b53371e5d214ce6a2cd7bce1f8eb576",
+"classrmb_1_1_spark_max_position_controller.html#a98bb9917b0bb7c7500a2315e5c322b83"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

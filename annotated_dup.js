@@ -1,6 +1,20 @@
 var annotated_dup =
 [
     [ "rmb", "namespacermb.html", [
+      [ "FalconPositionControllerHelper", null, [
+        [ "CANCoderConfig", "structrmb_1_1_falcon_position_controller_helper_1_1_c_a_n_coder_config.html", null ],
+        [ "FeedbackConfig", "structrmb_1_1_falcon_position_controller_helper_1_1_feedback_config.html", null ],
+        [ "MotorConfig", "structrmb_1_1_falcon_position_controller_helper_1_1_motor_config.html", null ],
+        [ "OpenLoopConfig", "structrmb_1_1_falcon_position_controller_helper_1_1_open_loop_config.html", null ],
+        [ "PIDConfig", "structrmb_1_1_falcon_position_controller_helper_1_1_p_i_d_config.html", null ],
+        [ "ProfileConfig", "structrmb_1_1_falcon_position_controller_helper_1_1_profile_config.html", null ],
+        [ "Range", "structrmb_1_1_falcon_position_controller_helper_1_1_range.html", null ]
+      ] ],
+      [ "FalconVelocityControllerHelper", null, [
+        [ "OpenLoopConfig", "structrmb_1_1_falcon_velocity_controller_helper_1_1_open_loop_config.html", null ],
+        [ "PIDConfig", "structrmb_1_1_falcon_velocity_controller_helper_1_1_p_i_d_config.html", null ],
+        [ "ProfileConfig", "structrmb_1_1_falcon_velocity_controller_helper_1_1_profile_config.html", null ]
+      ] ],
       [ "SparkMaxPositionControllerHelper", null, [
         [ "FeedbackConfig", "structrmb_1_1_spark_max_position_controller_helper_1_1_feedback_config.html", null ],
         [ "MotorConfig", "structrmb_1_1_spark_max_position_controller_helper_1_1_motor_config.html", null ],
@@ -21,6 +35,8 @@ var annotated_dup =
       [ "BaseDrive", "classrmb_1_1_base_drive.html", "classrmb_1_1_base_drive" ],
       [ "DifferentialDrive", "classrmb_1_1_differential_drive.html", "classrmb_1_1_differential_drive" ],
       [ "ElevatorFeedforward", "classrmb_1_1_elevator_feedforward.html", "classrmb_1_1_elevator_feedforward" ],
+      [ "FalconPositionController", "classrmb_1_1_falcon_position_controller.html", "classrmb_1_1_falcon_position_controller" ],
+      [ "FalconVelocityController", "classrmb_1_1_falcon_velocity_controller.html", "classrmb_1_1_falcon_velocity_controller" ],
       [ "Feedforward", "classrmb_1_1_feedforward.html", "classrmb_1_1_feedforward" ],
       [ "LinearFeedforwardController", "classrmb_1_1_linear_feedforward_controller.html", "classrmb_1_1_linear_feedforward_controller" ],
       [ "LinearPositionController", "classrmb_1_1_linear_position_controller.html", "classrmb_1_1_linear_position_controller" ],

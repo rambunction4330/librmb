@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pidconfig_0',['PIDConfig',['../structrmb_1_1_spark_max_position_controller_helper_1_1_p_i_d_config.html',1,'rmb::SparkMaxPositionControllerHelper::PIDConfig'],['../structrmb_1_1_spark_max_velocity_controller_helper_1_1_p_i_d_config.html',1,'rmb::SparkMaxVelocityControllerHelper::PIDConfig']]],
-  ['profileconfig_1',['ProfileConfig',['../structrmb_1_1_spark_max_position_controller_helper_1_1_profile_config.html',1,'rmb::SparkMaxPositionControllerHelper::ProfileConfig'],['../structrmb_1_1_spark_max_velocity_controller_helper_1_1_profile_config.html',1,'rmb::SparkMaxVelocityControllerHelper::ProfileConfig']]]
+  ['openloopconfig_0',['OpenLoopConfig',['../structrmb_1_1_falcon_position_controller_helper_1_1_open_loop_config.html',1,'rmb::FalconPositionControllerHelper::OpenLoopConfig'],['../structrmb_1_1_falcon_velocity_controller_helper_1_1_open_loop_config.html',1,'rmb::FalconVelocityControllerHelper::OpenLoopConfig']]]
 ];
