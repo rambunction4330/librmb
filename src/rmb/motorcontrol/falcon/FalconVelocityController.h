@@ -2,9 +2,10 @@
 
 #include <optional>
 
+#include "rmb/motorcontrol/AngularVelocityController.h"
+
 #include "FalconPositionController.h"
 #include "ctre/phoenix/sensors/WPI_CANCoder.h"
-#include "rmb/motorcontrol/feedback/AngularVelocityFeedbackController.h"
 #include "units/angular_velocity.h"
 
 namespace rmb {
@@ -30,7 +31,7 @@ struct ProfileConfig {
 };
 } // namespace FalconVelocityControllerHelper
 
-class FalconVelocityController : public AngularVelocityFeedbackController {
+class FalconVelocityController : public AngularVelocityController {
 public:
   typedef units::unit<std::ratio<1, 2048>, units::turns> InternalEncoderTick;
   typedef units::unit_t<InternalEncoderTick> InternalEncoderTick_t;

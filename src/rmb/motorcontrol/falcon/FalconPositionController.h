@@ -2,7 +2,6 @@
 
 #include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
 #include "rmb/motorcontrol/AngularPositionController.h"
-#include "rmb/motorcontrol/feedback/AngularPositionFeedbackController.h"
 #include "units/angle.h"
 #include "units/angular_acceleration.h"
 #include "units/angular_velocity.h"
@@ -77,7 +76,7 @@ struct CANCoderConfig {
 };
 
 } // namespace FalconPositionControllerHelper
-class FalconPositionController : public AngularPositionFeedbackController {
+class FalconPositionController : public AngularPositionController {
 public:
   //-------------Integrated Encoder
   // Units-----------------------------------------
