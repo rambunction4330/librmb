@@ -25,6 +25,7 @@
 
 #include "rmb/drive/BaseDrive.h"
 #include "rmb/drive/SwerveModule.h"
+#include "units/angular_velocity.h"
 
 namespace rmb {
 
@@ -51,12 +52,16 @@ public:
    * @param visionTable         Path to the NetworkTables table for listening
    *                            for vision updates.
    * @param initialPose         Starting position of the robot for odometry.
+   * 
    */
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
               std::shared_ptr<const frc::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
               std::string visionTable,
-              const frc::Pose2d &initalPose = frc::Pose2d());
+              units::meters_per_second_t maxXSpeed, 
+              units::meters_per_second_t maxYSpeed, 
+              units::radians_per_second_t maxRotation, 
+              const frc::Pose2d &initialPose = frc::Pose2d());
 
   /**
    * Constructs a SwerveDrive object that **does not** automatically
@@ -71,7 +76,11 @@ public:
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
               std::shared_ptr<const frc::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
-              const frc::Pose2d &initalPose = frc::Pose2d());
+               units::meters_per_second_t maxXSpeed, 
+              units::meters_per_second_t maxYSpeed, 
+              units::radians_per_second_t maxRotation, 
+              const frc::Pose2d &initialPose = frc::Pose2d(),
+);
 
   void driveCatesian(double xSpeed, double ySpeed, double zRotation,
                      bool fieldOriented);
@@ -167,7 +176,7 @@ public:
    *
    * @param trajectory       The trajectory to follow.
    * @param driveRequirments The subsystems required for driving the robot
-   *                         (ie. the one that contains this class)
+   * (ie. the one that contains this class)
    *
    * @return The command to follow a trajectory.
    */
@@ -226,7 +235,11 @@ private:
    * Mutex to protect position estimations between vision threads.
    */
   mutable std::mutex visionThreadMutex;
+
+  units::meters_per_second_t maxXSpeed; 
+  units::meters_per_second_t maxYSpeed; 
+  units::radians_per_second_t maxRotation; 
 };
 } // namespace rmb
 
-#include "rmb/drive/SwerveDrive.inc"
+// #include "rmb/drive/SwerveDrive.inc"

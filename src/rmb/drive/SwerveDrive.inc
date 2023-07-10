@@ -19,7 +19,7 @@
 
 #include <frc2/command/SwerveControllerCommand.h>
 
-#include <pathplanner/lib/commands/PPSwerveControllerCommand.h>
+#include <pathplanner/lib/commands/PPSwerveControllerCommand.h>nsl
 
 #include "rmb/drive/SwerveModule.h"
 
@@ -212,7 +212,7 @@ frc2::CommandPtr SwerveDrive<NumModules>::followWPILibTrajectory(
 
   return frc2::SwerveControllerCommand<NumModules>(
     trajectory, [this]() { return getPose(); }, kinematics, holonomicController,
-    [this](auto states) { driveModuleStates(states); }, driveRequirements
+    [this](auto states) {   States(states); }, driveRequirements
   ).ToPtr();
 }
 

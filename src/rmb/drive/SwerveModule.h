@@ -99,7 +99,7 @@ public:
   void setPower(double power, const frc::Rotation2d &angle);
 
   /**
-   * Sets the desired open loop powerof the swerve module. Tghis is helpful
+   * Sets the desired open loop power of the swerve module. This is helpful
    * for teleoperated driving as drivers tend power based control to be more
    * natural.
    *
@@ -125,7 +125,7 @@ private:
   std::unique_ptr<LinearVelocityController> velocityController;
 
   /**
-   * The position fo the module reletive to the center of the robot for
+   * The position of the module relative to the center of the robot for
    * kinematics.
    */
   frc::Translation2d moduleTranslation;
