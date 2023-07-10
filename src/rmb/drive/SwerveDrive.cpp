@@ -48,6 +48,7 @@ SwerveDrive<NumModules>::getModulePositions() const {
   for (int i = 0; i < NumModules; i++) {
     states[i] = modules[i].getPosition();
   }
+  
 }
 
 template <size_t NumModules>
