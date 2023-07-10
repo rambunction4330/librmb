@@ -52,15 +52,14 @@ public:
    * @param visionTable         Path to the NetworkTables table for listening
    *                            for vision updates.
    * @param initialPose         Starting position of the robot for odometry.
-   * 
+   *
    */
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
               std::shared_ptr<const frc::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
-              std::string visionTable,
-              units::meters_per_second_t maxXSpeed, 
-              units::meters_per_second_t maxYSpeed, 
-              units::radians_per_second_t maxRotation, 
+              std::string visionTable, units::meters_per_second_t maxXSpeed,
+              units::meters_per_second_t maxYSpeed,
+              units::radians_per_second_t maxRotation,
               const frc::Pose2d &initialPose = frc::Pose2d());
 
   /**
@@ -76,9 +75,9 @@ public:
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
               std::shared_ptr<const frc::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
-               units::meters_per_second_t maxXSpeed, 
-              units::meters_per_second_t maxYSpeed, 
-              units::radians_per_second_t maxRotation, 
+              units::meters_per_second_t maxXSpeed,
+              units::meters_per_second_t maxYSpeed,
+              units::radians_per_second_t maxRotation,
               const frc::Pose2d &initialPose = frc::Pose2d());
 
   void driveCatesian(double xSpeed, double ySpeed, double zRotation,
@@ -235,9 +234,9 @@ private:
    */
   mutable std::mutex visionThreadMutex;
 
-  units::meters_per_second_t maxXSpeed; 
-  units::meters_per_second_t maxYSpeed; 
-  units::radians_per_second_t maxRotation; 
+  units::meters_per_second_t maxXSpeed;
+  units::meters_per_second_t maxYSpeed;
+  units::radians_per_second_t maxRotation;
 };
 } // namespace rmb
 
