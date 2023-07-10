@@ -2,6 +2,7 @@
 
 #include <initializer_list>
 #include <string>
+#include <unordered_map>
 
 #include <units/time.h>
 
@@ -29,7 +30,7 @@ class BaseDrive {
 protected:
   BaseDrive() = default;
 
-  // TODO: Modify yable for compatability with LimeLight.
+  // TODO: Modifyable for compatability with LimeLight.
 
   /**
    * Constructs a base drive class capable of automatically listening for

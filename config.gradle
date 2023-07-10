@@ -15,20 +15,20 @@ nativeUtils {
 }
 
 nativeUtils.wpi.addWarnings()
-nativeUtils.wpi.addWarningsAsErrors()
+//nativeUtils.wpi.addWarningsAsErrors()
 
 nativeUtils.setSinglePrintPerPlatform()
 
 nativeUtils.wpi.addVendorDeps()
 nativeUtils.wpi.getVendorDeps().loadAll()
 nativeUtils.wpi.getVendorDeps().getNativeVendor().initializeNativeDependencies()
-nativeUtils.wpi.getVendorDeps().addVendorReposToMaven(false)
+nativeUtils.wpi.getVendorDeps().addVendorReposToMaven(true)
 
 model {
      components {
          all {
-            targetPlatform nativeUtils.wpi.platforms.roborio
-            //nativeUtils.useAllPlatforms(it)
+            //targetPlatform nativeUtils.wpi.platforms.roborio
+            nativeUtils.useAllPlatforms(it)
          }
     }
 

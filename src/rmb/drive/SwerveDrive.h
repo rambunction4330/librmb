@@ -79,8 +79,7 @@ public:
                units::meters_per_second_t maxXSpeed, 
               units::meters_per_second_t maxYSpeed, 
               units::radians_per_second_t maxRotation, 
-              const frc::Pose2d &initialPose = frc::Pose2d(),
-);
+              const frc::Pose2d &initialPose = frc::Pose2d());
 
   void driveCatesian(double xSpeed, double ySpeed, double zRotation,
                      bool fieldOriented);

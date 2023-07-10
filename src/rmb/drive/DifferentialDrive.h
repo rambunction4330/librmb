@@ -4,6 +4,7 @@
 #include <initializer_list>
 #include <memory>
 #include <string>
+#include <unordered_map>
 
 #include <units/velocity.h>
 

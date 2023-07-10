@@ -2,10 +2,8 @@
 
 #include <initializer_list>
 #include <memory>
-#include <unordered_map>
 
 #include <frc/drive/DifferentialDrive.h>
-
 #include <networktables/DoubleArrayTopic.h>
 #include <networktables/NetworkTable.h>
 #include <networktables/NetworkTableInstance.h>
@@ -24,27 +22,24 @@
 namespace rmb {
 
 DifferentialDrive::DifferentialDrive(
-    std::unique_ptr<LinearVelocityController> left,
-    std::unique_ptr<LinearVelocityController> right,
-    std::shared_ptr<const frc::Gyro> gyro,
-    frc::DifferentialDriveKinematics kinematics,
-    frc::RamseteController ramseteController, std::string visionTable,
-    const frc::Pose2d &initalPose)
-    : BaseDrive(visionTable), left(std::move(left)), right(std::move(right)),
-      gyro(gyro), kinematics(kinematics), ramseteController(ramseteController),
+    std::unique_ptr<LinearVelocityController> l,
+    std::unique_ptr<LinearVelocityController> r,
+    std::shared_ptr<const frc::Gyro> g, frc::DifferentialDriveKinematics k,
+    frc::RamseteController rc, std::string v, const frc::Pose2d &p)
+    : BaseDrive(v), left(std::move(l)), right(std::move(r)), gyro(g),
+      kinematics(k), ramseteController(rc),
       poseEstimator(kinematics, gyro->GetRotation2d(), left->getPosition(),
-                    right->getPosition(), initalPose) {}
+                    right->getPosition(), p) {}
 
 DifferentialDrive::DifferentialDrive(
-    std::unique_ptr<LinearVelocityController> left,
-    std::unique_ptr<LinearVelocityController> right,
-    std::shared_ptr<const frc::Gyro> gyro,
-    frc::DifferentialDriveKinematics kinematics,
-    frc::RamseteController ramseteController, const frc::Pose2d &initalPose)
-    : left(std::move(left)), right(std::move(right)), gyro(gyro),
-      kinematics(kinematics), ramseteController(ramseteController),
+    std::unique_ptr<LinearVelocityController> l,
+    std::unique_ptr<LinearVelocityController> r,
+    std::shared_ptr<const frc::Gyro> g, frc::DifferentialDriveKinematics k,
+    frc::RamseteController rc, const frc::Pose2d &p)
+    : left(std::move(l)), right(std::move(r)), gyro(g), kinematics(k),
+      ramseteController(rc),
       poseEstimator(kinematics, gyro->GetRotation2d(), left->getPosition(),
-                    right->getPosition(), initalPose) {}
+                    right->getPosition(), p) {}
 
 void DifferentialDrive::arcadeDrive(double xSpeed, double zRotation) {
   auto wheelSpeeds =
