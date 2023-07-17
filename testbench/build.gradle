@@ -72,13 +72,15 @@ model {
 
             // Enable simulation for this component
             wpi.sim.enable(it)
+          
+
+            binaries.all {
+                lib project: ":", library: 'LibRmb', linkage: 'static'
+            }
             // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
             wpi.cpp.vendor.cpp(it)
             wpi.cpp.deps.wpilib(it)
 
-            binaries.all {
-                lib project: ":", library: 'LibRmb', linkage: 'shared'
-            }
         }
     }
 }
