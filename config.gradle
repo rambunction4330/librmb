@@ -6,13 +6,15 @@ nativeUtils.withCrossRoboRIO()
 nativeUtils {
     wpi {
         configureDependencies {
-            wpiVersion = "2023.+"
+            wpiVersion = "2023.4.3"
             niLibVersion = "2023.+"
             opencvVersion = "4.6.0-3"
             wpimathVersion = "2023.+"
         }
     }
 }
+
+nativeUtils.platformConfigs.linuxathena.cppCompiler.args << "-fPIC"
 
 nativeUtils.wpi.addWarnings()
 //nativeUtils.wpi.addWarningsAsErrors()

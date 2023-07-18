@@ -18,6 +18,8 @@ class AngularPositionController;
  */
 class LinearPositionController {
 public:
+  virtual ~LinearPositionController() = default;
+
   //***************
   // Motor Control
   //***************

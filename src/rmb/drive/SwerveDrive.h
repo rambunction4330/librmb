@@ -22,10 +22,12 @@
 
 #include <pathplanner/lib/PathPlannerTrajectory.h>
 
+#include "frc2/command/Commands.h"
 #include "rmb/drive/BaseDrive.h"
 #include "rmb/drive/SwerveModule.h"
 #include "units/angular_velocity.h"
 
+#include <frc2/command/Command.h>
 #include <frc2/command/CommandPtr.h>
 
 namespace rmb {
@@ -80,8 +82,10 @@ public:
               units::radians_per_second_t maxRotation,
               const frc::Pose2d &initialPose = frc::Pose2d());
 
-  void driveCatesian(double xSpeed, double ySpeed, double zRotation,
-                     bool fieldOriented);
+  virtual ~SwerveDrive() = default;
+
+  void driveCartesian(double xSpeed, double ySpeed, double zRotation,
+                      bool fieldOriented);
 
   void drivePolar(double speed, const frc::Rotation2d &angle, double zRotation,
                   bool fieldOriented);
@@ -114,6 +118,8 @@ public:
    * Returns the current poition without modifying it.
    */
   frc::Pose2d getPose() const override;
+
+  std::array<frc::SwerveModuleState, NumModules> getTargetModuleStates() const;
 
   /**
    * Updates the current position of the robot using encoder and gyroscope
@@ -186,7 +192,7 @@ public:
    */
   frc2::CommandPtr followWPILibTrajectory(
       frc::Trajectory trajectory,
-      std::initializer_list<frc2::Subsystem *> driveRequirements) override;
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override { return frc2::cmd::None(); }
 
   /**
    * Generates a command to follow PathPlanner Trajectory.
@@ -245,4 +251,4 @@ private:
 };
 } // namespace rmb
 
-// #include "rmb/drive/SwerveDrive.inc"
+#include "SwerveDrive.inl"

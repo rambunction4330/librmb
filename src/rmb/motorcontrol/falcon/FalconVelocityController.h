@@ -68,6 +68,8 @@ public:
 
   FalconVelocityController(const CreateInfo &createInfo);
 
+  virtual ~FalconVelocityController() = default;
+
   //--------------------------------------------------
   // Methods Inherited from AngularVelocityController
   //--------------------------------------------------

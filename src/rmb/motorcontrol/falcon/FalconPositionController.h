@@ -119,6 +119,8 @@ public:
    */
   FalconPositionController(const CreateInfo &createInfo);
 
+  virtual ~FalconPositionController() = default;
+
   /**
    * Sets a closed loop position setpoint on the falcon to the given position
    * @param position The position setpoint
@@ -130,7 +132,7 @@ public:
    * @param power The power target supplied to the motor. Must be in range
    * [0.0, 1.0]
    */
-  void setPower(double power);
+  void setPower(double power) override;
 
   /**
    * Queries the Phoenix API for the current set point of the motor

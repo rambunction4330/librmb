@@ -1,4 +1,5 @@
 #include "rmb/drive/SwerveModule.h"
+#include "frc/kinematics/SwerveModulePosition.h"
 #include "frc/kinematics/SwerveModuleState.h"
 
 namespace rmb {
@@ -38,6 +39,11 @@ frc::SwerveModuleState SwerveModule::getState() const {
 frc::SwerveModulePosition SwerveModule::getPosition() const {
   return {velocityController->getPosition(),
           frc::Rotation2d(angularController->getPosition())};
+}
+
+frc::SwerveModuleState SwerveModule::getTargetState() const {
+  return {velocityController->getTargetVelocity(),
+          frc::Rotation2d(angularController->getTargetPosition())};
 }
 
 void SwerveModule::setPower(double power, const frc::Rotation2d &angle) {
