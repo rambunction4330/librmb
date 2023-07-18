@@ -54,8 +54,4 @@ const frc::Translation2d &SwerveModule::getModuleTranslation() const {
   return moduleTranslation;
 }
 
-
-
-
-
 } // namespace rmb

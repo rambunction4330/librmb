@@ -59,8 +59,7 @@ public:
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
               std::shared_ptr<const frc::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
-              std::string visionTable, 
-              units::meters_per_second_t maxSpeed, 
+              std::string visionTable, units::meters_per_second_t maxSpeed,
               units::radians_per_second_t maxRotation,
               const frc::Pose2d &initialPose = frc::Pose2d());
 
@@ -77,7 +76,7 @@ public:
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
               std::shared_ptr<const frc::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
-              units::meters_per_second_t maxSpeed, 
+              units::meters_per_second_t maxSpeed,
               units::radians_per_second_t maxRotation,
               const frc::Pose2d &initialPose = frc::Pose2d());
 
@@ -94,7 +93,6 @@ public:
   std::array<frc::SwerveModuleState, NumModules> getModuleStates() const;
 
   std::array<frc::SwerveModulePosition, NumModules> getModulePositions() const;
-
 
   /**
    * Drives the robot via the speeds of the Chassis.
