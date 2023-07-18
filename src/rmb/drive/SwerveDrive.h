@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <array>
@@ -19,19 +20,20 @@
 #include <frc/kinematics/SwerveModuleState.h>
 #include <frc/trajectory/Trajectory.h>
 
-#include <frc2/command/CommandPtr.h>
-
 #include <pathplanner/lib/PathPlannerTrajectory.h>
 
 #include "rmb/drive/BaseDrive.h"
 #include "rmb/drive/SwerveModule.h"
 #include "units/angular_velocity.h"
 
+#include <frc2/command/CommandPtr.h>
+
 namespace rmb {
 
 /**
  * Class to manage most aspects of a swerve drivetrain from basic teleop
- * drive funtions to odometry and full path following for both WPILib and
+ * drive funtions to odometry and full path following for both WPIL
+ ib and
  * PathPlanner trajectories.
  *
  * @tparam NumModules Number fo swerve modules on the drivetrain.
@@ -57,8 +59,8 @@ public:
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
               std::shared_ptr<const frc::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
-              std::string visionTable, units::meters_per_second_t maxXSpeed,
-              units::meters_per_second_t maxYSpeed,
+              std::string visionTable, 
+              units::meters_per_second_t maxSpeed, 
               units::radians_per_second_t maxRotation,
               const frc::Pose2d &initialPose = frc::Pose2d());
 
@@ -75,8 +77,7 @@ public:
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
               std::shared_ptr<const frc::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
-              units::meters_per_second_t maxXSpeed,
-              units::meters_per_second_t maxYSpeed,
+              units::meters_per_second_t maxSpeed, 
               units::radians_per_second_t maxRotation,
               const frc::Pose2d &initialPose = frc::Pose2d());
 
@@ -93,6 +94,7 @@ public:
   std::array<frc::SwerveModuleState, NumModules> getModuleStates() const;
 
   std::array<frc::SwerveModulePosition, NumModules> getModulePositions() const;
+
 
   /**
    * Drives the robot via the speeds of the Chassis.
@@ -141,7 +143,13 @@ public:
    * @param time         The time at which the data that produces this
    *                     estimate was captures. This is an absolute time with
    *                     with the zero eposh being the same as wpi::Now() and
-   *                     nt::Now(). This is usually extracted from network
+   *             o
+
+
+
+
+
+           nt::Now(). This is usually extracted from network
    *                     tables.
    */
   void addVisionMeasurments(const frc::Pose2d &poseEstimate,
@@ -234,8 +242,7 @@ private:
    */
   mutable std::mutex visionThreadMutex;
 
-  units::meters_per_second_t maxXSpeed;
-  units::meters_per_second_t maxYSpeed;
+  units::meters_per_second_t maxSpeed;
   units::radians_per_second_t maxRotation;
 };
 } // namespace rmb

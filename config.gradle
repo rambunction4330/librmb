@@ -27,8 +27,8 @@ nativeUtils.wpi.getVendorDeps().addVendorReposToMaven(true)
 model {
      components {
          all {
-            //targetPlatform nativeUtils.wpi.platforms.roborio
-            nativeUtils.useAllPlatforms(it)
+            targetPlatform nativeUtils.wpi.platforms.roborio
+            //nativeUtils.useAllPlatforms(it)
          }
     }
 
