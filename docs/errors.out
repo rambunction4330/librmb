@@ -167,19 +167,17 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:91: warning: Member driveModuleStates(std::array< frc::SwerveModuleState, NumModules > states) (function) of class rmb::SwerveDrive is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:93: warning: Member getModuleStates() const (function) of class rmb::SwerveDrive is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:95: warning: Member getModulePositions() const (function) of class rmb::SwerveDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:57: warning: The following parameters of rmb::SwerveDrive::SwerveDrive(std::array< SwerveModule, NumModules > modules, std::shared_ptr< const frc::Gyro > gyro, frc::HolonomicDriveController holonomicController, std::string visionTable, units::meters_per_second_t maxXSpeed, units::meters_per_second_t maxYSpeed, units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose=frc::Pose2d()) are not documented:
-  parameter 'maxXSpeed'
-  parameter 'maxYSpeed'
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:59: warning: The following parameters of rmb::SwerveDrive::SwerveDrive(std::array< SwerveModule, NumModules > modules, std::shared_ptr< const frc::Gyro > gyro, frc::HolonomicDriveController holonomicController, std::string visionTable, units::meters_per_second_t maxSpeed, units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose=frc::Pose2d()) are not documented:
+  parameter 'maxSpeed'
   parameter 'maxRotation'
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:75: warning: The following parameters of rmb::SwerveDrive::SwerveDrive(std::array< SwerveModule, NumModules > modules, std::shared_ptr< const frc::Gyro > gyro, frc::HolonomicDriveController holonomicController, units::meters_per_second_t maxXSpeed, units::meters_per_second_t maxYSpeed, units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose=frc::Pose2d()) are not documented:
-  parameter 'maxXSpeed'
-  parameter 'maxYSpeed'
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:76: warning: The following parameters of rmb::SwerveDrive::SwerveDrive(std::array< SwerveModule, NumModules > modules, std::shared_ptr< const frc::Gyro > gyro, frc::HolonomicDriveController holonomicController, units::meters_per_second_t maxSpeed, units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose=frc::Pose2d()) are not documented:
+  parameter 'maxSpeed'
   parameter 'maxRotation'
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:186: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:194: warning: The following parameter of rmb::SwerveDrive::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:192: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:200: warning: The following parameter of rmb::SwerveDrive::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
   parameter 'driveRequirements'
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:173: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:181: warning: The following parameter of rmb::SwerveDrive::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:179: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:187: warning: The following parameter of rmb::SwerveDrive::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
   parameter 'driveRequirements'
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:27: warning: Member power (variable) of struct rmb::SwerveModulePower is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:28: warning: Member angle (variable) of struct rmb::SwerveModulePower is not documented.
