@@ -32,7 +32,7 @@ public:
 private:
   std::optional<frc2::CommandPtr> m_autonomousCommand;
 
-  std::unique_ptr<rmb::SwerveDrive<4>> swerveDrive;
+  // std::unique_ptr<rmb::SwerveDrive<4>> swerveDrive;
 
   RobotContainer m_container;
 };
