@@ -13,8 +13,8 @@ SwerveModulePower SwerveModulePower::Optimize(const SwerveModulePower &desired,
 }
 
 SwerveModule::SwerveModule(
-    std::unique_ptr<AngularPositionController> angularController,
     std::unique_ptr<LinearVelocityController> velocityController,
+    std::unique_ptr<AngularPositionController> angularController,
     const frc::Translation2d &moduleTranslation)
     : angularController(std::move(angularController)),
       velocityController(std::move(velocityController)),

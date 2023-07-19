@@ -57,8 +57,8 @@ public:
    * @param moduleTranslation the position of teh modlue reletive to the
    *                          center of the robot for kinematics.
    */
-  SwerveModule(std::unique_ptr<AngularPositionController> angularController,
-               std::unique_ptr<LinearVelocityController> velocityController,
+  SwerveModule(std::unique_ptr<LinearVelocityController> velocityController,
+               std::unique_ptr<AngularPositionController> angularController,
                const frc::Translation2d &moduleTranslation);
 
   /**
