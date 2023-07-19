@@ -3,7 +3,6 @@
 #include "ctre/phoenix/motorcontrol/ControlMode.h"
 #include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
 #include "ctre/phoenix/motorcontrol/StatorCurrentLimitConfiguration.h"
-#include "ctre/phoenix/motorcontrol/can/BaseMotorController.h"
 #include "ctre/phoenix/sensors/CANCoder.h"
 #include "ctre/phoenix/sensors/SensorTimeBase.h"
 #include "units/angle.h"

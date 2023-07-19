@@ -10,9 +10,13 @@
 #include <frc2/command/CommandPtr.h>
 
 #include "RobotContainer.h"
-#include "rmb/motorcontrol/falcon/FalconPositionController.h"
 
+#include "rmb/motorcontrol/falcon/FalconPositionController.h"
 #include <rmb/motorcontrol/falcon/FalconVelocityController.h>
+
+#include <rmb/drive/SwerveDrive.h>
+
+#include <AHRS.h>
 
 class Robot : public frc::TimedRobot {
 public:
@@ -36,6 +40,8 @@ private:
 
   std::unique_ptr<rmb::FalconVelocityController> velocityController;
   std::unique_ptr<rmb::FalconPositionController> positionController;
+
+  std::shared_ptr<AHRS> gyro;
 
   RobotContainer m_container;
 };

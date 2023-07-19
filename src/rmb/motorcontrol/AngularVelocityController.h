@@ -18,6 +18,8 @@ class LinearVelocityController;
  */
 class AngularVelocityController {
 public:
+  virtual ~AngularVelocityController() = default;
+
   //***************
   // Motor Control
   //***************
