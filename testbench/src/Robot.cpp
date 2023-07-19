@@ -12,9 +12,7 @@
 
 #include <frc2/command/CommandScheduler.h>
 
-void Robot::RobotInit() {
-
-}
+void Robot::RobotInit() {}
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
 
@@ -36,11 +34,9 @@ void Robot::TeleopPeriodic() {}
 
 void Robot::TeleopExit() {}
 
-void Robot::TestInit() {
-}
+void Robot::TestInit() {}
 
-void Robot::TestPeriodic() {
-}
+void Robot::TestPeriodic() {}
 
 void Robot::TestExit() {}
 

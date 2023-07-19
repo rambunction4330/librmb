@@ -192,7 +192,9 @@ public:
    */
   frc2::CommandPtr followWPILibTrajectory(
       frc::Trajectory trajectory,
-      std::initializer_list<frc2::Subsystem *> driveRequirements) override { return frc2::cmd::None(); }
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override {
+    return frc2::cmd::None();
+  }
 
   /**
    * Generates a command to follow PathPlanner Trajectory.
