@@ -7,7 +7,7 @@
 #include <mutex>
 #include <string>
 
-#include <units/angle.h>  
+#include <units/angle.h>
 #include <units/velocity.h>
 
 #include <frc/controller/HolonomicDriveController.h>
