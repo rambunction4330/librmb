@@ -3,66 +3,70 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "Robot.h"
+#include "frc/controller/HolonomicDriveController.h"
+#include "frc/controller/ProfiledPIDController.h"
+#include "rmb/drive/SwerveDrive.h"
+#include "rmb/drive/SwerveModule.h"
+#include "rmb/motorcontrol/AngularVelocityController.h"
 #include "rmb/motorcontrol/falcon/FalconPositionController.h"
 #include "rmb/motorcontrol/falcon/FalconVelocityController.h"
 #include "units/angle.h"
 
+#include <alloca.h>
 #include <frc2/command/CommandScheduler.h>
 #include <limits>
 #include <memory>
 
+#include "Constants.h"
 #include <iostream>
 
 void Robot::RobotInit() {
-  rmb::FalconVelocityController::CreateInfo createInfo{
-      .config =
-          {
-              .id = 10,
-              .inverted = false,
-          },
-      .pidConfig =
-          {
-              .p = 0.130,
-              .i = 0.0001,
-              .d = 0.5,
-              .ff = 0.00,
-              .closedLoopMaxPercentOutput = 1.0,
-          },
-      .profileConfig = {.maxVelocity = 100_tps,
-                        .minVelocity = -100_tps,
-                        .maxAcceleration = 1.0_rad_per_s_sq},
-      .feedbackConfig = {.gearRatio = 6.12f},
-      .openLoopConfig = {.minOutput = -1.0,
-                         .maxOutput = 1.0,
-                         .rampRate = 1.0_s},
-      .canCoderConfig = {.useCANCoder = false},
+
+  // Because Aiden is evil & lazy
+  std::array<rmb::SwerveModule, 4> modules = {
+      rmb::SwerveModule(
+          rmb::asLinear(std::make_unique<rmb::FalconVelocityController>(
+                            constants::velocityControllerCreateInfo),
+                        constants::wheelCircumference / 1_tr),
+          std::make_unique<rmb::FalconPositionController>(
+              constants::positionControllerCreateInfo),
+          frc::Translation2d(1_m, 1_m)),
+      rmb::SwerveModule(
+          rmb::asLinear(std::make_unique<rmb::FalconVelocityController>(
+                            constants::velocityControllerCreateInfo1),
+                        constants::wheelCircumference / 1_tr),
+          std::make_unique<rmb::FalconPositionController>(
+              constants::positionControllerCreateInfo1),
+          frc::Translation2d(1_m, 1_m)),
+      rmb::SwerveModule(
+          rmb::asLinear(std::make_unique<rmb::FalconVelocityController>(
+                            constants::velocityControllerCreateInfo1),
+                        constants::wheelCircumference / 1_tr),
+          std::make_unique<rmb::FalconPositionController>(
+              constants::positionControllerCreateInfo1),
+          frc::Translation2d(1_m, 1_m)),
+      rmb::SwerveModule(
+          rmb::asLinear(std::make_unique<rmb::FalconVelocityController>(
+                            constants::velocityControllerCreateInfo1),
+                        constants::wheelCircumference / 1_tr),
+          std::make_unique<rmb::FalconPositionController>(
+              constants::positionControllerCreateInfo1),
+          frc::Translation2d(1_m, 1_m)),
+
   };
 
-  rmb::FalconPositionController::CreateInfo positionControllerCreateInfo{
-      .config = {.id = 12, .inverted = false},
-      .pidConfig = {.p = 1.000f,
-                    .i = 0.0f,
-                    .d = 1.0f,
-                    .ff = 0.000,
-                    .tolerance = 0.1_deg},
-      .range = {.minPosition =
-                    -(units::radian_t)std::numeric_limits<double>::infinity(),
-                .maxPosition =
-                    (units::radian_t)std::numeric_limits<double>::infinity(),
-                .isContinuous = false},
-      .feedbackConfig =
-          {
-              .gearRatio = 12.8,
-          },
-      .openLoopConfig = {},
-      .canCoderConfig = {.useCANCoder = true, .id = 11, .remoteSensorSlot = 0},
-  };
+  gyro = std::make_shared<AHRS>(constants::gyroPort);
 
-  velocityController =
-      std::make_unique<rmb::FalconVelocityController>(createInfo);
-
-  positionController = std::make_unique<rmb::FalconPositionController>(
-      positionControllerCreateInfo);
+  auto swerveDrive = rmb::SwerveDrive<4>(
+      std::move(modules), gyro,
+      frc::HolonomicDriveController(
+          frc2::PIDController(1.0f, 0.0f, 0.0f),
+          frc2::PIDController(1.0f, 0.0f, 0.0f),
+          frc::ProfiledPIDController<units::radian>(
+              1, 0, 0,
+              frc::TrapezoidProfile<units::radian>::Constraints(
+                  6.28_rad_per_s, 3.14_rad_per_s / 1_s))),
+      1.0_mps, 1.0_tps);
 }
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }

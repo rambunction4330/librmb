@@ -14,6 +14,8 @@ nativeUtils {
     }
 }
 
+nativeUtils.platformConfigs.linuxathena.cppCompiler.args << "-fPIC"
+
 nativeUtils.wpi.addWarnings()
 //nativeUtils.wpi.addWarningsAsErrors()
 
@@ -27,8 +29,8 @@ nativeUtils.wpi.getVendorDeps().addVendorReposToMaven(true)
 model {
      components {
          all {
-            targetPlatform nativeUtils.wpi.platforms.roborio
-            //nativeUtils.useAllPlatforms(it)
+            //targetPlatform nativeUtils.wpi.platforms.roborio
+            nativeUtils.useAllPlatforms(it)
          }
     }
 

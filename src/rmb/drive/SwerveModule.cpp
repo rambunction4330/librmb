@@ -1,4 +1,5 @@
 #include "rmb/drive/SwerveModule.h"
+#include "frc/kinematics/SwerveModulePosition.h"
 #include "frc/kinematics/SwerveModuleState.h"
 
 namespace rmb {
@@ -12,8 +13,8 @@ SwerveModulePower SwerveModulePower::Optimize(const SwerveModulePower &desired,
 }
 
 SwerveModule::SwerveModule(
-    std::unique_ptr<AngularPositionController> angularController,
     std::unique_ptr<LinearVelocityController> velocityController,
+    std::unique_ptr<AngularPositionController> angularController,
     const frc::Translation2d &moduleTranslation)
     : angularController(std::move(angularController)),
       velocityController(std::move(velocityController)),
@@ -40,6 +41,11 @@ frc::SwerveModulePosition SwerveModule::getPosition() const {
           frc::Rotation2d(angularController->getPosition())};
 }
 
+frc::SwerveModuleState SwerveModule::getTargetState() const {
+  return {velocityController->getTargetVelocity(),
+          frc::Rotation2d(angularController->getTargetPosition())};
+}
+
 void SwerveModule::setPower(double power, const frc::Rotation2d &angle) {
   velocityController->setPower(power);
   angularController->setPosition(angle.Radians());
@@ -53,9 +59,5 @@ void SwerveModule::setPower(const SwerveModulePower &power) {
 const frc::Translation2d &SwerveModule::getModuleTranslation() const {
   return moduleTranslation;
 }
-
-
-
-
 
 } // namespace rmb

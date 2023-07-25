@@ -46,7 +46,7 @@ protected:
    */
   BaseDrive(std::string visionTable);
 
-  ~BaseDrive();
+  virtual ~BaseDrive();
 
 public:
   //---------------

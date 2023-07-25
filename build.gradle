@@ -13,11 +13,11 @@ targetCompatibility = JavaVersion.VERSION_11
 repositories {
     mavenCentral()
 }
-if (project.hasProperty('releaseMode')) {
+//if (project.hasProperty('releaseMode')) {
     wpilibRepositories.addAllReleaseRepositories(project)
-} else {
-    wpilibRepositories.addAllDevelopmentRepositories(project)
-}
+//} else {
+//    wpilibRepositories.addAllDevelopmentRepositories(project)
+//}
 
 // Apply C++ configuration
 apply from: 'config.gradle'

@@ -18,6 +18,8 @@ class LinearPositionController;
  */
 class AngularPositionController {
 public:
+  virtual ~AngularPositionController() = default;
+
   /**
    * Common interface for setting the target angular position.
    *

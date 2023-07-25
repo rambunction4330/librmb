@@ -6,8 +6,18 @@
 #include "units/angular_acceleration.h"
 #include "units/angular_velocity.h"
 
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winconsistent-missing-override"
+#endif
+
+// Wouldn't it be great if CTRE could fix their header files?
 #include "ctre/phoenix/motorcontrol/can/WPI_TalonFX.h"
 #include "ctre/phoenix/sensors/WPI_CANCoder.h"
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 
 #include "units/base.h"
 #include "units/current.h"
@@ -119,6 +129,8 @@ public:
    */
   FalconPositionController(const CreateInfo &createInfo);
 
+  virtual ~FalconPositionController() = default;
+
   /**
    * Sets a closed loop position setpoint on the falcon to the given position
    * @param position The position setpoint
@@ -130,7 +142,7 @@ public:
    * @param power The power target supplied to the motor. Must be in range
    * [0.0, 1.0]
    */
-  void setPower(double power);
+  void setPower(double power) override;
 
   /**
    * Queries the Phoenix API for the current set point of the motor

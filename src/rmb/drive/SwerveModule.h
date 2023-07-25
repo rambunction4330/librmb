@@ -57,8 +57,8 @@ public:
    * @param moduleTranslation the position of teh modlue reletive to the
    *                          center of the robot for kinematics.
    */
-  SwerveModule(std::unique_ptr<AngularPositionController> angularController,
-               std::unique_ptr<LinearVelocityController> velocityController,
+  SwerveModule(std::unique_ptr<LinearVelocityController> velocityController,
+               std::unique_ptr<AngularPositionController> angularController,
                const frc::Translation2d &moduleTranslation);
 
   /**
@@ -83,10 +83,15 @@ public:
   frc::SwerveModuleState getState() const;
 
   /**
-   * Returns the current position of teh module useful for more accurate
+   * Returns the current position of the module useful for more accurate
    * odometry.
    */
   frc::SwerveModulePosition getPosition() const;
+
+  /**
+   * @return The target state of the module. This is useful for debugging.
+   */
+  frc::SwerveModuleState getTargetState() const;
 
   /**
    * Sets the desired open loop powerof the swerve module. Tghis is helpful

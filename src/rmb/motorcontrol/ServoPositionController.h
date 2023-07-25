@@ -21,6 +21,8 @@ public:
 
   ServoPositionController(int channel) : servo(channel) {}
 
+  virtual ~ServoPositionController() = default;
+
   /**
    * Common interface for setting the target linear position.
    *

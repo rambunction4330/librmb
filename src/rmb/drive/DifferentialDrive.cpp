@@ -1,3 +1,4 @@
+#if 0
 #include "rmb/drive/DifferentialDrive.h"
 
 #include <initializer_list>
@@ -141,3 +142,4 @@ frc2::CommandPtr DifferentialDrive::followPPTrajectory(
 }
 
 } // namespace rmb
+#endif

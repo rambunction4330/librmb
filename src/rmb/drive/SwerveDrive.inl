@@ -1,6 +1,10 @@
-#include "rmb/drive/SwerveDrive.h"
+#pragma once
 
+#include "SwerveDrive.h"
+
+#include "frc/controller/HolonomicDriveController.h"
 #include "frc/estimator/SwerveDrivePoseEstimator.h"
+#include "frc/interfaces/Gyro.h"
 #include "frc/kinematics/ChassisSpeeds.h"
 #include "frc/kinematics/SwerveDriveKinematics.h"
 #include "frc/kinematics/SwerveModulePosition.h"
@@ -8,11 +12,15 @@
 
 #include "frc/geometry/Translation2d.h"
 
+#include "frc2/command/CommandPtr.h"
+#include "frc2/command/Commands.h"
+#include "rmb/drive/SwerveModule.h"
 #include "units/angle.h"
 #include "units/angular_velocity.h"
 #include "units/length.h"
 #include "units/math.h"
 #include "units/velocity.h"
+#include <array>
 
 namespace rmb {
 
@@ -22,16 +30,7 @@ SwerveDrive<NumModules>::SwerveDrive(
     std::shared_ptr<const frc::Gyro> gyro,
     frc::HolonomicDriveController holonomicController, std::string visionTable,
     units::meters_per_second_t maxSpeed,
-    units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose) {}
-
-template <size_t NumModules>
-SwerveDrive<NumModules>::SwerveDrive(
-    std::array<SwerveModule, NumModules> modules,
-    std::shared_ptr<const frc::Gyro> gyro,
-    frc::HolonomicDriveController holonomicController,
-    units::meters_per_second_t maxSpeed,
     units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose) {
-
   std::array<frc::Translation2d, NumModules> translations;
 
   kinematics = frc::SwerveDriveKinematics<NumModules>(translations);
@@ -40,27 +39,39 @@ SwerveDrive<NumModules>::SwerveDrive(
 }
 
 template <size_t NumModules>
+SwerveDrive<NumModules>::SwerveDrive(
+    std::array<SwerveModule, NumModules> modules,
+    std::shared_ptr<const frc::Gyro> gyro,
+    frc::HolonomicDriveController holonomicController,
+    units::meters_per_second_t maxSpeed,
+    units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose) : modules(std::move(modules)){}
+
+template <size_t NumModules>
 std::array<frc::SwerveModulePosition, NumModules>
 SwerveDrive<NumModules>::getModulePositions() const {
   std::array<frc::SwerveModulePosition, NumModules> states;
-  for (int i = 0; i < NumModules; i++) {
+  for (size_t i = 0; i < NumModules; i++) {
     states[i] = modules[i].getPosition();
   }
+
+  return states;
 }
 
 template <size_t NumModules>
 std::array<frc::SwerveModuleState, NumModules>
 SwerveDrive<NumModules>::getModuleStates() const {
   std::array<frc::SwerveModuleState, NumModules> states;
-  for (int i = 0; i < NumModules; i++) {
+  for (size_t i = 0; i < NumModules; i++) {
     states[i] = modules[i].getState();
   }
+
+  return states;
 }
 
 template <size_t NumModules>
-void SwerveDrive<NumModules>::driveCatesian(double xSpeed, double ySpeed,
-                                            double zRotation,
-                                            bool fieldOriented) {
+void SwerveDrive<NumModules>::driveCartesian(double xSpeed, double ySpeed,
+                                             double zRotation,
+                                             bool fieldOriented) {
   frc::ChassisSpeeds speeds;
 
   double newXSpeed = xSpeed;
@@ -87,7 +98,7 @@ void SwerveDrive<NumModules>::driveCatesian(double xSpeed, double ySpeed,
 template <size_t NumModules>
 void SwerveDrive<NumModules>::driveModuleStates(
     std::array<frc::SwerveModuleState, NumModules> states) {
-  for (int i = 0; i < NumModules; i++) {
+  for (size_t i = 0; i < NumModules; i++) {
     modules[i].setState(states[i]);
   }
 }
@@ -100,13 +111,13 @@ void SwerveDrive<NumModules>::drivePolar(double speed,
   double vx = speed * angle.Cos();
   double vy = speed * angle.Sin();
 
-  driveCatesian(vx, vy, zRotation, fieldOriented);
+  driveCartesian(vx, vy, zRotation, fieldOriented);
 }
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::driveModulePower(
     std::array<SwerveModulePower, NumModules> powers) {
-  for (int i = 0; i < NumModules; i++) {
+  for (size_t i = 0; i < NumModules; i++) {
     modules[i].setPower(powers[i]);
   }
 }
@@ -119,7 +130,8 @@ void SwerveDrive<NumModules>::driveChassisSpeeds(
 
 template <size_t NumModules>
 frc::ChassisSpeeds SwerveDrive<NumModules>::getChassisSpeeds() const {
-  return kinematics.ToChassisSpeeds(getModuleStates());
+  return kinematics.ToChassisSpeeds(
+      wpi::array<frc::SwerveModuleState, NumModules>(getModuleStates()));
 }
 
 template <size_t NumModules>
@@ -128,7 +140,18 @@ frc::Pose2d SwerveDrive<NumModules>::getPose() const {
 }
 
 template <size_t NumModules> frc::Pose2d SwerveDrive<NumModules>::updatePose() {
-  poseEstimator.Update(gyro->GetRotation2d(), getModulePositions());
+  return poseEstimator.Update(gyro->GetRotation2d(), getModulePositions());
+}
+
+template <size_t NumModules>
+std::array<frc::SwerveModuleState, NumModules>
+SwerveDrive<NumModules>::getTargetModuleStates() const {
+  std::array<frc::SwerveModuleState, NumModules> targetStates;
+  for (size_t i = 0; i < NumModules; i++) {
+    targetStates[i] = modules[i].getTargetState();
+  }
+
+  return targetStates;
 }
 
 template <size_t NumModules>
@@ -138,19 +161,18 @@ void SwerveDrive<NumModules>::resetPose(const frc::Pose2d &pose) {
 }
 
 template <size_t NumModules>
-void addVisionMeasurments(const frc::Pose2d &poseEstimate,
-                          units::second_t time) {}
+void SwerveDrive<NumModules>::addVisionMeasurments(
+    const frc::Pose2d &poseEstimate, units::second_t time) {}
 
 template <size_t NumModules>
-void setVisionSTDevs(wpi::array<double, 3> standardDevs) {}
-
-template <size_t NumModules> bool isHolonomic() {}
+void SwerveDrive<NumModules>::setVisionSTDevs(
+    wpi::array<double, 3> standardDevs) {}
 
 template <size_t NumModules>
-frc2::CommandPtr
-followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory,
-                   std::initializer_list<frc2::Subsystem *> driveRequirements) {
+frc2::CommandPtr SwerveDrive<NumModules>::followPPTrajectory(
+    pathplanner::PathPlannerTrajectory trajectory,
+    std::initializer_list<frc2::Subsystem *> driveRequirements) {
+  return frc2::cmd::None();
 }
 
 } // namespace rmb
-  // namespace rmb
