@@ -127,34 +127,30 @@ frc::Pose2d SwerveDrive<NumModules>::getPose() const {
   return poseEstimator.GetEstimatedPosition();
 }
 
-template <size_t NumModules> 
-frc::Pose2d SwerveDrive<NumModules>::updatePose() {
+template <size_t NumModules> frc::Pose2d SwerveDrive<NumModules>::updatePose() {
   poseEstimator.Update(gyro->GetRotation2d(), getModulePositions());
 }
 
 template <size_t NumModules>
-void SwerveDrive<NumModules>::resetPose(const frc::Pose2d &pose)  {
-  poseEstimator.ResetPosition(gyro -> GetRotation2d(), getModulePositions(), pose); 
+void SwerveDrive<NumModules>::resetPose(const frc::Pose2d &pose) {
+  poseEstimator.ResetPosition(gyro->GetRotation2d(), getModulePositions(),
+                              pose);
 }
 
-
-
-
-
-template <size_t NumModules> 
+template <size_t NumModules>
 void addVisionMeasurments(const frc::Pose2d &poseEstimate,
-                            units::second_t time) {}
+                          units::second_t time) {}
 
-template <size_t NumModules> 
+template <size_t NumModules>
 void setVisionSTDevs(wpi::array<double, 3> standardDevs) {}
 
-template <size_t NumModules> 
-bool isHolonomic(){}
+template <size_t NumModules> bool isHolonomic() {}
 
-template <size_t NumModules> 
-frc2::CommandPtr followPPTrajectory(
-      pathplanner::PathPlannerTrajectory trajectory,
-      std::initializer_list<frc2::Subsystem *> driveRequirements) {}
-
+template <size_t NumModules>
+frc2::CommandPtr
+followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory,
+                   std::initializer_list<frc2::Subsystem *> driveRequirements) {
 }
- // namespace rmb
+
+} // namespace rmb
+  // namespace rmb
