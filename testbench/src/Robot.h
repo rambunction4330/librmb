@@ -46,5 +46,4 @@ private:
   std::shared_ptr<AHRS> gyro;
 
   RobotContainer m_container;
-  
 };

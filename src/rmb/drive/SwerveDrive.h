@@ -253,5 +253,3 @@ private:
 };
 } // namespace rmb
 #include "SwerveDrive.inl"
-
-
