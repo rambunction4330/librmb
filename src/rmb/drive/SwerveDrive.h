@@ -252,5 +252,6 @@ private:
   units::radians_per_second_t maxRotation;
 };
 } // namespace rmb
-
 #include "SwerveDrive.inl"
+
+

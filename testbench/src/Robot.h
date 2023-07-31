@@ -11,6 +11,8 @@
 
 #include "RobotContainer.h"
 
+#include "frc/estimator/SwerveDrivePoseEstimator.h"
+#include "frc/kinematics/SwerveDriveKinematics.h"
 #include "rmb/motorcontrol/falcon/FalconPositionController.h"
 #include <rmb/motorcontrol/falcon/FalconVelocityController.h>
 
@@ -44,4 +46,5 @@ private:
   std::shared_ptr<AHRS> gyro;
 
   RobotContainer m_container;
+  
 };

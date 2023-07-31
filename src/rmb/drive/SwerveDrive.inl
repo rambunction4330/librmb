@@ -1,7 +1,5 @@
 #pragma once
 
-#include "SwerveDrive.h"
-
 #include "frc/controller/HolonomicDriveController.h"
 #include "frc/estimator/SwerveDrivePoseEstimator.h"
 #include "frc/interfaces/Gyro.h"
@@ -20,7 +18,9 @@
 #include "units/length.h"
 #include "units/math.h"
 #include "units/velocity.h"
+#include "wpi/array.h"
 #include <array>
+#include <cstddef>
 
 namespace rmb {
 
@@ -30,13 +30,12 @@ SwerveDrive<NumModules>::SwerveDrive(
     std::shared_ptr<const frc::Gyro> gyro,
     frc::HolonomicDriveController holonomicController, std::string visionTable,
     units::meters_per_second_t maxSpeed,
-    units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose) {
-  std::array<frc::Translation2d, NumModules> translations;
-
-  kinematics = frc::SwerveDriveKinematics<NumModules>(translations);
-  poseEstimator = frc::SwerveDrivePoseEstimator<NumModules>(
-      kinematics, gyro->GetRotation2d(), getModulePositions(), initialPose);
-}
+    units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose)
+    : kinematics(std::array<frc::Translation2d, NumModules>{}),
+      holonomicController(holonomicController),
+      poseEstimator(frc::SwerveDrivePoseEstimator<NumModules>(
+          kinematics, gyro->GetRotation2d(), getModulePositions(),
+          initialPose)) {}
 
 template <size_t NumModules>
 SwerveDrive<NumModules>::SwerveDrive(
@@ -44,7 +43,20 @@ SwerveDrive<NumModules>::SwerveDrive(
     std::shared_ptr<const frc::Gyro> gyro,
     frc::HolonomicDriveController holonomicController,
     units::meters_per_second_t maxSpeed,
-    units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose) : modules(std::move(modules)){}
+    units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose)
+    : modules(std::move(modules)),
+              kinematics(std::array<frc::Translation2d, NumModules>{}),
+                  holonomicController(holonomicController),
+              poseEstimator(frc::SwerveDrivePoseEstimator<NumModules>(kinematics, 
+                      gyro->GetRotation2d(), getModulePositions(), initialPose)) 
+                      {
+  std::array<frc::Translation2d, NumModules> translations;
+  for (size_t i = 0; i < NumModules; i++) {
+    translations[i] = modules[i].getModuleTranslation();
+  }
+
+  
+                      }
 
 template <size_t NumModules>
 std::array<frc::SwerveModulePosition, NumModules>
@@ -107,7 +119,6 @@ template <size_t NumModules>
 void SwerveDrive<NumModules>::drivePolar(double speed,
                                          const frc::Rotation2d &angle,
                                          double zRotation, bool fieldOriented) {
-
   double vx = speed * angle.Cos();
   double vy = speed * angle.Sin();
 
