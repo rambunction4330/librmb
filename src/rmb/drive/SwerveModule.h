@@ -70,6 +70,8 @@ public:
   void setState(const units::meters_per_second_t &velocity,
                 const frc::Rotation2d &angle);
 
+  void smartdashboardDisplayTargetState(const std::string &name) const;
+
   /**
    * Sets the desired state of the swerve module.
    *

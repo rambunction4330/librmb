@@ -15,6 +15,15 @@ const rmb::FalconVelocityControllerHelper::PIDConfig velocityModulePIDConfig = {
     .closedLoopMaxPercentOutput = 1.0,
 };
 
+const rmb::FalconPositionController::RawCANCoderPositionUnit_t
+    module1Zero(690.0);
+const rmb::FalconPositionController::RawCANCoderPositionUnit_t
+    module2Zero(784.0);
+const rmb::FalconPositionController::RawCANCoderPositionUnit_t
+    module3Zero(926.0);
+const rmb::FalconPositionController::RawCANCoderPositionUnit_t
+    module4Zero(3567.0);
+
 const units::meter_t wheelCircumference = 1.0_m;
 
 const frc::SerialPort::Port gyroPort = frc::SerialPort::Port::kMXP;
@@ -50,7 +59,10 @@ const rmb::FalconPositionController::CreateInfo positionControllerCreateInfo{
             .gearRatio = 12.8,
         },
     .openLoopConfig = {},
-    .canCoderConfig = {.useCANCoder = true, .id = 11, .remoteSensorSlot = 0},
+    .canCoderConfig = {.useCANCoder = true,
+                       .id = 11,
+                       .zeroPosition = module1Zero,
+                       .remoteSensorSlot = 0},
 };
 
 const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo1{
@@ -81,7 +93,10 @@ const rmb::FalconPositionController::CreateInfo positionControllerCreateInfo1{
             .gearRatio = 12.8,
         },
     .openLoopConfig = {},
-    .canCoderConfig = {.useCANCoder = true, .id = 21, .remoteSensorSlot = 0},
+    .canCoderConfig = {.useCANCoder = true,
+                       .id = 21,
+                       .zeroPosition = module2Zero,
+                       .remoteSensorSlot = 0},
 };
 
 const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo2{
@@ -112,7 +127,10 @@ const rmb::FalconPositionController::CreateInfo positionControllerCreateInfo2{
             .gearRatio = 12.8,
         },
     .openLoopConfig = {},
-    .canCoderConfig = {.useCANCoder = true, .id = 31, .remoteSensorSlot = 0},
+    .canCoderConfig = {.useCANCoder = true,
+                       .id = 31,
+                       .zeroPosition = module3Zero,
+                       .remoteSensorSlot = 0},
 };
 
 const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo3{
@@ -143,7 +161,10 @@ const rmb::FalconPositionController::CreateInfo positionControllerCreateInfo3{
             .gearRatio = 12.8,
         },
     .openLoopConfig = {},
-    .canCoderConfig = {.useCANCoder = true, .id = 41, .remoteSensorSlot = 0},
+    .canCoderConfig = {.useCANCoder = true,
+                       .id = 41,
+                       .zeroPosition = module4Zero,
+                       .remoteSensorSlot = 0},
 };
 
 } // namespace constants

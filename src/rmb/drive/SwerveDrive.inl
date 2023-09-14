@@ -19,8 +19,10 @@
 #include "units/math.h"
 #include "units/velocity.h"
 #include "wpi/array.h"
+
 #include <array>
 #include <cstddef>
+#include <iostream>
 
 namespace rmb {
 
@@ -35,7 +37,8 @@ SwerveDrive<NumModules>::SwerveDrive(
       holonomicController(holonomicController),
       poseEstimator(frc::SwerveDrivePoseEstimator<NumModules>(
           kinematics, gyro->GetRotation2d(), getModulePositions(),
-          initialPose)) {}
+          initialPose)),
+      maxSpeed(maxSpeed), maxRotation(maxRotation) {}
 
 template <size_t NumModules>
 SwerveDrive<NumModules>::SwerveDrive(
@@ -45,18 +48,19 @@ SwerveDrive<NumModules>::SwerveDrive(
     units::meters_per_second_t maxSpeed,
     units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose)
     : modules(std::move(modules)),
-              kinematics(std::array<frc::Translation2d, NumModules>{}),
-                  holonomicController(holonomicController),
-              poseEstimator(frc::SwerveDrivePoseEstimator<NumModules>(kinematics, 
-                      gyro->GetRotation2d(), getModulePositions(), initialPose)) 
-                      {
+      kinematics(std::array<frc::Translation2d, NumModules>{}),
+      holonomicController(holonomicController),
+      poseEstimator(frc::SwerveDrivePoseEstimator<NumModules>(
+          kinematics, gyro->GetRotation2d(), getModulePositions(),
+          initialPose)),
+      maxSpeed(maxSpeed), maxRotation(maxRotation) {
   std::array<frc::Translation2d, NumModules> translations;
   for (size_t i = 0; i < NumModules; i++) {
     translations[i] = modules[i].getModuleTranslation();
   }
 
-  
-                      }
+  kinematics = frc::SwerveDriveKinematics<NumModules>(translations);
+}
 
 template <size_t NumModules>
 std::array<frc::SwerveModulePosition, NumModules>
@@ -104,6 +108,7 @@ void SwerveDrive<NumModules>::driveCartesian(double xSpeed, double ySpeed,
     speeds = frc::ChassisSpeeds{newXSpeed * maxSpeed, ySpeed * maxSpeed,
                                 zRotation * maxRotation};
   }
+
   driveModuleStates(kinematics.ToSwerveModuleStates(speeds));
 }
 

@@ -98,6 +98,10 @@ public:
 
   std::array<frc::SwerveModulePosition, NumModules> getModulePositions() const;
 
+  const std::array<rmb::SwerveModule, NumModules> &getModules() const {
+    return modules;
+  }
+
   /**
    * Drives the robot via the speeds of the Chassis.
    *

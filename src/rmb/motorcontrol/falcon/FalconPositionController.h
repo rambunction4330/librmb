@@ -79,7 +79,10 @@ struct CANCoderConfig {
   enum RemoteSlot { RemoteSlot0 = 0, RemoteSlot1 = 1 };
 
   bool useCANCoder = false;
+
   int id;
+
+  units::radian_t zeroPosition = 0.0_rad;
 
   int remoteSensorSlot; /*< Can be 0 or 1 depending on RemoteSlot0 or
                            RemoteSlot1*/

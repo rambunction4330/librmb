@@ -4,6 +4,7 @@
 #include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
 #include "ctre/phoenix/motorcontrol/StatorCurrentLimitConfiguration.h"
 #include "ctre/phoenix/sensors/CANCoder.h"
+#include "ctre/phoenix/sensors/SensorInitializationStrategy.h"
 #include "ctre/phoenix/sensors/SensorTimeBase.h"
 #include "units/angle.h"
 #include <iostream>
@@ -53,6 +54,9 @@ FalconPositionController::FalconPositionController(
   if (createInfo.canCoderConfig.useCANCoder) {
     canCoder.emplace(createInfo.canCoderConfig.id);
     canCoder->ConfigFactoryDefault();
+    canCoder->ConfigSensorInitializationStrategy(
+        ctre::phoenix::sensors::SensorInitializationStrategy::
+            BootToAbsolutePosition);
     canCoder->ConfigAbsoluteSensorRange(
         ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360);
     canCoder->ConfigFeedbackCoefficient(
@@ -78,6 +82,12 @@ FalconPositionController::FalconPositionController(
     motorcontroller.ConfigIntegratedSensorAbsoluteRange(
         ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360);
     motorcontroller.ConfigSelectedFeedbackCoefficient(1.0f);
+    motorcontroller.ConfigIntegratedSensorInitializationStrategy(
+        ctre::phoenix::sensors::SensorInitializationStrategy::
+            BootToAbsolutePosition);
+
+    zeroPosition(RawCANCoderPositionUnit_t(canCoder->GetAbsolutePosition()) -
+                 createInfo.canCoderConfig.zeroPosition);
   }
 
   motorcontroller.ConfigFeedbackNotContinuous(!createInfo.range.isContinuous);
