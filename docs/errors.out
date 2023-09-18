@@ -5,8 +5,8 @@ warning: ignoring unsupported tag 'FULL_SIDEBAR' at line 1569, file docs/Doxyfil
 warning: ignoring unsupported tag 'OBFUSCATE_EMAILS' at line 1600, file docs/Doxyfile
 warning: ignoring unsupported tag 'MATHJAX_VERSION' at line 1659, file docs/Doxyfile
 warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/Doxyfile
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:89: warning: Compound rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:116: warning: Compound rmb::FalconPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:92: warning: Compound rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:119: warning: Compound rmb::FalconPositionController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:78: warning: Compound rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:73: warning: Compound rmb::FalconPositionControllerHelper::FeedbackConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:29: warning: Compound rmb::FalconPositionControllerHelper::MotorConfig is not documented.
@@ -167,22 +167,24 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:95: warning: Member driveModuleStates(std::array< frc::SwerveModuleState, NumModules > states) (function) of class rmb::SwerveDrive is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:97: warning: Member getModuleStates() const (function) of class rmb::SwerveDrive is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:99: warning: Member getModulePositions() const (function) of class rmb::SwerveDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:122: warning: Member getTargetModuleStates() const (function) of class rmb::SwerveDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:101: warning: Member getModules() const (function) of class rmb::SwerveDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:126: warning: Member getTargetModuleStates() const (function) of class rmb::SwerveDrive is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:61: warning: The following parameters of rmb::SwerveDrive::SwerveDrive(std::array< SwerveModule, NumModules > modules, std::shared_ptr< const frc::Gyro > gyro, frc::HolonomicDriveController holonomicController, std::string visionTable, units::meters_per_second_t maxSpeed, units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose=frc::Pose2d()) are not documented:
   parameter 'maxSpeed'
   parameter 'maxRotation'
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:78: warning: The following parameters of rmb::SwerveDrive::SwerveDrive(std::array< SwerveModule, NumModules > modules, std::shared_ptr< const frc::Gyro > gyro, frc::HolonomicDriveController holonomicController, units::meters_per_second_t maxSpeed, units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose=frc::Pose2d()) are not documented:
   parameter 'maxSpeed'
   parameter 'maxRotation'
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:200: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:208: warning: The following parameter of rmb::SwerveDrive::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:204: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:212: warning: The following parameter of rmb::SwerveDrive::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
   parameter 'driveRequirements'
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:185: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:193: warning: The following parameter of rmb::SwerveDrive::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:189: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:197: warning: The following parameter of rmb::SwerveDrive::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
   parameter 'driveRequirements'
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:27: warning: Member power (variable) of struct rmb::SwerveModulePower is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:28: warning: Member angle (variable) of struct rmb::SwerveModulePower is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:50: warning: Member SwerveModule(SwerveModule &&)=default (function) of class rmb::SwerveModule is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:73: warning: Member smartdashboardDisplayTargetState(const std::string &name) const (function) of class rmb::SwerveModule is not documented.
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:60: warning: argument 'angularController' from the argument list of rmb::SwerveModule::SwerveModule has multiple @param documentation sections
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:60: warning: The following parameter of rmb::SwerveModule::SwerveModule(std::unique_ptr< LinearVelocityController > velocityController, std::unique_ptr< AngularPositionController > angularController, const frc::Translation2d &moduleTranslation) is not documented:
   parameter 'velocityController'
@@ -190,26 +192,26 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:116: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:93: warning: Member IntegratedEncoderTick (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:94: warning: Member IntegratedEncoderTick_t (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:98: warning: Member RawVelocityUnit (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:99: warning: Member RawIntegratedVelocityUnit_t (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:101: warning: Member RawPositionUnit (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:102: warning: Member RawIntegratedPositionUnit_t (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:106: warning: Member CANCoderTick (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:107: warning: Member CANCoderTick_t (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:110: warning: Member RawCANCoderVelocityUnit (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:111: warning: Member RawCANCoderVelocityUnit_t (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:113: warning: Member RawCANCoderPositionUnit (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:114: warning: Member RawCANCoderPositionUnit_t (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:96: warning: Member IntegratedEncoderTick (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:97: warning: Member IntegratedEncoderTick_t (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:101: warning: Member RawVelocityUnit (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:102: warning: Member RawIntegratedVelocityUnit_t (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:104: warning: Member RawPositionUnit (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:105: warning: Member RawIntegratedPositionUnit_t (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:109: warning: Member CANCoderTick (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:110: warning: Member CANCoderTick_t (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:113: warning: Member RawCANCoderVelocityUnit (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:114: warning: Member RawCANCoderVelocityUnit_t (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:116: warning: Member RawCANCoderPositionUnit (typedef) of class rmb::FalconPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:117: warning: Member RawCANCoderPositionUnit_t (typedef) of class rmb::FalconPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:116: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:117: warning: Member config (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:118: warning: Member pidConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:119: warning: Member range (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:120: warning: Member feedbackConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:121: warning: Member openLoopConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:122: warning: Member canCoderConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:120: warning: Member config (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:121: warning: Member pidConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:122: warning: Member range (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:123: warning: Member feedbackConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:124: warning: Member openLoopConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:125: warning: Member canCoderConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:36: warning: Member InternalEncoderTick (typedef) of class rmb::FalconVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:37: warning: Member InternalEncoderTick_t (typedef) of class rmb::FalconVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:41: warning: Member RawInternalVelocityUnit (typedef) of class rmb::FalconVelocityController is not documented.
@@ -312,8 +314,9 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:75: warning: Member reverseSwitch (variable) of struct rmb::FalconPositionControllerHelper::FeedbackConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:79: warning: Member RemoteSlot (enumeration) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:81: warning: Member useCANCoder (variable) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:82: warning: Member id (variable) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:84: warning: Member remoteSensorSlot (variable) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:83: warning: Member id (variable) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:85: warning: Member zeroPosition (variable) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:87: warning: Member remoteSensorSlot (variable) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:14: warning: Member p (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:14: warning: Member i (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:14: warning: Member d (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
