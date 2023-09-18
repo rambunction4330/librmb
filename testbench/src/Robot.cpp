@@ -3,8 +3,8 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "Robot.h"
-#include "rmb/motorcontrol/falcon/FalconPositionController.h"
-#include "rmb/motorcontrol/falcon/FalconVelocityController.h"
+#include "rmb/motorcontrol/Talon/TalonFXPositionController.h"
+#include "rmb/motorcontrol/Talon/TalonFXVelocityController.h"
 #include "units/angle.h"
 
 #include <frc2/command/CommandScheduler.h>
@@ -14,7 +14,7 @@
 #include <iostream>
 
 void Robot::RobotInit() {
-  rmb::FalconVelocityController::CreateInfo createInfo{
+  rmb::TalonFXVelocityController::CreateInfo createInfo{
       .config =
           {
               .id = 10,
@@ -38,7 +38,7 @@ void Robot::RobotInit() {
       .canCoderConfig = {.useCANCoder = false},
   };
 
-  rmb::FalconPositionController::CreateInfo positionControllerCreateInfo{
+  rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo{
       .config = {.id = 12, .inverted = false},
       .pidConfig = {.p = 1.000f,
                     .i = 0.0f,
@@ -59,9 +59,9 @@ void Robot::RobotInit() {
   };
 
   velocityController =
-      std::make_unique<rmb::FalconVelocityController>(createInfo);
+      std::make_unique<rmb::TalonFXVelocityController>(createInfo);
 
-  positionController = std::make_unique<rmb::FalconPositionController>(
+  positionController = std::make_unique<rmb::TalonFXPositionController>(
       positionControllerCreateInfo);
 }
 
