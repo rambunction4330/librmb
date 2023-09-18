@@ -190,3 +190,6 @@ docs/*
 
 compile_commands.json
 compile_flags.txt
+
+simgui*.json
+networktables.json
