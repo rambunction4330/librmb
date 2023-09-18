@@ -47,7 +47,7 @@ private:
 
   std::unique_ptr<rmb::SwerveDrive<4>> swerveDrive;
 
-  rmb::LogitechJoystick joystick = rmb::LogitechJoystick(0, 0.07);
+  rmb::LogitechJoystick joystick = rmb::LogitechJoystick(0, 0.01);
 
   std::shared_ptr<AHRS> gyro;
 

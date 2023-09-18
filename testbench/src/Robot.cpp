@@ -67,7 +67,7 @@ void Robot::RobotInit() {
               1, 0, 0,
               frc::TrapezoidProfile<units::radian>::Constraints(
                   6.28_rad_per_s, 3.14_rad_per_s / 1_s))),
-      5.0_mps, 1.0_tps);
+      7.0_mps, 2.0_tps);
 }
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
@@ -87,8 +87,8 @@ void Robot::AutonomousExit() {}
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
-  swerveDrive->driveCartesian(-joystick.GetX(), joystick.GetY(),
-                              joystick.GetTwist(), false);
+  swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()), -joystick.GetY() * joystick.GetThrottle(),
+                              -joystick.GetTwist() * joystick.GetThrottle(), false);
 
   for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
     const auto &module = swerveDrive->getModules()[i];
