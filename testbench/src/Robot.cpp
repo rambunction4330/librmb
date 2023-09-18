@@ -87,8 +87,10 @@ void Robot::AutonomousExit() {}
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
-  swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()), -joystick.GetY() * joystick.GetThrottle(),
-                              -joystick.GetTwist() * joystick.GetThrottle(), false);
+  swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()),
+                              -joystick.GetY() * joystick.GetThrottle(),
+                              -joystick.GetTwist() * joystick.GetThrottle(),
+                              false);
 
   for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
     const auto &module = swerveDrive->getModules()[i];
