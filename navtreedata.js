@@ -59,7 +59,7 @@ var NAVTREEINDEX =
 [
 "_angular_feedforward_controller_8h_source.html",
 "classrmb_1_1_elevator_feedforward.html#a9b53371e5d214ce6a2cd7bce1f8eb576",
-"classrmb_1_1_spark_max_position_controller.html#a98bb9917b0bb7c7500a2315e5c322b83"
+"classrmb_1_1_talon_f_x_position_controller.html#aa3e370e90787d09915b62fe88ab724d2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
