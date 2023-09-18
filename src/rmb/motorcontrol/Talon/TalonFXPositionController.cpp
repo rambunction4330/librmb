@@ -1,4 +1,4 @@
-#include "FalconPositionController.h"
+#include "TalonFXPositionController.h"
 #include "ctre/Phoenix.h"
 #include "ctre/phoenix/motorcontrol/ControlMode.h"
 #include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
@@ -15,8 +15,8 @@ using namespace phoenix::motorcontrol::can;
 
 namespace rmb {
 
-FalconPositionController::FalconPositionController(
-    const FalconPositionController::CreateInfo &createInfo)
+TalonFXPositionController::TalonFXPositionController(
+    const TalonFXPositionController::CreateInfo &createInfo)
     : motorcontroller(createInfo.config.id), range(createInfo.range),
       usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
 
@@ -95,7 +95,7 @@ FalconPositionController::FalconPositionController(
   tolerance = createInfo.pidConfig.tolerance;
 }
 
-void FalconPositionController::setPosition(units::radian_t position) {
+void TalonFXPositionController::setPosition(units::radian_t position) {
   units::radian_t targetPosition(position);
 
   if (targetPosition > range.maxPosition) {
@@ -114,7 +114,7 @@ void FalconPositionController::setPosition(units::radian_t position) {
   }
 }
 
-units::radian_t FalconPositionController::getTargetPosition() const {
+units::radian_t TalonFXPositionController::getTargetPosition() const {
   if (usingCANCoder) {
     return (RawCANCoderPositionUnit_t(motorcontroller.GetClosedLoopTarget()));
   } else {
@@ -124,19 +124,19 @@ units::radian_t FalconPositionController::getTargetPosition() const {
   }
 }
 
-units::radian_t FalconPositionController::getMinPosition() const {
+units::radian_t TalonFXPositionController::getMinPosition() const {
   return range.minPosition;
 }
 
-units::radian_t FalconPositionController::getMaxPosition() const {
+units::radian_t TalonFXPositionController::getMaxPosition() const {
   return range.maxPosition;
 }
 
-void FalconPositionController::disable() { motorcontroller.Disable(); }
+void TalonFXPositionController::disable() { motorcontroller.Disable(); }
 
-void FalconPositionController::stop() { motorcontroller.StopMotor(); }
+void TalonFXPositionController::stop() { motorcontroller.StopMotor(); }
 
-units::radians_per_second_t FalconPositionController::getVelocity() const {
+units::radians_per_second_t TalonFXPositionController::getVelocity() const {
   if (usingCANCoder) {
     return RawCANCoderVelocityUnit_t(
         motorcontroller.GetSelectedSensorVelocity());
@@ -146,7 +146,7 @@ units::radians_per_second_t FalconPositionController::getVelocity() const {
   }
 }
 
-units::radian_t FalconPositionController::getPosition() const {
+units::radian_t TalonFXPositionController::getPosition() const {
   if (usingCANCoder) {
     return RawCANCoderPositionUnit_t(
         motorcontroller.GetSelectedSensorPosition());
@@ -156,7 +156,7 @@ units::radian_t FalconPositionController::getPosition() const {
   }
 }
 
-void FalconPositionController::zeroPosition(units::radian_t offset) {
+void TalonFXPositionController::zeroPosition(units::radian_t offset) {
   if (usingCANCoder) {
     canCoder->SetPosition(RawCANCoderPositionUnit_t(offset)());
   } else {
@@ -165,11 +165,11 @@ void FalconPositionController::zeroPosition(units::radian_t offset) {
   }
 }
 
-units::radian_t FalconPositionController::getTolerance() const {
+units::radian_t TalonFXPositionController::getTolerance() const {
   return tolerance;
 }
 
-void FalconPositionController::setPower(double power) {
+void TalonFXPositionController::setPower(double power) {
   motorcontroller.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,
                       power);
 }

@@ -15,7 +15,7 @@
 #include <optional>
 
 namespace rmb {
-namespace FalconPositionControllerHelper {
+namespace TalonFXPositionControllerHelper {
 struct MotorConfig {
   int id;
   bool inverted = false;
@@ -75,8 +75,8 @@ struct CANCoderConfig {
                            RemoteSlot1*/
 };
 
-} // namespace FalconPositionControllerHelper
-class FalconPositionController : public AngularPositionController {
+} // namespace TalonFXPositionControllerHelper
+class TalonFXPositionController : public AngularPositionController {
 public:
   //-------------Integrated Encoder
   // Units-----------------------------------------
@@ -104,23 +104,23 @@ public:
   typedef units::unit_t<RawCANCoderPositionUnit> RawCANCoderPositionUnit_t;
 
   struct CreateInfo {
-    FalconPositionControllerHelper::MotorConfig config;
-    FalconPositionControllerHelper::PIDConfig pidConfig;
-    FalconPositionControllerHelper::Range range;
-    FalconPositionControllerHelper::FeedbackConfig feedbackConfig;
-    FalconPositionControllerHelper::OpenLoopConfig openLoopConfig;
-    FalconPositionControllerHelper::CANCoderConfig canCoderConfig;
+    TalonFXPositionControllerHelper::MotorConfig config;
+    TalonFXPositionControllerHelper::PIDConfig pidConfig;
+    TalonFXPositionControllerHelper::Range range;
+    TalonFXPositionControllerHelper::FeedbackConfig feedbackConfig;
+    TalonFXPositionControllerHelper::OpenLoopConfig openLoopConfig;
+    TalonFXPositionControllerHelper::CANCoderConfig canCoderConfig;
   };
 
   /**
-   * Creates a Falcon position FalconPositionController
+   * Creates a TalonFX position TalonFXPositionController
    * @param createInfo CreateInfo struct used to initialize the position
    * controller
    */
-  FalconPositionController(const CreateInfo &createInfo);
+  TalonFXPositionController(const CreateInfo &createInfo);
 
   /**
-   * Sets a closed loop position setpoint on the falcon to the given position
+   * Sets a closed loop position setpoint on the TalonFX to the given position
    * @param position The position setpoint
    */
   void setPosition(units::radian_t position) override;
@@ -189,7 +189,7 @@ private:
 
   std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
 
-  FalconPositionControllerHelper::Range range;
+  TalonFXPositionControllerHelper::Range range;
 
   float gearRatio = 0.0;
 

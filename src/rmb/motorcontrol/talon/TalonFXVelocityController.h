@@ -1,148 +1,157 @@
+#pragma once
 
-// #pragma once
+#include <optional>
 
-// #include <functional>
+#include "rmb/motorcontrol/AngularVelocityController.h"
 
-// #include <units/base.h>
-// #include <units/angle.h>
-// #include <units/angular_velocity.h>
-// #include <units/angular_acceleration.h>
+#include "TalonFXPositionController.h"
+#include "ctre/phoenix/sensors/WPI_CANCoder.h"
+#include "units/angular_velocity.h"
 
-// #include <ctre/phoenix/motorcontrol/can/WPI_TalonFX.h>
+namespace rmb {
+namespace TalonFXVelocityControllerHelper {
+struct PIDConfig {
+  double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
+  units::turns_per_second_t tolerance = 0.0_tps;
+  double iZone = 0.0, iMaxAccumulator = 0.0;
 
-// #include "rmb/motorcontrol/feedback/AngularVelocityFeedbackController.h"
+  double closedLoopMaxPercentOutput = 1.0;
+  units::second_t rampRate = 1.0_s;
+};
 
-// namespace rmb {
+struct OpenLoopConfig {
+  double minOutput = -1.0, maxOutput = 1.0;
+  units::second_t rampRate = 1.0_s;
+};
 
-// namespace TalonFXVelocityControllerHelper {
+struct ProfileConfig {
+  units::radians_per_second_t maxVelocity = 0.0_rad_per_s,
+                              minVelocity = 0.0_rad_per_s;
+  units::radians_per_second_squared_t maxAcceleration = 0.0_rad_per_s_sq;
+};
+} // namespace TalonFXVelocityControllerHelper
 
-//   struct MotorConfig {
-//     int id;
-//     bool inverted;
-//   };
+class TalonFXVelocityController : public AngularVelocityController {
+public:
+  typedef units::unit<std::ratio<1, 2048>, units::turns> InternalEncoderTick;
+  typedef units::unit_t<InternalEncoderTick> InternalEncoderTick_t;
 
-//   struct PIDConfig {
-//     double p = 0.0, i = 0.0, d = 0.0, f = 0.0;
-//     units::radians_per_second_t tolerance = 0.0_rad_per_s;
-//     double iZone = 0.0, iMaxAccumulator = 0.0;
-//     double maxOutput = 1.0, minOutput = -1.0;
-//   };
+  typedef units::compound_unit<InternalEncoderTick,
+                               units::inverse<units::deciseconds>>
+      RawInternalVelocityUnit;
+  typedef units::unit_t<RawInternalVelocityUnit> RawInternalVelocityUnit_t;
 
-//   enum LimitSwitchConfig { Disabled, NormalyOpen, NormalyClosed };
+  typedef units::unit<std::ratio<1, 1>, InternalEncoderTick>
+      RawInternalPositionUnit;
+  typedef units::unit_t<RawInternalPositionUnit> RawInternalPositionUnit_t;
 
-//   struct FeedbackConfig {
-//     double gearRatio = 1.0;
-//     LimitSwitchConfig forwardSwitch = Disabled, reverseSwitch = Disabled;
-//   };
-// }
+  //-------------CANCoder
+  // Units---------------------------------------------------
+  typedef units::unit<std::ratio<1, 4096>, units::turns> CANCoderTick;
+  typedef units::unit_t<CANCoderTick> CANCoderTick_t;
 
-// class TalonFXVelocityController : public AngularVelocityFeedbackController {
-// public:
+  typedef units::compound_unit<CANCoderTick, units::inverse<units::deciseconds>>
+      RawCANCoderVelocityUnit;
+  typedef units::unit_t<RawCANCoderVelocityUnit> RawCANCoderVelocityUnit_t;
 
-//   using EncoderTick = units::unit<std::ratio<4096, 1>, units::turns>;
-//   using EncoderTick_t = units::unit_t<EncoderTick>;
-//   using EncoderVelocity = units::compound_unit<EncoderTick,
-//   units::inverse<units::decisecond>>; using EncoderVelocity_t  =
-//   units::unit_t<EncoderVelocity>;
+  typedef units::unit<std::ratio<1, 1>, CANCoderTick> RawCANCoderPositionUnit;
+  typedef units::unit_t<RawCANCoderPositionUnit> RawCANCoderPositionUnit_t;
 
-//   using MotorConfig = TalonFXVelocityControllerHelper::MotorConfig;
-//   using PIDConfig = TalonFXVelocityControllerHelper::PIDConfig;
-//   using LimitSwitchConfig =
-//   TalonFXVelocityControllerHelper::LimitSwitchConfig; using FeedbackConfig =
-//   TalonFXVelocityControllerHelper::FeedbackConfig;
+  struct CreateInfo {
+    TalonFXPositionControllerHelper::MotorConfig config;
+    TalonFXVelocityControllerHelper::PIDConfig pidConfig;
+    TalonFXVelocityControllerHelper::ProfileConfig profileConfig;
+    TalonFXPositionControllerHelper::FeedbackConfig feedbackConfig;
+    TalonFXVelocityControllerHelper::OpenLoopConfig openLoopConfig;
+    TalonFXPositionControllerHelper::CANCoderConfig canCoderConfig;
+  };
 
-//   TalonFXVelocityController(const MotorConfig motorConfig = {}, const
-//   PIDConfig pidConfig = {},
-//                             const FeedbackConfig feedbackConfig = {},
-//                             std::initializer_list<const MotorConfig>
-//                             followers = {},
-//                             std::function<void(ctre::phoenix::motorcontrol::can::WPI_TalonFX&)>
-//                             customConfig =
-//                             [](ctre::phoenix::motorcontrol::can::WPI_TalonFX&)
-//                             { return 0; });
+  TalonFXVelocityController(const CreateInfo &createInfo);
 
-//   //--------------------------------------------------
-//   // Methods Inherited from AngularVelocityController
-//   //--------------------------------------------------
+  //--------------------------------------------------
+  // Methods Inherited from AngularVelocityController
+  //--------------------------------------------------
 
-//   /**
-//    * Sets the target angular velocity.
-//    *
-//    * @param velocity The target angular velocity in radians per second.
-//    */
-//   void setVelocity(units::radians_per_second_t velocity) override;
+  /**
+   * Sets the target angular velocity.
+   *
+   * @param velocity The target angular velocity in radians per second.
+   */
+  void setVelocity(units::radians_per_second_t velocity) override;
 
-//   /**
-//    * Gets the target angular velocity.
-//    *
-//    * @return The target angular velocity in radians per second.
-//    */
-//   units::radians_per_second_t getTargetVelocity() const override;
+  /**
+   * Gets the target angular velocity.
+   *
+   * @return The target angular velocity in radians per second.
+   */
+  units::radians_per_second_t getTargetVelocity() const override;
 
-//   /**
-//    * Gets the maximum angular velocity.
-//    *
-//    * @return The maximum angular velocity in radians per second.
-//    */
-//   units::radians_per_second_t getMaxVelocity() const override;
+  /**
+   * Common interface for setting a mechanism's raw power output.
+   */
+  virtual void setPower(double power) override;
 
-//   /**
-//    * Common interface for setting a mechanism's raw power output.
-//    */
-//   void setPower(double power) override;
+  /**
+   * Common interface for disabling a mechanism.
+   */
+  virtual void disable() override;
 
-//   /**
-//    * Common interface for disabling a mechanism.
-//    */
-//   void disable() override;
+  /**
+   * Common interface to stop the mechanism until `setPosition` is called again.
+   */
+  virtual void stop() override;
 
-//   /**
-//    * Common interface to stop the mechanism until `setPosition` is called
-//    again.
-//    */
-//   void stop() override;
+  //---------------------------------------
+  // Methods Inherited from AngularEncoder
+  //---------------------------------------
 
-//   //---------------------------------------
-//   // Methods Inherited from AngularEncoder
-//   //---------------------------------------
+  /**
+   * Gets the angular velocity of the motor.
+   *
+   * @return The velocity of the motor in radians per second.
+   */
+  units::radians_per_second_t getVelocity() const override;
 
-//   /**
-//    * Gets the angular velocity of the motor.
-//    *
-//    * @return The velocity of the motor in radians per second.
-//    */
-//   units::radians_per_second_t getVelocity() const override;
+  /**
+   * Gets the angular position of an motor.
+   *
+   * @return The position of the motor in radians.
+   */
+  units::radian_t getPosition() const override;
 
-//   /**
-//    * Gets the angular position of an motor.
-//    *
-//    * @return The position of the motor in radians.
-//    */
-//   units::radian_t getPosition() const override;
+  /**
+   * Zeros the angular positon the motor so the current position is set to
+   * the offset. In the case of an absolute encoder this sets the zero offset
+   * with no regard to the current position.
+   *
+   * @param offset the offset from the current angular position at which to
+   *               set the zero position.
+   */
+  void zeroPosition(units::radian_t offset = 0_rad) override;
 
-//   /**
-//    * Zeros the angular positon the motor so the current position is set to
-//    * the offset.
-//    *
-//    * @param offset the offset from the current angular position at which to
-//    *               set the zero position.
-//    */
-//   void zeroPosition(units::radian_t offset = 0_rad) override;
+  //----------------------------------------------------------
+  // Methods Inherited from AngularvelocityFeedbackController
+  //----------------------------------------------------------
 
-//   //----------------------------------------------------------
-//   // Methods Inherited from AngularvelocityFeedbackController
-//   //----------------------------------------------------------
+  /**
+   * Gets the motor's tolerance.
+   *
+   * @return the motor's tolerance in radians per second.
+   */
+  virtual units::radians_per_second_t getTolerance() const override;
 
-//   /**
-//    * Gets the motor's tolerance.
-//    *
-//    * @return the motor's tolerance in radians per second.
-//    */
-//   units::radians_per_second_t getTolerance() const override;
+private:
+  mutable ctre::phoenix::motorcontrol::can::WPI_TalonFX motorcontroller;
 
-// private:
-//   ctre::phoenix::motorcontrol::can::WPI_TalonFX talonFX;
+  float gearRatio = 0.0;
 
-//   double gearRatio;
-// };
-// } // namespace rmb
+  units::radians_per_second_t tolerance = 0.0_tps;
+
+  TalonFXVelocityControllerHelper::ProfileConfig profileConfig;
+
+  const bool usingCANCoder;
+
+  std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
+};
+
+} // namespace rmb

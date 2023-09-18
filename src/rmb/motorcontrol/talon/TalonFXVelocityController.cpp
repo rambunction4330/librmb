@@ -1,120 +1,144 @@
-// #include "rmb/motorcontrol/talon/TalonFXVelocityController.h"
+#include "TalonFXVelocityController.h"
+#include "ctre/phoenix/motorcontrol/ControlMode.h"
+#include "units/angular_velocity.h"
+#include <iostream>
 
-// namespace rmb {
-// TalonFXVelocityController::TalonFXVelocityController(const MotorConfig
-// motorConfig, const PIDConfig pidConfig,
-//                             const FeedbackConfig feedbackConfig,
-//                             std::initializer_list<const MotorConfig>
-//                             followers,
-//                             std::function<void(ctre::phoenix::motorcontrol::can::WPI_TalonFX&)>
-//                             customConfig) : talonFX(motorConfig.id),
-//                             gearRatio(feedbackConfig.gearRatio) {
+namespace rmb {
 
-//   // Set default baseline
-//   talonFX.ConfigFactoryDefault();
+TalonFXVelocityController::TalonFXVelocityController(
+    const TalonFXVelocityController::CreateInfo &createInfo)
+    : motorcontroller(createInfo.config.id),
+      usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
 
-//   // Motor Config
-//   talonFX.SetInverted(motorConfig.inverted);
+  motorcontroller.ConfigFactoryDefault();
 
-//   // PID Config
-//   talonFX.Config_kP(0, pidConfig.p);
-//   talonFX.Config_kI(0, pidConfig.i);
-//   talonFX.Config_kD(0, pidConfig.d);
-//   talonFX.Config_kF(0, pidConfig.f);
-//   talonFX.Config_IntegralZone(0, pidConfig.iZone);
-//   talonFX.ConfigMaxIntegralAccumulator(0, pidConfig.iMaxAccumulator);
-//   talonFX.ConfigPeakOutputForward(pidConfig.maxOutput);
-//   talonFX.ConfigPeakOutputReverse(pidConfig.minOutput);
-//   talonFX.ConfigClosedLoopPeakOutput(0, pidConfig.maxOutput);
+  motorcontroller.SetInverted(createInfo.config.inverted);
 
-//   // Feedback Config
-//   talonFX.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::FeedbackDevice::IntegratedSensor);
+  motorcontroller.ConfigPeakOutputForward(createInfo.openLoopConfig.maxOutput);
+  motorcontroller.ConfigPeakOutputReverse(createInfo.openLoopConfig.minOutput);
+  motorcontroller.ConfigOpenloopRamp(createInfo.openLoopConfig.rampRate());
 
-//   switch (feedbackConfig.forwardSwitch) {
-//   case LimitSwitchConfig::NormalyOpen: {
-//     talonFX.ConfigForwardLimitSwitchSource(ctre::phoenix::motorcontrol::LimitSwitchSource::LimitSwitchSource_FeedbackConnector,
-//                                            ctre::phoenix::motorcontrol::LimitSwitchNormal::LimitSwitchNormal_NormallyOpen);
-//     break;
-//   }
-//   case LimitSwitchConfig::NormalyClosed: {
-//     talonFX.ConfigForwardLimitSwitchSource(ctre::phoenix::motorcontrol::LimitSwitchSource::LimitSwitchSource_FeedbackConnector,
-//                                            ctre::phoenix::motorcontrol::LimitSwitchNormal::LimitSwitchNormal_NormallyClosed);
-//     break;
-//   }
-//   case LimitSwitchConfig::Disabled: {
-//     talonFX.ConfigForwardLimitSwitchSource(ctre::phoenix::motorcontrol::LimitSwitchSource::LimitSwitchSource_Deactivated,
-//                                            ctre::phoenix::motorcontrol::LimitSwitchNormal::LimitSwitchNormal_Disabled);
-//     break;
-//   }
-//   }
+  ctre::phoenix::motorcontrol::StatorCurrentLimitConfiguration currentConfig{};
+  currentConfig.currentLimit = createInfo.config.currentLimit();
+  currentConfig.enable = true;
+  currentConfig.triggerThresholdTime = 0;
+  currentConfig.triggerThresholdCurrent = 0.0;
+  motorcontroller.ConfigStatorCurrentLimit(currentConfig);
 
-//   switch (feedbackConfig.reverseSwitch) {
-//   case LimitSwitchConfig::NormalyOpen: {
-//     talonFX.ConfigReverseLimitSwitchSource(ctre::phoenix::motorcontrol::LimitSwitchSource::LimitSwitchSource_FeedbackConnector,
-//                                            ctre::phoenix::motorcontrol::LimitSwitchNormal::LimitSwitchNormal_NormallyOpen);
-//     break;
-//   }
-//   case LimitSwitchConfig::NormalyClosed: {
-//     talonFX.ConfigReverseLimitSwitchSource(ctre::phoenix::motorcontrol::LimitSwitchSource::LimitSwitchSource_FeedbackConnector,
-//                                            ctre::phoenix::motorcontrol::LimitSwitchNormal::LimitSwitchNormal_NormallyClosed);
-//     break;
-//   }
-//   case LimitSwitchConfig::Disabled: {
-//     talonFX.ConfigReverseLimitSwitchSource(ctre::phoenix::motorcontrol::LimitSwitchSource::LimitSwitchSource_Deactivated,
-//                                            ctre::phoenix::motorcontrol::LimitSwitchNormal::LimitSwitchNormal_Disabled);
-//     break;
-//   }
-//   }
-// }
+  motorcontroller.Config_kD(0, createInfo.pidConfig.d);
+  motorcontroller.Config_kI(0, createInfo.pidConfig.i);
+  motorcontroller.Config_kP(0, createInfo.pidConfig.p);
+  motorcontroller.Config_kF(0, createInfo.pidConfig.ff);
+  motorcontroller.ConfigAllowableClosedloopError(
+      0, RawInternalVelocityUnit_t(createInfo.pidConfig.tolerance)());
+  motorcontroller.ConfigClosedLoopPeakOutput(
+      0, createInfo.pidConfig.closedLoopMaxPercentOutput);
+  motorcontroller.ConfigClosedloopRamp(createInfo.pidConfig.rampRate());
 
-// void TalonFXVelocityController::setVelocity(units::radians_per_second_t
-// velocity) {
-//   talonFX.Set(ctre::phoenix::motorcontrol::ControlMode::Velocity,
-//   EncoderVelocity_t(velocity).to<double>() * gearRatio);
-// }
+  motorcontroller.Config_IntegralZone(0, createInfo.pidConfig.iZone);
+  motorcontroller.ConfigMaxIntegralAccumulator(
+      0, createInfo.pidConfig.iMaxAccumulator);
 
-// units::radians_per_second_t TalonFXVelocityController::getTargetVelocity()
-// const {
-//   return 0.0_rpm;
-// }
+  motorcontroller.ConfigForwardSoftLimitEnable(
+      createInfo.feedbackConfig.forwardSwitch);
 
-// units::radians_per_second_t TalonFXVelocityController::getMaxVelocity() const
-// {
-//   return 0.0_rpm;
-// }
+  if (createInfo.canCoderConfig.useCANCoder) {
+    canCoder.emplace(createInfo.canCoderConfig.id);
 
-// void TalonFXVelocityController::setPower(double power) {
-//   talonFX.Set(power);
-// }
+    ctre::phoenix::motorcontrol::FeedbackDevice device;
+    switch (createInfo.canCoderConfig.remoteSensorSlot) {
+    case 0:
+      device = ctre::phoenix::motorcontrol::FeedbackDevice::RemoteSensor0;
+      break;
+    case 1:
+      device = ctre::phoenix::motorcontrol::FeedbackDevice::RemoteSensor1;
+      break;
+    default:
+      std::cerr << "invalid remote sensor ID! Must be 0 or 1!" << std::endl;
+      return;
+      break;
+    }
 
-// void TalonFXVelocityController::disable() {
-//   talonFX.Disable();
-// }
+    motorcontroller.ConfigRemoteFeedbackFilter(
+        canCoder.value(), createInfo.canCoderConfig.remoteSensorSlot);
+    motorcontroller.ConfigSelectedFeedbackSensor(device, 0, 0);
+  }
 
-// void TalonFXVelocityController::stop() {
-//   talonFX.StopMotor();
-// }
+  gearRatio = createInfo.feedbackConfig.gearRatio;
+  tolerance = createInfo.pidConfig.tolerance;
+  this->profileConfig = createInfo.profileConfig;
+}
 
-// units::radians_per_second_t TalonFXVelocityController::getVelocity() const {
-//   auto asConst =
-//   const_cast<ctre::phoenix::motorcontrol::can::WPI_TalonFX*>(&talonFX);
-//   return EncoderVelocity_t((double) asConst->GetSelectedSensorVelocity() /
-//   gearRatio);
-// }
+void TalonFXVelocityController::setVelocity(
+    units::radians_per_second_t velocity) {
+  units::radians_per_second_t targetVelocity(velocity);
 
-// units::radian_t TalonFXVelocityController::getPosition() const {
-//   auto asConst =
-//   const_cast<ctre::phoenix::motorcontrol::can::WPI_TalonFX*>(&talonFX);
-//   return EncoderTick_t((double) asConst->GetSelectedSensorPosition() /
-//   gearRatio);
-// }
+  if (velocity > profileConfig.maxVelocity) {
+    targetVelocity = profileConfig.maxVelocity;
+  } else if (velocity < profileConfig.minVelocity) {
+    targetVelocity = profileConfig.minVelocity;
+  }
 
-// void TalonFXVelocityController::zeroPosition(units::radian_t offset) {
-//   talonFX.SetSelectedSensorPosition(EncoderTick_t(offset).to<double>() *
-//   gearRatio);
-// }
+  if (usingCANCoder) {
+    motorcontroller.Set(ctre::phoenix::motorcontrol::ControlMode::Velocity,
+                        (RawCANCoderVelocityUnit_t(targetVelocity))());
+  } else {
+    motorcontroller.Set(
+        ctre::phoenix::motorcontrol::ControlMode::Velocity,
+        (RawInternalVelocityUnit_t(targetVelocity * gearRatio))());
+  }
+}
 
-// units::radians_per_second_t TalonFXVelocityController::getTolerance() const {
-//   return 0.0_rpm;
-// }
-// } // namespace rmb
+units::radians_per_second_t
+TalonFXVelocityController::getTargetVelocity() const {
+  if (usingCANCoder) {
+    return RawCANCoderVelocityUnit_t(motorcontroller.GetClosedLoopTarget());
+  } else {
+    return RawInternalVelocityUnit_t(motorcontroller.GetClosedLoopTarget() /
+                                     gearRatio);
+  }
+}
+
+units::radians_per_second_t TalonFXVelocityController::getVelocity() const {
+  if (usingCANCoder) {
+    return RawCANCoderVelocityUnit_t(
+        motorcontroller.GetSelectedSensorVelocity());
+  } else {
+    return RawInternalVelocityUnit_t(
+        motorcontroller.GetSelectedSensorVelocity() / gearRatio);
+  }
+}
+
+units::radians_per_second_t TalonFXVelocityController::getTolerance() const {
+  return tolerance;
+}
+
+void TalonFXVelocityController::setPower(double power) {
+  motorcontroller.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,
+                      power);
+}
+
+void TalonFXVelocityController::disable() { motorcontroller.Disable(); }
+
+void TalonFXVelocityController::stop() { motorcontroller.StopMotor(); }
+
+units::radian_t TalonFXVelocityController::getPosition() const {
+  if (usingCANCoder) {
+    return RawCANCoderPositionUnit_t(
+        motorcontroller.GetSelectedSensorPosition() / gearRatio);
+  } else {
+    return RawInternalPositionUnit_t(
+        motorcontroller.GetSelectedSensorPosition() / gearRatio);
+  }
+}
+
+void TalonFXVelocityController::zeroPosition(units::radian_t offset) {
+  if (usingCANCoder) {
+    canCoder->SetPosition(RawCANCoderPositionUnit_t(offset)());
+  } else {
+    motorcontroller.SetSelectedSensorPosition(
+        RawInternalPositionUnit_t(offset * gearRatio)());
+  }
+}
+
+} // namespace rmb

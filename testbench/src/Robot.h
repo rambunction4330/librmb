@@ -10,9 +10,9 @@
 #include <frc2/command/CommandPtr.h>
 
 #include "RobotContainer.h"
-#include "rmb/motorcontrol/falcon/FalconPositionController.h"
+#include "rmb/motorcontrol/Talon/TalonFXPositionController.h"
 
-#include <rmb/motorcontrol/falcon/FalconVelocityController.h>
+#include <rmb/motorcontrol/Talon/TalonFXVelocityController.h>
 
 class Robot : public frc::TimedRobot {
 public:
@@ -34,8 +34,8 @@ public:
 private:
   std::optional<frc2::CommandPtr> m_autonomousCommand;
 
-  std::unique_ptr<rmb::FalconVelocityController> velocityController;
-  std::unique_ptr<rmb::FalconPositionController> positionController;
+  std::unique_ptr<rmb::TalonFXVelocityController> velocityController;
+  std::unique_ptr<rmb::TalonFXPositionController> positionController;
 
   RobotContainer m_container;
 };
