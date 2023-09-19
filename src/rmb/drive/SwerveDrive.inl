@@ -12,6 +12,7 @@
 
 #include "frc2/command/CommandPtr.h"
 #include "frc2/command/Commands.h"
+#include "rmb/drive/SwerveDrive.h"
 #include "rmb/drive/SwerveModule.h"
 #include "units/angle.h"
 #include "units/angular_velocity.h"
@@ -31,11 +32,18 @@ SwerveDrive<NumModules>::SwerveDrive(
     frc::HolonomicDriveController holonomicController, std::string visionTable,
     units::meters_per_second_t maxSpeed,
     units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose)
-    : kinematics(std::array<frc::Translation2d, NumModules>{}),
+    : modules(std::move(modules)), gyro(gyro),
+      kinematics(std::array<frc::Translation2d, NumModules>{}),
       holonomicController(holonomicController),
       poseEstimator(frc::SwerveDrivePoseEstimator<NumModules>(
           kinematics, gyro->GetRotation2d(), getModulePositions(),
-          initialPose)) {}
+          initialPose)),
+      maxSpeed(maxSpeed), maxRotation(maxRotation) {
+  std::array<frc::Translation2d, NumModules> translations;
+  for (size_t i = 0; i < NumModules; i++) {
+    translations[i] = modules[i].getModuleTranslation();
+  }
+}
 
 template <size_t NumModules>
 SwerveDrive<NumModules>::SwerveDrive(
@@ -44,19 +52,8 @@ SwerveDrive<NumModules>::SwerveDrive(
     frc::HolonomicDriveController holonomicController,
     units::meters_per_second_t maxSpeed,
     units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose)
-    : modules(std::move(modules)),
-              kinematics(std::array<frc::Translation2d, NumModules>{}),
-                  holonomicController(holonomicController),
-              poseEstimator(frc::SwerveDrivePoseEstimator<NumModules>(kinematics, 
-                      gyro->GetRotation2d(), getModulePositions(), initialPose)) 
-                      {
-  std::array<frc::Translation2d, NumModules> translations;
-  for (size_t i = 0; i < NumModules; i++) {
-    translations[i] = modules[i].getModuleTranslation();
-  }
-
-  
-                      }
+    : SwerveDrive(std::move(modules), gyro, holonomicController, "",
+                  maxSpeed, maxRotation, initialPose) {}
 
 template <size_t NumModules>
 std::array<frc::SwerveModulePosition, NumModules>

@@ -140,5 +140,5 @@ void FalconVelocityController::zeroPosition(units::radian_t offset) {
         RawInternalPositionUnit_t(offset * gearRatio)());
   }
 }
-
-} // namespace rmb
+}
+// namespace rmb

@@ -18,6 +18,7 @@ class LinearPositionController;
  */
 class AngularPositionController {
 public:
+
   virtual ~AngularPositionController() = default;
 
   /**
