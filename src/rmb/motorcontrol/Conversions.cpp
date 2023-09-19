@@ -217,6 +217,7 @@ public:
   }
 
   void zeroPosition(units::radian_t offset) override {
+
     linear->zeroPosition(offset * conversion);
   }
 

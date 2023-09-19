@@ -20,8 +20,10 @@
 #include "units/math.h"
 #include "units/velocity.h"
 #include "wpi/array.h"
+
 #include <array>
 #include <cstddef>
+#include <iostream>
 
 namespace rmb {
 
@@ -43,6 +45,7 @@ SwerveDrive<NumModules>::SwerveDrive(
   for (size_t i = 0; i < NumModules; i++) {
     translations[i] = modules[i].getModuleTranslation();
   }
+  kinematics = frc::SwerveDriveKinematics<NumModules>(translations);
 }
 
 template <size_t NumModules>
@@ -101,6 +104,7 @@ void SwerveDrive<NumModules>::driveCartesian(double xSpeed, double ySpeed,
     speeds = frc::ChassisSpeeds{newXSpeed * maxSpeed, ySpeed * maxSpeed,
                                 zRotation * maxRotation};
   }
+
   driveModuleStates(kinematics.ToSwerveModuleStates(speeds));
 }
 

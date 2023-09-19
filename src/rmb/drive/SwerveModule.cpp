@@ -1,6 +1,12 @@
 #include "rmb/drive/SwerveModule.h"
 #include "frc/kinematics/SwerveModulePosition.h"
 #include "frc/kinematics/SwerveModuleState.h"
+#include "frc/smartdashboard/SmartDashboard.h"
+
+#include "units/angle.h"
+#include "units/velocity.h"
+
+#include <iostream>
 
 namespace rmb {
 
@@ -29,6 +35,17 @@ void SwerveModule::setState(const frc::SwerveModuleState &state) {
   auto optomized = frc::SwerveModuleState::Optimize(state, getState().angle);
   velocityController->setVelocity(optomized.speed);
   angularController->setPosition(optomized.angle.Radians());
+}
+
+void SwerveModule::smartdashboardDisplayTargetState(
+    const std::string &name) const {
+  frc::SmartDashboard::PutNumber(
+      name + "_tgt_direction",
+      ((units::degree_t)(angularController->getTargetPosition()))());
+
+  frc::SmartDashboard::PutNumber(
+      name + "_tgt_vel", ((units::meters_per_second_t)(
+                             velocityController->getTargetVelocity()))());
 }
 
 frc::SwerveModuleState SwerveModule::getState() const {
