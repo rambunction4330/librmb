@@ -19,17 +19,16 @@ class LinearVelocityController;
  */
 class AngularVelocityController {
 public:
-
   //***************
   // Motor Control
   //***************
-struct PIDConfig {
-  double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
-  units::radians_per_second_t tolerance = 0.0_rad_per_s;
-  double iZone = 0.0, iMaxAccumulator = 0.0;
-  double maxOutput = 1.0, minOutput = -1.0;
-  double rampRate = 0.0;
-};
+  struct PIDConfig {
+    double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
+    units::radians_per_second_t tolerance = 0.0_rad_per_s;
+    double iZone = 0.0, iMaxAccumulator = 0.0;
+    double maxOutput = 1.0, minOutput = -1.0;
+    double rampRate = 0.0;
+  };
 
   /**
    * Common interface for setting the target angular velocity.

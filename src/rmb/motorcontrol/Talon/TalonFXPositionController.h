@@ -27,8 +27,6 @@ struct OpenLoopConfig {
   units::second_t rampRate = 1.0_s;
 };
 
-
-
 struct Range {
   units::radian_t minPosition =
       -std::numeric_limits<units::radian_t>::infinity();

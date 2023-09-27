@@ -31,8 +31,7 @@ TalonFXVelocityController::TalonFXVelocityController(
   motorcontroller.Config_kF(0, createInfo.pidConfig.ff);
   motorcontroller.ConfigAllowableClosedloopError(
       0, RawInternalVelocityUnit_t(createInfo.pidConfig.tolerance)());
-  motorcontroller.ConfigClosedLoopPeakOutput(
-      0, createInfo.pidConfig.maxOutput);
+  motorcontroller.ConfigClosedLoopPeakOutput(0, createInfo.pidConfig.maxOutput);
   motorcontroller.ConfigClosedloopRamp(createInfo.pidConfig.rampRate);
 
   motorcontroller.Config_IntegralZone(0, createInfo.pidConfig.iZone);

@@ -39,8 +39,7 @@ TalonFXPositionController::TalonFXPositionController(
   motorcontroller.Config_IntegralZone(0, createInfo.pidConfig.iZone);
   motorcontroller.ConfigMaxIntegralAccumulator(
       0, createInfo.pidConfig.iMaxAccumulator);
-  motorcontroller.ConfigClosedLoopPeakOutput(
-      0, createInfo.pidConfig.maxOutput);
+  motorcontroller.ConfigClosedLoopPeakOutput(0, createInfo.pidConfig.maxOutput);
 
   motorcontroller.ConfigForwardSoftLimitEnable(
       createInfo.feedbackConfig.forwardSwitch);
