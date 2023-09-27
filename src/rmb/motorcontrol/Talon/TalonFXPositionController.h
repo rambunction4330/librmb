@@ -27,15 +27,7 @@ struct OpenLoopConfig {
   units::second_t rampRate = 1.0_s;
 };
 
-struct PIDConfig {
-  double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
-  units::turn_t tolerance = 0.0_rad;
-  double iZone = 0.0, iMaxAccumulator = 0.0;
-  double closedLoopMaxPercentOutput = 1.0;
 
-  units::second_t rampRate = 0.0_s; /*< Amount of time it takes to go from 0 to
-                                       full throttle. 0_s disables*/
-};
 
 struct Range {
   units::radian_t minPosition =
@@ -105,7 +97,7 @@ public:
 
   struct CreateInfo {
     TalonFXPositionControllerHelper::MotorConfig config;
-    TalonFXPositionControllerHelper::PIDConfig pidConfig;
+    AngularPositionController::PIDConfig pidConfig;
     TalonFXPositionControllerHelper::Range range;
     TalonFXPositionControllerHelper::FeedbackConfig feedbackConfig;
     TalonFXPositionControllerHelper::OpenLoopConfig openLoopConfig;

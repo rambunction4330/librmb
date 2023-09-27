@@ -25,12 +25,6 @@ struct MotorConfig {
   units::ampere_t currentLimit = 40.0_A;
 };
 
-struct PIDConfig {
-  double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
-  units::turn_t tolerance = 0.0_rad;
-  double iZone = 0.0, iMaxAccumulator = 0.0;
-  double maxOutput = 1.0, minOutput = -1.0;
-};
 
 struct Range {
   units::radian_t minPosition =
@@ -67,7 +61,7 @@ struct FeedbackConfig {
 class SparkMaxPositionController : public AngularPositionController {
 public:
   using MotorConfig = SparkMaxPositionControllerHelper::MotorConfig;
-  using PIDConfig = SparkMaxPositionControllerHelper::PIDConfig;
+  using PIDConfig = AngularPositionController::PIDConfig;
   using Range = SparkMaxPositionControllerHelper::Range;
   using ProfileConfig = SparkMaxPositionControllerHelper::ProfileConfig;
   using EncoderType = SparkMaxPositionControllerHelper::EncoderType;

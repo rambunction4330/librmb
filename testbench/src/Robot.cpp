@@ -26,7 +26,7 @@ void Robot::RobotInit() {
               .i = 0.0001,
               .d = 0.5,
               .ff = 0.00,
-              .closedLoopMaxPercentOutput = 1.0,
+              .maxOutput = 1.0,
           },
       .profileConfig = {.maxVelocity = 100_tps,
                         .minVelocity = -100_tps,

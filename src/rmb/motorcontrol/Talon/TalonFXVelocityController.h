@@ -10,14 +10,7 @@
 
 namespace rmb {
 namespace TalonFXVelocityControllerHelper {
-struct PIDConfig {
-  double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
-  units::turns_per_second_t tolerance = 0.0_tps;
-  double iZone = 0.0, iMaxAccumulator = 0.0;
 
-  double closedLoopMaxPercentOutput = 1.0;
-  units::second_t rampRate = 1.0_s;
-};
 
 struct OpenLoopConfig {
   double minOutput = -1.0, maxOutput = 1.0;
@@ -59,7 +52,7 @@ public:
 
   struct CreateInfo {
     TalonFXPositionControllerHelper::MotorConfig config;
-    TalonFXVelocityControllerHelper::PIDConfig pidConfig;
+    AngularVelocityController::PIDConfig pidConfig;
     TalonFXVelocityControllerHelper::ProfileConfig profileConfig;
     TalonFXPositionControllerHelper::FeedbackConfig feedbackConfig;
     TalonFXVelocityControllerHelper::OpenLoopConfig openLoopConfig;

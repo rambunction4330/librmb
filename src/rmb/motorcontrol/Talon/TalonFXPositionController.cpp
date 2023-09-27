@@ -4,6 +4,7 @@
 #include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
 #include "ctre/phoenix/motorcontrol/StatorCurrentLimitConfiguration.h"
 #include "ctre/phoenix/motorcontrol/can/BaseMotorController.h"
+#include "ctre/phoenix/paramEnum.h"
 #include "ctre/phoenix/sensors/CANCoder.h"
 #include "ctre/phoenix/sensors/SensorTimeBase.h"
 #include "units/angle.h"
@@ -27,7 +28,7 @@ TalonFXPositionController::TalonFXPositionController(
   motorcontroller.ConfigPeakOutputForward(createInfo.openLoopConfig.maxOutput);
   motorcontroller.ConfigPeakOutputReverse(createInfo.openLoopConfig.minOutput);
   motorcontroller.ConfigOpenloopRamp(createInfo.openLoopConfig.rampRate());
-  motorcontroller.ConfigClosedloopRamp(createInfo.pidConfig.rampRate());
+  motorcontroller.ConfigClosedloopRamp(createInfo.pidConfig.rampRate);
 
   motorcontroller.Config_kD(0, createInfo.pidConfig.d);
   motorcontroller.Config_kI(0, createInfo.pidConfig.i);
@@ -39,7 +40,7 @@ TalonFXPositionController::TalonFXPositionController(
   motorcontroller.ConfigMaxIntegralAccumulator(
       0, createInfo.pidConfig.iMaxAccumulator);
   motorcontroller.ConfigClosedLoopPeakOutput(
-      0, createInfo.pidConfig.closedLoopMaxPercentOutput);
+      0, createInfo.pidConfig.maxOutput);
 
   motorcontroller.ConfigForwardSoftLimitEnable(
       createInfo.feedbackConfig.forwardSwitch);

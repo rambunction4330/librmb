@@ -28,13 +28,6 @@ struct MotorConfig {
   units::second_t openLoopRampRate = 0.5_s;
 };
 
-struct PIDConfig {
-  double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
-  units::radians_per_second_t tolerance = 0.0_rad_per_s;
-  double iZone = 0.0, iMaxAccumulator = 0.0;
-  double maxOutput = 1.0, minOutput = -1.0;
-};
-
 struct ProfileConfig {
   bool useSmartMotion = false;
   units::radians_per_second_t maxVelocity = 0.0_rad_per_s,
@@ -64,7 +57,7 @@ struct FeedbackConfig {
 class SparkMaxVelocityController : public AngularVelocityController {
 public:
   using MotorConfig = SparkMaxVelocityControllerHelper::MotorConfig;
-  using PIDConfig = SparkMaxVelocityControllerHelper::PIDConfig;
+  using PIDConfig = AngularVelocityController::PIDConfig;
   using ProfileConfig = SparkMaxVelocityControllerHelper::ProfileConfig;
   using EncoderType = SparkMaxVelocityControllerHelper::EncoderType;
   using LimitSwitchConfig = SparkMaxVelocityControllerHelper::LimitSwitchConfig;
