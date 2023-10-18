@@ -5,7 +5,10 @@
 
 #include "units/angle.h"
 #include "units/velocity.h"
+#include "wpi/sendable/SendableBuilder.h"
+#include "wpi/sendable/SendableRegistry.h"
 
+#include <functional>
 #include <iostream>
 
 namespace rmb {
@@ -24,7 +27,9 @@ SwerveModule::SwerveModule(
     const frc::Translation2d &moduleTranslation)
     : angularController(std::move(angularController)),
       velocityController(std::move(velocityController)),
-      moduleTranslation(moduleTranslation) {}
+      moduleTranslation(moduleTranslation) {
+  wpi::SendableRegistry::AddLW(this, "SwerveModule");
+}
 
 void SwerveModule::setState(const units::meters_per_second_t &velocity,
                             const frc::Rotation2d &angle) {
@@ -75,6 +80,11 @@ void SwerveModule::setPower(const SwerveModulePower &power) {
 
 const frc::Translation2d &SwerveModule::getModuleTranslation() const {
   return moduleTranslation;
+}
+
+void SwerveModule::InitSendable(wpi::SendableBuilder &builder) {
+  builder.AddDoubleProperty(
+      "angle", [this] { return this->getAngle(); }, [](double) {});
 }
 
 } // namespace rmb

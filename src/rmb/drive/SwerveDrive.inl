@@ -12,6 +12,8 @@
 
 #include "frc2/command/CommandPtr.h"
 #include "frc2/command/Commands.h"
+#include "networktables/NetworkTable.h"
+#include "networktables/NetworkTableInstance.h"
 #include "rmb/drive/SwerveDrive.h"
 #include "rmb/drive/SwerveModule.h"
 #include "units/angle.h"
@@ -20,6 +22,7 @@
 #include "units/math.h"
 #include "units/velocity.h"
 #include "wpi/array.h"
+#include "wpi/sendable/SendableRegistry.h"
 
 #include <array>
 #include <cstddef>
@@ -46,6 +49,23 @@ SwerveDrive<NumModules>::SwerveDrive(
     translations[i] = modules[i].getModuleTranslation();
   }
   kinematics = frc::SwerveDriveKinematics<NumModules>(translations);
+
+  nt::NetworkTableInstance ntInstance = nt::NetworkTableInstance::GetDefault();
+  std::shared_ptr<nt::NetworkTable> table = ntInstance.GetTable("swervedrive");
+
+  for (size_t i = 0; i < NumModules; i++) {
+    ntVelocityErrorTopics[i] =
+        table->GetDoubleTopic("mod" + std::to_string(i) + "_verror").Publish();
+  }
+
+  for (size_t i = 0; i < NumModules; i++) {
+    ntPositionErrorTopics[i] =
+        table->GetDoubleTopic("mod" + std::to_string(i) + "_poserror").Publish();
+
+    wpi::SendableRegistry::SetName(&this->modules[i], "mod" + std::to_string(i), "angle");
+  }
+
+  publishErrorsToNT();
 }
 
 template <size_t NumModules>
@@ -55,8 +75,8 @@ SwerveDrive<NumModules>::SwerveDrive(
     frc::HolonomicDriveController holonomicController,
     units::meters_per_second_t maxSpeed,
     units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose)
-    : SwerveDrive(std::move(modules), gyro, holonomicController, "",
-                  maxSpeed, maxRotation, initialPose) {}
+    : SwerveDrive(std::move(modules), gyro, holonomicController, "", maxSpeed,
+                  maxRotation, initialPose) {}
 
 template <size_t NumModules>
 std::array<frc::SwerveModulePosition, NumModules>
@@ -153,6 +173,22 @@ frc::Pose2d SwerveDrive<NumModules>::getPose() const {
 
 template <size_t NumModules> frc::Pose2d SwerveDrive<NumModules>::updatePose() {
   return poseEstimator.Update(gyro->GetRotation2d(), getModulePositions());
+}
+
+template <size_t NumModules> void SwerveDrive<NumModules>::publishErrorsToNT() {
+  for (size_t i = 0; i < NumModules; i++) {
+    units::meters_per_second_t error =
+        modules[i].getTargetState().speed - modules[i].getState().speed;
+
+    ntVelocityErrorTopics[i].Set(error());
+  }
+
+  for (size_t i = 0; i < NumModules; i++) {
+    units::degree_t error = modules[i].getTargetState().angle.Degrees() -
+                            modules[i].getState().angle.Degrees();
+
+    ntPositionErrorTopics[i].Set(error());
+  }
 }
 
 template <size_t NumModules>

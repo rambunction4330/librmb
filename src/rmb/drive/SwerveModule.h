@@ -12,6 +12,8 @@
 #include "frc/geometry/Rotation2d.h"
 #include "rmb/motorcontrol/AngularPositionController.h"
 #include "rmb/motorcontrol/LinearVelocityController.h"
+#include "wpi/sendable/Sendable.h"
+#include "wpi/sendable/SendableHelper.h"
 
 namespace rmb {
 
@@ -44,7 +46,7 @@ struct SwerveModulePower {
 /**
  * Class managing the motion of a swerve module
  */
-class SwerveModule {
+class SwerveModule : public wpi::Sendable, public wpi::SendableHelper<SwerveModule> {
 public:
   SwerveModule(const SwerveModule &) = delete;
   SwerveModule(SwerveModule &&) = default;
@@ -119,6 +121,10 @@ public:
    * for kinematics.
    */
   const frc::Translation2d &getModuleTranslation() const;
+
+  virtual void InitSendable(wpi::SendableBuilder& builder) override;
+
+  double getAngle() { return ((units::angle::degree_t)angularController->getPosition())(); }
 
 private:
   /**

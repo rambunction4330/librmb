@@ -8,10 +8,31 @@
 namespace constants {
 
 const rmb::FalconVelocityControllerHelper::PIDConfig velocityModulePIDConfig = {
-    .p = 0.130,
-    .i = 0.0001,
-    .d = 0.5,
-    .ff = 0.00,
+    .p = 0.40,
+    .i = 0.0003,
+    .d = 0.00,
+    .ff = 0.000,
+    .closedLoopMaxPercentOutput = 1.0,
+};
+const rmb::FalconVelocityControllerHelper::PIDConfig velocityModulePIDConfig1 = {
+    .p = 0.40,
+    .i = 0.0003,
+    .d = 0.00,
+    .ff = 0.000,
+    .closedLoopMaxPercentOutput = 1.0,
+};
+const rmb::FalconVelocityControllerHelper::PIDConfig velocityModulePIDConfig2 = {
+    .p = 0.40,
+    .i = 0.0003,
+    .d = 0.00,
+    .ff = 0.000,
+    .closedLoopMaxPercentOutput = 1.0,
+};
+const rmb::FalconVelocityControllerHelper::PIDConfig velocityModulePIDConfig3= {
+    .p = 0.40,
+    .i = 0.0003,
+    .d = 0.00,
+    .ff = 0.000,
     .closedLoopMaxPercentOutput = 1.0,
 };
 
@@ -29,7 +50,7 @@ const units::meter_t wheelCircumference = 1.0_m;
 const frc::SerialPort::Port gyroPort = frc::SerialPort::Port::kMXP;
 
 const rmb::FalconPositionControllerHelper::PIDConfig positionModulePIDConfig = {
-    .p = 1.000f, .i = 0.0f, .d = 1.0f, .ff = 0.000, .tolerance = 0.1_deg};
+    .p = 1.5f, .i = 0.0000f, .d = 0.3f, .ff = 0.000, .tolerance = 0.1_deg};
 
 const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo{
     .config =
@@ -71,7 +92,7 @@ const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo1{
             .id = 20,
             .inverted = false,
         },
-    .pidConfig = velocityModulePIDConfig,
+    .pidConfig = velocityModulePIDConfig1,
     .profileConfig = {.maxVelocity = 100_tps,
                       .minVelocity = -100_tps,
                       .maxAcceleration = 1.0_rad_per_s_sq},
@@ -105,7 +126,7 @@ const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo2{
             .id = 30,
             .inverted = false,
         },
-    .pidConfig = velocityModulePIDConfig,
+    .pidConfig = velocityModulePIDConfig2,
     .profileConfig = {.maxVelocity = 100_tps,
                       .minVelocity = -100_tps,
                       .maxAcceleration = 1.0_rad_per_s_sq},
@@ -139,7 +160,7 @@ const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo3{
             .id = 40,
             .inverted = false,
         },
-    .pidConfig = velocityModulePIDConfig,
+    .pidConfig = velocityModulePIDConfig3,
     .profileConfig = {.maxVelocity = 100_tps,
                       .minVelocity = -100_tps,
                       .maxAcceleration = 1.0_rad_per_s_sq},

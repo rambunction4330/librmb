@@ -30,6 +30,9 @@
 #include <frc2/command/Command.h>
 #include <frc2/command/CommandPtr.h>
 
+#include "networktables/NetworkTable.h"
+#include "networktables/DoubleTopic.h"
+
 namespace rmb {
 
 /**
@@ -213,7 +216,16 @@ public:
       pathplanner::PathPlannerTrajectory trajectory,
       std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
+  void publishErrorsToNT();
+
 private:
+  //-----------------
+  // Network Tables Debugging
+  //-----------------
+
+  std::array<nt::DoublePublisher, NumModules> ntVelocityErrorTopics;
+  std::array<nt::DoublePublisher, NumModules> ntPositionErrorTopics;
+
   //-----------------
   // Drive Variables
   //-----------------

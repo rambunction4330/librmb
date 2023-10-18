@@ -1,5 +1,6 @@
 #include "FalconVelocityController.h"
 #include "ctre/phoenix/motorcontrol/ControlMode.h"
+#include "ctre/phoenix/motorcontrol/NeutralMode.h"
 #include "units/angular_velocity.h"
 #include <iostream>
 
@@ -24,6 +25,8 @@ FalconVelocityController::FalconVelocityController(
   currentConfig.triggerThresholdTime = 0;
   currentConfig.triggerThresholdCurrent = 0.0;
   motorcontroller.ConfigStatorCurrentLimit(currentConfig);
+
+  motorcontroller.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
 
   motorcontroller.Config_kD(0, createInfo.pidConfig.d);
   motorcontroller.Config_kI(0, createInfo.pidConfig.i);

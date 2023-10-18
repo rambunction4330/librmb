@@ -5,6 +5,7 @@
 #include "Robot.h"
 #include "frc/controller/HolonomicDriveController.h"
 #include "frc/controller/ProfiledPIDController.h"
+#include "frc/smartdashboard/SmartDashboard.h"
 #include "rmb/drive/SwerveDrive.h"
 #include "rmb/drive/SwerveModule.h"
 #include "rmb/motorcontrol/AngularVelocityController.h"
@@ -96,16 +97,31 @@ void Robot::TeleopPeriodic() {
     const auto &module = swerveDrive->getModules()[i];
     module.smartdashboardDisplayTargetState(std::to_string(i));
   }
+
+  swerveDrive->publishErrorsToNT();
 }
 
 void Robot::TeleopExit() {}
 
 void Robot::TestInit() { frc2::CommandScheduler::GetInstance().CancelAll(); }
 
-void Robot::TestPeriodic() {}
+void Robot::TestPeriodic() {
+  swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()),
+                              -joystick.GetY() * joystick.GetThrottle(),
+                              -joystick.GetTwist() * joystick.GetThrottle(),
+                              false);
+
+  for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
+    const auto &module = swerveDrive->getModules()[i];
+    module.smartdashboardDisplayTargetState(std::to_string(i));
+  }
+
+  swerveDrive->publishErrorsToNT();
+}
 
 void Robot::TestExit() {}
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }
 #endif
+
