@@ -11,7 +11,6 @@
 namespace rmb {
 namespace TalonFXVelocityControllerHelper {
 
-
 struct OpenLoopConfig {
   double minOutput = -1.0, maxOutput = 1.0;
   units::second_t rampRate = 1.0_s;

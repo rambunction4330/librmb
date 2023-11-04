@@ -19,7 +19,6 @@ class LinearVelocityController;
  */
 class AngularVelocityController {
 public:
-
   //***************
   // Motor Control
   //***************

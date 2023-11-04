@@ -25,7 +25,6 @@ struct MotorConfig {
   units::ampere_t currentLimit = 40.0_A;
 };
 
-
 struct Range {
   units::radian_t minPosition =
       -std::numeric_limits<units::radian_t>::infinity();
