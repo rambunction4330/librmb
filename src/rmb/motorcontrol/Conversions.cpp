@@ -1,7 +1,9 @@
+#include "ctre/phoenix/motorcontrol/can/BaseMotorController.h"
 #include "rmb/motorcontrol/AngularPositionController.h"
 #include "rmb/motorcontrol/AngularVelocityController.h"
 #include "rmb/motorcontrol/LinearPositionController.h"
 #include "rmb/motorcontrol/LinearVelocityController.h"
+#include "units/base.h"
 
 namespace rmb {
 
@@ -45,6 +47,10 @@ public:
   units::meters_per_second_t getTolerance() const override {
     return angular->getTolerance() * conversion;
   }
+  void setPIDConstants(AngularVelocityController::PIDConfig config) override{
+    config.tolerance * conversion; 
+  }
+
 
 private:
   std::unique_ptr<AngularVelocityController> angular;
@@ -108,6 +114,11 @@ public:
     return angular->getTolerance() * conversion;
   }
 
+  void setPIDConstants(AngularPositionController::PIDConfig config) override{
+    config.tolerance * conversion; 
+  }
+
+
 private:
   std::unique_ptr<AngularPositionController> angular;
   AngularPositionController::ConversionUnit_t conversion;
@@ -161,6 +172,11 @@ public:
   units::radians_per_second_t getTolerance() const override {
     return linear->getTolerance() / conversion;
   }
+
+  void setPIDConstants(PIDConfig config) override{
+    config.tolerance * conversion; 
+  }
+
 
 private:
   std::unique_ptr<LinearVelocityController> linear;
@@ -222,6 +238,10 @@ public:
 
   units::radian_t getTolerance() const override {
     return linear->getTolerance() / conversion;
+  }
+
+  void setPIDConstants(PIDConfig config) override {
+    config.tolerance * conversion; 
   }
 
 private:

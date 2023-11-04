@@ -19,14 +19,17 @@ class LinearPositionController;
  */
 class AngularPositionController {
 public:
-struct PIDConfig {
-  double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
-  units::turn_t tolerance = 0.0_rad;
-  double iZone = 0.0, iMaxAccumulator = 0.0;
-  double maxOutput = 1.0, minOutput = -1.0;
-  double rampRate =0.0; 
 
-};
+  struct PIDConfig {
+    double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
+    units::turn_t tolerance = 0.0_rad;
+    double iZone = 0.0, iMaxAccumulator = 0.0;
+    double maxOutput = 1.0, minOutput = -1.0;
+    double rampRate =0.0; 
+
+  };
+
+  virtual void setPIDConstants(PIDConfig config)  = 0; 
   /**
    * Common interface for setting the target angular position.
    *

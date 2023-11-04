@@ -168,6 +168,8 @@ public:
    */
   units::radian_t getTolerance() const override;
 
+  void setPIDConstants (PIDConfig config) override;
+
 private:
   rev::CANSparkMax sparkMax;
   std::vector<std::unique_ptr<rev::CANSparkMax>> followers;

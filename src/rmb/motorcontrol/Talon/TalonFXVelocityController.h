@@ -71,7 +71,8 @@ public:
    * @param velocity The target angular velocity in radians per second.
    */
   void setVelocity(units::radians_per_second_t velocity) override;
-
+  
+  void setPIDConstants(PIDConfig config) override; 
   /**
    * Gets the target angular velocity.
    *
@@ -146,5 +147,6 @@ private:
 
   std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
 };
+
 
 } // namespace rmb

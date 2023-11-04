@@ -93,6 +93,7 @@ public:
    */
   void setVelocity(units::radians_per_second_t velocity) override;
 
+  void setPIDConstants(PIDConfig config) override; 
   /**
    * Gets the target angular velocity.
    *

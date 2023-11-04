@@ -24,15 +24,7 @@ SparkMaxVelocityController::SparkMaxVelocityController(
   sparkMax.SetInverted(createInfo.motorConfig.inverted);
 
   // PID Configuration
-  pidController.SetP(createInfo.pidConfig.p);
-  pidController.SetI(createInfo.pidConfig.i);
-  pidController.SetD(createInfo.pidConfig.d);
-  pidController.SetFF(createInfo.pidConfig.ff);
-  pidController.SetIZone(createInfo.pidConfig.iZone);
-  pidController.SetIMaxAccum(createInfo.pidConfig.iMaxAccumulator);
-  pidController.SetOutputRange(createInfo.pidConfig.minOutput,
-                               createInfo.pidConfig.maxOutput);
-
+  setPIDConstants(createInfo.pidConfig); 
   // Motion Profiling Configuration
   controlType = rev::CANSparkMax::ControlType::kVelocity;
   if (createInfo.profileConfig.useSmartMotion) {
@@ -227,4 +219,14 @@ units::radians_per_second_t SparkMaxVelocityController::getTolerance() const {
   return tolerance;
 }
 
+void SparkMaxVelocityController::setPIDConstants(PIDConfig config){
+  pidController.SetP(config.p);
+  pidController.SetI(config.i);
+  pidController.SetD(config.d);
+  pidController.SetFF(config.ff);
+  pidController.SetIZone(config.iZone);
+  pidController.SetIMaxAccum(config.iMaxAccumulator);
+  pidController.SetOutputRange(config.minOutput,
+                               config.maxOutput);
+}
 } // namespace rmb

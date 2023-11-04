@@ -7,6 +7,7 @@
 #include "ctre/phoenix/paramEnum.h"
 #include "ctre/phoenix/sensors/CANCoder.h"
 #include "ctre/phoenix/sensors/SensorTimeBase.h"
+#include "rmb/motorcontrol/AngularPositionController.h"
 #include "units/angle.h"
 #include <iostream>
 
@@ -25,22 +26,7 @@ TalonFXPositionController::TalonFXPositionController(
 
   motorcontroller.SetInverted(createInfo.config.inverted);
 
-  motorcontroller.ConfigPeakOutputForward(createInfo.openLoopConfig.maxOutput);
-  motorcontroller.ConfigPeakOutputReverse(createInfo.openLoopConfig.minOutput);
-  motorcontroller.ConfigOpenloopRamp(createInfo.openLoopConfig.rampRate());
-  motorcontroller.ConfigClosedloopRamp(createInfo.pidConfig.rampRate);
-
-  motorcontroller.Config_kD(0, createInfo.pidConfig.d);
-  motorcontroller.Config_kI(0, createInfo.pidConfig.i);
-  motorcontroller.Config_kP(0, createInfo.pidConfig.p);
-  motorcontroller.Config_kF(0, createInfo.pidConfig.ff);
-  motorcontroller.ConfigAllowableClosedloopError(
-      0, 0); // RawIntegratedPositionUnit_t(createInfo.pidConfig.tolerance)());
-  motorcontroller.Config_IntegralZone(0, createInfo.pidConfig.iZone);
-  motorcontroller.ConfigMaxIntegralAccumulator(
-      0, createInfo.pidConfig.iMaxAccumulator);
-  motorcontroller.ConfigClosedLoopPeakOutput(
-      0, createInfo.pidConfig.maxOutput);
+  setPIDConstants(createInfo.pidConfig);
 
   motorcontroller.ConfigForwardSoftLimitEnable(
       createInfo.feedbackConfig.forwardSwitch);
@@ -95,6 +81,7 @@ TalonFXPositionController::TalonFXPositionController(
   gearRatio = createInfo.feedbackConfig.gearRatio;
   tolerance = createInfo.pidConfig.tolerance;
 }
+// end of constructor
 
 void TalonFXPositionController::setPosition(units::radian_t position) {
   units::radian_t targetPosition(position);
@@ -173,6 +160,25 @@ units::radian_t TalonFXPositionController::getTolerance() const {
 void TalonFXPositionController::setPower(double power) {
   motorcontroller.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,
                       power);
+}
+
+void TalonFXPositionController::setPIDConstants(PIDConfig config) {
+
+  motorcontroller.ConfigPeakOutputForward(config.maxOutput);
+  motorcontroller.ConfigPeakOutputReverse(config.minOutput);
+  motorcontroller.ConfigOpenloopRamp(config.rampRate);
+  motorcontroller.ConfigClosedloopRamp(config.rampRate);
+
+  motorcontroller.Config_kD(0, config.d);
+  motorcontroller.Config_kI(0, config.i);
+  motorcontroller.Config_kP(0, config.p);
+  motorcontroller.Config_kF(0, config.ff);
+
+  motorcontroller.ConfigAllowableClosedloopError(
+      0, 0); // RawIntegratedPositionUnit_t(createInfo.pidConfig.tolerance)());
+  motorcontroller.Config_IntegralZone(0, config.iZone);
+  motorcontroller.ConfigMaxIntegralAccumulator(0, config.iMaxAccumulator);
+  motorcontroller.ConfigClosedLoopPeakOutput(0, config.maxOutput);
 }
 
 } // namespace rmb

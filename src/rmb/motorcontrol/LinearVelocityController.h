@@ -1,6 +1,7 @@
 
 #pragma once
 
+#include "rmb/motorcontrol/AngularVelocityController.h"
 #include <memory>
 
 #include <units/angle.h>
@@ -21,7 +22,7 @@ public:
   //***************
   // Motor Control
   //***************
-
+  virtual void setPIDConstants(AngularVelocityController::PIDConfig config) = 0; 
   /**
    * Common interface for setting the target linear velocity.
    *
@@ -40,6 +41,8 @@ public:
    * Common interface for setting a mechanism's raw power output.
    */
   virtual void setPower(double power) = 0;
+
+  
 
   /**
    * Common interface for disabling a mechanism.
