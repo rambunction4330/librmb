@@ -167,7 +167,7 @@ public:
    */
   units::radian_t getTolerance() const override;
 
-  void setPIDConstants (PIDConfig config) override;
+  void setPIDConstants(PIDConfig config) override;
 
 private:
   rev::CANSparkMax sparkMax;

@@ -19,11 +19,10 @@ class AngularPositionController;
  */
 class LinearPositionController {
 public:
-  
   //***************
   // Motor Control
   //***************
-  virtual void setPIDConstants(AngularPositionController::PIDConfig config) = 0; 
+  virtual void setPIDConstants(AngularPositionController::PIDConfig config) = 0;
   /**
    * Common interface for setting the target linear position.
    *
@@ -42,7 +41,6 @@ public:
    * Common interface for setting a mechanism's raw power output.
    */
   virtual void setPower(double power) = 0;
-
 
   /**
    * Common interface for getting the minimum linear position.

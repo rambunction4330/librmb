@@ -30,7 +30,7 @@ public:
     double rampRate = 0.0;
   };
 
-  virtual void setPIDConstants(PIDConfig config) = 0; 
+  virtual void setPIDConstants(PIDConfig config) = 0;
   /**
    * Common interface for setting the target angular velocity.
    *

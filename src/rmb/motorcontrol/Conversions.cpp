@@ -47,10 +47,9 @@ public:
   units::meters_per_second_t getTolerance() const override {
     return angular->getTolerance() * conversion;
   }
-  void setPIDConstants(AngularVelocityController::PIDConfig config) override{
-    config.tolerance * conversion; 
+  void setPIDConstants(AngularVelocityController::PIDConfig config) override {
+    config.tolerance *conversion;
   }
-
 
 private:
   std::unique_ptr<AngularVelocityController> angular;
@@ -114,10 +113,9 @@ public:
     return angular->getTolerance() * conversion;
   }
 
-  void setPIDConstants(AngularPositionController::PIDConfig config) override{
-    config.tolerance * conversion; 
+  void setPIDConstants(AngularPositionController::PIDConfig config) override {
+    config.tolerance *conversion;
   }
-
 
 private:
   std::unique_ptr<AngularPositionController> angular;
@@ -173,10 +171,9 @@ public:
     return linear->getTolerance() / conversion;
   }
 
-  void setPIDConstants(PIDConfig config) override{
-    config.tolerance * conversion; 
+  void setPIDConstants(PIDConfig config) override {
+    config.tolerance *conversion;
   }
-
 
 private:
   std::unique_ptr<LinearVelocityController> linear;
@@ -241,7 +238,7 @@ public:
   }
 
   void setPIDConstants(PIDConfig config) override {
-    config.tolerance * conversion; 
+    config.tolerance *conversion;
   }
 
 private:

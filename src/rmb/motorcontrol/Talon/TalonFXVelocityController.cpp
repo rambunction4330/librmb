@@ -140,7 +140,7 @@ void TalonFXVelocityController::zeroPosition(units::radian_t offset) {
   }
 }
 
-void TalonFXVelocityController::setPIDConstants(PIDConfig config){
+void TalonFXVelocityController::setPIDConstants(PIDConfig config) {
   motorcontroller.ConfigPeakOutputForward(config.maxOutput);
   motorcontroller.ConfigPeakOutputReverse(config.minOutput);
   motorcontroller.ConfigOpenloopRamp(config.rampRate);
@@ -152,14 +152,12 @@ void TalonFXVelocityController::setPIDConstants(PIDConfig config){
   motorcontroller.Config_kF(0, config.ff);
   motorcontroller.ConfigAllowableClosedloopError(
       0, RawInternalVelocityUnit_t(config.tolerance)());
-  motorcontroller.ConfigClosedLoopPeakOutput(
-      0, config.maxOutput);
+  motorcontroller.ConfigClosedLoopPeakOutput(0, config.maxOutput);
   motorcontroller.ConfigClosedloopRamp(config.rampRate);
 
   motorcontroller.Config_IntegralZone(0, config.iZone);
-  motorcontroller.ConfigMaxIntegralAccumulator(
-      0, config.iMaxAccumulator);
+  motorcontroller.ConfigMaxIntegralAccumulator(0, config.iMaxAccumulator);
 }
-}
+} // namespace rmb
 
 // namespace rmb

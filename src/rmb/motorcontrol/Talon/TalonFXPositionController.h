@@ -114,8 +114,8 @@ public:
    * @param position The position setpoint
    */
   void setPosition(units::radian_t position) override;
-  
-  void setPIDConstants(PIDConfig config) override; 
+
+  void setPIDConstants(PIDConfig config) override;
   /**
    * Sets open loop power on the motor
    * @param power The power target supplied to the motor. Must be in range

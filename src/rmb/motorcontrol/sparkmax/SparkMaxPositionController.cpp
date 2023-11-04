@@ -227,15 +227,14 @@ units::radian_t SparkMaxPositionController::getTolerance() const {
   return tolerance;
 }
 
-void SparkMaxPositionController::setPIDConstants(PIDConfig config){
+void SparkMaxPositionController::setPIDConstants(PIDConfig config) {
   pidController.SetP(config.p);
   pidController.SetI(config.i);
   pidController.SetD(config.d);
   pidController.SetFF(config.ff);
   pidController.SetIZone(config.iZone);
   pidController.SetIMaxAccum(config.iMaxAccumulator);
-  pidController.SetOutputRange(config.minOutput,
-                               config.maxOutput);
+  pidController.SetOutputRange(config.minOutput, config.maxOutput);
 }
 
 } // namespace rmb
