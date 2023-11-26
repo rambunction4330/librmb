@@ -3,6 +3,8 @@
 #include <units/angle.h>
 #include <units/length.h>
 
+#include <algorithm>
+
 namespace rmb {
 
 SparkMaxVelocityController::SparkMaxVelocityController(

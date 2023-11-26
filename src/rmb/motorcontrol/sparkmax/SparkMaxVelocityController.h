@@ -75,7 +75,7 @@ public:
     const PIDConfig pidConfig = {};
     const ProfileConfig profileConfig = {};
     const FeedbackConfig feedbackConfig = {};
-    std::initializer_list<const MotorConfig> followers = {};
+    std::initializer_list<const MotorConfig> followers;
   };
 
   SparkMaxVelocityController(SparkMaxVelocityController &&) = delete;
