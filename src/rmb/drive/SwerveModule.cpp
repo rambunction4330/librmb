@@ -24,12 +24,10 @@ SwerveModulePower SwerveModulePower::Optimize(const SwerveModulePower &desired,
 SwerveModule::SwerveModule(
     std::unique_ptr<LinearVelocityController> velocityController,
     std::unique_ptr<AngularPositionController> angularController,
-    const frc::Translation2d &moduleTranslation)
+    const frc::Translation2d &moduleTranslation, bool breakMode)
     : angularController(std::move(angularController)),
       velocityController(std::move(velocityController)),
-      moduleTranslation(moduleTranslation) {
-  wpi::SendableRegistry::AddLW(this, "SwerveModule");
-}
+      moduleTranslation(moduleTranslation), breakMode(breakMode) {}
 
 void SwerveModule::setState(const units::meters_per_second_t &velocity,
                             const frc::Rotation2d &angle) {
@@ -38,7 +36,12 @@ void SwerveModule::setState(const units::meters_per_second_t &velocity,
 
 void SwerveModule::setState(const frc::SwerveModuleState &state) {
   auto optomized = frc::SwerveModuleState::Optimize(state, getState().angle);
-  velocityController->setVelocity(optomized.speed);
+  if (breakMode && state.speed == 0.0_mps) {
+    std::cout << "stop module!" << std::endl;
+    velocityController->stop();
+  } else {
+    velocityController->setVelocity(optomized.speed);
+  }
   angularController->setPosition(optomized.angle.Radians());
 }
 

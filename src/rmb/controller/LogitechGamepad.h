@@ -4,6 +4,8 @@
 #include <frc2/command/button/CommandGenericHID.h>
 #include <frc2/command/button/Trigger.h>
 
+#include <iostream>
+
 namespace rmb {
 
 class LogitechGamepad : public frc2::CommandGenericHID {
@@ -41,9 +43,10 @@ public:
 
   double GetLeftX() const {
     double raw = -GetRawAxis(Axes::leftX);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+    std::cout << "raw: " << raw << std::endl;
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
   frc2::Trigger LeftXLessThan(double threshold) const {
@@ -55,7 +58,7 @@ public:
 
   double GetLeftY() const {
     double raw = GetRawAxis(Axes::leftY);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
@@ -79,7 +82,7 @@ public:
 
   double GetRightX() const {
     double raw = -GetRawAxis(Axes::rightX);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
@@ -94,7 +97,7 @@ public:
 
   double GetRightY() const {
     double raw = GetRawAxis(Axes::rightY);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
@@ -118,7 +121,7 @@ public:
 
   double GetLeftTrigger() const {
     double raw = GetRawAxis(Axes::leftTrigger);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
@@ -132,7 +135,7 @@ public:
 
   double GetRightTrigger() const {
     double raw = GetRawAxis(Axes::rightTrigger);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;

@@ -61,7 +61,7 @@ public:
    */
   SwerveModule(std::unique_ptr<LinearVelocityController> velocityController,
                std::unique_ptr<AngularPositionController> angularController,
-               const frc::Translation2d &moduleTranslation);
+               const frc::Translation2d &moduleTranslation, bool breakMode = false);
 
   /**
    * Sets the desired state of the swerve module.
@@ -142,5 +142,7 @@ private:
    * kinematics.
    */
   frc::Translation2d moduleTranslation;
+
+  bool breakMode;
 };
 } // namespace rmb

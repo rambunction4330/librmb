@@ -17,6 +17,7 @@
 #include <rmb/motorcontrol/falcon/FalconVelocityController.h>
 
 #include <rmb/controller/LogitechJoystick.h>
+#include <rmb/controller/LogitechGamepad.h>
 
 #include <rmb/drive/SwerveDrive.h>
 
@@ -47,7 +48,8 @@ private:
 
   std::unique_ptr<rmb::SwerveDrive<4>> swerveDrive;
 
-  rmb::LogitechJoystick joystick = rmb::LogitechJoystick(0, 0.05);
+  // rmb::LogitechJoystick joystick = rmb::LogitechJoystick(0, 0.05);
+  rmb::LogitechGamepad gamepad = rmb::LogitechGamepad(0, 0.05, false);
 
   std::shared_ptr<AHRS> gyro;
 

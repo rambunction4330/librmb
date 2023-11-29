@@ -53,7 +53,7 @@ public:
 
   double GetTwist() const {
     double raw = GetRawAxis(Axes::twist);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;

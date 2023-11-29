@@ -22,6 +22,7 @@
 #include "wpi/raw_ostream.h"
 #include <iostream>
 
+
 void Robot::RobotInit() {
 
   // Because Aiden is evil & lazy
@@ -32,28 +33,28 @@ void Robot::RobotInit() {
                         constants::wheelCircumference / 1_tr),
           std::make_unique<rmb::FalconPositionController>(
               constants::positionControllerCreateInfo),
-          frc::Translation2d(-1_ft, 1_ft)),
+          frc::Translation2d(-1_ft, 1_ft), true),
       rmb::SwerveModule(
           rmb::asLinear(std::make_unique<rmb::FalconVelocityController>(
                             constants::velocityControllerCreateInfo1),
                         constants::wheelCircumference / 1_tr),
           std::make_unique<rmb::FalconPositionController>(
               constants::positionControllerCreateInfo1),
-          frc::Translation2d(1_ft, 1_ft)),
+          frc::Translation2d(1_ft, 1_ft), true),
       rmb::SwerveModule(
           rmb::asLinear(std::make_unique<rmb::FalconVelocityController>(
                             constants::velocityControllerCreateInfo2),
                         constants::wheelCircumference / 1_tr),
           std::make_unique<rmb::FalconPositionController>(
               constants::positionControllerCreateInfo2),
-          frc::Translation2d(1_ft, -1_ft)),
+          frc::Translation2d(1_ft, -1_ft), true),
       rmb::SwerveModule(
           rmb::asLinear(std::make_unique<rmb::FalconVelocityController>(
                             constants::velocityControllerCreateInfo3),
                         constants::wheelCircumference / 1_tr),
           std::make_unique<rmb::FalconPositionController>(
               constants::positionControllerCreateInfo3),
-          frc::Translation2d(-1_ft, -1_ft)),
+          frc::Translation2d(-1_ft, -1_ft), true),
 
   };
 
@@ -71,7 +72,10 @@ void Robot::RobotInit() {
       7.0_mps, 2.0_tps);
 }
 
-void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
+void Robot::RobotPeriodic() { 
+  frc::SmartDashboard::PutData("mygyro", gyro.get());
+  frc2::CommandScheduler::GetInstance().Run();
+}
 
 void Robot::DisabledInit() {}
 
@@ -88,10 +92,12 @@ void Robot::AutonomousExit() {}
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
-  swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()),
-                              -joystick.GetY() * joystick.GetThrottle(),
-                              -joystick.GetTwist() * joystick.GetThrottle(),
-                              false);
+  // swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()),
+  //                             -joystick.GetY() * joystick.GetThrottle(),
+  //                             -joystick.GetTwist() * joystick.GetThrottle(),
+  //                             false);
+
+  swerveDrive->driveCartesian(gamepad.GetLeftX(), -gamepad.GetLeftY(), -gamepad.GetRightY(), false);
 
   for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
     const auto &module = swerveDrive->getModules()[i];
@@ -106,10 +112,11 @@ void Robot::TeleopExit() {}
 void Robot::TestInit() { frc2::CommandScheduler::GetInstance().CancelAll(); }
 
 void Robot::TestPeriodic() {
-  swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()),
-                              -joystick.GetY() * joystick.GetThrottle(),
-                              -joystick.GetTwist() * joystick.GetThrottle(),
-                              false);
+  // swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()),
+  //                             -joystick.GetY() * joystick.GetThrottle(),
+  //                             -joystick.GetTwist() * joystick.GetThrottle(),
+  //                             false);
+  swerveDrive->driveCartesian(gamepad.GetLeftX(), -gamepad.GetLeftY(), gamepad.GetRightY(), false);
 
   for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
     const auto &module = swerveDrive->getModules()[i];

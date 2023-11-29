@@ -9,6 +9,7 @@
 #include "frc/kinematics/SwerveModuleState.h"
 
 #include "frc/geometry/Translation2d.h"
+#include "frc/smartdashboard/SmartDashboard.h"
 
 #include "frc2/command/CommandPtr.h"
 #include "frc2/command/Commands.h"
@@ -62,7 +63,7 @@ SwerveDrive<NumModules>::SwerveDrive(
     ntPositionErrorTopics[i] =
         table->GetDoubleTopic("mod" + std::to_string(i) + "_poserror").Publish();
 
-    wpi::SendableRegistry::SetName(&this->modules[i], "mod" + std::to_string(i), "angle");
+    // wpi::SendableRegistry::SetName(&this->modules[i], "mod" + std::to_string(i), "angle");
   }
 
   publishErrorsToNT();
@@ -189,6 +190,7 @@ template <size_t NumModules> void SwerveDrive<NumModules>::publishErrorsToNT() {
 
     ntPositionErrorTopics[i].Set(error());
   }
+
 }
 
 template <size_t NumModules>
