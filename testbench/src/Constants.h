@@ -1,34 +1,34 @@
 #pragma once
 
-#include <rmb/motorcontrol/falcon/FalconPositionController.h>
-#include <rmb/motorcontrol/falcon/FalconVelocityController.h>
+#include <rmb/motorcontrol/Talon/TalonFXPositionController.h>
+#include <rmb/motorcontrol/Talon/TalonFXVelocityController.h>
 
 #include <frc/SerialPort.h>
 
 namespace constants {
 
-const rmb::FalconVelocityControllerHelper::PIDConfig velocityModulePIDConfig = {
+const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig = {
     .p = 0.40,
     .i = 0.0003,
     .d = 0.00,
     .ff = 0.000,
     .closedLoopMaxPercentOutput = 1.0,
 };
-const rmb::FalconVelocityControllerHelper::PIDConfig velocityModulePIDConfig1 = {
+const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig1 = {
     .p = 0.40,
     .i = 0.0003,
     .d = 0.00,
     .ff = 0.000,
     .closedLoopMaxPercentOutput = 1.0,
 };
-const rmb::FalconVelocityControllerHelper::PIDConfig velocityModulePIDConfig2 = {
+const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig2 = {
     .p = 0.40,
     .i = 0.0003,
     .d = 0.00,
     .ff = 0.000,
     .closedLoopMaxPercentOutput = 1.0,
 };
-const rmb::FalconVelocityControllerHelper::PIDConfig velocityModulePIDConfig3= {
+const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig3= {
     .p = 0.40,
     .i = 0.0003,
     .d = 0.00,
@@ -36,23 +36,23 @@ const rmb::FalconVelocityControllerHelper::PIDConfig velocityModulePIDConfig3= {
     .closedLoopMaxPercentOutput = 1.0,
 };
 
-const rmb::FalconPositionController::RawCANCoderPositionUnit_t
+const rmb::TalonFXPositionController::RawCANCoderPositionUnit_t
     module1Zero(690.0);
-const rmb::FalconPositionController::RawCANCoderPositionUnit_t
+const rmb::TalonFXPositionController::RawCANCoderPositionUnit_t
     module2Zero(784.0);
-const rmb::FalconPositionController::RawCANCoderPositionUnit_t
+const rmb::TalonFXPositionController::RawCANCoderPositionUnit_t
     module3Zero(926.0);
-const rmb::FalconPositionController::RawCANCoderPositionUnit_t
+const rmb::TalonFXPositionController::RawCANCoderPositionUnit_t
     module4Zero(3567.0);
 
 const units::meter_t wheelCircumference = 1.0_m;
 
 const frc::SerialPort::Port gyroPort = frc::SerialPort::Port::kMXP;
 
-const rmb::FalconPositionControllerHelper::PIDConfig positionModulePIDConfig = {
+const rmb::TalonFXPositionControllerHelper::PIDConfig positionModulePIDConfig = {
     .p = 1.5f, .i = 0.0000f, .d = 0.3f, .ff = 0.000, .tolerance = 0.1_deg};
 
-const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo{
+const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo{
     .config =
         {
             .id = 10,
@@ -67,7 +67,7 @@ const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo{
     .canCoderConfig = {.useCANCoder = false},
 };
 
-const rmb::FalconPositionController::CreateInfo positionControllerCreateInfo{
+const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo{
     .config = {.id = 12, .inverted = false},
     .pidConfig = positionModulePIDConfig,
     .range = {.minPosition =
@@ -86,7 +86,7 @@ const rmb::FalconPositionController::CreateInfo positionControllerCreateInfo{
                        .remoteSensorSlot = 0},
 };
 
-const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo1{
+const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo1{
     .config =
         {
             .id = 20,
@@ -101,7 +101,7 @@ const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo1{
     .canCoderConfig = {.useCANCoder = false},
 };
 
-const rmb::FalconPositionController::CreateInfo positionControllerCreateInfo1{
+const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo1{
     .config = {.id = 22, .inverted = false},
     .pidConfig = positionModulePIDConfig,
     .range = {.minPosition =
@@ -120,7 +120,7 @@ const rmb::FalconPositionController::CreateInfo positionControllerCreateInfo1{
                        .remoteSensorSlot = 0},
 };
 
-const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo2{
+const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo2{
     .config =
         {
             .id = 30,
@@ -135,7 +135,7 @@ const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo2{
     .canCoderConfig = {.useCANCoder = false},
 };
 
-const rmb::FalconPositionController::CreateInfo positionControllerCreateInfo2{
+const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo2{
     .config = {.id = 32, .inverted = false},
     .pidConfig = positionModulePIDConfig,
     .range = {.minPosition =
@@ -154,7 +154,7 @@ const rmb::FalconPositionController::CreateInfo positionControllerCreateInfo2{
                        .remoteSensorSlot = 0},
 };
 
-const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo3{
+const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo3{
     .config =
         {
             .id = 40,
@@ -169,7 +169,7 @@ const rmb::FalconVelocityController::CreateInfo velocityControllerCreateInfo3{
     .canCoderConfig = {.useCANCoder = false},
 };
 
-const rmb::FalconPositionController::CreateInfo positionControllerCreateInfo3{
+const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo3{
     .config = {.id = 42, .inverted = false},
     .pidConfig = positionModulePIDConfig,
     .range = {.minPosition =

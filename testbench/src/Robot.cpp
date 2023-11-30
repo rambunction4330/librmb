@@ -9,8 +9,8 @@
 #include "rmb/drive/SwerveDrive.h"
 #include "rmb/drive/SwerveModule.h"
 #include "rmb/motorcontrol/AngularVelocityController.h"
-#include "rmb/motorcontrol/falcon/FalconPositionController.h"
-#include "rmb/motorcontrol/falcon/FalconVelocityController.h"
+#include "rmb/motorcontrol/Talon/TalonFXPositionController.h"
+#include "rmb/motorcontrol/Talon/TalonFXVelocityController.h"
 #include "units/angle.h"
 
 #include <alloca.h>
@@ -28,31 +28,31 @@ void Robot::RobotInit() {
   // Because Aiden is evil & lazy
   std::array<rmb::SwerveModule, 4> modules = {
       rmb::SwerveModule(
-          rmb::asLinear(std::make_unique<rmb::FalconVelocityController>(
+          rmb::asLinear(std::make_unique<rmb::TalonFXVelocityController>(
                             constants::velocityControllerCreateInfo),
                         constants::wheelCircumference / 1_tr),
-          std::make_unique<rmb::FalconPositionController>(
+          std::make_unique<rmb::TalonFXPositionController>(
               constants::positionControllerCreateInfo),
           frc::Translation2d(-1_ft, 1_ft), true),
       rmb::SwerveModule(
-          rmb::asLinear(std::make_unique<rmb::FalconVelocityController>(
+          rmb::asLinear(std::make_unique<rmb::TalonFXVelocityController>(
                             constants::velocityControllerCreateInfo1),
                         constants::wheelCircumference / 1_tr),
-          std::make_unique<rmb::FalconPositionController>(
+          std::make_unique<rmb::TalonFXPositionController>(
               constants::positionControllerCreateInfo1),
           frc::Translation2d(1_ft, 1_ft), true),
       rmb::SwerveModule(
-          rmb::asLinear(std::make_unique<rmb::FalconVelocityController>(
+          rmb::asLinear(std::make_unique<rmb::TalonFXVelocityController>(
                             constants::velocityControllerCreateInfo2),
                         constants::wheelCircumference / 1_tr),
-          std::make_unique<rmb::FalconPositionController>(
+          std::make_unique<rmb::TalonFXPositionController>(
               constants::positionControllerCreateInfo2),
           frc::Translation2d(1_ft, -1_ft), true),
       rmb::SwerveModule(
-          rmb::asLinear(std::make_unique<rmb::FalconVelocityController>(
+          rmb::asLinear(std::make_unique<rmb::TalonFXVelocityController>(
                             constants::velocityControllerCreateInfo3),
                         constants::wheelCircumference / 1_tr),
-          std::make_unique<rmb::FalconPositionController>(
+          std::make_unique<rmb::TalonFXPositionController>(
               constants::positionControllerCreateInfo3),
           frc::Translation2d(-1_ft, -1_ft), true),
 

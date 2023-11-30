@@ -1,5 +1,7 @@
 #include "rmb/motorcontrol/sparkmax/SparkMaxPositionController.h"
 
+#include <algorithm>
+
 namespace rmb {
 SparkMaxPositionController::SparkMaxPositionController(
     const SparkMaxPositionController::CreateInfo &createInfo)

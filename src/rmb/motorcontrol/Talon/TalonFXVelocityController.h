@@ -4,12 +4,12 @@
 
 #include "rmb/motorcontrol/AngularVelocityController.h"
 
-#include "FalconPositionController.h"
+#include "TalonFXPositionController.h"
 #include "ctre/phoenix/sensors/WPI_CANCoder.h"
 #include "units/angular_velocity.h"
 
 namespace rmb {
-namespace FalconVelocityControllerHelper {
+namespace TalonFXVelocityControllerHelper {
 struct PIDConfig {
   double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
   units::turns_per_second_t tolerance = 0.0_tps;
@@ -29,9 +29,9 @@ struct ProfileConfig {
                               minVelocity = 0.0_rad_per_s;
   units::radians_per_second_squared_t maxAcceleration = 0.0_rad_per_s_sq;
 };
-} // namespace FalconVelocityControllerHelper
+} // namespace TalonFXVelocityControllerHelper
 
-class FalconVelocityController : public AngularVelocityController {
+class TalonFXVelocityController : public AngularVelocityController {
 public:
   typedef units::unit<std::ratio<1, 2048>, units::turns> InternalEncoderTick;
   typedef units::unit_t<InternalEncoderTick> InternalEncoderTick_t;
@@ -58,17 +58,17 @@ public:
   typedef units::unit_t<RawCANCoderPositionUnit> RawCANCoderPositionUnit_t;
 
   struct CreateInfo {
-    FalconPositionControllerHelper::MotorConfig config;
-    FalconVelocityControllerHelper::PIDConfig pidConfig;
-    FalconVelocityControllerHelper::ProfileConfig profileConfig;
-    FalconPositionControllerHelper::FeedbackConfig feedbackConfig;
-    FalconVelocityControllerHelper::OpenLoopConfig openLoopConfig;
-    FalconPositionControllerHelper::CANCoderConfig canCoderConfig;
+    TalonFXPositionControllerHelper::MotorConfig config;
+    TalonFXVelocityControllerHelper::PIDConfig pidConfig;
+    TalonFXVelocityControllerHelper::ProfileConfig profileConfig;
+    TalonFXPositionControllerHelper::FeedbackConfig feedbackConfig;
+    TalonFXVelocityControllerHelper::OpenLoopConfig openLoopConfig;
+    TalonFXPositionControllerHelper::CANCoderConfig canCoderConfig;
   };
 
-  FalconVelocityController(const CreateInfo &createInfo);
+  TalonFXVelocityController(const CreateInfo &createInfo);
 
-  virtual ~FalconVelocityController() = default;
+  virtual ~TalonFXVelocityController() = default;
 
   //--------------------------------------------------
   // Methods Inherited from AngularVelocityController
@@ -149,7 +149,7 @@ private:
 
   units::radians_per_second_t tolerance = 0.0_tps;
 
-  FalconVelocityControllerHelper::ProfileConfig profileConfig;
+  TalonFXVelocityControllerHelper::ProfileConfig profileConfig;
 
   const bool usingCANCoder;
 

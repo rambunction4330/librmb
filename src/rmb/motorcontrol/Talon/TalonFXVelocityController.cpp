@@ -1,4 +1,4 @@
-#include "FalconVelocityController.h"
+#include "TalonFXVelocityController.h"
 #include "ctre/phoenix/motorcontrol/ControlMode.h"
 #include "ctre/phoenix/motorcontrol/NeutralMode.h"
 #include "units/angular_velocity.h"
@@ -6,8 +6,8 @@
 
 namespace rmb {
 
-FalconVelocityController::FalconVelocityController(
-    const FalconVelocityController::CreateInfo &createInfo)
+TalonFXVelocityController::TalonFXVelocityController(
+    const TalonFXVelocityController::CreateInfo &createInfo)
     : motorcontroller(createInfo.config.id),
       usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
 
@@ -72,7 +72,7 @@ FalconVelocityController::FalconVelocityController(
   this->profileConfig = createInfo.profileConfig;
 }
 
-void FalconVelocityController::setVelocity(
+void TalonFXVelocityController::setVelocity(
     units::radians_per_second_t velocity) {
   units::radians_per_second_t targetVelocity(velocity);
 
@@ -93,7 +93,7 @@ void FalconVelocityController::setVelocity(
 }
 
 units::radians_per_second_t
-FalconVelocityController::getTargetVelocity() const {
+TalonFXVelocityController::getTargetVelocity() const {
   if (usingCANCoder) {
     return RawCANCoderVelocityUnit_t(motorcontroller.GetClosedLoopTarget());
   } else {
@@ -102,7 +102,7 @@ FalconVelocityController::getTargetVelocity() const {
   }
 }
 
-units::radians_per_second_t FalconVelocityController::getVelocity() const {
+units::radians_per_second_t TalonFXVelocityController::getVelocity() const {
   if (usingCANCoder) {
     return RawCANCoderVelocityUnit_t(
         motorcontroller.GetSelectedSensorVelocity());
@@ -112,20 +112,20 @@ units::radians_per_second_t FalconVelocityController::getVelocity() const {
   }
 }
 
-units::radians_per_second_t FalconVelocityController::getTolerance() const {
+units::radians_per_second_t TalonFXVelocityController::getTolerance() const {
   return tolerance;
 }
 
-void FalconVelocityController::setPower(double power) {
+void TalonFXVelocityController::setPower(double power) {
   motorcontroller.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,
                       power);
 }
 
-void FalconVelocityController::disable() { motorcontroller.Disable(); }
+void TalonFXVelocityController::disable() { motorcontroller.Disable(); }
 
-void FalconVelocityController::stop() { motorcontroller.StopMotor(); }
+void TalonFXVelocityController::stop() { motorcontroller.StopMotor(); }
 
-units::radian_t FalconVelocityController::getPosition() const {
+units::radian_t TalonFXVelocityController::getPosition() const {
   if (usingCANCoder) {
     return RawCANCoderPositionUnit_t(
         motorcontroller.GetSelectedSensorPosition() / gearRatio);
@@ -135,7 +135,7 @@ units::radian_t FalconVelocityController::getPosition() const {
   }
 }
 
-void FalconVelocityController::zeroPosition(units::radian_t offset) {
+void TalonFXVelocityController::zeroPosition(units::radian_t offset) {
   if (usingCANCoder) {
     canCoder->SetPosition(RawCANCoderPositionUnit_t(offset)());
   } else {

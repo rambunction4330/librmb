@@ -11,10 +11,11 @@
 
 #include "RobotContainer.h"
 
-#include "frc/estimator/SwerveDrivePoseEstimator.h"
 #include "frc/kinematics/SwerveDriveKinematics.h"
-#include "rmb/motorcontrol/falcon/FalconPositionController.h"
-#include <rmb/motorcontrol/falcon/FalconVelocityController.h>
+#include <rmb/motorcontrol/Talon/TalonFXVelocityController.h>
+#include <rmb/motorcontrol/Talon/TalonFXPositionController.h>
+
+#include <rmb/motorcontrol/Talon/TalonFXVelocityController.h>
 
 #include <rmb/controller/LogitechJoystick.h>
 #include <rmb/controller/LogitechGamepad.h>
@@ -42,9 +43,6 @@ public:
 
 private:
   std::optional<frc2::CommandPtr> m_autonomousCommand;
-
-  std::unique_ptr<rmb::FalconVelocityController> velocityController;
-  std::unique_ptr<rmb::FalconPositionController> positionController;
 
   std::unique_ptr<rmb::SwerveDrive<4>> swerveDrive;
 
