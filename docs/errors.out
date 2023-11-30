@@ -5,23 +5,9 @@ warning: ignoring unsupported tag 'FULL_SIDEBAR' at line 1569, file docs/Doxyfil
 warning: ignoring unsupported tag 'OBFUSCATE_EMAILS' at line 1600, file docs/Doxyfile
 warning: ignoring unsupported tag 'MATHJAX_VERSION' at line 1659, file docs/Doxyfile
 warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/Doxyfile
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:92: warning: Compound rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:119: warning: Compound rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:78: warning: Compound rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:73: warning: Compound rmb::FalconPositionControllerHelper::FeedbackConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:29: warning: Compound rmb::FalconPositionControllerHelper::MotorConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:35: warning: Compound rmb::FalconPositionControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:40: warning: Compound rmb::FalconPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:63: warning: Compound rmb::FalconPositionControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:50: warning: Compound rmb::FalconPositionControllerHelper::Range is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:34: warning: Compound rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:60: warning: Compound rmb::FalconVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:22: warning: Compound rmb::FalconVelocityControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:13: warning: Compound rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:27: warning: Compound rmb::FalconVelocityControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:9: warning: Compound rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:11: warning: Compound rmb::LogitechGamepad::Axes is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:21: warning: Compound rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:11: warning: Compound rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:13: warning: Compound rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:23: warning: Compound rmb::LogitechGamepad::Buttons is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:9: warning: Compound rmb::LogitechJoystick is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:11: warning: Compound rmb::LogitechJoystick::Axes is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:77: warning: Compound rmb::SparkMaxPositionController::CreateInfo is not documented.
@@ -35,81 +21,95 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:21: warning: Compound rmb::SparkMaxVelocityControllerHelper::MotorConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:31: warning: Compound rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:38: warning: Compound rmb::SparkMaxVelocityControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:37: warning: Member LogitechGamepad(int channel, double deadZone=0.0, bool squareOutputs=false) (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:42: warning: Member GetLeftX() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:49: warning: Member LeftXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:52: warning: Member LeftXGreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:56: warning: Member GetLeftY() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:64: warning: Member LeftYLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:67: warning: Member LeftYgreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:71: warning: Member GetLeftStickButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:72: warning: Member GetLeftStickButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:75: warning: Member GetLeftStickButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:78: warning: Member LeftStickButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:80: warning: Member GetRightX() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:88: warning: Member RightXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:91: warning: Member RightXgreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:95: warning: Member GetRightY() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:103: warning: Member RightYLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:106: warning: Member RightYGearterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:110: warning: Member GetRightStickButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:111: warning: Member GetRightStickButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:114: warning: Member GetRightStickButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:117: warning: Member RightStickButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:119: warning: Member GetLeftTrigger() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:126: warning: Member LeftTriggerLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:129: warning: Member LeftTriggergreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:133: warning: Member GetRightTrigger() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:140: warning: Member RightTriggerLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:143: warning: Member RightTriggerGreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:147: warning: Member GetLeftBumper() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:148: warning: Member GetLeftBumperPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:151: warning: Member GetLeftBumperReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:154: warning: Member LeftBumper() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:156: warning: Member GetRightBumper() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:157: warning: Member GetRightBumperPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:160: warning: Member GetRightBumperReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:163: warning: Member RightBumper() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:165: warning: Member GetX() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:166: warning: Member GetXPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:167: warning: Member GetXReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:168: warning: Member X() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:170: warning: Member GetY() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:171: warning: Member GetYPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:172: warning: Member GetYReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:173: warning: Member Y() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:175: warning: Member GetA() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:176: warning: Member GetAPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:177: warning: Member GetAReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:178: warning: Member A() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:180: warning: Member GetB() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:181: warning: Member GetBPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:182: warning: Member GetBReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:183: warning: Member B() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:185: warning: Member GetBackButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:186: warning: Member GetBackButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:189: warning: Member GetBackButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:192: warning: Member BackButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:194: warning: Member GetStartButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:195: warning: Member GetStartButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:198: warning: Member GetStartButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:201: warning: Member StartButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:12: warning: Member leftX (variable) of struct rmb::LogitechGamepad::Axes is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:13: warning: Member leftY (variable) of struct rmb::LogitechGamepad::Axes is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:14: warning: Member leftTrigger (variable) of struct rmb::LogitechGamepad::Axes is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:16: warning: Member rightX (variable) of struct rmb::LogitechGamepad::Axes is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:17: warning: Member rightY (variable) of struct rmb::LogitechGamepad::Axes is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:18: warning: Member rightTrigger (variable) of struct rmb::LogitechGamepad::Axes is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:22: warning: Member leftStick (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:23: warning: Member rightStick (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:25: warning: Member rightBumper (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:26: warning: Member leftBumper (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:28: warning: Member X (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:29: warning: Member Y (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:30: warning: Member A (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:31: warning: Member B (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:33: warning: Member backButton (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:34: warning: Member startButton (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:92: warning: Compound rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:119: warning: Compound rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:78: warning: Compound rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:73: warning: Compound rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:29: warning: Compound rmb::TalonFXPositionControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:35: warning: Compound rmb::TalonFXPositionControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:40: warning: Compound rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:63: warning: Compound rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:50: warning: Compound rmb::TalonFXPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:34: warning: Compound rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:60: warning: Compound rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:22: warning: Compound rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:13: warning: Compound rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:27: warning: Compound rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:39: warning: Member LogitechGamepad(int channel, double deadZone=0.0, bool squareOutputs=false) (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:44: warning: Member GetLeftX() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:52: warning: Member LeftXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:55: warning: Member LeftXGreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:59: warning: Member GetLeftY() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:67: warning: Member LeftYLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:70: warning: Member LeftYgreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:74: warning: Member GetLeftStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:75: warning: Member GetLeftStickButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:78: warning: Member GetLeftStickButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:81: warning: Member LeftStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:83: warning: Member GetRightX() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:91: warning: Member RightXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:94: warning: Member RightXgreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:98: warning: Member GetRightY() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:106: warning: Member RightYLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:109: warning: Member RightYGearterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:113: warning: Member GetRightStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:114: warning: Member GetRightStickButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:117: warning: Member GetRightStickButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:120: warning: Member RightStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:122: warning: Member GetLeftTrigger() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:129: warning: Member LeftTriggerLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:132: warning: Member LeftTriggergreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:136: warning: Member GetRightTrigger() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:143: warning: Member RightTriggerLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:146: warning: Member RightTriggerGreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:150: warning: Member GetLeftBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:151: warning: Member GetLeftBumperPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:154: warning: Member GetLeftBumperReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:157: warning: Member LeftBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:159: warning: Member GetRightBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:160: warning: Member GetRightBumperPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:163: warning: Member GetRightBumperReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:166: warning: Member RightBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:168: warning: Member GetX() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:169: warning: Member GetXPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:170: warning: Member GetXReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:171: warning: Member X() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:173: warning: Member GetY() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:174: warning: Member GetYPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:175: warning: Member GetYReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:176: warning: Member Y() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:178: warning: Member GetA() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:179: warning: Member GetAPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:180: warning: Member GetAReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:181: warning: Member A() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:183: warning: Member GetB() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:184: warning: Member GetBPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:185: warning: Member GetBReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:186: warning: Member B() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:188: warning: Member GetBackButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:189: warning: Member GetBackButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:192: warning: Member GetBackButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:195: warning: Member BackButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:197: warning: Member GetStartButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:198: warning: Member GetStartButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:201: warning: Member GetStartButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:204: warning: Member StartButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:14: warning: Member leftX (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:15: warning: Member leftY (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:16: warning: Member leftTrigger (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:18: warning: Member rightX (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:19: warning: Member rightY (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:20: warning: Member rightTrigger (variable) of struct rmb::LogitechGamepad::Axes is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:24: warning: Member leftStick (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:25: warning: Member rightStick (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:27: warning: Member rightBumper (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:28: warning: Member leftBumper (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:30: warning: Member X (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:31: warning: Member Y (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:32: warning: Member A (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:33: warning: Member B (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:35: warning: Member backButton (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:36: warning: Member startButton (variable) of struct rmb::LogitechGamepad::Buttons is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:18: warning: Member LogitechJoystick(int channel, double deadZone=0.0, bool squareOutputs=false) (function) of class rmb::LogitechJoystick is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:23: warning: Member GetX() const (function) of class rmb::LogitechJoystick is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechJoystick.h:31: warning: Member XLessThan(double threshold) const (function) of class rmb::LogitechJoystick is not documented.
@@ -161,78 +161,41 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:217: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::DifferentialDrive::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
 /home/runner/work/librmb/librmb/src/rmb/drive/DifferentialDrive.h:225: warning: The following parameter of rmb::DifferentialDrive::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
   parameter 'driveRequirements'
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:87: warning: Member driveCartesian(double xSpeed, double ySpeed, double zRotation, bool fieldOriented) (function) of class rmb::SwerveDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:90: warning: Member drivePolar(double speed, const frc::Rotation2d &angle, double zRotation, bool fieldOriented) (function) of class rmb::SwerveDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:93: warning: Member driveModulePower(std::array< SwerveModulePower, NumModules > powers) (function) of class rmb::SwerveDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:95: warning: Member driveModuleStates(std::array< frc::SwerveModuleState, NumModules > states) (function) of class rmb::SwerveDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:97: warning: Member getModuleStates() const (function) of class rmb::SwerveDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:99: warning: Member getModulePositions() const (function) of class rmb::SwerveDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:101: warning: Member getModules() const (function) of class rmb::SwerveDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:126: warning: Member getTargetModuleStates() const (function) of class rmb::SwerveDrive is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:61: warning: The following parameters of rmb::SwerveDrive::SwerveDrive(std::array< SwerveModule, NumModules > modules, std::shared_ptr< const frc::Gyro > gyro, frc::HolonomicDriveController holonomicController, std::string visionTable, units::meters_per_second_t maxSpeed, units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose=frc::Pose2d()) are not documented:
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:90: warning: Member driveCartesian(double xSpeed, double ySpeed, double zRotation, bool fieldOriented) (function) of class rmb::SwerveDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:93: warning: Member drivePolar(double speed, const frc::Rotation2d &angle, double zRotation, bool fieldOriented) (function) of class rmb::SwerveDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:96: warning: Member driveModulePower(std::array< SwerveModulePower, NumModules > powers) (function) of class rmb::SwerveDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:98: warning: Member driveModuleStates(std::array< frc::SwerveModuleState, NumModules > states) (function) of class rmb::SwerveDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:100: warning: Member getModuleStates() const (function) of class rmb::SwerveDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:102: warning: Member getModulePositions() const (function) of class rmb::SwerveDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:104: warning: Member getModules() const (function) of class rmb::SwerveDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:129: warning: Member getTargetModuleStates() const (function) of class rmb::SwerveDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:219: warning: Member publishErrorsToNT() (function) of class rmb::SwerveDrive is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:64: warning: The following parameters of rmb::SwerveDrive::SwerveDrive(std::array< SwerveModule, NumModules > modules, std::shared_ptr< const frc::Gyro > gyro, frc::HolonomicDriveController holonomicController, std::string visionTable, units::meters_per_second_t maxSpeed, units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose=frc::Pose2d()) are not documented:
   parameter 'maxSpeed'
   parameter 'maxRotation'
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:78: warning: The following parameters of rmb::SwerveDrive::SwerveDrive(std::array< SwerveModule, NumModules > modules, std::shared_ptr< const frc::Gyro > gyro, frc::HolonomicDriveController holonomicController, units::meters_per_second_t maxSpeed, units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose=frc::Pose2d()) are not documented:
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:81: warning: The following parameters of rmb::SwerveDrive::SwerveDrive(std::array< SwerveModule, NumModules > modules, std::shared_ptr< const frc::Gyro > gyro, frc::HolonomicDriveController holonomicController, units::meters_per_second_t maxSpeed, units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose=frc::Pose2d()) are not documented:
   parameter 'maxSpeed'
   parameter 'maxRotation'
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:204: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:212: warning: The following parameter of rmb::SwerveDrive::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:207: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:215: warning: The following parameter of rmb::SwerveDrive::followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
   parameter 'driveRequirements'
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:189: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:197: warning: The following parameter of rmb::SwerveDrive::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:192: warning: argument 'driveRequirments' of command @param is not found in the argument list of rmb::SwerveDrive< NumModules >::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements)
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveDrive.h:200: warning: The following parameter of rmb::SwerveDrive::followWPILibTrajectory(frc::Trajectory trajectory, std::initializer_list< frc2::Subsystem * > driveRequirements) is not documented:
   parameter 'driveRequirements'
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:27: warning: Member power (variable) of struct rmb::SwerveModulePower is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:28: warning: Member angle (variable) of struct rmb::SwerveModulePower is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:50: warning: Member SwerveModule(SwerveModule &&)=default (function) of class rmb::SwerveModule is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:73: warning: Member smartdashboardDisplayTargetState(const std::string &name) const (function) of class rmb::SwerveModule is not documented.
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:60: warning: argument 'angularController' from the argument list of rmb::SwerveModule::SwerveModule has multiple @param documentation sections
-/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:60: warning: The following parameter of rmb::SwerveModule::SwerveModule(std::unique_ptr< LinearVelocityController > velocityController, std::unique_ptr< AngularPositionController > angularController, const frc::Translation2d &moduleTranslation) is not documented:
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:29: warning: Member power (variable) of struct rmb::SwerveModulePower is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:30: warning: Member angle (variable) of struct rmb::SwerveModulePower is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:53: warning: Member SwerveModule(SwerveModule &&)=default (function) of class rmb::SwerveModule is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:77: warning: Member smartdashboardDisplayTargetState(const std::string &name) const (function) of class rmb::SwerveModule is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:127: warning: Member InitSendable(wpi::SendableBuilder &builder) override (function) of class rmb::SwerveModule is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:129: warning: Member getAngle() (function) of class rmb::SwerveModule is not documented.
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:63: warning: argument 'angularController' from the argument list of rmb::SwerveModule::SwerveModule has multiple @param documentation sections
+/home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:63: warning: The following parameters of rmb::SwerveModule::SwerveModule(std::unique_ptr< LinearVelocityController > velocityController, std::unique_ptr< AngularPositionController > angularController, const frc::Translation2d &moduleTranslation, bool breakMode=false) are not documented:
   parameter 'velocityController'
+  parameter 'breakMode'
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:116: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:96: warning: Member IntegratedEncoderTick (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:97: warning: Member IntegratedEncoderTick_t (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:101: warning: Member RawVelocityUnit (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:102: warning: Member RawIntegratedVelocityUnit_t (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:104: warning: Member RawPositionUnit (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:105: warning: Member RawIntegratedPositionUnit_t (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:109: warning: Member CANCoderTick (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:110: warning: Member CANCoderTick_t (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:113: warning: Member RawCANCoderVelocityUnit (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:114: warning: Member RawCANCoderVelocityUnit_t (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:116: warning: Member RawCANCoderPositionUnit (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:117: warning: Member RawCANCoderPositionUnit_t (typedef) of class rmb::FalconPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:116: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:120: warning: Member config (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:121: warning: Member pidConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:122: warning: Member range (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:123: warning: Member feedbackConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:124: warning: Member openLoopConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:125: warning: Member canCoderConfig (variable) of struct rmb::FalconPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:36: warning: Member InternalEncoderTick (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:37: warning: Member InternalEncoderTick_t (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:41: warning: Member RawInternalVelocityUnit (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:42: warning: Member RawInternalVelocityUnit_t (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:45: warning: Member RawInternalPositionUnit (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:46: warning: Member RawInternalPositionUnit_t (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:50: warning: Member CANCoderTick (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:51: warning: Member CANCoderTick_t (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:54: warning: Member RawCANCoderVelocityUnit (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:55: warning: Member RawCANCoderVelocityUnit_t (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:57: warning: Member RawCANCoderPositionUnit (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:58: warning: Member RawCANCoderPositionUnit_t (typedef) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:69: warning: Member FalconVelocityController(const CreateInfo &createInfo) (function) of class rmb::FalconVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:61: warning: Member config (variable) of struct rmb::FalconVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:62: warning: Member pidConfig (variable) of struct rmb::FalconVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:63: warning: Member profileConfig (variable) of struct rmb::FalconVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:64: warning: Member feedbackConfig (variable) of struct rmb::FalconVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:65: warning: Member openLoopConfig (variable) of struct rmb::FalconVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:66: warning: Member canCoderConfig (variable) of struct rmb::FalconVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:23: warning: Member AngularFeedforwardontroller(AngularFeedforwardontroller &&)=default (function) of class rmb::AngularFeedforwardontroller is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:25: warning: Member AngularFeedforwardontroller(std::unique_ptr< frc::MotorController > &&motorController, std::unique_ptr< rmb::Feedforward< units::radians >> &&feedforward) (function) of class rmb::AngularFeedforwardontroller is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
@@ -287,51 +250,47 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:76: warning: Member profileConfig (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:77: warning: Member feedbackConfig (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:78: warning: Member followers (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:30: warning: Member id (variable) of struct rmb::FalconPositionControllerHelper::MotorConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:31: warning: Member inverted (variable) of struct rmb::FalconPositionControllerHelper::MotorConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:32: warning: Member currentLimit (variable) of struct rmb::FalconPositionControllerHelper::MotorConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:36: warning: Member minOutput (variable) of struct rmb::FalconPositionControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:36: warning: Member maxOutput (variable) of struct rmb::FalconPositionControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:37: warning: Member rampRate (variable) of struct rmb::FalconPositionControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:41: warning: Member p (variable) of struct rmb::FalconPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:41: warning: Member i (variable) of struct rmb::FalconPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:41: warning: Member d (variable) of struct rmb::FalconPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:41: warning: Member ff (variable) of struct rmb::FalconPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:42: warning: Member tolerance (variable) of struct rmb::FalconPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:43: warning: Member iZone (variable) of struct rmb::FalconPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:43: warning: Member iMaxAccumulator (variable) of struct rmb::FalconPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:44: warning: Member closedLoopMaxPercentOutput (variable) of struct rmb::FalconPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:46: warning: Member rampRate (variable) of struct rmb::FalconPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:51: warning: Member minPosition (variable) of struct rmb::FalconPositionControllerHelper::Range is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:53: warning: Member maxPosition (variable) of struct rmb::FalconPositionControllerHelper::Range is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:56: warning: Member isContinuous (variable) of struct rmb::FalconPositionControllerHelper::Range is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:64: warning: Member useSmartMotion (variable) of struct rmb::FalconPositionControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:66: warning: Member maxVelocity (variable) of struct rmb::FalconPositionControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:67: warning: Member minVelocity (variable) of struct rmb::FalconPositionControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:68: warning: Member maxAcceleration (variable) of struct rmb::FalconPositionControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:74: warning: Member gearRatio (variable) of struct rmb::FalconPositionControllerHelper::FeedbackConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:75: warning: Member forwardSwitch (variable) of struct rmb::FalconPositionControllerHelper::FeedbackConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:75: warning: Member reverseSwitch (variable) of struct rmb::FalconPositionControllerHelper::FeedbackConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:79: warning: Member RemoteSlot (enumeration) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:81: warning: Member useCANCoder (variable) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:83: warning: Member id (variable) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:85: warning: Member zeroPosition (variable) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconPositionController.h:87: warning: Member remoteSensorSlot (variable) of struct rmb::FalconPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:14: warning: Member p (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:14: warning: Member i (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:14: warning: Member d (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:14: warning: Member ff (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:15: warning: Member tolerance (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:16: warning: Member iZone (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:16: warning: Member iMaxAccumulator (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:18: warning: Member closedLoopMaxPercentOutput (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:19: warning: Member rampRate (variable) of struct rmb::FalconVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:23: warning: Member minOutput (variable) of struct rmb::FalconVelocityControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:23: warning: Member maxOutput (variable) of struct rmb::FalconVelocityControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:24: warning: Member rampRate (variable) of struct rmb::FalconVelocityControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:28: warning: Member maxVelocity (variable) of struct rmb::FalconVelocityControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:29: warning: Member minVelocity (variable) of struct rmb::FalconVelocityControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/falcon/FalconVelocityController.h:30: warning: Member maxAcceleration (variable) of struct rmb::FalconVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:96: warning: Member IntegratedEncoderTick (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:97: warning: Member IntegratedEncoderTick_t (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:101: warning: Member RawVelocityUnit (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:102: warning: Member RawIntegratedVelocityUnit_t (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:104: warning: Member RawPositionUnit (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:105: warning: Member RawIntegratedPositionUnit_t (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:109: warning: Member CANCoderTick (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:110: warning: Member CANCoderTick_t (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:113: warning: Member RawCANCoderVelocityUnit (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:114: warning: Member RawCANCoderVelocityUnit_t (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:116: warning: Member RawCANCoderPositionUnit (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:117: warning: Member RawCANCoderPositionUnit_t (typedef) of class rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:116: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:120: warning: Member config (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:121: warning: Member pidConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:122: warning: Member range (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:123: warning: Member feedbackConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:124: warning: Member openLoopConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:125: warning: Member canCoderConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:36: warning: Member InternalEncoderTick (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:37: warning: Member InternalEncoderTick_t (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:41: warning: Member RawInternalVelocityUnit (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:42: warning: Member RawInternalVelocityUnit_t (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:45: warning: Member RawInternalPositionUnit (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:46: warning: Member RawInternalPositionUnit_t (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:50: warning: Member CANCoderTick (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:51: warning: Member CANCoderTick_t (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:54: warning: Member RawCANCoderVelocityUnit (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:55: warning: Member RawCANCoderVelocityUnit_t (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:57: warning: Member RawCANCoderPositionUnit (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:58: warning: Member RawCANCoderPositionUnit_t (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:69: warning: Member TalonFXVelocityController(const CreateInfo &createInfo) (function) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:61: warning: Member config (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:62: warning: Member pidConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:63: warning: Member profileConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:64: warning: Member feedbackConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:65: warning: Member openLoopConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:66: warning: Member canCoderConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:20: warning: Member id (variable) of struct rmb::SparkMaxPositionControllerHelper::MotorConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:21: warning: Member motorType (variable) of struct rmb::SparkMaxPositionControllerHelper::MotorConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:23: warning: Member inverted (variable) of struct rmb::SparkMaxPositionControllerHelper::MotorConfig is not documented.
@@ -383,3 +342,48 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:55: warning: Member countPerRev (variable) of struct rmb::SparkMaxVelocityControllerHelper::FeedbackConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:56: warning: Member forwardSwitch (variable) of struct rmb::SparkMaxVelocityControllerHelper::FeedbackConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:56: warning: Member reverseSwitch (variable) of struct rmb::SparkMaxVelocityControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:30: warning: Member id (variable) of struct rmb::TalonFXPositionControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:31: warning: Member inverted (variable) of struct rmb::TalonFXPositionControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:32: warning: Member currentLimit (variable) of struct rmb::TalonFXPositionControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:36: warning: Member minOutput (variable) of struct rmb::TalonFXPositionControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:36: warning: Member maxOutput (variable) of struct rmb::TalonFXPositionControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:37: warning: Member rampRate (variable) of struct rmb::TalonFXPositionControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:41: warning: Member p (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:41: warning: Member i (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:41: warning: Member d (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:41: warning: Member ff (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:42: warning: Member tolerance (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:43: warning: Member iZone (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:43: warning: Member iMaxAccumulator (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:44: warning: Member closedLoopMaxPercentOutput (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:46: warning: Member rampRate (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:51: warning: Member minPosition (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:53: warning: Member maxPosition (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:56: warning: Member isContinuous (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:64: warning: Member useSmartMotion (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:66: warning: Member maxVelocity (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:67: warning: Member minVelocity (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:68: warning: Member maxAcceleration (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:74: warning: Member gearRatio (variable) of struct rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:75: warning: Member forwardSwitch (variable) of struct rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:75: warning: Member reverseSwitch (variable) of struct rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:79: warning: Member RemoteSlot (enumeration) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:81: warning: Member useCANCoder (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:83: warning: Member id (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:85: warning: Member zeroPosition (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:87: warning: Member remoteSensorSlot (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:14: warning: Member p (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:14: warning: Member i (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:14: warning: Member d (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:14: warning: Member ff (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:15: warning: Member tolerance (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:16: warning: Member iZone (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:16: warning: Member iMaxAccumulator (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:18: warning: Member closedLoopMaxPercentOutput (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:19: warning: Member rampRate (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:23: warning: Member minOutput (variable) of struct rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:23: warning: Member maxOutput (variable) of struct rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:24: warning: Member rampRate (variable) of struct rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:28: warning: Member maxVelocity (variable) of struct rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:29: warning: Member minVelocity (variable) of struct rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:30: warning: Member maxAcceleration (variable) of struct rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
