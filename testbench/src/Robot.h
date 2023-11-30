@@ -12,13 +12,13 @@
 #include "RobotContainer.h"
 
 #include "frc/kinematics/SwerveDriveKinematics.h"
-#include <rmb/motorcontrol/talon/TalonFXVelocityController.h>
 #include <rmb/motorcontrol/talon/TalonFXPositionController.h>
+#include <rmb/motorcontrol/talon/TalonFXVelocityController.h>
 
 #include <rmb/motorcontrol/talon/TalonFXVelocityController.h>
 
-#include <rmb/controller/LogitechJoystick.h>
 #include <rmb/controller/LogitechGamepad.h>
+#include <rmb/controller/LogitechJoystick.h>
 
 #include <rmb/drive/SwerveDrive.h>
 

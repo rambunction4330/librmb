@@ -26,7 +26,8 @@ TalonFXVelocityController::TalonFXVelocityController(
   currentConfig.triggerThresholdCurrent = 0.0;
   motorcontroller.ConfigStatorCurrentLimit(currentConfig);
 
-  motorcontroller.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
+  motorcontroller.SetNeutralMode(
+      ctre::phoenix::motorcontrol::NeutralMode::Brake);
 
   motorcontroller.Config_kD(0, createInfo.pidConfig.d);
   motorcontroller.Config_kI(0, createInfo.pidConfig.i);
@@ -143,5 +144,5 @@ void TalonFXVelocityController::zeroPosition(units::radian_t offset) {
         RawInternalPositionUnit_t(offset * gearRatio)());
   }
 }
-}
+} // namespace rmb
 // namespace rmb

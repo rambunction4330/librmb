@@ -29,7 +29,8 @@ TalonFXPositionController::TalonFXPositionController(
   motorcontroller.ConfigOpenloopRamp(createInfo.openLoopConfig.rampRate());
   motorcontroller.ConfigClosedloopRamp(createInfo.pidConfig.rampRate());
 
-  motorcontroller.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
+  motorcontroller.SetNeutralMode(
+      ctre::phoenix::motorcontrol::NeutralMode::Brake);
 
   motorcontroller.Config_kD(0, createInfo.pidConfig.d);
   motorcontroller.Config_kI(0, createInfo.pidConfig.i);

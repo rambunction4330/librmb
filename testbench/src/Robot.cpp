@@ -22,7 +22,6 @@
 #include "wpi/raw_ostream.h"
 #include <iostream>
 
-
 void Robot::RobotInit() {
 
   // Because Aiden is evil & lazy
@@ -72,7 +71,7 @@ void Robot::RobotInit() {
       7.0_mps, 2.0_tps);
 }
 
-void Robot::RobotPeriodic() { 
+void Robot::RobotPeriodic() {
   frc::SmartDashboard::PutData("mygyro", gyro.get());
   frc2::CommandScheduler::GetInstance().Run();
 }
@@ -97,7 +96,8 @@ void Robot::TeleopPeriodic() {
   //                             -joystick.GetTwist() * joystick.GetThrottle(),
   //                             false);
 
-  swerveDrive->driveCartesian(gamepad.GetLeftX(), -gamepad.GetLeftY(), -gamepad.GetRightY(), false);
+  swerveDrive->driveCartesian(gamepad.GetLeftX(), -gamepad.GetLeftY(),
+                              -gamepad.GetRightY(), false);
 
   for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
     const auto &module = swerveDrive->getModules()[i];
@@ -116,7 +116,8 @@ void Robot::TestPeriodic() {
   //                             -joystick.GetY() * joystick.GetThrottle(),
   //                             -joystick.GetTwist() * joystick.GetThrottle(),
   //                             false);
-  swerveDrive->driveCartesian(gamepad.GetLeftX(), -gamepad.GetLeftY(), gamepad.GetRightY(), false);
+  swerveDrive->driveCartesian(gamepad.GetLeftX(), -gamepad.GetLeftY(),
+                              gamepad.GetRightY(), false);
 
   for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
     const auto &module = swerveDrive->getModules()[i];
@@ -131,4 +132,3 @@ void Robot::TestExit() {}
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }
 #endif
-

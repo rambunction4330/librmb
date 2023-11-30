@@ -7,33 +7,37 @@
 
 namespace constants {
 
-const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig = {
-    .p = 0.40,
-    .i = 0.0003,
-    .d = 0.00,
-    .ff = 0.000,
-    .closedLoopMaxPercentOutput = 1.0,
+const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig =
+    {
+        .p = 0.40,
+        .i = 0.0003,
+        .d = 0.00,
+        .ff = 0.000,
+        .closedLoopMaxPercentOutput = 1.0,
 };
-const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig1 = {
-    .p = 0.40,
-    .i = 0.0003,
-    .d = 0.00,
-    .ff = 0.000,
-    .closedLoopMaxPercentOutput = 1.0,
+const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig1 =
+    {
+        .p = 0.40,
+        .i = 0.0003,
+        .d = 0.00,
+        .ff = 0.000,
+        .closedLoopMaxPercentOutput = 1.0,
 };
-const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig2 = {
-    .p = 0.40,
-    .i = 0.0003,
-    .d = 0.00,
-    .ff = 0.000,
-    .closedLoopMaxPercentOutput = 1.0,
+const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig2 =
+    {
+        .p = 0.40,
+        .i = 0.0003,
+        .d = 0.00,
+        .ff = 0.000,
+        .closedLoopMaxPercentOutput = 1.0,
 };
-const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig3= {
-    .p = 0.40,
-    .i = 0.0003,
-    .d = 0.00,
-    .ff = 0.000,
-    .closedLoopMaxPercentOutput = 1.0,
+const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig3 =
+    {
+        .p = 0.40,
+        .i = 0.0003,
+        .d = 0.00,
+        .ff = 0.000,
+        .closedLoopMaxPercentOutput = 1.0,
 };
 
 const rmb::TalonFXPositionController::RawCANCoderPositionUnit_t
@@ -49,8 +53,8 @@ const units::meter_t wheelCircumference = 1.0_m;
 
 const frc::SerialPort::Port gyroPort = frc::SerialPort::Port::kMXP;
 
-const rmb::TalonFXPositionControllerHelper::PIDConfig positionModulePIDConfig = {
-    .p = 1.5f, .i = 0.0000f, .d = 0.3f, .ff = 0.000, .tolerance = 0.1_deg};
+const rmb::TalonFXPositionControllerHelper::PIDConfig positionModulePIDConfig =
+    {.p = 1.5f, .i = 0.0000f, .d = 0.3f, .ff = 0.000, .tolerance = 0.1_deg};
 
 const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo{
     .config =

@@ -30,8 +30,8 @@
 #include <frc2/command/Command.h>
 #include <frc2/command/CommandPtr.h>
 
-#include "networktables/NetworkTable.h"
 #include "networktables/DoubleTopic.h"
+#include "networktables/NetworkTable.h"
 
 namespace rmb {
 

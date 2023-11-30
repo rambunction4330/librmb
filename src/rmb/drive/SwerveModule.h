@@ -46,7 +46,8 @@ struct SwerveModulePower {
 /**
  * Class managing the motion of a swerve module
  */
-class SwerveModule : public wpi::Sendable, public wpi::SendableHelper<SwerveModule> {
+class SwerveModule : public wpi::Sendable,
+                     public wpi::SendableHelper<SwerveModule> {
 public:
   SwerveModule(const SwerveModule &) = delete;
   SwerveModule(SwerveModule &&) = default;
@@ -61,7 +62,8 @@ public:
    */
   SwerveModule(std::unique_ptr<LinearVelocityController> velocityController,
                std::unique_ptr<AngularPositionController> angularController,
-               const frc::Translation2d &moduleTranslation, bool breakMode = false);
+               const frc::Translation2d &moduleTranslation,
+               bool breakMode = false);
 
   /**
    * Sets the desired state of the swerve module.
@@ -122,9 +124,11 @@ public:
    */
   const frc::Translation2d &getModuleTranslation() const;
 
-  virtual void InitSendable(wpi::SendableBuilder& builder) override;
+  virtual void InitSendable(wpi::SendableBuilder &builder) override;
 
-  double getAngle() { return ((units::angle::degree_t)angularController->getPosition())(); }
+  double getAngle() {
+    return ((units::angle::degree_t)angularController->getPosition())();
+  }
 
 private:
   /**
