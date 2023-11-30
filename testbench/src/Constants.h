@@ -1,7 +1,7 @@
 #pragma once
 
-#include <rmb/motorcontrol/Talon/TalonFXPositionController.h>
-#include <rmb/motorcontrol/Talon/TalonFXVelocityController.h>
+#include <rmb/motorcontrol/talon/TalonFXPositionController.h>
+#include <rmb/motorcontrol/talon/TalonFXVelocityController.h>
 
 #include <frc/SerialPort.h>
 

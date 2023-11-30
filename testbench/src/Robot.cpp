@@ -9,8 +9,8 @@
 #include "rmb/drive/SwerveDrive.h"
 #include "rmb/drive/SwerveModule.h"
 #include "rmb/motorcontrol/AngularVelocityController.h"
-#include "rmb/motorcontrol/Talon/TalonFXPositionController.h"
-#include "rmb/motorcontrol/Talon/TalonFXVelocityController.h"
+#include "rmb/motorcontrol/talon/TalonFXPositionController.h"
+#include "rmb/motorcontrol/talon/TalonFXVelocityController.h"
 #include "units/angle.h"
 
 #include <alloca.h>
