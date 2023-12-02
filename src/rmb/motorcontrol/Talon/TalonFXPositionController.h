@@ -1,13 +1,13 @@
 #pragma once
 
-#include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
+// include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
+#include <ctre/phoenix6/CANcoder.hpp>
+#include <ctre/phoenix6/TalonFX.hpp>
+
 #include "rmb/motorcontrol/AngularPositionController.h"
 #include "units/angle.h"
 #include "units/angular_acceleration.h"
 #include "units/angular_velocity.h"
-
-#include "ctre/phoenix/motorcontrol/can/WPI_TalonFX.h"
-#include "ctre/phoenix/sensors/WPI_CANCoder.h"
 
 #include "units/base.h"
 #include "units/current.h"
@@ -19,6 +19,7 @@ namespace TalonFXPositionControllerHelper {
 struct MotorConfig {
   int id;
   bool inverted = false;
+  bool brake = false;
   units::ampere_t currentLimit = 40_A;
 };
 
@@ -185,9 +186,11 @@ public:
   units::radian_t getTolerance() const override;
 
 private:
-  mutable ctre::phoenix::motorcontrol::can::WPI_TalonFX motorcontroller;
+  // mutable ctre::phoenix::motorcontrol::can::WPI_TalonFX motorcontroller;
+  ctre::phoenix6::hardware::TalonFX motorcontroller;
 
-  std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
+  // std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
+  std::optional<ctre::phoenix6::hardware::CANcoder> canCoder;
 
   TalonFXPositionControllerHelper::Range range;
 

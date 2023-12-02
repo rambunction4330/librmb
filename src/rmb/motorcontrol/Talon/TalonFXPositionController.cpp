@@ -1,17 +1,13 @@
 #include "TalonFXPositionController.h"
-#include "ctre/Phoenix.h"
-#include "ctre/phoenix/motorcontrol/ControlMode.h"
-#include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
+// #include "ctre/phoenix/motorcontrol/ControlMode.h"
+/*#include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
 #include "ctre/phoenix/motorcontrol/StatorCurrentLimitConfiguration.h"
 #include "ctre/phoenix/motorcontrol/can/BaseMotorController.h"
 #include "ctre/phoenix/sensors/CANCoder.h"
-#include "ctre/phoenix/sensors/SensorTimeBase.h"
+#include "ctre/phoenix/sensors/SensorTimeBase.h"*/
+#include "ctre/phoenix6/core/CoreTalonFX.hpp"
 #include "units/angle.h"
 #include <iostream>
-
-namespace ctre {
-using namespace phoenix::motorcontrol::can;
-}
 
 namespace rmb {
 
@@ -20,7 +16,7 @@ TalonFXPositionController::TalonFXPositionController(
     : motorcontroller(createInfo.config.id), range(createInfo.range),
       usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
 
-  motorcontroller.ConfigFactoryDefault();
+  /*motorcontroller.ConfigFactoryDefault();
 
   motorcontroller.SetInverted(createInfo.config.inverted);
 
@@ -92,7 +88,36 @@ TalonFXPositionController::TalonFXPositionController(
   }
 
   gearRatio = createInfo.feedbackConfig.gearRatio;
-  tolerance = createInfo.pidConfig.tolerance;
+  tolerance = createInfo.pidConfig.tolerance;*/
+
+  auto &configurator = motorcontroller.GetConfigurator();
+
+  ctre::phoenix6::configs::TalonFXConfiguration talonFXConfig{};
+
+  talonFXConfig.MotorOutput.Inverted =
+      ctre::phoenix6::signals::InvertedValue(createInfo.config.inverted);
+  talonFXConfig.MotorOutput.PeakForwardDutyCycle =
+      createInfo.openLoopConfig.maxOutput;
+  talonFXConfig.MotorOutput.PeakReverseDutyCycle =
+      createInfo.openLoopConfig.minOutput;
+  // talonFXConfig.MotorOutput.DutyCycleNeutralDeadband; NOTE: use if you want
+  // to demote low target percentage outputs to zero
+  talonFXConfig.MotorOutput.NeutralMode =
+      ctre::phoenix6::signals::NeutralModeValue(
+          createInfo.config.brake
+              ? ctre::phoenix6::signals::NeutralModeValue::Brake
+              : ctre::phoenix6::signals::NeutralModeValue::Coast);
+
+  talonFXConfig.OpenLoopRamps.DutyCycleOpenLoopRampPeriod =
+      createInfo.openLoopConfig.rampRate();
+  talonFXConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod =
+      createInfo.pidConfig.rampRate();
+
+  talonFXConfig.Slot0.kP = createInfo.pidConfig.p;
+  talonFXConfig.Slot0.kI = createInfo.pidConfig.i;
+  talonFXConfig.Slot0.kD = createInfo.pidConfig.d;
+  talonFXConfig.Slot0.kS = createInfo.pidConfig.ff;
+  talonFXConfig.ClosedLoopGeneral.
 }
 
 void TalonFXPositionController::setPosition(units::radian_t position) {
