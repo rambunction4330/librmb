@@ -5,6 +5,7 @@
 #include "ctre/phoenix/motorcontrol/can/BaseMotorController.h"
 #include "ctre/phoenix/sensors/CANCoder.h"
 #include "ctre/phoenix/sensors/SensorTimeBase.h"*/
+#include "ctre/phoenix6/core/CoreCANcoder.hpp"
 #include "ctre/phoenix6/core/CoreTalonFX.hpp"
 #include "units/angle.h"
 #include <iostream>
@@ -117,7 +118,59 @@ TalonFXPositionController::TalonFXPositionController(
   talonFXConfig.Slot0.kI = createInfo.pidConfig.i;
   talonFXConfig.Slot0.kD = createInfo.pidConfig.d;
   talonFXConfig.Slot0.kS = createInfo.pidConfig.ff;
-  talonFXConfig.ClosedLoopGeneral.
+  // Izone, maxAccumulator nonexistant in the v6 API "no use for them, so we
+  // didn't implement"
+
+  // Currently no way to set allowableClosedLoopError or closedLoopPeakOutput
+  // TODO: print out warnings or implement them yourself somehow
+
+  talonFXConfig.HardwareLimitSwitch.ForwardLimitType =
+      ctre::phoenix6::signals::ForwardLimitTypeValue::NormallyOpen;
+  talonFXConfig.HardwareLimitSwitch.ForwardLimitEnable =
+      createInfo.feedbackConfig.forwardSwitch;
+  if (createInfo.feedbackConfig.forwardSwitch) {
+    std::cout << "Warning: forward limit switches are probably incomplete in "
+                 "Librmb. If you are using this and find issues, "
+                 "please open an issue on the github or try to fix it yourself."
+              << std::endl;
+  }
+
+  // https://www.chiefdelphi.com/t/current-limiting-talonfx-values/374780/10
+  talonFXConfig.CurrentLimits.SupplyCurrentLimit =
+      40.0; // Allow infinite current
+  talonFXConfig.CurrentLimits.SupplyTimeThreshold =
+      0.5; // But wait for this time
+  talonFXConfig.CurrentLimits.SupplyCurrentThreshold =
+      50.0; // After exceed this current
+  talonFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+  talonFXConfig.CurrentLimits.StatorCurrentLimitEnable = true;
+  talonFXConfig.CurrentLimits.StatorCurrentLimit =
+      createInfo.config.currentLimit(); // Motor-usage current limit
+                                        // Prevent heat
+
+  if (createInfo.canCoderConfig.useCANCoder) {
+    canCoder.emplace(createInfo.canCoderConfig.id);
+
+    ctre::phoenix6::configs::CANcoderConfiguration canCoderConfig{};
+
+    canCoderConfig.MagnetSensor.SensorDirection =
+        ctre::phoenix6::signals::SensorDirectionValue(
+            ctre::phoenix6::signals::SensorDirectionValue::
+                CounterClockwise_Positive);
+    canCoderConfig.MagnetSensor.AbsoluteSensorRange =
+        ctre::phoenix6::signals::AbsoluteSensorRangeValue(
+            ctre::phoenix6::signals::AbsoluteSensorRangeValue::Unsigned_0To1);
+    // Leave offset to offset function
+
+    // talonFXConfig.Feedback.RotorToSensorRatio; // This is for FusedCANCoder
+    talonFXConfig.Feedback.WithRemoteCANcoder(canCoder.value());
+  }
+
+  // Often there is a gear ratio between the motor's rotor and the actual output of
+  // the mechanism.
+  talonFXConfig.Feedback.SensorToMechanismRatio =
+      createInfo.feedbackConfig.gearRatio;
+  talonFXConfig.Feedback.FeedbackRotorOffset;
 }
 
 void TalonFXPositionController::setPosition(units::radian_t position) {

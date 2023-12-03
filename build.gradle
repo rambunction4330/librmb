@@ -14,7 +14,8 @@ repositories {
     mavenCentral()
 }
 
-wpilibRepositories.addAllReleaseRepositories(project)
+// wpilibRepositories.addAllReleaseRepositories(project)
+wpilibRepositories.addAllDevelopmentRepositories(project)
 
 // Apply C++ configuration
 apply from: 'config.gradle'
