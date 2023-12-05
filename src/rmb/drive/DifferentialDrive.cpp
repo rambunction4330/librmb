@@ -14,10 +14,10 @@
 #include <frc2/command/RamseteCommand.h>
 #include <frc2/command/Subsystem.h>
 
-#include <pathplanner/lib/path/PathPlannerTrajectory.h>
-#include <pathplanner/lib/commands/FollowPathWithEvents.h>
 #include <pathplanner/lib/auto/AutoBuilder.h>
+#include <pathplanner/lib/commands/FollowPathWithEvents.h>
 #include <pathplanner/lib/controllers/PPRamseteController.h>
+#include <pathplanner/lib/path/PathPlannerTrajectory.h>
 
 namespace rmb {
 
@@ -166,7 +166,8 @@ frc2::CommandPtr DifferentialDrive::fullPPAuto(
   //   commands.emplace_back(
   //       autoBuilder.stopEventGroup(trajectory.getStartStopEvent()));
   //   commands.emplace_back(
-  //       followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirements));
+  //       followPPTrajectoryWithEvents(trajectory, eventMap,
+  //       driveRequirements));
   // }
   //
   // commands.emplace_back(

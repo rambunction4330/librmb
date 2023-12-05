@@ -7,8 +7,8 @@
 #include <frc2/command/Commands.h>
 
 #include <pathplanner/lib/auto/AutoBuilder.h>
-#include <pathplanner/lib/controllers/PPRamseteController.h>
 #include <pathplanner/lib/commands/FollowPathWithEvents.h>
+#include <pathplanner/lib/controllers/PPRamseteController.h>
 
 namespace rmb {
 BaseDrive::BaseDrive(std::string visionTable) {
@@ -105,7 +105,7 @@ frc2::CommandPtr BaseDrive::followPPTrajectoryWithEvents(
   //            followPPTrajectory(trajectory, driveRequirments).Unwrap(),
   //            trajectory.getMarkers(), eventMap)
   //     .ToPtr();
-  
+
   return frc2::CommandPtr(nullptr);
 }
 
@@ -147,7 +147,8 @@ frc2::CommandPtr BaseDrive::fullPPAuto(
   // the actual type does not matter.
   // pathplanner::RamseteAutoBuilder autoBuilder(
   //     []() { return frc::Pose2d(); }, [](auto) {}, {},
-  //     frc::DifferentialDriveKinematics(0.0_m), [](auto, auto) {}, eventMap, {});
+  //     frc::DifferentialDriveKinematics(0.0_m), [](auto, auto) {}, eventMap,
+  //     {});
   //
   // std::vector<frc2::CommandPtr> commands;
   //
@@ -165,14 +166,15 @@ frc2::CommandPtr BaseDrive::fullPPAuto(
   //   commands.emplace_back(
   //       autoBuilder.stopEventGroup(trajectory.getStartStopEvent()));
   //   commands.emplace_back(
-  //       followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirements));
+  //       followPPTrajectoryWithEvents(trajectory, eventMap,
+  //       driveRequirements));
   // }
   //
   // commands.emplace_back(
   //     autoBuilder.stopEventGroup(trajectoryGroup.back().getEndStopEvent()));
   //
   // return frc2::cmd::Sequence(std::move(commands));
-  
+
   return frc2::CommandPtr(nullptr);
 }
 

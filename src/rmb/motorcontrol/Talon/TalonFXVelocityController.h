@@ -7,8 +7,8 @@
 #include "TalonFXPositionController.h"
 #include "units/angular_velocity.h"
 
-#include <ctre/phoenix6/TalonFX.hpp>
 #include <ctre/phoenix6/CANcoder.hpp>
+#include <ctre/phoenix6/TalonFX.hpp>
 
 namespace rmb {
 namespace TalonFXVelocityControllerHelper {
