@@ -22,7 +22,7 @@
 
 #include <frc2/command/CommandPtr.h>
 
-#include <pathplanner/lib/PathPlannerTrajectory.h>
+#include <pathplanner/lib/path/PathPlannerTrajectory.h>
 
 #include "rmb/drive/BaseDrive.h"
 #include "rmb/motorcontrol/LinearVelocityController.h"

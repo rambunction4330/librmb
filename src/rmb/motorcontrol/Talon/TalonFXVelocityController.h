@@ -5,8 +5,10 @@
 #include "rmb/motorcontrol/AngularVelocityController.h"
 
 #include "TalonFXPositionController.h"
-#include "ctre/phoenix/sensors/WPI_CANCoder.h"
 #include "units/angular_velocity.h"
+
+#include <ctre/phoenix6/TalonFX.hpp>
+#include <ctre/phoenix6/CANcoder.hpp>
 
 namespace rmb {
 namespace TalonFXVelocityControllerHelper {
@@ -67,6 +69,8 @@ public:
   };
 
   TalonFXVelocityController(const CreateInfo &createInfo);
+
+  virtual ~TalonFXVelocityController() = default;
 
   //--------------------------------------------------
   // Methods Inherited from AngularVelocityController
@@ -141,7 +145,7 @@ public:
   virtual units::radians_per_second_t getTolerance() const override;
 
 private:
-  mutable ctre::phoenix::motorcontrol::can::WPI_TalonFX motorcontroller;
+  mutable ctre::phoenix6::hardware::TalonFX motorcontroller;
 
   float gearRatio = 0.0;
 
@@ -151,7 +155,7 @@ private:
 
   const bool usingCANCoder;
 
-  std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
+  mutable std::optional<ctre::phoenix6::hardware::CANcoder> canCoder;
 };
 
 } // namespace rmb

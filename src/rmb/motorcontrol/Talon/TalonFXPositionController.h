@@ -62,7 +62,7 @@ struct ProfileConfig {
 enum LimitSwitchConfig { Disabled, NormalyOpen, NormalyClosed };
 
 struct FeedbackConfig {
-  double gearRatio = 1.0;
+  double sensorToMechanismRatio = 1.0;
   LimitSwitchConfig forwardSwitch = Disabled, reverseSwitch = Disabled;
 };
 
@@ -119,6 +119,8 @@ public:
    * controller
    */
   TalonFXPositionController(const CreateInfo &createInfo);
+
+  virtual ~TalonFXPositionController() = default;
 
   /**
    * Sets a closed loop position setpoint on the TalonFX to the given position
@@ -187,14 +189,14 @@ public:
 
 private:
   // mutable ctre::phoenix::motorcontrol::can::WPI_TalonFX motorcontroller;
-  ctre::phoenix6::hardware::TalonFX motorcontroller;
+  mutable ctre::phoenix6::hardware::TalonFX motorcontroller;
 
   // std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
-  std::optional<ctre::phoenix6::hardware::CANcoder> canCoder;
+  mutable std::optional<ctre::phoenix6::hardware::CANcoder> canCoder;
 
   TalonFXPositionControllerHelper::Range range;
 
-  float gearRatio = 0.0;
+  float sensorToMechanismRatio = 0.0;
 
   units::radian_t offset = 0_rad;
 

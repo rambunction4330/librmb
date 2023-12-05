@@ -2,7 +2,7 @@ plugins {
     id 'cpp'
     id 'java'
     id 'edu.wpi.first.wpilib.repositories.WPILibRepositoriesPlugin' version '2020.2'
-    id 'edu.wpi.first.NativeUtils' version '2023.11.1'
+    id 'edu.wpi.first.NativeUtils' version '2024.3.1'
     id 'edu.wpi.first.GradleJni' version '1.0.0'
     id 'edu.wpi.first.GradleVsCode' version '2.0.0'
 }
@@ -14,8 +14,8 @@ repositories {
     mavenCentral()
 }
 
-// wpilibRepositories.addAllReleaseRepositories(project)
-wpilibRepositories.addAllDevelopmentRepositories(project)
+wpilibRepositories.addAllReleaseRepositories(project)
+// wpilibRepositories.addAllDevelopmentRepositories(project)
 
 // Apply C++ configuration
 apply from: 'config.gradle'
@@ -80,7 +80,7 @@ model {
 apply from: 'publish.gradle'
 
 wrapper {
-    gradleVersion '7.6.1'
+    gradleVersion '8.4'
 }
 
 test {

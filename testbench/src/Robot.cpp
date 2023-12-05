@@ -31,7 +31,7 @@ void Robot::RobotInit() {
       .profileConfig = {.maxVelocity = 100_tps,
                         .minVelocity = -100_tps,
                         .maxAcceleration = 1.0_rad_per_s_sq},
-      .feedbackConfig = {.gearRatio = 6.12f},
+      .feedbackConfig = {.sensorToMechanismRatio = 6.12f},
       .openLoopConfig = {.minOutput = -1.0,
                          .maxOutput = 1.0,
                          .rampRate = 1.0_s},
@@ -52,7 +52,7 @@ void Robot::RobotInit() {
                 .isContinuous = false},
       .feedbackConfig =
           {
-              .gearRatio = 12.8,
+              .sensorToMechanismRatio = 12.8,
           },
       .openLoopConfig = {},
       .canCoderConfig = {.useCANCoder = true, .id = 11, .remoteSensorSlot = 0},

@@ -5,6 +5,7 @@
 #include "ctre/phoenix/motorcontrol/can/BaseMotorController.h"
 #include "ctre/phoenix/sensors/CANCoder.h"
 #include "ctre/phoenix/sensors/SensorTimeBase.h"*/
+#include "ctre/phoenix6/configs/Configs.hpp"
 #include "ctre/phoenix6/core/CoreCANcoder.hpp"
 #include "ctre/phoenix6/core/CoreTalonFX.hpp"
 #include "units/angle.h"
@@ -162,15 +163,30 @@ TalonFXPositionController::TalonFXPositionController(
             ctre::phoenix6::signals::AbsoluteSensorRangeValue::Unsigned_0To1);
     // Leave offset to offset function
 
+    canCoder->GetConfigurator().Apply(canCoderConfig, 0.0_s);
+
     // talonFXConfig.Feedback.RotorToSensorRatio; // This is for FusedCANCoder
     talonFXConfig.Feedback.WithRemoteCANcoder(canCoder.value());
+  } else {
+    talonFXConfig.Feedback.FeedbackSensorSource =
+        ctre::phoenix6::signals::FeedbackSensorSourceValue::RotorSensor;
   }
 
-  // Often there is a gear ratio between the motor's rotor and the actual output of
-  // the mechanism.
+  // Often there is a gear ratio between the motor's rotor and the actual output
+  // of the mechanism.
   talonFXConfig.Feedback.SensorToMechanismRatio =
-      createInfo.feedbackConfig.gearRatio;
-  talonFXConfig.Feedback.FeedbackRotorOffset;
+      createInfo.feedbackConfig.sensorToMechanismRatio;
+  // talonFXConfig.Feedback.SensorToMechanismRatio; // For fused CANCoders
+  // But we can't use this firmware feature because CTRE are capitalist pigs
+  // and we (as of writing) don't feel like paying for v6 Pro
+
+  talonFXConfig.ClosedLoopGeneral.ContinuousWrap =
+      createInfo.range.isContinuous;
+
+  configurator.Apply(talonFXConfig, 0.0_s);
+
+  sensorToMechanismRatio = createInfo.feedbackConfig.sensorToMechanismRatio;
+  tolerance = createInfo.pidConfig.tolerance;
 }
 
 void TalonFXPositionController::setPosition(units::radian_t position) {
@@ -182,23 +198,45 @@ void TalonFXPositionController::setPosition(units::radian_t position) {
     targetPosition = range.minPosition;
   }
 
-  if (usingCANCoder) {
+  /*if (usingCANCoder) {
     motorcontroller.Set(ctre::phoenix::motorcontrol::ControlMode::Position,
                         (RawCANCoderPositionUnit_t(targetPosition))());
   } else {
     motorcontroller.Set(
         ctre::phoenix::motorcontrol::ControlMode::Position,
         (RawIntegratedPositionUnit_t(targetPosition) * gearRatio)());
-  }
+  }*/
+  ctre::phoenix6::controls::PositionDutyCycle request(targetPosition);
+
+  motorcontroller.SetControl(request);
 }
 
 units::radian_t TalonFXPositionController::getTargetPosition() const {
-  if (usingCANCoder) {
+  /* if (usingCANCoder) {
     return (RawCANCoderPositionUnit_t(motorcontroller.GetClosedLoopTarget()));
   } else {
     return (RawIntegratedPositionUnit_t(
                motorcontroller.GetClosedLoopTarget())) /
            gearRatio;
+  }*/
+  if (motorcontroller.GetAppliedControl()->GetControlInfo()["Name"] ==
+      "PositionDutyCycle") {
+    // Theoretically, this doesn't 100% guarantee that the type behind the
+    // pointer is controls::PositionDutyCycle* because CTRE might have screwed
+    // up something in their codebase or don't handle faults correctly somewhere
+    // but we're going to trust them anyways.
+    // Practice safe sex, wear condoms. They don't work 100% of the time,
+    // but the are better than nothing. Let this piece of code be your role
+    // model
+
+    return ((ctre::phoenix6::controls::PositionDutyCycle *)motorcontroller
+                .GetAppliedControl()
+                .get())
+        ->Position;
+  } else {
+    std::cout << "(" << __FILE__ << ":" << __LINE__
+              << ") Could not retrieve PositionDutyCycle" << std::endl;
+    return 0.0_rad;
   }
 }
 
@@ -215,31 +253,59 @@ void TalonFXPositionController::disable() { motorcontroller.Disable(); }
 void TalonFXPositionController::stop() { motorcontroller.StopMotor(); }
 
 units::radians_per_second_t TalonFXPositionController::getVelocity() const {
-  if (usingCANCoder) {
+  /*if (usingCANCoder) {
     return RawCANCoderVelocityUnit_t(
         motorcontroller.GetSelectedSensorVelocity());
   } else {
     return RawIntegratedVelocityUnit_t(
         motorcontroller.GetSelectedSensorVelocity() / gearRatio);
+  }*/
+
+  if (usingCANCoder) {
+    return canCoder->GetVelocity().GetValue();
+  } else {
+    return motorcontroller.GetVelocity().GetValue();
   }
 }
 
 units::radian_t TalonFXPositionController::getPosition() const {
+  // if (usingCANCoder) {
+  //   return RawCANCoderPositionUnit_t(
+  //       motorcontroller.GetSelectedSensorPosition());
+  // } else {
+  //   return RawIntegratedPositionUnit_t(
+  //       motorcontroller.GetSelectedSensorPosition() / gearRatio);
+  // }
   if (usingCANCoder) {
-    return RawCANCoderPositionUnit_t(
-        motorcontroller.GetSelectedSensorPosition());
+    return canCoder->GetPosition().GetValue();
   } else {
-    return RawIntegratedPositionUnit_t(
-        motorcontroller.GetSelectedSensorPosition() / gearRatio);
+    return motorcontroller.GetPosition().GetValue();
   }
 }
 
 void TalonFXPositionController::zeroPosition(units::radian_t offset) {
+  // if (usingCANCoder) {
+  //   canCoder->SetPosition(RawCANCoderPositionUnit_t(offset)());
+  // } else {
+  //   motorcontroller.SetSelectedSensorPosition(
+  //       RawIntegratedPositionUnit_t(offset * gearRatio)());
+  // }
+  //
+
   if (usingCANCoder) {
-    canCoder->SetPosition(RawCANCoderPositionUnit_t(offset)());
+    ctre::phoenix6::configs::CANcoderConfiguration canCoderConfig{};
+
+    canCoder->GetConfigurator().Refresh(canCoderConfig);
+    canCoderConfig.MagnetSensor.MagnetOffset = ((units::turn_t)offset)();
+
+    canCoder->GetConfigurator().Apply(canCoderConfig);
   } else {
-    motorcontroller.SetSelectedSensorPosition(
-        RawIntegratedPositionUnit_t(offset * gearRatio)());
+    ctre::phoenix6::configs::FeedbackConfigs config{};
+    motorcontroller.GetConfigurator().Refresh(config);
+
+    config.FeedbackRotorOffset = ((units::turn_t)offset)();
+
+    motorcontroller.GetConfigurator().Apply(config);
   }
 }
 
@@ -248,8 +314,7 @@ units::radian_t TalonFXPositionController::getTolerance() const {
 }
 
 void TalonFXPositionController::setPower(double power) {
-  motorcontroller.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,
-                      power);
+  motorcontroller.Set(power);
 }
 
 } // namespace rmb
