@@ -71,9 +71,7 @@ void Robot::RobotInit() {
       7.0_mps, 2.0_tps);
 }
 
-void Robot::RobotPeriodic() {
-  frc2::CommandScheduler::GetInstance().Run();
-}
+void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
 
 void Robot::DisabledInit() {}
 
