@@ -20,7 +20,7 @@
 #include <frc/kinematics/SwerveModuleState.h>
 #include <frc/trajectory/Trajectory.h>
 
-#include <pathplanner/lib/PathPlannerTrajectory.h>
+#include <pathplanner/lib/path/PathPlannerTrajectory.h>
 
 #include "frc2/command/Commands.h"
 #include "rmb/drive/BaseDrive.h"
@@ -31,7 +31,6 @@
 #include <frc2/command/CommandPtr.h>
 
 #include "networktables/DoubleTopic.h"
-#include "networktables/NetworkTable.h"
 
 namespace rmb {
 

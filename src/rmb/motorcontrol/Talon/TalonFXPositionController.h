@@ -1,23 +1,13 @@
 #pragma once
 
-#include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
+// include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
+#include <ctre/phoenix6/CANcoder.hpp>
+#include <ctre/phoenix6/TalonFX.hpp>
+
 #include "rmb/motorcontrol/AngularPositionController.h"
 #include "units/angle.h"
 #include "units/angular_acceleration.h"
 #include "units/angular_velocity.h"
-
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winconsistent-missing-override"
-#endif
-
-// Wouldn't it be great if CTRE could fix their header files?
-#include "ctre/phoenix/motorcontrol/can/WPI_TalonFX.h"
-#include "ctre/phoenix/sensors/WPI_CANCoder.h"
-
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
 
 #include "units/base.h"
 #include "units/current.h"
@@ -29,6 +19,7 @@ namespace TalonFXPositionControllerHelper {
 struct MotorConfig {
   int id;
   bool inverted = false;
+  bool brake = false;
   units::ampere_t currentLimit = 40_A;
 };
 
@@ -71,7 +62,7 @@ struct ProfileConfig {
 enum LimitSwitchConfig { Disabled, NormalyOpen, NormalyClosed };
 
 struct FeedbackConfig {
-  double gearRatio = 1.0;
+  double sensorToMechanismRatio = 1.0;
   LimitSwitchConfig forwardSwitch = Disabled, reverseSwitch = Disabled;
 };
 
@@ -200,13 +191,15 @@ public:
   units::radian_t getTolerance() const override;
 
 private:
-  mutable ctre::phoenix::motorcontrol::can::WPI_TalonFX motorcontroller;
+  // mutable ctre::phoenix::motorcontrol::can::WPI_TalonFX motorcontroller;
+  mutable ctre::phoenix6::hardware::TalonFX motorcontroller;
 
-  std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
+  // std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
+  mutable std::optional<ctre::phoenix6::hardware::CANcoder> canCoder;
 
   TalonFXPositionControllerHelper::Range range;
 
-  float gearRatio = 0.0;
+  float sensorToMechanismRatio = 0.0;
 
   units::radian_t offset = 0_rad;
 

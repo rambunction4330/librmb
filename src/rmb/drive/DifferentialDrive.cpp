@@ -15,10 +15,10 @@
 #include <frc2/command/RamseteCommand.h>
 #include <frc2/command/Subsystem.h>
 
-#include <pathplanner/lib/PathPlannerTrajectory.h>
-#include <pathplanner/lib/auto/RamseteAutoBuilder.h>
+#include <pathplanner/lib/auto/AutoBuilder.h>
 #include <pathplanner/lib/commands/FollowPathWithEvents.h>
-#include <pathplanner/lib/commands/PPRamseteCommand.h>
+#include <pathplanner/lib/controllers/PPRamseteController.h>
+#include <pathplanner/lib/path/PathPlannerTrajectory.h>
 
 namespace rmb {
 
@@ -133,12 +133,50 @@ frc2::CommandPtr DifferentialDrive::followWPILibTrajectory(
 frc2::CommandPtr DifferentialDrive::followPPTrajectory(
     pathplanner::PathPlannerTrajectory trajectory,
     std::initializer_list<frc2::Subsystem *> driveRequirements) {
+  //
+  // return pathplanner::PPRamseteCommand(
+  //            trajectory, [this]() { return getPose(); }, ramseteController,
+  //            kinematics, [this](auto l, auto r) { driveWheelSpeeds(l, r); },
+  //            driveRequirements)
+  //     .ToPtr();
+  //
+  return frc2::CommandPtr(nullptr);
+}
 
-  return pathplanner::PPRamseteCommand(
-             trajectory, [this]() { return getPose(); }, ramseteController,
-             kinematics, [this](auto l, auto r) { driveWheelSpeeds(l, r); },
-             driveRequirements)
-      .ToPtr();
+frc2::CommandPtr DifferentialDrive::fullPPAuto(
+    std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
+    std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
+    std::initializer_list<frc2::Subsystem *> driveRequirements) {
+
+  if (trajectoryGroup.size() < 1) {
+    return frc2::cmd::None();
+  }
+
+  // Dummy auto builder just used to generate stop commands.
+  // pathplanner::RamseteAutoBuilder autoBuilder(
+  //     []() { return frc::Pose2d(); }, [](auto) {}, ramseteController,
+  //     kinematics, [](auto, auto) {}, eventMap, {});
+  //
+  // std::vector<frc2::CommandPtr> commands;
+  //
+  // commands.emplace_back(frc2::InstantCommand([this, trajectoryGroup]() {
+  //   resetPose(trajectoryGroup.front().getInitialPose());
+  // }));
+  //
+  // for (auto trajectory : trajectoryGroup) {
+  //   commands.emplace_back(
+  //       autoBuilder.stopEventGroup(trajectory.getStartStopEvent()));
+  //   commands.emplace_back(
+  //       followPPTrajectoryWithEvents(trajectory, eventMap,
+  //       driveRequirements));
+  // }
+  //
+  // commands.emplace_back(
+  //     autoBuilder.stopEventGroup(trajectoryGroup.back().getEndStopEvent()));
+  //
+  // return frc2::cmd::Sequence(std::move(commands));
+
+  return frc2::CommandPtr(nullptr);
 }
 
 } // namespace rmb
