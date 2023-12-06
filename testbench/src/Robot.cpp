@@ -57,13 +57,13 @@ void Robot::RobotInit() {
 
   };
 
-  gyro = std::make_shared<AHRS>(constants::gyroPort);
+  gyro = std::make_shared<rmb::AHRSGyro>((int)constants::gyroPort);
 
   swerveDrive = std::make_unique<rmb::SwerveDrive<4>>(
       std::move(modules), gyro,
       frc::HolonomicDriveController(
-          frc2::PIDController(1.0f, 0.0f, 0.0f),
-          frc2::PIDController(1.0f, 0.0f, 0.0f),
+          frc::PIDController(1.0f, 0.0f, 0.0f),
+          frc::PIDController(1.0f, 0.0f, 0.0f),
           frc::ProfiledPIDController<units::radian>(
               1, 0, 0,
               frc::TrapezoidProfile<units::radian>::Constraints(
@@ -72,7 +72,6 @@ void Robot::RobotInit() {
 }
 
 void Robot::RobotPeriodic() {
-  frc::SmartDashboard::PutData("mygyro", gyro.get());
   frc2::CommandScheduler::GetInstance().Run();
 }
 

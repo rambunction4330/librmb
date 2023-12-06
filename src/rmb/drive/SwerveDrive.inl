@@ -34,7 +34,7 @@ namespace rmb {
 template <size_t NumModules>
 SwerveDrive<NumModules>::SwerveDrive(
     std::array<SwerveModule, NumModules> modules,
-    std::shared_ptr<const frc::Gyro> gyro,
+    std::shared_ptr<const rmb::Gyro> gyro,
     frc::HolonomicDriveController holonomicController, std::string visionTable,
     units::meters_per_second_t maxSpeed,
     units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose)
@@ -42,15 +42,13 @@ SwerveDrive<NumModules>::SwerveDrive(
       kinematics(std::array<frc::Translation2d, NumModules>{}),
       holonomicController(holonomicController),
       poseEstimator(frc::SwerveDrivePoseEstimator<NumModules>(
-          kinematics, gyro->GetRotation2d(), getModulePositions(),
+          kinematics, gyro->getRotation(), getModulePositions(),
           initialPose)),
       maxSpeed(maxSpeed), maxRotation(maxRotation) {
   std::array<frc::Translation2d, NumModules> translations;
   for (size_t i = 0; i < NumModules; i++) {
     translations[i] = modules[i].getModuleTranslation();
   }
-  kinematics = frc::SwerveDriveKinematics<NumModules>(translations);
-
   nt::NetworkTableInstance ntInstance = nt::NetworkTableInstance::GetDefault();
   std::shared_ptr<nt::NetworkTable> table = ntInstance.GetTable("swervedrive");
 
@@ -72,7 +70,7 @@ SwerveDrive<NumModules>::SwerveDrive(
 template <size_t NumModules>
 SwerveDrive<NumModules>::SwerveDrive(
     std::array<SwerveModule, NumModules> modules,
-    std::shared_ptr<const frc::Gyro> gyro,
+    std::shared_ptr<const rmb::Gyro> gyro,
     frc::HolonomicDriveController holonomicController,
     units::meters_per_second_t maxSpeed,
     units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose)
@@ -120,7 +118,7 @@ void SwerveDrive<NumModules>::driveCartesian(double xSpeed, double ySpeed,
     speeds = frc::ChassisSpeeds::FromFieldRelativeSpeeds(
         newXSpeed * maxSpeed, newYSpeed * maxSpeed,
         units::radians_per_second_t(zRotation * maxRotation),
-        gyro->GetRotation2d());
+        gyro->getRotation());
   } else {
     speeds = frc::ChassisSpeeds{newXSpeed * maxSpeed, ySpeed * maxSpeed,
                                 zRotation * maxRotation};
@@ -173,7 +171,7 @@ frc::Pose2d SwerveDrive<NumModules>::getPose() const {
 }
 
 template <size_t NumModules> frc::Pose2d SwerveDrive<NumModules>::updatePose() {
-  return poseEstimator.Update(gyro->GetRotation2d(), getModulePositions());
+  return poseEstimator.Update(gyro->getRotation(), getModulePositions());
 }
 
 template <size_t NumModules> void SwerveDrive<NumModules>::publishErrorsToNT() {
@@ -206,7 +204,7 @@ SwerveDrive<NumModules>::getTargetModuleStates() const {
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::resetPose(const frc::Pose2d &pose) {
-  poseEstimator.ResetPosition(gyro->GetRotation2d(), getModulePositions(),
+  poseEstimator.ResetPosition(gyro->getRotation(), getModulePositions(),
                               pose);
 }
 

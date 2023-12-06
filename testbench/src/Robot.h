@@ -12,6 +12,7 @@
 #include "RobotContainer.h"
 
 #include "frc/kinematics/SwerveDriveKinematics.h"
+#include "rmb/sensors/AHRS/AHRSGyro.h"
 #include <rmb/motorcontrol/Talon/TalonFXPositionController.h>
 #include <rmb/motorcontrol/Talon/TalonFXVelocityController.h>
 
@@ -49,7 +50,7 @@ private:
   // rmb::LogitechJoystick joystick = rmb::LogitechJoystick(0, 0.05);
   rmb::LogitechGamepad gamepad = rmb::LogitechGamepad(0, 0.05, false);
 
-  std::shared_ptr<AHRS> gyro;
+  std::shared_ptr<rmb::AHRSGyro> gyro;
 
   RobotContainer m_container;
 };

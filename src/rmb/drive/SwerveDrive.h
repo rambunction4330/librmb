@@ -32,6 +32,8 @@
 
 #include "networktables/DoubleTopic.h"
 
+#include <rmb/sensors/gyro.h>
+
 namespace rmb {
 
 /**
@@ -61,7 +63,7 @@ public:
    *
    */
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
-              std::shared_ptr<const frc::Gyro> gyro,
+              std::shared_ptr<const rmb::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
               std::string visionTable, units::meters_per_second_t maxSpeed,
               units::radians_per_second_t maxRotation,
@@ -78,7 +80,7 @@ public:
    * @param initialPose         Starting position of the robot for odometry.
    */
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
-              std::shared_ptr<const frc::Gyro> gyro,
+              std::shared_ptr<const rmb::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
               units::meters_per_second_t maxSpeed,
               units::radians_per_second_t maxRotation,
@@ -237,7 +239,7 @@ private:
   /**
    * Gyroscope to monitor the heading of the robot.
    */
-  std::shared_ptr<const frc::Gyro> gyro;
+  std::shared_ptr<const rmb::Gyro> gyro;
 
   /**
    * Kinematics to convert from module motion to chassis motion and visa versa.
