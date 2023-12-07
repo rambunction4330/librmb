@@ -39,63 +39,63 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:29: warning: Compound rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:39: warning: Member LogitechGamepad(int channel, double deadZone=0.0, bool squareOutputs=false) (function) of class rmb::LogitechGamepad is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:44: warning: Member GetLeftX() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:52: warning: Member LeftXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:55: warning: Member LeftXGreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:59: warning: Member GetLeftY() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:67: warning: Member LeftYLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:70: warning: Member LeftYgreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:74: warning: Member GetLeftStickButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:75: warning: Member GetLeftStickButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:78: warning: Member GetLeftStickButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:81: warning: Member LeftStickButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:83: warning: Member GetRightX() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:91: warning: Member RightXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:94: warning: Member RightXgreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:98: warning: Member GetRightY() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:106: warning: Member RightYLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:109: warning: Member RightYGearterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:113: warning: Member GetRightStickButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:114: warning: Member GetRightStickButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:117: warning: Member GetRightStickButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:120: warning: Member RightStickButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:122: warning: Member GetLeftTrigger() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:129: warning: Member LeftTriggerLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:132: warning: Member LeftTriggergreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:136: warning: Member GetRightTrigger() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:143: warning: Member RightTriggerLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:146: warning: Member RightTriggerGreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:150: warning: Member GetLeftBumper() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:151: warning: Member GetLeftBumperPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:154: warning: Member GetLeftBumperReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:157: warning: Member LeftBumper() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:159: warning: Member GetRightBumper() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:160: warning: Member GetRightBumperPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:163: warning: Member GetRightBumperReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:166: warning: Member RightBumper() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:168: warning: Member GetX() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:169: warning: Member GetXPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:170: warning: Member GetXReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:171: warning: Member X() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:173: warning: Member GetY() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:174: warning: Member GetYPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:175: warning: Member GetYReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:176: warning: Member Y() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:178: warning: Member GetA() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:179: warning: Member GetAPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:180: warning: Member GetAReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:181: warning: Member A() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:183: warning: Member GetB() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:184: warning: Member GetBPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:185: warning: Member GetBReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:186: warning: Member B() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:188: warning: Member GetBackButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:189: warning: Member GetBackButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:192: warning: Member GetBackButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:195: warning: Member BackButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:197: warning: Member GetStartButton() const (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:198: warning: Member GetStartButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:201: warning: Member GetStartButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
-/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:204: warning: Member StartButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:54: warning: Member LeftXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:57: warning: Member LeftXGreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:61: warning: Member GetLeftY() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:72: warning: Member LeftYLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:75: warning: Member LeftYgreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:79: warning: Member GetLeftStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:80: warning: Member GetLeftStickButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:83: warning: Member GetLeftStickButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:86: warning: Member LeftStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:88: warning: Member GetRightX() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:99: warning: Member RightXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:102: warning: Member RightXgreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:106: warning: Member GetRightY() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:117: warning: Member RightYLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:120: warning: Member RightYGearterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:124: warning: Member GetRightStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:125: warning: Member GetRightStickButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:128: warning: Member GetRightStickButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:131: warning: Member RightStickButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:133: warning: Member GetLeftTrigger() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:143: warning: Member LeftTriggerLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:146: warning: Member LeftTriggergreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:150: warning: Member GetRightTrigger() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:160: warning: Member RightTriggerLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:163: warning: Member RightTriggerGreaterThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:167: warning: Member GetLeftBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:168: warning: Member GetLeftBumperPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:171: warning: Member GetLeftBumperReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:174: warning: Member LeftBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:176: warning: Member GetRightBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:177: warning: Member GetRightBumperPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:180: warning: Member GetRightBumperReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:183: warning: Member RightBumper() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:185: warning: Member GetX() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:186: warning: Member GetXPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:187: warning: Member GetXReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:188: warning: Member X() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:190: warning: Member GetY() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:191: warning: Member GetYPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:192: warning: Member GetYReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:193: warning: Member Y() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:195: warning: Member GetA() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:196: warning: Member GetAPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:197: warning: Member GetAReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:198: warning: Member A() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:200: warning: Member GetB() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:201: warning: Member GetBPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:202: warning: Member GetBReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:203: warning: Member B() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:205: warning: Member GetBackButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:206: warning: Member GetBackButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:209: warning: Member GetBackButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:212: warning: Member BackButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:214: warning: Member GetStartButton() const (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:215: warning: Member GetStartButtonPressed() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:218: warning: Member GetStartButtonReleased() (function) of class rmb::LogitechGamepad is not documented.
+/home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:221: warning: Member StartButton() const (function) of class rmb::LogitechGamepad is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:14: warning: Member leftX (variable) of struct rmb::LogitechGamepad::Axes is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:15: warning: Member leftY (variable) of struct rmb::LogitechGamepad::Axes is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:16: warning: Member leftTrigger (variable) of struct rmb::LogitechGamepad::Axes is not documented.
