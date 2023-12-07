@@ -6,7 +6,7 @@ namespace rmb {
 
 TalonFXVelocityController::TalonFXVelocityController(
     const TalonFXVelocityController::CreateInfo &createInfo)
-    : motorcontroller(createInfo.config.id),
+    : motorcontroller(createInfo.config.id, "rio"),
       usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
 
   /*motorcontroller.ConfigFactoryDefault();

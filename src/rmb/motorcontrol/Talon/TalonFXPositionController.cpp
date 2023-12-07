@@ -14,7 +14,7 @@ namespace rmb {
 
 TalonFXPositionController::TalonFXPositionController(
     const TalonFXPositionController::CreateInfo &createInfo)
-    : motorcontroller(createInfo.config.id), range(createInfo.range),
+    : motorcontroller(createInfo.config.id, "rio"), range(createInfo.range),
       usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
 
   /*motorcontroller.ConfigFactoryDefault();

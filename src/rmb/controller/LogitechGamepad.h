@@ -46,7 +46,9 @@ public:
     if (std::abs(raw) < deadZone) {
       return 0.0;
     }
-    std::cout << "raw: " << raw << std::endl;
+
+    raw = (raw - deadZone) / (1.0 - deadZone); // Normalize from range 0.0-1.0
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
   frc2::Trigger LeftXLessThan(double threshold) const {
@@ -61,6 +63,9 @@ public:
     if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+
+    raw = (raw - deadZone) / (1.0 - deadZone); // Normalize from range 0.0-1.0
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
 
@@ -85,6 +90,9 @@ public:
     if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+
+    raw = (raw - deadZone) / (1.0 - deadZone); // Normalize from range 0.0-1.0
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
 
@@ -100,6 +108,9 @@ public:
     if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+
+    raw = (raw - deadZone) / (1.0 - deadZone);
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
 
@@ -124,6 +135,9 @@ public:
     if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+
+    raw = (raw - deadZone) / (1.0 - deadZone);
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
   frc2::Trigger LeftTriggerLessThan(double threshold) const {
@@ -138,6 +152,9 @@ public:
     if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+
+    raw = (raw - deadZone) / (1.0 - deadZone);
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
   frc2::Trigger RightTriggerLessThan(double threshold) const {
