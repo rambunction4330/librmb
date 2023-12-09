@@ -293,17 +293,16 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:66: warning: Member feedbackConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:67: warning: Member openLoopConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:68: warning: Member canCoderConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:13: warning: Member AHRSGyro(std::unique_ptr< AHRS > gyro) (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:15: warning: Member AHRSGyro(frc::SerialPort::Port port) (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:19: warning: Member getZRotation() const override (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:20: warning: Member resetZRotation(units::turn_t offset=0_tr) override (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:21: warning: Member getRotation() const override (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:23: warning: Member getXAcceleration() const override (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:24: warning: Member getYAcceleration() const override (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:25: warning: Member getZAcceleration() const override (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:27: warning: Member getXVelocity() const override (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:28: warning: Member getYVelocity() const override (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:29: warning: Member getZVelocity() const override (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:13: warning: Member AHRSGyro(frc::SerialPort::Port port) (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:17: warning: Member getZRotation() const override (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:18: warning: Member resetZRotation(units::turn_t offset=0_tr) override (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:19: warning: Member getRotation() const override (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:21: warning: Member getXAcceleration() const override (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:22: warning: Member getYAcceleration() const override (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:23: warning: Member getZAcceleration() const override (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:25: warning: Member getXVelocity() const override (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:26: warning: Member getYVelocity() const override (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:27: warning: Member getZVelocity() const override (function) of class rmb::AHRSGyro is not documented.
 /home/runner/work/librmb/librmb/src/rmb/sensors/gyro.h:15: warning: Member getZRotation() const =0 (function) of class rmb::Gyro is not documented.
 /home/runner/work/librmb/librmb/src/rmb/sensors/gyro.h:16: warning: Member getRotation() const =0 (function) of class rmb::Gyro is not documented.
 /home/runner/work/librmb/librmb/src/rmb/sensors/gyro.h:17: warning: Member resetZRotation(units::turn_t offset=0_tr)=0 (function) of class rmb::Gyro is not documented.
