@@ -52,5 +52,7 @@ private:
 
   std::shared_ptr<rmb::AHRSGyro> gyro;
 
+  std::unique_ptr<rmb::TalonFXVelocityController> positionController;
+
   RobotContainer m_container;
 };

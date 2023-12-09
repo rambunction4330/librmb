@@ -64,7 +64,7 @@ SwerveDrive<NumModules>::SwerveDrive(
     // wpi::SendableRegistry::SetName(&this->modules[i], "mod" + std::to_string(i), "angle");
   }
 
-  publishErrorsToNT();
+  // publishErrorsToNT();
 }
 
 template <size_t NumModules>

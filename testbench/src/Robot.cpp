@@ -23,7 +23,6 @@
 #include <iostream>
 
 void Robot::RobotInit() {
-
   // Because Aiden is evil & lazy
   std::array<rmb::SwerveModule, 4> modules = {
       rmb::SwerveModule(
@@ -57,6 +56,8 @@ void Robot::RobotInit() {
 
   };
 
+  std::cout << "After module createion!" << std::endl;
+
   gyro = std::make_shared<rmb::AHRSGyro>((int)constants::gyroPort);
 
   swerveDrive = std::make_unique<rmb::SwerveDrive<4>>(
@@ -69,6 +70,8 @@ void Robot::RobotInit() {
               frc::TrapezoidProfile<units::radian>::Constraints(
                   6.28_rad_per_s, 3.14_rad_per_s / 1_s))),
       7.0_mps, 2.0_tps);
+
+  std::cout << "after swerve configuration!" << std::endl;
 }
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }

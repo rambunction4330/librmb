@@ -139,7 +139,7 @@ TalonFXVelocityController::TalonFXVelocityController(
             ctre::phoenix6::signals::AbsoluteSensorRangeValue::Unsigned_0To1);
     // Leave offset to offset function
 
-    canCoder->GetConfigurator().Apply(canCoderConfig, 0.0_s);
+    canCoder->GetConfigurator().Apply(canCoderConfig);
 
     // talonFXConfig.Feedback.RotorToSensorRatio; // This is for FusedCANCoder
     talonFXConfig.Feedback.WithRemoteCANcoder(canCoder.value());
@@ -156,7 +156,7 @@ TalonFXVelocityController::TalonFXVelocityController(
   // But we can't use this firmware feature because CTRE are capitalist pigs
   // and we (as of writing) don't feel like paying for v6 Pro
 
-  configurator.Apply(talonFXConfig, 0.0_s);
+  configurator.Apply(talonFXConfig);
 
   gearRatio = createInfo.feedbackConfig.sensorToMechanismRatio;
   tolerance = createInfo.pidConfig.tolerance;
@@ -225,9 +225,9 @@ units::radians_per_second_t TalonFXVelocityController::getVelocity() const {
   // }
 
   if (usingCANCoder) {
-    return canCoder->GetVelocity().GetValue();
+    return canCoder->GetVelocity().WaitForUpdate(0.050_s).GetValue();
   } else {
-    return motorcontroller.GetVelocity().GetValue();
+    return motorcontroller.GetVelocity().WaitForUpdate(0.050_s).GetValue();
   }
 }
 
@@ -245,9 +245,9 @@ void TalonFXVelocityController::stop() { motorcontroller.StopMotor(); }
 
 units::radian_t TalonFXVelocityController::getPosition() const {
   if (usingCANCoder) {
-    return canCoder->GetPosition().GetValue();
+    return canCoder->GetPosition().WaitForUpdate(0.050_s).GetValue();
   } else {
-    return motorcontroller.GetPosition().GetValue();
+    return motorcontroller.GetPosition().WaitForUpdate(0.050_s).GetValue();
   }
 }
 

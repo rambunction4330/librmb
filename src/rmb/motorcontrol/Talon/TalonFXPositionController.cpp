@@ -14,7 +14,7 @@ namespace rmb {
 
 TalonFXPositionController::TalonFXPositionController(
     const TalonFXPositionController::CreateInfo &createInfo)
-    : motorcontroller(createInfo.config.id, "rio"), range(createInfo.range),
+    : motorcontroller(createInfo.config.id), range(createInfo.range),
       usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
 
   /*motorcontroller.ConfigFactoryDefault();
@@ -103,9 +103,8 @@ TalonFXPositionController::TalonFXPositionController(
   gearRatio = createInfo.feedbackConfig.gearRatio;
   tolerance = createInfo.pidConfig.tolerance;*/
 
-  auto &configurator = motorcontroller.GetConfigurator();
-
   ctre::phoenix6::configs::TalonFXConfiguration talonFXConfig{};
+  std::cout << "begin config " << createInfo.config.id << std::endl;
 
   talonFXConfig.MotorOutput.Inverted =
       ctre::phoenix6::signals::InvertedValue(createInfo.config.inverted);
@@ -174,7 +173,7 @@ TalonFXPositionController::TalonFXPositionController(
             ctre::phoenix6::signals::AbsoluteSensorRangeValue::Unsigned_0To1);
     // Leave offset to offset function
 
-    canCoder->GetConfigurator().Apply(canCoderConfig, 0.0_s);
+    canCoder->GetConfigurator().Apply(canCoderConfig, 0.050_s);
 
     // talonFXConfig.Feedback.RotorToSensorRatio; // This is for FusedCANCoder
     talonFXConfig.Feedback.WithRemoteCANcoder(canCoder.value());
@@ -194,7 +193,9 @@ TalonFXPositionController::TalonFXPositionController(
   talonFXConfig.ClosedLoopGeneral.ContinuousWrap =
       createInfo.range.isContinuous;
 
-  configurator.Apply(talonFXConfig, 0.0_s);
+  std::cout << "before apply position " << createInfo.config.id << std::endl;
+  motorcontroller.GetConfigurator().Apply(talonFXConfig);
+  std::cout << "after apply position " << createInfo.config.id << std::endl;
 
   sensorToMechanismRatio = createInfo.feedbackConfig.sensorToMechanismRatio;
   tolerance = createInfo.pidConfig.tolerance;
@@ -230,6 +231,7 @@ units::radian_t TalonFXPositionController::getTargetPosition() const {
                motorcontroller.GetClosedLoopTarget())) /
            gearRatio;
   }*/
+  std::cout << "getTargetPosition" << std::endl;
   if (motorcontroller.GetAppliedControl()->GetControlInfo()["Name"] ==
       "PositionDutyCycle") {
     // Theoretically, this doesn't 100% guarantee that the type behind the
@@ -273,9 +275,9 @@ units::radians_per_second_t TalonFXPositionController::getVelocity() const {
   }*/
 
   if (usingCANCoder) {
-    return canCoder->GetVelocity().GetValue();
+    return canCoder->GetVelocity().WaitForUpdate(0.050_s).GetValue();
   } else {
-    return motorcontroller.GetVelocity().GetValue();
+    return motorcontroller.GetVelocity().WaitForUpdate(0.050_s).GetValue();
   }
 }
 
@@ -288,9 +290,9 @@ units::radian_t TalonFXPositionController::getPosition() const {
   //       motorcontroller.GetSelectedSensorPosition() / gearRatio);
   // }
   if (usingCANCoder) {
-    return canCoder->GetPosition().GetValue();
+    return canCoder->GetPosition().WaitForUpdate(0.050_s).GetValue();
   } else {
-    return motorcontroller.GetPosition().GetValue();
+    return motorcontroller.GetPosition().WaitForUpdate(0.050_s).GetValue();
   }
 }
 
