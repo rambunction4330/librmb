@@ -5,7 +5,7 @@ warning: ignoring unsupported tag 'FULL_SIDEBAR' at line 1569, file docs/Doxyfil
 warning: ignoring unsupported tag 'OBFUSCATE_EMAILS' at line 1600, file docs/Doxyfile
 warning: ignoring unsupported tag 'MATHJAX_VERSION' at line 1659, file docs/Doxyfile
 warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/Doxyfile
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:10: warning: Compound rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:11: warning: Compound rmb::AHRSGyro is not documented.
 /home/runner/work/librmb/librmb/src/rmb/sensors/gyro.h:13: warning: Compound rmb::Gyro is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:11: warning: Compound rmb::LogitechGamepad is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:13: warning: Compound rmb::LogitechGamepad::Axes is not documented.
@@ -293,9 +293,8 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:66: warning: Member feedbackConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:67: warning: Member openLoopConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:68: warning: Member canCoderConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:12: warning: Member AHRSGyro(std::unique_ptr< AHRS > gyro) (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:14: warning: Member AHRSGyro(AHRS &&gyro) (function) of class rmb::AHRSGyro is not documented.
-/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:15: warning: Member AHRSGyro(int id) (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:13: warning: Member AHRSGyro(std::unique_ptr< AHRS > gyro) (function) of class rmb::AHRSGyro is not documented.
+/home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:15: warning: Member AHRSGyro(frc::SerialPort::Port port) (function) of class rmb::AHRSGyro is not documented.
 /home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:19: warning: Member getZRotation() const override (function) of class rmb::AHRSGyro is not documented.
 /home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:20: warning: Member resetZRotation(units::turn_t offset=0_tr) override (function) of class rmb::AHRSGyro is not documented.
 /home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:21: warning: Member getRotation() const override (function) of class rmb::AHRSGyro is not documented.
