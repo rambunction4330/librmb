@@ -51,7 +51,8 @@ private:
   // rmb::LogitechJoystick joystick = rmb::LogitechJoystick(0, 0.05);
   rmb::LogitechGamepad gamepad = rmb::LogitechGamepad(0, 0.05, false);
 
-  std::shared_ptr<rmb::AHRSGyro> gyro = std::make_shared<rmb::AHRSGyro>(constants::gyroPort);
+  std::shared_ptr<rmb::AHRSGyro> gyro =
+      std::make_shared<rmb::AHRSGyro>(constants::gyroPort);
 
   RobotContainer m_container;
 };
