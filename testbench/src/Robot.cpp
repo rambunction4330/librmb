@@ -58,8 +58,6 @@ void Robot::RobotInit() {
 
   std::cout << "After module createion!" << std::endl;
 
-  gyro = std::make_shared<rmb::AHRSGyro>((int)constants::gyroPort);
-
   swerveDrive = std::make_unique<rmb::SwerveDrive<4>>(
       std::move(modules), gyro,
       frc::HolonomicDriveController(

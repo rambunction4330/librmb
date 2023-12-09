@@ -1,4 +1,5 @@
 #include "AHRS.h"
+#include "frc/SerialPort.h"
 #include "frc/geometry/Rotation2d.h"
 #include "units/velocity.h"
 #include <memory>
@@ -7,10 +8,8 @@
 namespace rmb {
 AHRSGyro::AHRSGyro(std::unique_ptr<AHRS> gyro) : gyro(std::move(gyro)) {}
 
-AHRSGyro::AHRSGyro(AHRS &&gyro)
-    : gyro(std::make_unique<AHRS>(std::move(gyro))) {}
-
-AHRSGyro::AHRSGyro(int id) : AHRSGyro(AHRS(frc::SerialPort::Port(id))) {}
+AHRSGyro::AHRSGyro(frc::SerialPort::Port port)
+    : gyro(std::make_unique<AHRS>(port)) {}
 
 units::turn_t AHRSGyro::AHRSGyro::getZRotation() const {
   return units::degree_t(gyro->GetRotation2d().Degrees()) - offset;

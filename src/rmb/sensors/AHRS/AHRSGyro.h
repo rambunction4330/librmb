@@ -1,6 +1,7 @@
 #pragma once
 
 #include "AHRS.h"
+#include "frc/SerialPort.h"
 #include "frc/geometry/Rotation2d.h"
 #include "units/acceleration.h"
 #include <memory>
@@ -11,8 +12,7 @@ class AHRSGyro : public Gyro {
 public:
   AHRSGyro(std::unique_ptr<AHRS> gyro);
 
-  AHRSGyro(AHRS &&gyro);
-  AHRSGyro(int id);
+  AHRSGyro(frc::SerialPort::Port port);
 
   virtual ~AHRSGyro() = default;
 
