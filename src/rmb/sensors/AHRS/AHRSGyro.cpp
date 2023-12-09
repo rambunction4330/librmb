@@ -6,7 +6,6 @@
 #include <rmb/sensors/AHRS/AHRSGyro.h>
 
 namespace rmb {
-AHRSGyro::AHRSGyro(std::unique_ptr<AHRS> gyro) : gyro(std::move(gyro)) {}
 
 AHRSGyro::AHRSGyro(frc::SerialPort::Port port)
     : gyro(std::make_unique<AHRS>(port)) {}

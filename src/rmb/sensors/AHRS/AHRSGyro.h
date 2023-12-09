@@ -10,8 +10,6 @@
 namespace rmb {
 class AHRSGyro : public Gyro {
 public:
-  AHRSGyro(std::unique_ptr<AHRS> gyro);
-
   AHRSGyro(frc::SerialPort::Port port);
 
   virtual ~AHRSGyro() = default;
