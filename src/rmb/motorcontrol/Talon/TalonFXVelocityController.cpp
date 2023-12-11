@@ -185,7 +185,8 @@ void TalonFXVelocityController::setVelocity(
   // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
   motorcontroller.SetControl(
       ctre::phoenix6::controls::VelocityDutyCycle(velocity));
-  // std::cout << "velocity duty cycle request: " << ((units::millisecond_t) frc::Timer::GetFPGATimestamp() - start)() << std::endl;
+  // std::cout << "velocity duty cycle request: " << ((units::millisecond_t)
+  // frc::Timer::GetFPGATimestamp() - start)() << std::endl;
 }
 
 units::radians_per_second_t
@@ -196,7 +197,8 @@ TalonFXVelocityController::getTargetVelocity() const {
   //   return RawInternalVelocityUnit_t(motorcontroller.GetClosedLoopTarget() /
   //                                    gearRatio);
   // }
-  return RawInternalVelocityUnit_t(motorcontroller.GetClosedLoopReference().GetValue());
+  return RawInternalVelocityUnit_t(
+      motorcontroller.GetClosedLoopReference().GetValue());
 }
 
 units::radians_per_second_t TalonFXVelocityController::getVelocity() const {

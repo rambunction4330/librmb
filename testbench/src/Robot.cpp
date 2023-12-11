@@ -57,7 +57,6 @@ void Robot::RobotInit() {
 
   };
 
-
   swerveDrive = std::make_unique<rmb::SwerveDrive<4>>(
       std::move(modules), gyro,
       frc::HolonomicDriveController(
@@ -68,7 +67,6 @@ void Robot::RobotInit() {
               frc::TrapezoidProfile<units::radian>::Constraints(
                   6.28_rad_per_s, 3.14_rad_per_s / 1_s))),
       7.0_mps, 2.0_tps);
-
 }
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }

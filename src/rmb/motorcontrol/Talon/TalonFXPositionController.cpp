@@ -218,7 +218,8 @@ void TalonFXPositionController::setPosition(units::radian_t position) {
   }*/
   // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
   ctre::phoenix6::controls::PositionDutyCycle request(targetPosition);
-  // std::cout << "position duty cycle request: " << ((units::millisecond_t) frc::Timer::GetFPGATimestamp() - start)() << std::endl;
+  // std::cout << "position duty cycle request: " << ((units::millisecond_t)
+  // frc::Timer::GetFPGATimestamp() - start)() << std::endl;
 
   motorcontroller.SetControl(request);
 }
