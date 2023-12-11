@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "Robot.h"
+#include "frc/Timer.h"
 #include "frc/controller/HolonomicDriveController.h"
 #include "frc/controller/ProfiledPIDController.h"
 #include "frc/smartdashboard/SmartDashboard.h"
@@ -15,12 +16,12 @@
 
 #include <alloca.h>
 #include <frc2/command/CommandScheduler.h>
-#include <limits>
 #include <memory>
 
 #include "Constants.h"
-#include "wpi/raw_ostream.h"
+#include "units/time.h"
 #include <iostream>
+#include <ostream>
 
 void Robot::RobotInit() {
   // Because Aiden is evil & lazy
@@ -56,7 +57,6 @@ void Robot::RobotInit() {
 
   };
 
-  std::cout << "After module createion!" << std::endl;
 
   swerveDrive = std::make_unique<rmb::SwerveDrive<4>>(
       std::move(modules), gyro,
@@ -69,7 +69,6 @@ void Robot::RobotInit() {
                   6.28_rad_per_s, 3.14_rad_per_s / 1_s))),
       7.0_mps, 2.0_tps);
 
-  std::cout << "after swerve configuration!" << std::endl;
 }
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
@@ -89,20 +88,25 @@ void Robot::AutonomousExit() {}
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
+  units::millisecond_t startTime = frc::Timer::GetFPGATimestamp();
   // swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()),
   //                             -joystick.GetY() * joystick.GetThrottle(),
   //                             -joystick.GetTwist() * joystick.GetThrottle(),
   //                             false);
 
+  // std::cout << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() -
+  //               startTime)()
+  //           << std::endl;
+
   swerveDrive->driveCartesian(gamepad.GetLeftX(), -gamepad.GetLeftY(),
                               -gamepad.GetRightY(), false);
 
-  for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
-    const auto &module = swerveDrive->getModules()[i];
-    module.smartdashboardDisplayTargetState(std::to_string(i));
-  }
-
-  swerveDrive->publishErrorsToNT();
+  // for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
+  //   const auto &module = swerveDrive->getModules()[i];
+  //   module.smartdashboardDisplayTargetState(std::to_string(i));
+  // }
+  //
+  // swerveDrive->publishErrorsToNT();
 }
 
 void Robot::TeleopExit() {}

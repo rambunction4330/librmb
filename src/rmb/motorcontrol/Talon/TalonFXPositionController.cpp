@@ -8,6 +8,7 @@
 #include "ctre/phoenix6/core/CoreCANcoder.hpp"
 #include "ctre/phoenix6/core/CoreTalonFX.hpp"
 #include "units/angle.h"
+#include "units/time.h"
 #include <iostream>
 
 namespace rmb {
@@ -104,7 +105,6 @@ TalonFXPositionController::TalonFXPositionController(
   tolerance = createInfo.pidConfig.tolerance;*/
 
   ctre::phoenix6::configs::TalonFXConfiguration talonFXConfig{};
-  std::cout << "begin config " << createInfo.config.id << std::endl;
 
   talonFXConfig.MotorOutput.Inverted =
       ctre::phoenix6::signals::InvertedValue(createInfo.config.inverted);
@@ -193,9 +193,7 @@ TalonFXPositionController::TalonFXPositionController(
   talonFXConfig.ClosedLoopGeneral.ContinuousWrap =
       createInfo.range.isContinuous;
 
-  std::cout << "before apply position " << createInfo.config.id << std::endl;
   motorcontroller.GetConfigurator().Apply(talonFXConfig);
-  std::cout << "after apply position " << createInfo.config.id << std::endl;
 
   sensorToMechanismRatio = createInfo.feedbackConfig.sensorToMechanismRatio;
   tolerance = createInfo.pidConfig.tolerance;
@@ -218,7 +216,9 @@ void TalonFXPositionController::setPosition(units::radian_t position) {
         ctre::phoenix::motorcontrol::ControlMode::Position,
         (RawIntegratedPositionUnit_t(targetPosition) * gearRatio)());
   }*/
+  // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
   ctre::phoenix6::controls::PositionDutyCycle request(targetPosition);
+  // std::cout << "position duty cycle request: " << ((units::millisecond_t) frc::Timer::GetFPGATimestamp() - start)() << std::endl;
 
   motorcontroller.SetControl(request);
 }
@@ -231,26 +231,8 @@ units::radian_t TalonFXPositionController::getTargetPosition() const {
                motorcontroller.GetClosedLoopTarget())) /
            gearRatio;
   }*/
-  std::cout << "getTargetPosition" << std::endl;
-  if (motorcontroller.GetAppliedControl()->GetControlInfo()["Name"] ==
-      "PositionDutyCycle") {
-    // Theoretically, this doesn't 100% guarantee that the type behind the
-    // pointer is controls::PositionDutyCycle* because CTRE might have screwed
-    // up something in their codebase or don't handle faults correctly somewhere
-    // but we're going to trust them anyways.
-    // Practice safe sex, wear condoms. They don't work 100% of the time,
-    // but the are better than nothing. Let this piece of code be your role
-    // model
-
-    return ((ctre::phoenix6::controls::PositionDutyCycle *)motorcontroller
-                .GetAppliedControl()
-                .get())
-        ->Position;
-  } else {
-    std::cout << "(" << __FILE__ << ":" << __LINE__
-              << ") Could not retrieve PositionDutyCycle" << std::endl;
-    return 0.0_rad;
-  }
+  return RawIntegratedPositionUnit_t(
+      motorcontroller.GetClosedLoopReference().GetValue());
 }
 
 units::radian_t TalonFXPositionController::getMinPosition() const {
@@ -290,9 +272,9 @@ units::radian_t TalonFXPositionController::getPosition() const {
   //       motorcontroller.GetSelectedSensorPosition() / gearRatio);
   // }
   if (usingCANCoder) {
-    return canCoder->GetPosition().WaitForUpdate(0.050_s).GetValue();
+    return canCoder->GetPosition().GetValue();
   } else {
-    return motorcontroller.GetPosition().WaitForUpdate(0.050_s).GetValue();
+    return motorcontroller.GetPosition().GetValue();
   }
 }
 

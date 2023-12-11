@@ -182,8 +182,10 @@ void TalonFXVelocityController::setVelocity(
         (RawInternalVelocityUnit_t(targetVelocity * gearRatio))());
   }*/
 
+  // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
   motorcontroller.SetControl(
       ctre::phoenix6::controls::VelocityDutyCycle(velocity));
+  // std::cout << "velocity duty cycle request: " << ((units::millisecond_t) frc::Timer::GetFPGATimestamp() - start)() << std::endl;
 }
 
 units::radians_per_second_t
@@ -194,25 +196,7 @@ TalonFXVelocityController::getTargetVelocity() const {
   //   return RawInternalVelocityUnit_t(motorcontroller.GetClosedLoopTarget() /
   //                                    gearRatio);
   // }
-  if (motorcontroller.GetAppliedControl()->GetControlInfo()["Name"] ==
-      "VelocityDutyCycle") {
-    // Theoretically, this doesn't 100% guarantee that the type behind the
-    // pointer is controls::PositionDutyCycle* because CTRE might have screwed
-    // up something in their codebase or don't handle faults correctly somewhere
-    // but we're going to trust them anyways.
-    // Practice safe sex, wear condoms. They don't work 100% of the time,
-    // but the are better than nothing. Let this piece of code be your role
-    // model
-
-    return ((ctre::phoenix6::controls::VelocityDutyCycle *)motorcontroller
-                .GetAppliedControl()
-                .get())
-        ->Velocity;
-  } else {
-    std::cout << "(" << __FILE__ << ":" << __LINE__
-              << ") Could not retrieve PositionDutyCycle" << std::endl;
-    return 0.0_rad_per_s;
-  }
+  return RawInternalVelocityUnit_t(motorcontroller.GetClosedLoopReference().GetValue());
 }
 
 units::radians_per_second_t TalonFXVelocityController::getVelocity() const {

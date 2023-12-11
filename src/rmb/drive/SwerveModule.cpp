@@ -35,13 +35,12 @@ void SwerveModule::setState(const units::meters_per_second_t &velocity,
 }
 
 void SwerveModule::setState(const frc::SwerveModuleState &state) {
+  // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
   auto optomized = frc::SwerveModuleState::Optimize(state, getState().angle);
-  if (breakMode && state.speed == 0.0_mps) {
-    std::cout << "stop module!" << std::endl;
-    velocityController->stop();
-  } else {
-    velocityController->setVelocity(optomized.speed);
-  }
+  // std::cout << "optimize time: "
+  //           << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() - start)()
+  //           << std::endl;
+  velocityController->setVelocity(optomized.speed);
   angularController->setPosition(optomized.angle.Radians());
 }
 
@@ -57,8 +56,20 @@ void SwerveModule::smartdashboardDisplayTargetState(
 }
 
 frc::SwerveModuleState SwerveModule::getState() const {
-  return {velocityController->getVelocity(),
-          frc::Rotation2d(angularController->getPosition())};
+  // units::millisecond_t startGetVelocity = frc::Timer::GetFPGATimestamp();
+  auto velocity = velocityController->getVelocity();
+  // std::cout << "getVelocity time: "
+  //           << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() -
+  //               startGetVelocity)()
+  //           << std::endl;
+
+  // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
+  auto rotation = frc::Rotation2d(angularController->getPosition());
+  // std::cout << "getRotation time: "
+  //           << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() - start)()
+  //           << std::endl;
+
+  return {velocity, rotation};
 }
 
 frc::SwerveModulePosition SwerveModule::getPosition() const {

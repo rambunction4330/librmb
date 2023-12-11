@@ -1,5 +1,6 @@
 #pragma once
 
+#include "frc/Timer.h"
 #include "frc/controller/HolonomicDriveController.h"
 #include "frc/estimator/SwerveDrivePoseEstimator.h"
 #include "frc/interfaces/Gyro.h"
@@ -21,6 +22,7 @@
 #include "units/angular_velocity.h"
 #include "units/length.h"
 #include "units/math.h"
+#include "units/time.h"
 #include "units/velocity.h"
 #include "wpi/array.h"
 #include "wpi/sendable/SendableRegistry.h"
@@ -28,6 +30,7 @@
 #include <array>
 #include <cstddef>
 #include <iostream>
+#include <ratio>
 
 namespace rmb {
 
@@ -42,8 +45,7 @@ SwerveDrive<NumModules>::SwerveDrive(
       kinematics(std::array<frc::Translation2d, NumModules>{}),
       holonomicController(holonomicController),
       poseEstimator(frc::SwerveDrivePoseEstimator<NumModules>(
-          kinematics, gyro->getRotation(), getModulePositions(),
-          initialPose)),
+          kinematics, gyro->getRotation(), getModulePositions(), initialPose)),
       maxSpeed(maxSpeed), maxRotation(maxRotation) {
   std::array<frc::Translation2d, NumModules> translations;
   for (size_t i = 0; i < NumModules; i++) {
@@ -59,9 +61,11 @@ SwerveDrive<NumModules>::SwerveDrive(
 
   for (size_t i = 0; i < NumModules; i++) {
     ntPositionErrorTopics[i] =
-        table->GetDoubleTopic("mod" + std::to_string(i) + "_poserror").Publish();
+        table->GetDoubleTopic("mod" + std::to_string(i) + "_poserror")
+            .Publish();
 
-    // wpi::SendableRegistry::SetName(&this->modules[i], "mod" + std::to_string(i), "angle");
+    // wpi::SendableRegistry::SetName(&this->modules[i], "mod" +
+    // std::to_string(i), "angle");
   }
 
   // publishErrorsToNT();
@@ -124,14 +128,24 @@ void SwerveDrive<NumModules>::driveCartesian(double xSpeed, double ySpeed,
                                 zRotation * maxRotation};
   }
 
-  driveModuleStates(kinematics.ToSwerveModuleStates(speeds));
+  auto states = kinematics.ToSwerveModuleStates(speeds);
+  // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
+  driveModuleStates(states);
+  // std::cout << "swerveModuleStates time: "
+  //           << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() - start)()
+  //           << std::endl;
 }
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::driveModuleStates(
     std::array<frc::SwerveModuleState, NumModules> states) {
   for (size_t i = 0; i < NumModules; i++) {
+    // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
     modules[i].setState(states[i]);
+    // std::cout << "setState time: "
+    //           << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() -
+    //               start)()
+    //           << std::endl;
   }
 }
 
@@ -188,7 +202,6 @@ template <size_t NumModules> void SwerveDrive<NumModules>::publishErrorsToNT() {
 
     ntPositionErrorTopics[i].Set(error());
   }
-
 }
 
 template <size_t NumModules>
@@ -204,8 +217,7 @@ SwerveDrive<NumModules>::getTargetModuleStates() const {
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::resetPose(const frc::Pose2d &pose) {
-  poseEstimator.ResetPosition(gyro->getRotation(), getModulePositions(),
-                              pose);
+  poseEstimator.ResetPosition(gyro->getRotation(), getModulePositions(), pose);
 }
 
 template <size_t NumModules>
