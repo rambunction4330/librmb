@@ -52,14 +52,15 @@
 // void DifferentialDrive::curvatureDrive(double xSpeed, double zRotation,
 //                                        bool turnInPlace) {
 //   auto wheelSpeeds =
-//       frc::DifferentialDrive::CurvatureDriveIK(xSpeed, zRotation, turnInPlace);
+//       frc::DifferentialDrive::CurvatureDriveIK(xSpeed, zRotation,
+//       turnInPlace);
 //   left->setPower(wheelSpeeds.left);
 //   right->setPower(wheelSpeeds.right);
 // }
 //
 // void DifferentialDrive::tankDrive(double leftSpeed, double rightSpeed) {
-//   auto wheelSpeeds = frc::DifferentialDrive::TankDriveIK(leftSpeed, rightSpeed);
-//   left->setPower(wheelSpeeds.left);
+//   auto wheelSpeeds = frc::DifferentialDrive::TankDriveIK(leftSpeed,
+//   rightSpeed); left->setPower(wheelSpeeds.left);
 //   right->setPower(wheelSpeeds.right);
 // }
 //
@@ -80,7 +81,8 @@
 //   return {left->getVelocity(), right->getVelocity()};
 // }
 //
-// void DifferentialDrive::driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds) {
+// void DifferentialDrive::driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds)
+// {
 //   driveWheelSpeeds(kinematics.ToWheelSpeeds(chassisSpeeds));
 // }
 //
@@ -135,8 +137,10 @@
 //     std::initializer_list<frc2::Subsystem *> driveRequirements) {
 //   //
 //   // return pathplanner::PPRamseteCommand(
-//   //            trajectory, [this]() { return getPose(); }, ramseteController,
-//   //            kinematics, [this](auto l, auto r) { driveWheelSpeeds(l, r); },
+//   //            trajectory, [this]() { return getPose(); },
+//   ramseteController,
+//   //            kinematics, [this](auto l, auto r) { driveWheelSpeeds(l, r);
+//   },
 //   //            driveRequirements)
 //   //     .ToPtr();
 //   //
@@ -172,7 +176,7 @@
 //   // }
 //   //
 //   // commands.emplace_back(
-//   //     autoBuilder.stopEventGroup(trajectoryGroup.back().getEndStopEvent()));
+//   // autoBuilder.stopEventGroup(trajectoryGroup.back().getEndStopEvent()));
 //   //
 //   // return frc2::cmd::Sequence(std::move(commands));
 //
