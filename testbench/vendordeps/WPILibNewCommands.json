@@ -18,7 +18,7 @@
     {
       "groupId": "edu.wpi.first.wpilibNewCommands",
       "artifactId": "wpilibNewCommands-cpp",
-      "version": "wpilib",
+      "version": "2024.+",
       "libName": "wpilibNewCommands",
       "headerClassifier": "headers",
       "sourcesClassifier": "sources",

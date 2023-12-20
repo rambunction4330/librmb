@@ -226,6 +226,8 @@ private:
 
   std::array<nt::DoublePublisher, NumModules> ntVelocityErrorTopics;
   std::array<nt::DoublePublisher, NumModules> ntPositionErrorTopics;
+  std::array<nt::DoublePublisher, NumModules> ntPositionTopics;
+  std::array<nt::DoublePublisher, NumModules> ntVelocityTopics;
 
   //-----------------
   // Drive Variables

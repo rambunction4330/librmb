@@ -1,5 +1,4 @@
 #include "rmb/drive/BaseDrive.h"
-#include "frc/kinematics/DifferentialDriveKinematics.h"
 #include "frc2/command/CommandPtr.h"
 
 #include <typeinfo>
@@ -102,7 +101,7 @@ frc2::CommandPtr BaseDrive::followPPTrajectoryWithEvents(
   //            trajectory.getMarkers(), eventMap)
   //     .ToPtr();
 
-  return frc2::CommandPtr(nullptr);
+  return frc2::cmd::None();
 }
 
 frc2::CommandPtr BaseDrive::followPPTrajectoryGroupWithEvents(
@@ -171,7 +170,7 @@ frc2::CommandPtr BaseDrive::fullPPAuto(
   //
   // return frc2::cmd::Sequence(std::move(commands));
 
-  return frc2::CommandPtr(nullptr);
+  return frc2::cmd::None();
 }
 
 } // namespace rmb

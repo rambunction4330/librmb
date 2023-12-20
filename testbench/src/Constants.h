@@ -9,7 +9,7 @@ namespace constants {
 
 const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig =
     {
-        .p = 0.40,
+        .p = 1.5,
         .i = 0.0003,
         .d = 0.00,
         .ff = 0.000,
@@ -40,21 +40,17 @@ const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig3 =
         .closedLoopMaxPercentOutput = 1.0,
 };
 
-const rmb::TalonFXPositionController::RawCANCoderPositionUnit_t
-    module1Zero(690.0);
-const rmb::TalonFXPositionController::RawCANCoderPositionUnit_t
-    module2Zero(784.0);
-const rmb::TalonFXPositionController::RawCANCoderPositionUnit_t
-    module3Zero(926.0);
-const rmb::TalonFXPositionController::RawCANCoderPositionUnit_t
-    module4Zero(3567.0);
+const units::turn_t module1Zero(-0.156250);
+const units::turn_t module2Zero(-0.173828);
+const units::turn_t module3Zero(-0.227295);
+const units::turn_t module4Zero(-0.879883);
 
 const units::meter_t wheelCircumference = 1.0_m;
 
 const frc::SerialPort::Port gyroPort = frc::SerialPort::Port::kMXP;
 
 const rmb::TalonFXPositionControllerHelper::PIDConfig positionModulePIDConfig =
-    {.p = 1.5f, .i = 0.0000f, .d = 0.3f, .ff = 0.000, .tolerance = 0.1_deg};
+    {.p = 0.8f, .i = 0.0000f, .d = 0.0f, .ff = 0.000, .tolerance = 0.1_deg};
 
 const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo{
     .config =
@@ -78,7 +74,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .isContinuous = false},
+              .isContinuous = true},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 12.8,
@@ -112,7 +108,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo1{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .isContinuous = false},
+              .isContinuous = true},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 12.8,
@@ -146,7 +142,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo2{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .isContinuous = false},
+              .isContinuous = true},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 12.8,
@@ -180,7 +176,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo3{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .isContinuous = false},
+              .isContinuous = true},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 12.8,

@@ -137,7 +137,9 @@ TalonFXVelocityController::TalonFXVelocityController(
     canCoderConfig.MagnetSensor.AbsoluteSensorRange =
         ctre::phoenix6::signals::AbsoluteSensorRangeValue(
             ctre::phoenix6::signals::AbsoluteSensorRangeValue::Unsigned_0To1);
-    // Leave offset to offset function
+
+    canCoderConfig.MagnetSensor.MagnetOffset =
+        units::turn_t(createInfo.canCoderConfig.zeroPosition)();
 
     canCoder->GetConfigurator().Apply(canCoderConfig);
 
@@ -185,7 +187,8 @@ void TalonFXVelocityController::setVelocity(
   // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
   motorcontroller.SetControl(
       ctre::phoenix6::controls::VelocityDutyCycle(velocity));
-  // std::cout << "velocity duty cycle request: " << ((units::millisecond_t) frc::Timer::GetFPGATimestamp() - start)() << std::endl;
+  // std::cout << "velocity duty cycle request: " << ((units::millisecond_t)
+  // frc::Timer::GetFPGATimestamp() - start)() << std::endl;
 }
 
 units::radians_per_second_t
@@ -196,7 +199,8 @@ TalonFXVelocityController::getTargetVelocity() const {
   //   return RawInternalVelocityUnit_t(motorcontroller.GetClosedLoopTarget() /
   //                                    gearRatio);
   // }
-  return RawInternalVelocityUnit_t(motorcontroller.GetClosedLoopReference().GetValue());
+  return units::turns_per_second_t(
+      motorcontroller.GetClosedLoopReference().GetValue());
 }
 
 units::radians_per_second_t TalonFXVelocityController::getVelocity() const {
@@ -209,9 +213,9 @@ units::radians_per_second_t TalonFXVelocityController::getVelocity() const {
   // }
 
   if (usingCANCoder) {
-    return canCoder->GetVelocity().WaitForUpdate(0.050_s).GetValue();
+    return canCoder->GetVelocity().GetValue();
   } else {
-    return motorcontroller.GetVelocity().WaitForUpdate(0.050_s).GetValue();
+    return motorcontroller.GetVelocity().GetValue();
   }
 }
 
@@ -229,9 +233,9 @@ void TalonFXVelocityController::stop() { motorcontroller.StopMotor(); }
 
 units::radian_t TalonFXVelocityController::getPosition() const {
   if (usingCANCoder) {
-    return canCoder->GetPosition().WaitForUpdate(0.050_s).GetValue();
+    return canCoder->GetPosition().GetValue();
   } else {
-    return motorcontroller.GetPosition().WaitForUpdate(0.050_s).GetValue();
+    return motorcontroller.GetPosition().GetValue();
   }
 }
 

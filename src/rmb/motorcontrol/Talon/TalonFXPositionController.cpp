@@ -171,7 +171,9 @@ TalonFXPositionController::TalonFXPositionController(
     canCoderConfig.MagnetSensor.AbsoluteSensorRange =
         ctre::phoenix6::signals::AbsoluteSensorRangeValue(
             ctre::phoenix6::signals::AbsoluteSensorRangeValue::Unsigned_0To1);
-    // Leave offset to offset function
+
+    canCoderConfig.MagnetSensor.MagnetOffset =
+        units::turn_t(createInfo.canCoderConfig.zeroPosition)();
 
     canCoder->GetConfigurator().Apply(canCoderConfig, 0.050_s);
 
@@ -183,9 +185,10 @@ TalonFXPositionController::TalonFXPositionController(
   }
 
   // Often there is a gear ratio between the motor's rotor and the actual output
-  // of the mechanism.
-  talonFXConfig.Feedback.SensorToMechanismRatio =
-      createInfo.feedbackConfig.sensorToMechanismRatio;
+  // of the mechanism
+  talonFXConfig.Feedback.SensorToMechanismRatio = 1.0f; // TODO: change
+  // talonFXConfig.Feedback.RotorToSensorRatio =
+  //     createInfo.feedbackConfig.sensorToMechanismRatio;
   // talonFXConfig.Feedback.SensorToMechanismRatio; // For fused CANCoders
   // But we can't use this firmware feature because CTRE are capitalist pigs
   // and we (as of writing) don't feel like paying for v6 Pro
@@ -218,7 +221,8 @@ void TalonFXPositionController::setPosition(units::radian_t position) {
   }*/
   // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
   ctre::phoenix6::controls::PositionDutyCycle request(targetPosition);
-  // std::cout << "position duty cycle request: " << ((units::millisecond_t) frc::Timer::GetFPGATimestamp() - start)() << std::endl;
+  // std::cout << "position duty cycle request: " << ((units::millisecond_t)
+  // frc::Timer::GetFPGATimestamp() - start)() << std::endl;
 
   motorcontroller.SetControl(request);
 }
@@ -231,8 +235,7 @@ units::radian_t TalonFXPositionController::getTargetPosition() const {
                motorcontroller.GetClosedLoopTarget())) /
            gearRatio;
   }*/
-  return RawIntegratedPositionUnit_t(
-      motorcontroller.GetClosedLoopReference().GetValue());
+  return units::turn_t(motorcontroller.GetClosedLoopReference().GetValue());
 }
 
 units::radian_t TalonFXPositionController::getMinPosition() const {
@@ -257,9 +260,9 @@ units::radians_per_second_t TalonFXPositionController::getVelocity() const {
   }*/
 
   if (usingCANCoder) {
-    return canCoder->GetVelocity().WaitForUpdate(0.050_s).GetValue();
+    return canCoder->GetVelocity().GetValue();
   } else {
-    return motorcontroller.GetVelocity().WaitForUpdate(0.050_s).GetValue();
+    return motorcontroller.GetVelocity().GetValue();
   }
 }
 

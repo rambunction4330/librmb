@@ -88,7 +88,7 @@ void Robot::AutonomousExit() {}
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
-  units::millisecond_t startTime = frc::Timer::GetFPGATimestamp();
+  // units::millisecond_t startTime = frc::Timer::GetFPGATimestamp();
   // swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()),
   //                             -joystick.GetY() * joystick.GetThrottle(),
   //                             -joystick.GetTwist() * joystick.GetThrottle(),
@@ -101,12 +101,12 @@ void Robot::TeleopPeriodic() {
   swerveDrive->driveCartesian(gamepad.GetLeftX(), -gamepad.GetLeftY(),
                               -gamepad.GetRightY(), false);
 
-  // for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
-  //   const auto &module = swerveDrive->getModules()[i];
-  //   module.smartdashboardDisplayTargetState(std::to_string(i));
-  // }
-  //
-  // swerveDrive->publishErrorsToNT();
+  for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
+    const auto &module = swerveDrive->getModules()[i];
+    module.smartdashboardDisplayTargetState(std::to_string(i));
+  }
+
+  swerveDrive->publishErrorsToNT();
 }
 
 void Robot::TeleopExit() {}

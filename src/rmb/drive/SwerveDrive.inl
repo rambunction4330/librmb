@@ -63,12 +63,19 @@ SwerveDrive<NumModules>::SwerveDrive(
     ntPositionErrorTopics[i] =
         table->GetDoubleTopic("mod" + std::to_string(i) + "_poserror")
             .Publish();
-
-    // wpi::SendableRegistry::SetName(&this->modules[i], "mod" +
-    // std::to_string(i), "angle");
   }
 
-  // publishErrorsToNT();
+  for (size_t i = 0; i < NumModules; i++) {
+    ntPositionTopics[i] =
+        table->GetDoubleTopic("mod" + std::to_string(i) + "_position")
+            .Publish();
+  }
+
+  for (size_t i = 0; i < NumModules; i++) {
+    ntVelocityTopics[i] =
+        table->GetDoubleTopic("mod" + std::to_string(i) + "_velocity")
+            .Publish();
+  }
 }
 
 template <size_t NumModules>
@@ -202,6 +209,19 @@ template <size_t NumModules> void SwerveDrive<NumModules>::publishErrorsToNT() {
 
     ntPositionErrorTopics[i].Set(error());
   }
+
+  for (size_t i = 0; i < NumModules; i++) {
+    units::degree_t position = modules[i].getState().angle.Degrees();
+
+    ntPositionTopics[i].Set(position());
+  }
+
+  for (size_t i = 0; i < NumModules; i++) {
+    units::meters_per_second_t velocity = modules[i].getState().speed;
+
+    ntVelocityTopics[i].Set(velocity());
+  }
+
 }
 
 template <size_t NumModules>
