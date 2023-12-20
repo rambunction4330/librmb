@@ -38,7 +38,8 @@ void SwerveModule::setState(const frc::SwerveModuleState &state) {
   // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
   auto optomized = frc::SwerveModuleState::Optimize(state, getState().angle);
   // std::cout << "optimize time: "
-  //           << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() - start)()
+  //           << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() -
+  //           start)()
   //           << std::endl;
   velocityController->setVelocity(optomized.speed);
   angularController->setPosition(optomized.angle.Radians());
@@ -66,7 +67,8 @@ frc::SwerveModuleState SwerveModule::getState() const {
   // units::millisecond_t start = frc::Timer::GetFPGATimestamp();
   auto rotation = frc::Rotation2d(angularController->getPosition());
   // std::cout << "getRotation time: "
-  //           << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() - start)()
+  //           << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() -
+  //           start)()
   //           << std::endl;
 
   return {velocity, rotation};
