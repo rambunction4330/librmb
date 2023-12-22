@@ -23,20 +23,20 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:21: warning: Compound rmb::SparkMaxVelocityControllerHelper::MotorConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:31: warning: Compound rmb::SparkMaxVelocityControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:38: warning: Compound rmb::SparkMaxVelocityControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:83: warning: Compound rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:110: warning: Compound rmb::TalonFXPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:69: warning: Compound rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:64: warning: Compound rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:77: warning: Compound rmb::TalonFXPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:79: warning: Compound rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:70: warning: Compound rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:65: warning: Compound rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:19: warning: Compound rmb::TalonFXPositionControllerHelper::MotorConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:26: warning: Compound rmb::TalonFXPositionControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:31: warning: Compound rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:54: warning: Compound rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:41: warning: Compound rmb::TalonFXPositionControllerHelper::Range is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:36: warning: Compound rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:62: warning: Compound rmb::TalonFXVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:24: warning: Compound rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:28: warning: Compound rmb::TalonFXPositionControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:32: warning: Compound rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:55: warning: Compound rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:42: warning: Compound rmb::TalonFXPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:33: warning: Compound rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:35: warning: Compound rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:21: warning: Compound rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:15: warning: Compound rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:29: warning: Compound rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:26: warning: Compound rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:39: warning: Member LogitechGamepad(int channel, double deadZone=0.0, bool squareOutputs=false) (function) of class rmb::LogitechGamepad is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:44: warning: Member GetLeftX() const (function) of class rmb::LogitechGamepad is not documented.
 /home/runner/work/librmb/librmb/src/rmb/controller/LogitechGamepad.h:54: warning: Member LeftXLessThan(double threshold) const (function) of class rmb::LogitechGamepad is not documented.
@@ -252,47 +252,24 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:76: warning: Member profileConfig (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:77: warning: Member feedbackConfig (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:78: warning: Member followers (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:87: warning: Member IntegratedEncoderTick (typedef) of class rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:88: warning: Member IntegratedEncoderTick_t (typedef) of class rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:92: warning: Member RawVelocityUnit (typedef) of class rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:93: warning: Member RawIntegratedVelocityUnit_t (typedef) of class rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:95: warning: Member RawPositionUnit (typedef) of class rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:96: warning: Member RawIntegratedPositionUnit_t (typedef) of class rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:100: warning: Member CANCoderTick (typedef) of class rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:101: warning: Member CANCoderTick_t (typedef) of class rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:104: warning: Member RawCANCoderVelocityUnit (typedef) of class rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:105: warning: Member RawCANCoderVelocityUnit_t (typedef) of class rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:107: warning: Member RawCANCoderPositionUnit (typedef) of class rmb::TalonFXPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:108: warning: Member RawCANCoderPositionUnit_t (typedef) of class rmb::TalonFXPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:116: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:111: warning: Member config (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:112: warning: Member pidConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:113: warning: Member range (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:114: warning: Member feedbackConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:115: warning: Member openLoopConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:116: warning: Member canCoderConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:38: warning: Member InternalEncoderTick (typedef) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:39: warning: Member InternalEncoderTick_t (typedef) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:43: warning: Member RawInternalVelocityUnit (typedef) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:44: warning: Member RawInternalVelocityUnit_t (typedef) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:47: warning: Member RawInternalPositionUnit (typedef) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:48: warning: Member RawInternalPositionUnit_t (typedef) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:52: warning: Member CANCoderTick (typedef) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:53: warning: Member CANCoderTick_t (typedef) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:56: warning: Member RawCANCoderVelocityUnit (typedef) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:57: warning: Member RawCANCoderVelocityUnit_t (typedef) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:59: warning: Member RawCANCoderPositionUnit (typedef) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:60: warning: Member RawCANCoderPositionUnit_t (typedef) of class rmb::TalonFXVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:159: warning: Found unknown command '@warn'
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:80: warning: Member config (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:81: warning: Member pidConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:82: warning: Member range (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:83: warning: Member feedbackConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:84: warning: Member openLoopConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:86: warning: Member canCoderConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:45: warning: Member TalonFXVelocityController(const CreateInfo &createInfo) (function) of class rmb::TalonFXVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:71: warning: Member TalonFXVelocityController(const CreateInfo &createInfo) (function) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:63: warning: Member config (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:64: warning: Member pidConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:65: warning: Member profileConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:66: warning: Member feedbackConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:67: warning: Member openLoopConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:68: warning: Member canCoderConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:36: warning: Member config (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:37: warning: Member pidConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:38: warning: Member profileConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:39: warning: Member feedbackConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:40: warning: Member openLoopConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:42: warning: Member canCoderConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:13: warning: Member AHRSGyro(frc::SerialPort::Port port) (function) of class rmb::AHRSGyro is not documented.
 /home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:17: warning: Member getZRotation() const override (function) of class rmb::AHRSGyro is not documented.
 /home/runner/work/librmb/librmb/src/rmb/sensors/AHRS/AHRSGyro.h:18: warning: Member resetZRotation(units::turn_t offset=0_tr) override (function) of class rmb::AHRSGyro is not documented.
@@ -367,45 +344,34 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:21: warning: Member inverted (variable) of struct rmb::TalonFXPositionControllerHelper::MotorConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:22: warning: Member brake (variable) of struct rmb::TalonFXPositionControllerHelper::MotorConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:23: warning: Member currentLimit (variable) of struct rmb::TalonFXPositionControllerHelper::MotorConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:27: warning: Member minOutput (variable) of struct rmb::TalonFXPositionControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:27: warning: Member maxOutput (variable) of struct rmb::TalonFXPositionControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:28: warning: Member rampRate (variable) of struct rmb::TalonFXPositionControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:32: warning: Member p (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:32: warning: Member i (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:32: warning: Member d (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:32: warning: Member ff (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:33: warning: Member tolerance (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:34: warning: Member iZone (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:34: warning: Member iMaxAccumulator (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:35: warning: Member closedLoopMaxPercentOutput (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:37: warning: Member rampRate (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:42: warning: Member minPosition (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:44: warning: Member maxPosition (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:47: warning: Member isContinuous (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:55: warning: Member useSmartMotion (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:57: warning: Member maxVelocity (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:58: warning: Member minVelocity (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:59: warning: Member maxAcceleration (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:65: warning: Member sensorToMechanismRatio (variable) of struct rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:66: warning: Member forwardSwitch (variable) of struct rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:66: warning: Member reverseSwitch (variable) of struct rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:70: warning: Member RemoteSlot (enumeration) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:72: warning: Member useCANCoder (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:74: warning: Member id (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:76: warning: Member zeroPosition (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:78: warning: Member remoteSensorSlot (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:24: warning: Member minOutput (variable) of struct rmb::TalonFXPositionControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:25: warning: Member maxOutput (variable) of struct rmb::TalonFXPositionControllerHelper::MotorConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:29: warning: Member rampRate (variable) of struct rmb::TalonFXPositionControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:33: warning: Member p (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:33: warning: Member i (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:33: warning: Member d (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:33: warning: Member ff (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:38: warning: Member rampRate (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:43: warning: Member minPosition (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:45: warning: Member maxPosition (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:48: warning: Member isContinuous (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:56: warning: Member useSmartMotion (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:58: warning: Member maxVelocity (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:59: warning: Member minVelocity (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:60: warning: Member maxAcceleration (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:66: warning: Member sensorToMechanismRatio (variable) of struct rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:67: warning: Member forwardSwitch (variable) of struct rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:67: warning: Member reverseSwitch (variable) of struct rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:71: warning: Member id (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:73: warning: Member zeroPosition (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:16: warning: Member p (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:16: warning: Member i (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:16: warning: Member d (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:16: warning: Member ff (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:17: warning: Member tolerance (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:18: warning: Member iZone (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:18: warning: Member iMaxAccumulator (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:20: warning: Member closedLoopMaxPercentOutput (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:21: warning: Member rampRate (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:25: warning: Member minOutput (variable) of struct rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:25: warning: Member maxOutput (variable) of struct rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:26: warning: Member rampRate (variable) of struct rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:30: warning: Member maxVelocity (variable) of struct rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:31: warning: Member minVelocity (variable) of struct rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:32: warning: Member maxAcceleration (variable) of struct rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:18: warning: Member rampRate (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:22: warning: Member minOutput (variable) of struct rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:22: warning: Member maxOutput (variable) of struct rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:23: warning: Member rampRate (variable) of struct rmb::TalonFXVelocityControllerHelper::OpenLoopConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:27: warning: Member maxVelocity (variable) of struct rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:28: warning: Member minVelocity (variable) of struct rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:29: warning: Member maxAcceleration (variable) of struct rmb::TalonFXVelocityControllerHelper::ProfileConfig is not documented.
