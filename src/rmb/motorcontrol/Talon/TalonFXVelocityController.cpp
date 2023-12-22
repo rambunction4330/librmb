@@ -7,7 +7,7 @@ namespace rmb {
 TalonFXVelocityController::TalonFXVelocityController(
     const TalonFXVelocityController::CreateInfo &createInfo)
     : motorcontroller(createInfo.config.id, "rio"),
-      usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
+      usingCANCoder(createInfo.canCoderConfig.has_value()) {
 
   /*motorcontroller.ConfigFactoryDefault();
 
@@ -125,8 +125,8 @@ TalonFXVelocityController::TalonFXVelocityController(
       createInfo.config.currentLimit(); // Motor-usage current limit
                                         // Prevent heat
 
-  if (createInfo.canCoderConfig.useCANCoder) {
-    canCoder.emplace(createInfo.canCoderConfig.id);
+  if (createInfo.canCoderConfig.has_value()) {
+    canCoder.emplace(createInfo.canCoderConfig.value().id);
 
     ctre::phoenix6::configs::CANcoderConfiguration canCoderConfig{};
 
@@ -139,7 +139,7 @@ TalonFXVelocityController::TalonFXVelocityController(
             ctre::phoenix6::signals::AbsoluteSensorRangeValue::Unsigned_0To1);
 
     canCoderConfig.MagnetSensor.MagnetOffset =
-        units::turn_t(createInfo.canCoderConfig.zeroPosition)();
+        units::turn_t(createInfo.canCoderConfig.value().zeroPosition)();
 
     canCoder->GetConfigurator().Apply(canCoderConfig);
 
@@ -160,8 +160,6 @@ TalonFXVelocityController::TalonFXVelocityController(
 
   configurator.Apply(talonFXConfig);
 
-  gearRatio = createInfo.feedbackConfig.sensorToMechanismRatio;
-  tolerance = createInfo.pidConfig.tolerance;
   this->profileConfig = createInfo.profileConfig;
 }
 
@@ -217,10 +215,6 @@ units::radians_per_second_t TalonFXVelocityController::getVelocity() const {
   } else {
     return motorcontroller.GetVelocity().GetValue();
   }
-}
-
-units::radians_per_second_t TalonFXVelocityController::getTolerance() const {
-  return tolerance;
 }
 
 void TalonFXVelocityController::setPower(double power) {

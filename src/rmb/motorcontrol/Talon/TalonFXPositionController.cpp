@@ -1,14 +1,9 @@
 #include "TalonFXPositionController.h"
-// #include "ctre/phoenix/motorcontrol/ControlMode.h"
-/*#include "ctre/phoenix/motorcontrol/FeedbackDevice.h"
-#include "ctre/phoenix/motorcontrol/StatorCurrentLimitConfiguration.h"
-#include "ctre/phoenix/sensors/CANCoder.h"
-#include "ctre/phoenix/sensors/SensorTimeBase.h"*/
 #include "ctre/phoenix6/configs/Configs.hpp"
 #include "ctre/phoenix6/core/CoreCANcoder.hpp"
 #include "ctre/phoenix6/core/CoreTalonFX.hpp"
 #include "units/angle.h"
-#include "units/time.h"
+
 #include <iostream>
 
 namespace rmb {
@@ -16,7 +11,7 @@ namespace rmb {
 TalonFXPositionController::TalonFXPositionController(
     const TalonFXPositionController::CreateInfo &createInfo)
     : motorcontroller(createInfo.config.id), range(createInfo.range),
-      usingCANCoder(createInfo.canCoderConfig.useCANCoder) {
+      usingCANCoder(createInfo.canCoderConfig.has_value()) {
 
   /*motorcontroller.ConfigFactoryDefault();
 
@@ -108,10 +103,8 @@ TalonFXPositionController::TalonFXPositionController(
 
   talonFXConfig.MotorOutput.Inverted =
       ctre::phoenix6::signals::InvertedValue(createInfo.config.inverted);
-  talonFXConfig.MotorOutput.PeakForwardDutyCycle =
-      createInfo.openLoopConfig.maxOutput;
-  talonFXConfig.MotorOutput.PeakReverseDutyCycle =
-      createInfo.openLoopConfig.minOutput;
+  talonFXConfig.MotorOutput.PeakForwardDutyCycle = createInfo.config.maxOutput;
+  talonFXConfig.MotorOutput.PeakReverseDutyCycle = createInfo.config.minOutput;
   // talonFXConfig.MotorOutput.DutyCycleNeutralDeadband; NOTE: use if you want
   // to demote low target percentage outputs to zero
   talonFXConfig.MotorOutput.NeutralMode =
@@ -159,8 +152,8 @@ TalonFXPositionController::TalonFXPositionController(
       createInfo.config.currentLimit(); // Motor-usage current limit
                                         // Prevent heat
 
-  if (createInfo.canCoderConfig.useCANCoder) {
-    canCoder.emplace(createInfo.canCoderConfig.id);
+  if (createInfo.canCoderConfig.has_value()) {
+    canCoder.emplace(createInfo.canCoderConfig.value().id);
 
     ctre::phoenix6::configs::CANcoderConfiguration canCoderConfig{};
 
@@ -173,9 +166,9 @@ TalonFXPositionController::TalonFXPositionController(
             ctre::phoenix6::signals::AbsoluteSensorRangeValue::Unsigned_0To1);
 
     canCoderConfig.MagnetSensor.MagnetOffset =
-        units::turn_t(createInfo.canCoderConfig.zeroPosition)();
+        units::turn_t(createInfo.canCoderConfig.value().zeroPosition)();
 
-    canCoder->GetConfigurator().Apply(canCoderConfig, 0.050_s);
+    canCoder->GetConfigurator().Apply(canCoderConfig);
 
     // talonFXConfig.Feedback.RotorToSensorRatio; // This is for FusedCANCoder
     talonFXConfig.Feedback.WithRemoteCANcoder(canCoder.value());
@@ -186,7 +179,8 @@ TalonFXPositionController::TalonFXPositionController(
 
   // Often there is a gear ratio between the motor's rotor and the actual output
   // of the mechanism
-  talonFXConfig.Feedback.SensorToMechanismRatio = 1.0f; // TODO: change
+  talonFXConfig.Feedback.SensorToMechanismRatio =
+      createInfo.feedbackConfig.sensorToMechanismRatio;
   // talonFXConfig.Feedback.RotorToSensorRatio =
   //     createInfo.feedbackConfig.sensorToMechanismRatio;
   // talonFXConfig.Feedback.SensorToMechanismRatio; // For fused CANCoders
@@ -199,7 +193,7 @@ TalonFXPositionController::TalonFXPositionController(
   motorcontroller.GetConfigurator().Apply(talonFXConfig);
 
   sensorToMechanismRatio = createInfo.feedbackConfig.sensorToMechanismRatio;
-  tolerance = createInfo.pidConfig.tolerance;
+  // tolerance = createInfo.pidConfig.tolerance;
 }
 
 void TalonFXPositionController::setPosition(units::radian_t position) {
@@ -305,10 +299,6 @@ void TalonFXPositionController::zeroPosition(units::radian_t offset) {
 
     motorcontroller.GetConfigurator().Apply(config);
   }
-}
-
-units::radian_t TalonFXPositionController::getTolerance() const {
-  return tolerance;
 }
 
 void TalonFXPositionController::setPower(double power) {

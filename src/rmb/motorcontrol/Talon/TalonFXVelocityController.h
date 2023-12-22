@@ -14,10 +14,7 @@ namespace rmb {
 namespace TalonFXVelocityControllerHelper {
 struct PIDConfig {
   double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
-  units::turns_per_second_t tolerance = 0.0_tps;
-  double iZone = 0.0, iMaxAccumulator = 0.0;
 
-  double closedLoopMaxPercentOutput = 1.0;
   units::second_t rampRate = 1.0_s;
 };
 
@@ -35,37 +32,14 @@ struct ProfileConfig {
 
 class TalonFXVelocityController : public AngularVelocityController {
 public:
-  typedef units::unit<std::ratio<1, 2048>, units::turns> InternalEncoderTick;
-  typedef units::unit_t<InternalEncoderTick> InternalEncoderTick_t;
-
-  typedef units::compound_unit<InternalEncoderTick,
-                               units::inverse<units::deciseconds>>
-      RawInternalVelocityUnit;
-  typedef units::unit_t<RawInternalVelocityUnit> RawInternalVelocityUnit_t;
-
-  typedef units::unit<std::ratio<1, 1>, InternalEncoderTick>
-      RawInternalPositionUnit;
-  typedef units::unit_t<RawInternalPositionUnit> RawInternalPositionUnit_t;
-
-  //-------------CANCoder
-  // Units---------------------------------------------------
-  typedef units::unit<std::ratio<1, 4096>, units::turns> CANCoderTick;
-  typedef units::unit_t<CANCoderTick> CANCoderTick_t;
-
-  typedef units::compound_unit<CANCoderTick, units::inverse<units::deciseconds>>
-      RawCANCoderVelocityUnit;
-  typedef units::unit_t<RawCANCoderVelocityUnit> RawCANCoderVelocityUnit_t;
-
-  typedef units::unit<std::ratio<1, 1>, CANCoderTick> RawCANCoderPositionUnit;
-  typedef units::unit_t<RawCANCoderPositionUnit> RawCANCoderPositionUnit_t;
-
   struct CreateInfo {
     TalonFXPositionControllerHelper::MotorConfig config;
     TalonFXVelocityControllerHelper::PIDConfig pidConfig;
     TalonFXVelocityControllerHelper::ProfileConfig profileConfig;
     TalonFXPositionControllerHelper::FeedbackConfig feedbackConfig;
     TalonFXVelocityControllerHelper::OpenLoopConfig openLoopConfig;
-    TalonFXPositionControllerHelper::CANCoderConfig canCoderConfig;
+    std::optional<TalonFXPositionControllerHelper::CANCoderConfig>
+        canCoderConfig;
   };
 
   TalonFXVelocityController(const CreateInfo &createInfo);
@@ -142,12 +116,12 @@ public:
    *
    * @return the motor's tolerance in radians per second.
    */
-  virtual units::radians_per_second_t getTolerance() const override;
+  virtual units::radians_per_second_t getTolerance() const override {
+    return 0.0_rad_per_s;
+  }
 
 private:
   mutable ctre::phoenix6::hardware::TalonFX motorcontroller;
-
-  float gearRatio = 0.0;
 
   units::radians_per_second_t tolerance = 0.0_tps;
 

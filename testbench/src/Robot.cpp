@@ -3,10 +3,8 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "Robot.h"
-#include "frc/Timer.h"
 #include "frc/controller/HolonomicDriveController.h"
 #include "frc/controller/ProfiledPIDController.h"
-#include "frc/smartdashboard/SmartDashboard.h"
 #include "rmb/drive/SwerveDrive.h"
 #include "rmb/drive/SwerveModule.h"
 #include "rmb/motorcontrol/AngularVelocityController.h"
@@ -20,8 +18,6 @@
 
 #include "Constants.h"
 #include "units/time.h"
-#include <iostream>
-#include <ostream>
 
 void Robot::RobotInit() {
   // Because Aiden is evil & lazy
