@@ -254,6 +254,8 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:78: warning: Member followers (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:116: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:168: warning: The following parameter of rmb::TalonFXPositionController::follow(const TalonFXPositionController &parentController, bool inverted) is not documented:
+  parameter 'parentController'
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:159: warning: Found unknown command '@warn'
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:80: warning: Member config (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:81: warning: Member pidConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
@@ -264,6 +266,8 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:45: warning: Member TalonFXVelocityController(const CreateInfo &createInfo) (function) of class rmb::TalonFXVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:127: warning: The following parameter of rmb::TalonFXVelocityController::follow(const TalonFXVelocityController &parentController, bool inverted) is not documented:
+  parameter 'parentController'
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:36: warning: Member config (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:37: warning: Member pidConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:38: warning: Member profileConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
