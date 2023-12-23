@@ -152,7 +152,7 @@ TalonFXPositionController::TalonFXPositionController(
   talonFXConfig.CurrentLimits.StatorCurrentLimit =
       createInfo.config.currentLimit(); // Motor-usage current limit
                                         // Prevent heat
-  
+
   if (createInfo.canCoderConfig.has_value()) {
     canCoder.emplace(createInfo.canCoderConfig.value().id);
 
