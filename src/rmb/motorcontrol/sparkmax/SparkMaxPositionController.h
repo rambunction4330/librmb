@@ -156,12 +156,11 @@ public:
   units::radian_t getPosition() const override;
 
   /**
-   * Zeros the positon th emotor so the current position is set to the offset.
+   * Set the position the motor reports
    *
-   * @param offset the offset from the current position at which to set the
-   *               zero position.
+   * @param position The new motor position
    */
-  void zeroPosition(units::radian_t offset = 0_rad) override;
+  void setEncoderPosition(units::radian_t position = 0_rad) override;
 
   //-----------------------------
   // Feedbakc Controller Methods

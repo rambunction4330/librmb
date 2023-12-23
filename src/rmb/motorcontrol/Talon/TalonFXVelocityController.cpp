@@ -140,7 +140,7 @@ TalonFXVelocityController::TalonFXVelocityController(
             ctre::phoenix6::signals::AbsoluteSensorRangeValue::Unsigned_0To1);
 
     canCoderConfig.MagnetSensor.MagnetOffset =
-        units::turn_t(createInfo.canCoderConfig.value().zeroPosition)();
+        units::turn_t(createInfo.canCoderConfig.value().magnetOffset)();
 
     canCoder->GetConfigurator().Apply(canCoderConfig);
 
@@ -234,28 +234,36 @@ units::radian_t TalonFXVelocityController::getPosition() const {
   }
 }
 
-void TalonFXVelocityController::zeroPosition(units::radian_t offset) {
+void TalonFXVelocityController::setEncoderPosition(units::radian_t position) {
   // if (usingCANCoder) {
   //   canCoder->SetPosition(RawCANCoderPositionUnit_t(offset)());
   // } else {
   //   motorcontroller.SetSelectedSensorPosition(
   //       RawInternalPositionUnit_t(offset * gearRatio)());
   // }
-  if (usingCANCoder) {
-    ctre::phoenix6::configs::CANcoderConfiguration canCoderConfig{};
 
-    canCoder->GetConfigurator().Refresh(canCoderConfig);
-    canCoderConfig.MagnetSensor.MagnetOffset = ((units::turn_t)offset)();
+  // if (usingCANCoder) {
+  //   ctre::phoenix6::configs::CANcoderConfiguration canCoderConfig{};
+  //
+  //   canCoder->GetConfigurator().Refresh(canCoderConfig);
+  //   canCoderConfig.MagnetSensor.MagnetOffset = ((units::turn_t)offset)();
+  //
+  //   canCoder->GetConfigurator().Apply(canCoderConfig);
+  // } else {
+  //   ctre::phoenix6::configs::FeedbackConfigs config{};
+  //   motorcontroller.GetConfigurator().Refresh(config);
+  //
+  //   config.FeedbackRotorOffset = ((units::turn_t)offset)();
+  //
+  //   motorcontroller.GetConfigurator().Apply(config);
+  // }
 
-    canCoder->GetConfigurator().Apply(canCoderConfig);
+  if (canCoder.has_value()) {
+    canCoder->SetPosition(position);
   } else {
-    ctre::phoenix6::configs::FeedbackConfigs config{};
-    motorcontroller.GetConfigurator().Refresh(config);
-
-    config.FeedbackRotorOffset = ((units::turn_t)offset)();
-
-    motorcontroller.GetConfigurator().Apply(config);
+    motorcontroller.SetPosition(position);
   }
+
 }
 
 void TalonFXVelocityController::follow(

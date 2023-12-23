@@ -38,8 +38,8 @@ public:
     return angular->getPosition() * conversion;
   }
 
-  void zeroPosition(units::meter_t offset) override {
-    angular->zeroPosition(offset / conversion);
+  void setEncoderPosition(units::meter_t position) override {
+    angular->setEncoderPosition(position / conversion);
   }
 
   units::meters_per_second_t getTolerance() const override {
@@ -100,8 +100,8 @@ public:
     return angular->getPosition() * conversion;
   }
 
-  void zeroPosition(units::meter_t offset) override {
-    angular->zeroPosition(offset / conversion);
+  void setEncoderPosition(units::meter_t position) override {
+    angular->setEncoderPosition(position / conversion);
   }
 
   units::meter_t getTolerance() const override {
@@ -154,8 +154,8 @@ public:
     return linear->getPosition() / conversion;
   }
 
-  void zeroPosition(units::radian_t offset) override {
-    linear->zeroPosition(offset * conversion);
+  void setEncoderPosition(units::radian_t position) override {
+    linear->setEncoderPosition(position * conversion);
   }
 
   units::radians_per_second_t getTolerance() const override {
@@ -216,9 +216,9 @@ public:
     return linear->getPosition() / conversion;
   }
 
-  void zeroPosition(units::radian_t offset) override {
+  void setEncoderPosition(units::radian_t position) override {
 
-    linear->zeroPosition(offset * conversion);
+    linear->setEncoderPosition(position * conversion);
   }
 
   units::radian_t getTolerance() const override {

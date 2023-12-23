@@ -46,7 +46,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .isContinuous = true},
+              .continuousWrap = true},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 1.0f,
@@ -55,7 +55,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo{
     .canCoderConfig =
         CANCoderConfig{
             .id = 11,
-            .zeroPosition = module1Zero,
+            .magnetOffset = module1Zero,
         },
 };
 
@@ -81,7 +81,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo1{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .isContinuous = true},
+              .continuousWrap = true},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 1.0f,
@@ -90,7 +90,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo1{
     .canCoderConfig =
         CANCoderConfig{
             .id = 21,
-            .zeroPosition = module2Zero,
+            .magnetOffset = module2Zero,
         },
 };
 
@@ -116,7 +116,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo2{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .isContinuous = true},
+              .continuousWrap = true},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 1.0f,
@@ -125,7 +125,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo2{
     .canCoderConfig =
         CANCoderConfig{
             .id = 31,
-            .zeroPosition = module3Zero,
+            .magnetOffset = module3Zero,
         },
 };
 
@@ -151,7 +151,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo3{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .isContinuous = true},
+              .continuousWrap = true},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 1.0f,
@@ -160,7 +160,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo3{
     .canCoderConfig =
         CANCoderConfig{
             .id = 41,
-            .zeroPosition = module4Zero,
+            .magnetOffset = module4Zero,
         },
 };
 

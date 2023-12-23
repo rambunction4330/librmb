@@ -152,7 +152,7 @@ TalonFXPositionController::TalonFXPositionController(
   talonFXConfig.CurrentLimits.StatorCurrentLimit =
       createInfo.config.currentLimit(); // Motor-usage current limit
                                         // Prevent heat
-  
+
   if (createInfo.canCoderConfig.has_value()) {
     canCoder.emplace(createInfo.canCoderConfig.value().id);
 
@@ -167,7 +167,7 @@ TalonFXPositionController::TalonFXPositionController(
             ctre::phoenix6::signals::AbsoluteSensorRangeValue::Unsigned_0To1);
 
     canCoderConfig.MagnetSensor.MagnetOffset =
-        units::turn_t(createInfo.canCoderConfig.value().zeroPosition)();
+        units::turn_t(createInfo.canCoderConfig.value().magnetOffset)();
 
     canCoder->GetConfigurator().Apply(canCoderConfig);
 
@@ -182,14 +182,14 @@ TalonFXPositionController::TalonFXPositionController(
   // of the mechanism
   talonFXConfig.Feedback.SensorToMechanismRatio =
       createInfo.feedbackConfig.sensorToMechanismRatio;
-  // talonFXConfig.Feedback.RotorToSensorRatio =
+  // talonFXConfig.Feedback.RotorToSensorRatio =// For fused CANCoders
   //     createInfo.feedbackConfig.sensorToMechanismRatio;
-  // talonFXConfig.Feedback.SensorToMechanismRatio; // For fused CANCoders
+  // talonFXConfig.Feedback.SensorToMechanismRatio;
   // But we can't use this firmware feature because CTRE are capitalist pigs
   // and we (as of writing) don't feel like paying for v6 Pro
 
   talonFXConfig.ClosedLoopGeneral.ContinuousWrap =
-      createInfo.range.isContinuous;
+      createInfo.range.continuousWrap;
 
   motorcontroller.GetConfigurator().Apply(talonFXConfig);
 
@@ -276,7 +276,7 @@ units::radian_t TalonFXPositionController::getPosition() const {
   }
 }
 
-void TalonFXPositionController::zeroPosition(units::radian_t offset) {
+void TalonFXPositionController::setEncoderPosition(units::radian_t position) {
   // if (usingCANCoder) {
   //   canCoder->SetPosition(RawCANCoderPositionUnit_t(offset)());
   // } else {
@@ -285,20 +285,28 @@ void TalonFXPositionController::zeroPosition(units::radian_t offset) {
   // }
   //
 
-  if (usingCANCoder) {
-    ctre::phoenix6::configs::CANcoderConfiguration canCoderConfig{};
+  // if (usingCANCoder) {
+  //   ctre::phoenix6::configs::CANcoderConfiguration canCoderConfig{};
+  //
+  //   canCoder->SetPosi
+  //
+  //   canCoder->GetConfigurator().Refresh(canCoderConfig);
+  //   canCoderConfig.MagnetSensor.MagnetOffset = ((units::turn_t)offset)();
+  //
+  //   canCoder->GetConfigurator().Apply(canCoderConfig);
+  // } else {
+  //   ctre::phoenix6::configs::FeedbackConfigs config{};
+  //   motorcontroller.GetConfigurator().Refresh(config);
+  //
+  //   config.FeedbackRotorOffset = ((units::turn_t)offset)();
+  //
+  //   motorcontroller.GetConfigurator().Apply(config);
+  // }
 
-    canCoder->GetConfigurator().Refresh(canCoderConfig);
-    canCoderConfig.MagnetSensor.MagnetOffset = ((units::turn_t)offset)();
-
-    canCoder->GetConfigurator().Apply(canCoderConfig);
+  if (canCoder.has_value()) {
+    canCoder->SetPosition(position);
   } else {
-    ctre::phoenix6::configs::FeedbackConfigs config{};
-    motorcontroller.GetConfigurator().Refresh(config);
-
-    config.FeedbackRotorOffset = ((units::turn_t)offset)();
-
-    motorcontroller.GetConfigurator().Apply(config);
+    motorcontroller.SetPosition(position);
   }
 }
 

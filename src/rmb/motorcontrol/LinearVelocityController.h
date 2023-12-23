@@ -68,13 +68,10 @@ public:
   virtual units::meter_t getPosition() const = 0;
 
   /**
-   * Common interface for zeroing the linear positon an encoder so the current
-   * position is set to the offset.
-   *
-   * @param offset the offset from the current angular position at which to
-   *               set the zero position.
+   * Sets the encoder's reported position
+   * @param position The position to reset the reference to. Defaults to 0
    */
-  virtual void zeroPosition(units::meter_t offset = 0_m) = 0;
+  virtual void setEncoderPosition(units::meter_t position = 0_m) = 0;
 
   /**
    * Common interface for getting a controllers tolerance

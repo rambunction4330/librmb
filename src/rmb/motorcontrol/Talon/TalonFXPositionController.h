@@ -45,7 +45,7 @@ struct Range {
   units::radian_t maxPosition =
       std::numeric_limits<units::radian_t>::infinity();
 
-  bool isContinuous =
+  bool continuousWrap =
       true; /*< If false, the encoder will keep track of overflow, meaning the
                 position value of the internal encoder, say will go from 2047 to
                 2048 to 2049 as you keep turning it. Otherwise it will go from
@@ -70,7 +70,7 @@ struct FeedbackConfig {
 struct CANCoderConfig {
   int id;
 
-  units::radian_t zeroPosition = 0.0_rad;
+  units::radian_t magnetOffset = 0.0_rad;
 };
 
 } // namespace TalonFXPositionControllerHelper
@@ -149,10 +149,10 @@ public:
   units::radian_t getPosition() const override;
 
   /**
-   * Sets the reference position
-   * @param offset The position to reset the reference to. Defaults to 0
+   * Sets the encoder's reported position
+   * @param position The position to reset the reference to. Defaults to 0
    */
-  void zeroPosition(units::radian_t offset = 0_rad) override;
+  void setEncoderPosition(units::radian_t position = 0_rad) override;
 
   /**
    * Get the closed loop position tolerance.
@@ -177,8 +177,6 @@ private:
   TalonFXPositionControllerHelper::Range range;
 
   float sensorToMechanismRatio = 0.0;
-
-  units::radian_t offset = 0_rad;
 
   const bool usingCANCoder;
 };

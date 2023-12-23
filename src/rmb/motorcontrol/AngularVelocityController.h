@@ -72,13 +72,11 @@ public:
   virtual units::radian_t getPosition() const = 0;
 
   /**
-   * Common interface for zeroing the anguklar positon an encoder so the current
-   * position is set to the offset.
+   * Common interface for setting the position the encoder reports
    *
-   * @param offset the offset from the current angular position at which to
-   *               set the zero position.
+   * @param position the position the encoder should report
    */
-  virtual void zeroPosition(units::radian_t offset = 0_rad) = 0;
+  virtual void setEncoderPosition(units::radian_t position = 0_rad) = 0;
 
   /**
    * Common interface for getting a controllers tolerance
