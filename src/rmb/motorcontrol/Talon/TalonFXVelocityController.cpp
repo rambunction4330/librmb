@@ -263,7 +263,6 @@ void TalonFXVelocityController::setEncoderPosition(units::radian_t position) {
   } else {
     motorcontroller.SetPosition(position);
   }
-
 }
 
 void TalonFXVelocityController::follow(
