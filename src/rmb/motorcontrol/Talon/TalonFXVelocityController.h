@@ -120,6 +120,12 @@ public:
     return 0.0_rad_per_s;
   }
 
+  /**
+   * Match duty cycle of the given controller
+   * @param inverted Use the inverted form of the parent's duty cycle
+   */
+  void follow(const TalonFXVelocityController &parentController, bool inverted);
+
 private:
   mutable ctre::phoenix6::hardware::TalonFX motorcontroller;
 

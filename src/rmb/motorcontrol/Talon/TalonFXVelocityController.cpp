@@ -1,5 +1,6 @@
 #include "TalonFXVelocityController.h"
 #include "units/angular_velocity.h"
+#include <algorithm>
 #include <iostream>
 
 namespace rmb {
@@ -256,5 +257,10 @@ void TalonFXVelocityController::zeroPosition(units::radian_t offset) {
     motorcontroller.GetConfigurator().Apply(config);
   }
 }
+
+void TalonFXVelocityController::follow(
+    const rmb::TalonFXVelocityController &parent, bool invert) {
+  motorcontroller.SetControl(ctre::phoenix6::controls::Follower(
+      parent.motorcontroller.GetDeviceID(), invert));
+}
 } // namespace rmb
-// namespace rmb

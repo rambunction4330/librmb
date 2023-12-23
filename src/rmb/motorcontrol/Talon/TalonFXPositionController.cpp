@@ -4,6 +4,7 @@
 #include "ctre/phoenix6/core/CoreTalonFX.hpp"
 #include "units/angle.h"
 
+#include <algorithm>
 #include <iostream>
 
 namespace rmb {
@@ -151,7 +152,7 @@ TalonFXPositionController::TalonFXPositionController(
   talonFXConfig.CurrentLimits.StatorCurrentLimit =
       createInfo.config.currentLimit(); // Motor-usage current limit
                                         // Prevent heat
-
+  
   if (createInfo.canCoderConfig.has_value()) {
     canCoder.emplace(createInfo.canCoderConfig.value().id);
 
@@ -303,6 +304,12 @@ void TalonFXPositionController::zeroPosition(units::radian_t offset) {
 
 void TalonFXPositionController::setPower(double power) {
   motorcontroller.Set(power);
+}
+
+void TalonFXPositionController::follow(
+    const rmb::TalonFXPositionController &parent, bool invert) {
+  motorcontroller.SetControl(ctre::phoenix6::controls::Follower(
+      parent.motorcontroller.GetDeviceID(), invert));
 }
 
 } // namespace rmb

@@ -161,6 +161,12 @@ public:
    */
   units::radian_t getTolerance() const override { return 0.0_tr; }
 
+  /**
+   * Match duty cycle of the given controller
+   * @param inverted Use the inverted form of the parent's duty cycle
+   */
+  void follow(const TalonFXPositionController &parentController, bool inverted);
+
 private:
   // mutable ctre::phoenix::motorcontrol::can::WPI_TalonFX motorcontroller;
   mutable ctre::phoenix6::hardware::TalonFX motorcontroller;
