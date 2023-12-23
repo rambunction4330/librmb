@@ -194,30 +194,30 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/drive/SwerveModule.h:63: warning: The following parameters of rmb::SwerveModule::SwerveModule(std::unique_ptr< LinearVelocityController > velocityController, std::unique_ptr< AngularPositionController > angularController, const frc::Translation2d &moduleTranslation, bool breakMode=false) are not documented:
   parameter 'velocityController'
   parameter 'breakMode'
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:116: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:113: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:115: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:110: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:23: warning: Member AngularFeedforwardontroller(AngularFeedforwardontroller &&)=default (function) of class rmb::AngularFeedforwardontroller is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:25: warning: Member AngularFeedforwardontroller(std::unique_ptr< frc::MotorController > &&motorController, std::unique_ptr< rmb::Feedforward< units::radians >> &&feedforward) (function) of class rmb::AngularFeedforwardontroller is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:110: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:16: warning: expected whitespace after \b command
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/AngularFeedforwardController.h:19: warning: end of comment block while expecting command </b>
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:23: warning: Member LinearFeedforwardController(LinearFeedforwardController &&)=default (function) of class rmb::LinearFeedforwardController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:25: warning: Member LinearFeedforwardController(std::unique_ptr< frc::MotorController > &&motorController, std::unique_ptr< rmb::Feedforward< units::meters >> &&feedforward) (function) of class rmb::LinearFeedforwardController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:108: warning: Member ConversionUnit (typedef) of class rmb::LinearVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:110: warning: Member ConversionUnit_t (typedef) of class rmb::LinearVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:105: warning: Member ConversionUnit (typedef) of class rmb::LinearVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:107: warning: Member ConversionUnit_t (typedef) of class rmb::LinearVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:16: warning: expected whitespace after \b command
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/feedforward/LinearFeedforwardController.h:19: warning: end of comment block while expecting command </b>
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:122: warning: Member ConversionUnit (typedef) of class rmb::LinearPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:124: warning: Member ConversionUnit_t (typedef) of class rmb::LinearPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:108: warning: Member ConversionUnit (typedef) of class rmb::LinearVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:110: warning: Member ConversionUnit_t (typedef) of class rmb::LinearVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:120: warning: Member ConversionUnit (typedef) of class rmb::LinearPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearPositionController.h:122: warning: Member ConversionUnit_t (typedef) of class rmb::LinearPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:105: warning: Member ConversionUnit (typedef) of class rmb::LinearVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/LinearVelocityController.h:107: warning: Member ConversionUnit_t (typedef) of class rmb::LinearVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/ServoPositionController.h:20: warning: Member ServoPositionController(ServoPositionController &&)=default (function) of class rmb::ServoPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/ServoPositionController.h:22: warning: Member ServoPositionController(int channel) (function) of class rmb::ServoPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:116: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:113: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:115: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:69: warning: Member MotorConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:70: warning: Member PIDConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:71: warning: Member Range (typedef) of class rmb::SparkMaxPositionController is not documented.
@@ -225,8 +225,8 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:73: warning: Member EncoderType (typedef) of class rmb::SparkMaxPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:74: warning: Member LimitSwitchConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:75: warning: Member FeedbackConfig (typedef) of class rmb::SparkMaxPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:116: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:113: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:115: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:91: warning: Member SparkMaxPositionController(const CreateInfo &createInfo) (function) of class rmb::SparkMaxPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:78: warning: Member motorConfig (variable) of struct rmb::SparkMaxPositionController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxPositionController.h:79: warning: Member pidConfig (variable) of struct rmb::SparkMaxPositionController::CreateInfo is not documented.
@@ -241,8 +241,8 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:69: warning: Member EncoderType (typedef) of class rmb::SparkMaxVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:70: warning: Member LimitSwitchConfig (typedef) of class rmb::SparkMaxVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:71: warning: Member FeedbackConfig (typedef) of class rmb::SparkMaxVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:110: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:84: warning: Member SparkMaxVelocityController(const CreateInfo &createInfo) (function) of class rmb::SparkMaxVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:86: warning: Member getMotor() (function) of class rmb::SparkMaxVelocityController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:88: warning: Member getPIDCOntroller() (function) of class rmb::SparkMaxVelocityController is not documented.
@@ -252,8 +252,8 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:76: warning: Member profileConfig (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:77: warning: Member feedbackConfig (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h:78: warning: Member followers (variable) of struct rmb::SparkMaxVelocityController::CreateInfo is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:114: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:116: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:113: warning: Member ConversionUnit (typedef) of class rmb::AngularPositionController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularPositionController.h:115: warning: Member ConversionUnit_t (typedef) of class rmb::AngularPositionController is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:168: warning: The following parameter of rmb::TalonFXPositionController::follow(const TalonFXPositionController &parentController, bool inverted) is not documented:
   parameter 'parentController'
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:159: warning: Found unknown command '@warn'
@@ -264,9 +264,9 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:84: warning: Member openLoopConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:86: warning: Member canCoderConfig (variable) of struct rmb::TalonFXPositionController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:45: warning: Member TalonFXVelocityController(const CreateInfo &createInfo) (function) of class rmb::TalonFXVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:114: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:127: warning: The following parameter of rmb::TalonFXVelocityController::follow(const TalonFXVelocityController &parentController, bool inverted) is not documented:
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:110: warning: Member ConversionUnit (typedef) of class rmb::AngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/AngularVelocityController.h:112: warning: Member ConversionUnit_t (typedef) of class rmb::AngularVelocityController is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:123: warning: The following parameter of rmb::TalonFXVelocityController::follow(const TalonFXVelocityController &parentController, bool inverted) is not documented:
   parameter 'parentController'
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:36: warning: Member config (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:37: warning: Member pidConfig (variable) of struct rmb::TalonFXVelocityController::CreateInfo is not documented.
@@ -358,7 +358,7 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:38: warning: Member rampRate (variable) of struct rmb::TalonFXPositionControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:43: warning: Member minPosition (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:45: warning: Member maxPosition (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:48: warning: Member isContinuous (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:48: warning: Member continuousWrap (variable) of struct rmb::TalonFXPositionControllerHelper::Range is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:56: warning: Member useSmartMotion (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:58: warning: Member maxVelocity (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:59: warning: Member minVelocity (variable) of struct rmb::TalonFXPositionControllerHelper::ProfileConfig is not documented.
@@ -367,7 +367,7 @@ warning: ignoring unsupported tag 'DIR_GRAPH_MAX_DEPTH' at line 2512, file docs/
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:67: warning: Member forwardSwitch (variable) of struct rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:67: warning: Member reverseSwitch (variable) of struct rmb::TalonFXPositionControllerHelper::FeedbackConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:71: warning: Member id (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
-/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:73: warning: Member zeroPosition (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
+/home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXPositionController.h:73: warning: Member magnetOffset (variable) of struct rmb::TalonFXPositionControllerHelper::CANCoderConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:16: warning: Member p (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:16: warning: Member i (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
 /home/runner/work/librmb/librmb/src/rmb/motorcontrol/Talon/TalonFXVelocityController.h:16: warning: Member d (variable) of struct rmb::TalonFXVelocityControllerHelper::PIDConfig is not documented.
