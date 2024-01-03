@@ -38,6 +38,7 @@ public:
     TalonFXVelocityControllerHelper::ProfileConfig profileConfig;
     TalonFXPositionControllerHelper::FeedbackConfig feedbackConfig;
     TalonFXVelocityControllerHelper::OpenLoopConfig openLoopConfig;
+    TalonFXPositionControllerHelper::CurrentLimits currentLimits;
     std::optional<TalonFXPositionControllerHelper::CANCoderConfig>
         canCoderConfig;
   };
@@ -68,6 +69,11 @@ public:
    * Common interface for setting a mechanism's raw power output.
    */
   virtual void setPower(double power) override;
+
+  /**
+   * Retrieve the percentage [-1.0, 1.0] output of the motor
+   */
+  virtual double getPower() const override;
 
   /**
    * Common interface for disabling a mechanism.

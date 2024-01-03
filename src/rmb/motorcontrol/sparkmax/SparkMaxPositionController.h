@@ -1,6 +1,5 @@
 #pragma once
 
-#include <functional>
 #include <limits>
 
 #include <units/angle.h>
@@ -112,6 +111,11 @@ public:
    * Common interface for setting a mechanism's raw power output.
    */
   virtual void setPower(double power) override;
+
+  /**
+   * Retrieve the percentage [0.0, 1.0] output of the motor
+   */
+  virtual double getPower() const override; 
 
   /**
    * Gets the minimum position.

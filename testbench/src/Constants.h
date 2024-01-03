@@ -36,6 +36,7 @@ const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo{
                       .maxAcceleration = 1.0_rad_per_s_sq},
     .feedbackConfig = {.sensorToMechanismRatio = 6.12f},
     .openLoopConfig = {.minOutput = -1.0, .maxOutput = 1.0, .rampRate = 0.0_s},
+    .currentLimits = {},
     .canCoderConfig = std::nullopt,
 };
 
@@ -52,6 +53,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo{
             .sensorToMechanismRatio = 1.0f,
         },
     .openLoopConfig = {},
+    .currentLimits = {},
     .canCoderConfig =
         CANCoderConfig{
             .id = 11,
@@ -71,6 +73,7 @@ const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo1{
                       .maxAcceleration = 1.0_rad_per_s_sq},
     .feedbackConfig = {.sensorToMechanismRatio = 6.12f},
     .openLoopConfig = {.minOutput = -1.0, .maxOutput = 1.0, .rampRate = 0.0_s},
+    .currentLimits = {},
     .canCoderConfig = std::nullopt,
 };
 
@@ -87,6 +90,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo1{
             .sensorToMechanismRatio = 1.0f,
         },
     .openLoopConfig = {},
+    .currentLimits = {},
     .canCoderConfig =
         CANCoderConfig{
             .id = 21,
@@ -106,6 +110,7 @@ const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo2{
                       .maxAcceleration = 1.0_rad_per_s_sq},
     .feedbackConfig = {.sensorToMechanismRatio = 6.12f},
     .openLoopConfig = {.minOutput = -1.0, .maxOutput = 1.0, .rampRate = 0.0_s},
+    .currentLimits = {},
     .canCoderConfig = std::nullopt,
 };
 
@@ -122,6 +127,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo2{
             .sensorToMechanismRatio = 1.0f,
         },
     .openLoopConfig = {},
+    .currentLimits = {},
     .canCoderConfig =
         CANCoderConfig{
             .id = 31,
@@ -141,6 +147,7 @@ const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo3{
                       .maxAcceleration = 1.0_rad_per_s_sq},
     .feedbackConfig = {.sensorToMechanismRatio = 6.12f},
     .openLoopConfig = {.minOutput = -1.0, .maxOutput = 1.0, .rampRate = 0.0_s},
+    .currentLimits = {},
     .canCoderConfig = std::nullopt,
 };
 
@@ -157,6 +164,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo3{
             .sensorToMechanismRatio = 1.0f,
         },
     .openLoopConfig = {},
+    .currentLimits = {},
     .canCoderConfig =
         CANCoderConfig{
             .id = 41,

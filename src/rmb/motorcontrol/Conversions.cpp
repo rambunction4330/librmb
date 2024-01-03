@@ -26,6 +26,8 @@ public:
 
   void setPower(double power) override { angular->setPower(power); }
 
+  double getPower() const override { return angular->getPower(); }
+
   void disable() override { angular->disable(); }
 
   void stop() override { angular->stop(); }
@@ -79,6 +81,8 @@ public:
   }
 
   void setPower(double power) override { angular->setPower(power); }
+
+  double getPower() const override { return angular->getPower(); }
 
   units::meter_t getMinPosition() const override {
     return angular->getMinPosition() * conversion;
@@ -142,6 +146,8 @@ public:
 
   void setPower(double power) override { linear->setPower(power); }
 
+  double getPower() const override { return linear->getPower(); }
+
   void disable() override { linear->disable(); }
 
   void stop() override { linear->stop(); }
@@ -195,6 +201,8 @@ public:
   }
 
   void setPower(double power) override { linear->setPower(power); }
+
+  double getPower() const override { return linear->getPower(); }
 
   units::radian_t getMinPosition() const override {
     return linear->getMinPosition() / conversion;

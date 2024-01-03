@@ -12,6 +12,7 @@
 #include "Constants.h"
 #include "RobotContainer.h"
 
+#include "networktables/DoubleTopic.h"
 #include "rmb/sensors/AHRS/AHRSGyro.h"
 #include <rmb/motorcontrol/Talon/TalonFXPositionController.h>
 #include <rmb/motorcontrol/Talon/TalonFXVelocityController.h>
@@ -27,7 +28,7 @@
 
 class Robot : public frc::TimedRobot {
 public:
-  Robot() : frc::TimedRobot(40_ms) {}
+  Robot() : frc::TimedRobot() {}
   void RobotInit() override;
   void RobotPeriodic() override;
   void DisabledInit() override;

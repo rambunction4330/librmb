@@ -47,13 +47,13 @@ void SwerveModule::setState(const frc::SwerveModuleState &state) {
 
 void SwerveModule::smartdashboardDisplayTargetState(
     const std::string &name) const {
-  frc::SmartDashboard::PutNumber(
+  /*frc::SmartDashboard::PutNumber(
       name + "_tgt_direction",
       ((units::degree_t)(angularController->getTargetPosition()))());
 
   frc::SmartDashboard::PutNumber(
       name + "_tgt_vel", ((units::meters_per_second_t)(
-                             velocityController->getTargetVelocity()))());
+                             velocityController->getTargetVelocity()))());*/
 }
 
 frc::SwerveModuleState SwerveModule::getState() const {
@@ -84,6 +84,14 @@ frc::SwerveModuleState SwerveModule::getTargetState() const {
           frc::Rotation2d(angularController->getTargetPosition())};
 }
 
+units::meters_per_second_t SwerveModule::getTargetVelocity() const {
+  return velocityController->getTargetVelocity();
+}
+
+frc::Rotation2d SwerveModule::getTargetRotation() const {
+  return frc::Rotation2d(angularController->getTargetPosition());
+}
+
 void SwerveModule::setPower(double power, const frc::Rotation2d &angle) {
   velocityController->setPower(power);
   angularController->setPosition(angle.Radians());
@@ -92,6 +100,13 @@ void SwerveModule::setPower(double power, const frc::Rotation2d &angle) {
 void SwerveModule::setPower(const SwerveModulePower &power) {
   velocityController->setPower(power.power);
   angularController->setPosition(power.angle.Radians());
+}
+
+SwerveModulePower SwerveModule::getPower() {
+  return {
+    .power = velocityController->getPower(),
+    .angle = angularController->getTargetPosition()
+  };
 }
 
 const frc::Translation2d &SwerveModule::getModuleTranslation() const {

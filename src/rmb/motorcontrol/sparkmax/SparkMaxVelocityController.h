@@ -1,6 +1,5 @@
 #pragma once
 
-#include <functional>
 #include <initializer_list>
 
 #include <rev/CANSparkMax.h>
@@ -12,8 +11,6 @@
 #include <units/time.h>
 
 #include "rmb/motorcontrol/AngularVelocityController.h"
-#include "rmb/motorcontrol/feedforward/Feedforward.h"
-#include "rmb/motorcontrol/feedforward/SimpleFeedforward.h"
 
 namespace rmb {
 
@@ -111,6 +108,11 @@ public:
    * Common interface for setting a mechanism's raw power output.
    */
   virtual void setPower(double power) override;
+
+  /**
+   * Retrieve the percentage [-1.0, 1.0] output of the motor
+   */
+  virtual double getPower() const override;
 
   /**
    * Common interface for disabling a mechanism.

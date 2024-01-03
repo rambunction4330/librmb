@@ -20,9 +20,75 @@ struct MotorConfig {
   int id;
   bool inverted = false;
   bool brake = false;
-  units::ampere_t currentLimit = 40_A; /*< Stator current limit*/
   double minOutput = -1.0,
          maxOutput = 1.0; /*< Applies to both open and closed loop*/
+};
+
+/** @brief describes current limits for the motor.
+ * This was copied (and slightly modified to include units:: types)
+ */
+struct CurrentLimits {
+  /**
+   * \brief The amount of current allowed in the motor (motoring and
+   * regen current).  This is only applicable for non-torque current
+   * control modes.  Note this requires the corresponding enable to be
+   * true.
+   *
+   *   Minimum Value: 0.0
+   *   Maximum Value: 800.0
+   *   Default Value: 0
+   *   Units: A
+   */
+  units::ampere_t statorCurrentLimit = 0.0_A;
+  /**
+   * \brief Enable motor stator current limiting.
+   *
+   *   Default Value: False
+   */
+  bool statorCurrentLimitEnable = false;
+  /**
+   * \brief The amount of supply current allowed.  This is only
+   * applicable for non-torque current control modes.  Note this
+   * requires the corresponding enable to be true.  Use
+   * SupplyCurrentThreshold and SupplyTimeThreshold to allow brief
+   * periods of high-current before limiting occurs.
+   *
+   *   Minimum Value: 0.0
+   *   Maximum Value: 800.0
+   *   Default Value: 0
+   *   Units: A
+   */
+  units::ampere_t supplyCurrentLimit = 0_A;
+
+  /**
+   * \brief Enable motor supply current limiting.
+   *
+   *   Default Value: False
+   */
+  bool supplyCurrentLimitEnable = false;
+  /**
+   * \brief Delay supply current limiting until current exceeds this
+   * threshold for longer than SupplyTimeThreshold.  This allows current
+   * draws above SupplyCurrentLimit for a fixed period of time.  This
+   * has no effect if SupplyCurrentLimit is greater than this value.
+   *
+   *   Minimum Value: 0.0
+   *   Maximum Value: 511
+   *   Default Value: 0
+   *   Units: A
+   */
+  units::ampere_t supplyCurrentThreshold = 0_A;
+  /**
+   * \brief Allows unlimited current for a period of time before current
+   * limiting occurs.  Current threshold is the maximum of
+   * SupplyCurrentThreshold and SupplyCurrentLimit.
+   *
+   *   Minimum Value: 0.0
+   *   Maximum Value: 1.275
+   *   Default Value: 0
+   *   Units: sec
+   */
+  units::second_t supplyTimeThreshold = 0.0_s;
 };
 
 struct OpenLoopConfig {
@@ -82,6 +148,7 @@ public:
     TalonFXPositionControllerHelper::Range range;
     TalonFXPositionControllerHelper::FeedbackConfig feedbackConfig;
     TalonFXPositionControllerHelper::OpenLoopConfig openLoopConfig;
+    TalonFXPositionControllerHelper::CurrentLimits currentLimits;
     std::optional<TalonFXPositionControllerHelper::CANCoderConfig>
         canCoderConfig;
   };
@@ -107,6 +174,11 @@ public:
    * [0.0, 1.0]
    */
   void setPower(double power) override;
+
+  /**
+   * Retrieve the percentage [0.0, 1.0] output of the motor
+   */
+  virtual double getPower() const override;
 
   /**
    * Queries the Phoenix API for the current set point of the motor

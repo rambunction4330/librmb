@@ -41,6 +41,11 @@ public:
   virtual void setPower(double power) = 0;
 
   /**
+   * Retrieve the percentage [0.0, 1.0] output of the motor
+   */
+  virtual double getPower() const = 0;
+
+  /**
    * Common interface for getting the minimum angular position.
    *
    * @return The minimum angular position in radians.

@@ -3,8 +3,6 @@
 #include <units/angle.h>
 #include <units/length.h>
 
-#include <algorithm>
-
 namespace rmb {
 
 SparkMaxVelocityController::SparkMaxVelocityController(
@@ -138,6 +136,10 @@ SparkMaxVelocityController::getTargetVelocity() const {
 void SparkMaxVelocityController::setPower(double power) {
   targetVelocity = 0.0_rad_per_s;
   sparkMax.Set(power);
+}
+
+double SparkMaxVelocityController::getPower() const {
+  return sparkMax.Get();
 }
 
 void SparkMaxVelocityController::disable() {

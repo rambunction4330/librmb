@@ -5,6 +5,7 @@
 #include "Robot.h"
 #include "frc/controller/HolonomicDriveController.h"
 #include "frc/controller/ProfiledPIDController.h"
+#include "frc/smartdashboard/SmartDashboard.h"
 #include "rmb/drive/SwerveDrive.h"
 #include "rmb/drive/SwerveModule.h"
 #include "rmb/motorcontrol/AngularVelocityController.h"
@@ -62,7 +63,11 @@ void Robot::RobotInit() {
               1, 0, 0,
               frc::TrapezoidProfile<units::radian>::Constraints(
                   6.28_rad_per_s, 3.14_rad_per_s / 1_s))),
-      7.0_mps, 2.0_tps);
+      7.0_mps);
+
+  frc::SmartDashboard::PutNumber("joyX", 0.0);
+  frc::SmartDashboard::PutNumber("joyY", 0.0);
+  frc::SmartDashboard::PutNumber("joyTwist", 0.0);
 }
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
@@ -95,12 +100,7 @@ void Robot::TeleopPeriodic() {
   swerveDrive->driveCartesian(gamepad.GetLeftX(), -gamepad.GetLeftY(),
                               -gamepad.GetRightY(), false);
 
-  for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
-    const auto &module = swerveDrive->getModules()[i];
-    module.smartdashboardDisplayTargetState(std::to_string(i));
-  }
-
-  swerveDrive->publishErrorsToNT();
+  swerveDrive->updateNTDebugInfo(true);
 }
 
 void Robot::TeleopExit() {}
@@ -112,15 +112,12 @@ void Robot::TestPeriodic() {
   //                             -joystick.GetY() * joystick.GetThrottle(),
   //                             -joystick.GetTwist() * joystick.GetThrottle(),
   //                             false);
-  swerveDrive->driveCartesian(gamepad.GetLeftX(), -gamepad.GetLeftY(),
-                              gamepad.GetRightY(), false);
+  swerveDrive->driveCartesian(frc::SmartDashboard::GetNumber("joyX", 0.0),
+                              -frc::SmartDashboard::GetNumber("joyY", 0.0),
+                              frc::SmartDashboard::GetNumber("joyTwist", 0.0),
+                              false);
 
-  for (size_t i = 0; i < swerveDrive->getModules().size(); i++) {
-    const auto &module = swerveDrive->getModules()[i];
-    module.smartdashboardDisplayTargetState(std::to_string(i));
-  }
-
-  swerveDrive->publishErrorsToNT();
+  swerveDrive->updateNTDebugInfo(true);
 }
 
 void Robot::TestExit() {}

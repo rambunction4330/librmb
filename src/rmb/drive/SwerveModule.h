@@ -12,6 +12,8 @@
 #include "frc/geometry/Rotation2d.h"
 #include "rmb/motorcontrol/AngularPositionController.h"
 #include "rmb/motorcontrol/LinearVelocityController.h"
+#include "units/angular_velocity.h"
+#include "units/velocity.h"
 #include "wpi/sendable/Sendable.h"
 #include "wpi/sendable/SendableHelper.h"
 
@@ -99,6 +101,9 @@ public:
    */
   frc::SwerveModuleState getTargetState() const;
 
+  units::meters_per_second_t getTargetVelocity() const;
+  frc::Rotation2d getTargetRotation() const;
+
   /**
    * Sets the desired open loop powerof the swerve module. Tghis is helpful
    * for teleoperated driving as drivers tend power based control to be more
@@ -117,6 +122,8 @@ public:
    * @param power The desired power output of the swerve module.
    */
   void setPower(const SwerveModulePower &power);
+
+  SwerveModulePower getPower();
 
   /**
    * Returns the position fo the module reletive to the center of the robot
