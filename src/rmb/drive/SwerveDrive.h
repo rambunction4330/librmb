@@ -67,7 +67,8 @@ public:
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
               std::shared_ptr<const rmb::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
-              std::string visionTable, units::meters_per_second_t maxModuleSpeed,
+              std::string visionTable,
+              units::meters_per_second_t maxModuleSpeed,
               const frc::Pose2d &initialPose = frc::Pose2d());
 
   /**
@@ -261,7 +262,8 @@ private:
   frc::SwerveDriveKinematics<NumModules> kinematics;
 
   /**
-   * Inverse Kinematics matrix to convert chassis speeds in percentage outputs to module states
+   * Inverse Kinematics matrix to convert chassis speeds in percentage outputs
+   * to module states
    */
   Eigen::Matrix<float, 2 * NumModules, 3> openLoopInverseKinematics;
 

@@ -138,9 +138,7 @@ void SparkMaxVelocityController::setPower(double power) {
   sparkMax.Set(power);
 }
 
-double SparkMaxVelocityController::getPower() const {
-  return sparkMax.Get();
-}
+double SparkMaxVelocityController::getPower() const { return sparkMax.Get(); }
 
 void SparkMaxVelocityController::disable() {
   targetVelocity = 0.0_rad_per_s;

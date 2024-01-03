@@ -148,9 +148,7 @@ void SparkMaxPositionController::setPower(double power) {
   sparkMax.Set(power);
 }
 
-double SparkMaxPositionController::getPower() const {
-  return sparkMax.Get();
-}
+double SparkMaxPositionController::getPower() const { return sparkMax.Get(); }
 
 units::radian_t SparkMaxPositionController::getMinPosition() const {
   return minPose;

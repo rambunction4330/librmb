@@ -115,7 +115,7 @@ public:
   /**
    * Retrieve the percentage [0.0, 1.0] output of the motor
    */
-  virtual double getPower() const override; 
+  virtual double getPower() const override;
 
   /**
    * Gets the minimum position.

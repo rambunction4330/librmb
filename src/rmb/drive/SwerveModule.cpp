@@ -103,10 +103,8 @@ void SwerveModule::setPower(const SwerveModulePower &power) {
 }
 
 SwerveModulePower SwerveModule::getPower() {
-  return {
-    .power = velocityController->getPower(),
-    .angle = angularController->getTargetPosition()
-  };
+  return {.power = velocityController->getPower(),
+          .angle = angularController->getTargetPosition()};
 }
 
 const frc::Translation2d &SwerveModule::getModuleTranslation() const {
