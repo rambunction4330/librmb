@@ -1,8 +1,10 @@
-
 #pragma once
 
+#include "wpi/MathExtras.h"
 #include <frc2/command/button/CommandGenericHID.h>
 #include <frc2/command/button/Trigger.h>
+
+#include <iostream>
 
 namespace rmb {
 
@@ -41,9 +43,13 @@ public:
 
   double GetLeftX() const {
     double raw = -GetRawAxis(Axes::leftX);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+
+    raw = wpi::sgn(raw) * (std::abs(raw) - deadZone) /
+          (1.0 - deadZone); // Normalize from range 0.0-1.0
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
   frc2::Trigger LeftXLessThan(double threshold) const {
@@ -55,9 +61,13 @@ public:
 
   double GetLeftY() const {
     double raw = GetRawAxis(Axes::leftY);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+
+    raw = wpi::sgn(raw) * (std::abs(raw) - deadZone) /
+          (1.0 - deadZone); // Normalize from range 0.0-1.0
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
 
@@ -79,9 +89,13 @@ public:
 
   double GetRightX() const {
     double raw = -GetRawAxis(Axes::rightX);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+
+    raw = wpi::sgn(raw) * (std::abs(raw) - deadZone) /
+          (1.0 - deadZone); // Normalize from range 0.0-1.0
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
 
@@ -94,9 +108,13 @@ public:
 
   double GetRightY() const {
     double raw = GetRawAxis(Axes::rightY);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+
+    raw = wpi::sgn(raw) * (std::abs(raw) - deadZone) /
+          (1.0 - deadZone); // Normalize from range 0.0-1.0
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
 
@@ -118,9 +136,13 @@ public:
 
   double GetLeftTrigger() const {
     double raw = GetRawAxis(Axes::leftTrigger);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+
+    raw = wpi::sgn(raw) * (std::abs(raw) - deadZone) /
+          (1.0 - deadZone); // Normalize from range 0.0-1.0
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
   frc2::Trigger LeftTriggerLessThan(double threshold) const {
@@ -132,9 +154,13 @@ public:
 
   double GetRightTrigger() const {
     double raw = GetRawAxis(Axes::rightTrigger);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
+
+    raw = wpi::sgn(raw) * (std::abs(raw) - deadZone) /
+          (1.0 - deadZone); // Normalize from range 0.0-1.0
+
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
   }
   frc2::Trigger RightTriggerLessThan(double threshold) const {

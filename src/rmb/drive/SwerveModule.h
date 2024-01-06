@@ -12,6 +12,10 @@
 #include "frc/geometry/Rotation2d.h"
 #include "rmb/motorcontrol/AngularPositionController.h"
 #include "rmb/motorcontrol/LinearVelocityController.h"
+#include "units/angular_velocity.h"
+#include "units/velocity.h"
+#include "wpi/sendable/Sendable.h"
+#include "wpi/sendable/SendableHelper.h"
 
 namespace rmb {
 
@@ -44,7 +48,8 @@ struct SwerveModulePower {
 /**
  * Class managing the motion of a swerve module
  */
-class SwerveModule {
+class SwerveModule : public wpi::Sendable,
+                     public wpi::SendableHelper<SwerveModule> {
 public:
   SwerveModule(const SwerveModule &) = delete;
   SwerveModule(SwerveModule &&) = default;
@@ -59,7 +64,8 @@ public:
    */
   SwerveModule(std::unique_ptr<LinearVelocityController> velocityController,
                std::unique_ptr<AngularPositionController> angularController,
-               const frc::Translation2d &moduleTranslation);
+               const frc::Translation2d &moduleTranslation,
+               bool breakMode = false);
 
   /**
    * Sets the desired state of the swerve module.
@@ -95,6 +101,9 @@ public:
    */
   frc::SwerveModuleState getTargetState() const;
 
+  units::meters_per_second_t getTargetVelocity() const;
+  frc::Rotation2d getTargetRotation() const;
+
   /**
    * Sets the desired open loop powerof the swerve module. Tghis is helpful
    * for teleoperated driving as drivers tend power based control to be more
@@ -114,11 +123,19 @@ public:
    */
   void setPower(const SwerveModulePower &power);
 
+  SwerveModulePower getPower();
+
   /**
    * Returns the position fo the module reletive to the center of the robot
    * for kinematics.
    */
   const frc::Translation2d &getModuleTranslation() const;
+
+  virtual void InitSendable(wpi::SendableBuilder &builder) override;
+
+  double getAngle() {
+    return ((units::angle::degree_t)angularController->getPosition())();
+  }
 
 private:
   /**
@@ -136,5 +153,7 @@ private:
    * kinematics.
    */
   frc::Translation2d moduleTranslation;
+
+  bool breakMode;
 };
 } // namespace rmb

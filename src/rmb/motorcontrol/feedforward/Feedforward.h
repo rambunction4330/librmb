@@ -1,5 +1,6 @@
-
 #pragma once
+
+#include <algorithm>
 
 #include <units/base.h>
 #include <units/time.h>

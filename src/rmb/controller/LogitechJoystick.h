@@ -22,7 +22,7 @@ public:
 
   double GetX() const {
     double raw = -GetRawAxis(Axes::X);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
@@ -37,7 +37,7 @@ public:
 
   double GetY() const {
     double raw = GetRawAxis(Axes::Y);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;
@@ -53,7 +53,7 @@ public:
 
   double GetTwist() const {
     double raw = GetRawAxis(Axes::twist);
-    if (abs(raw) < deadZone) {
+    if (std::abs(raw) < deadZone) {
       return 0.0;
     }
     return squareOutputs ? std::copysign(raw * raw, raw) : raw;

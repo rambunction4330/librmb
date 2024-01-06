@@ -1,6 +1,5 @@
 #pragma once
 
-#include <functional>
 #include <initializer_list>
 
 #include <rev/CANSparkMax.h>
@@ -12,8 +11,6 @@
 #include <units/time.h>
 
 #include "rmb/motorcontrol/AngularVelocityController.h"
-#include "rmb/motorcontrol/feedforward/Feedforward.h"
-#include "rmb/motorcontrol/feedforward/SimpleFeedforward.h"
 
 namespace rmb {
 
@@ -75,7 +72,7 @@ public:
     const PIDConfig pidConfig = {};
     const ProfileConfig profileConfig = {};
     const FeedbackConfig feedbackConfig = {};
-    std::initializer_list<const MotorConfig> followers = {};
+    std::initializer_list<const MotorConfig> followers;
   };
 
   SparkMaxVelocityController(SparkMaxVelocityController &&) = delete;
@@ -113,6 +110,11 @@ public:
   virtual void setPower(double power) override;
 
   /**
+   * Retrieve the percentage [-1.0, 1.0] output of the motor
+   */
+  virtual double getPower() const override;
+
+  /**
    * Common interface for disabling a mechanism.
    */
   virtual void disable() override;
@@ -141,14 +143,10 @@ public:
   units::radian_t getPosition() const override;
 
   /**
-   * Zeros the angular positon the motor so the current position is set to
-   * the offset. In the case of an absolute encoder this sets the zero offset
-   * with no regard to the current position.
-   *
-   * @param offset the offset from the current angular position at which to
-   *               set the zero position.
+   * Sets the encoder's reported position
+   * @param position The position to reset the reference to. Defaults to 0
    */
-  void zeroPosition(units::radian_t offset = 0_rad) override;
+  void setEncoderPosition(units::radian_t position = 0_rad) override;
 
   //----------------------------------------------------------
   // Methods Inherited from AngularvelocityFeedbackController

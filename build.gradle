@@ -2,7 +2,7 @@ plugins {
     id 'cpp'
     id 'java'
     id 'edu.wpi.first.wpilib.repositories.WPILibRepositoriesPlugin' version '2020.2'
-    id 'edu.wpi.first.NativeUtils' version '2023.11.1'
+    id 'edu.wpi.first.NativeUtils' version '2024.3.1'
     id 'edu.wpi.first.GradleJni' version '1.0.0'
     id 'edu.wpi.first.GradleVsCode' version '2.0.0'
 }
@@ -13,11 +13,9 @@ targetCompatibility = JavaVersion.VERSION_11
 repositories {
     mavenCentral()
 }
-//if (project.hasProperty('releaseMode')) {
-    wpilibRepositories.addAllReleaseRepositories(project)
-//} else {
-//    wpilibRepositories.addAllDevelopmentRepositories(project)
-//}
+
+wpilibRepositories.addAllReleaseRepositories(project)
+// wpilibRepositories.addAllDevelopmentRepositories(project)
 
 // Apply C++ configuration
 apply from: 'config.gradle'
@@ -29,8 +27,35 @@ dependencies {
 // Set up exports properly
 nativeUtils {
     exportsConfigs {
-        LibRmb {}
-    }
+        LibRmb {
+          x64ExcludeSymbols = [
+              '_CT??_R0?AV_System_error',
+              '_CT??_R0?AVexception',
+              '_CT??_R0?AVfailure',
+              '_CT??_R0?AVruntime_error',
+              '_CT??_R0?AVsystem_error',
+              '_CTA5?AVfailure',
+              '_TI5?AVfailure',
+              '_CT??_R0?AVout_of_range',
+              '_CTA3?AVout_of_range',
+              '_TI3?AVout_of_range',
+              '_CT??_R0?AVbad_cast'
+          ]
+          x86ExcludeSymbols = [
+              '_CT??_R0?AV_System_error',
+              '_CT??_R0?AVexception',
+              '_CT??_R0?AVfailure',
+              '_CT??_R0?AVruntime_error',
+              '_CT??_R0?AVsystem_error',
+              '_CTA5?AVfailure',
+              '_TI5?AVfailure',
+              '_CT??_R0?AVout_of_range',
+              '_CTA3?AVout_of_range',
+              '_TI3?AVout_of_range',
+              '_CT??_R0?AVbad_cast'
+          ]
+      }
+  }
 }
 
 model {
@@ -55,7 +80,7 @@ model {
 apply from: 'publish.gradle'
 
 wrapper {
-    gradleVersion '7.6.1'
+    gradleVersion '8.4'
 }
 
 test {

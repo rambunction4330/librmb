@@ -19,15 +19,20 @@
 #include <frc/kinematics/SwerveModuleState.h>
 #include <frc/trajectory/Trajectory.h>
 
-#include <pathplanner/lib/PathPlannerTrajectory.h>
+#include <pathplanner/lib/path/PathPlannerTrajectory.h>
 
 #include "frc2/command/Commands.h"
+#include "networktables/DoubleArrayTopic.h"
 #include "rmb/drive/BaseDrive.h"
 #include "rmb/drive/SwerveModule.h"
 #include "units/angular_velocity.h"
 
 #include <frc2/command/Command.h>
 #include <frc2/command/CommandPtr.h>
+
+#include "networktables/DoubleTopic.h"
+
+#include <rmb/sensors/gyro.h>
 
 namespace rmb {
 
@@ -54,14 +59,15 @@ public:
    * path.
    * @param visionTable         Path to the NetworkTables table for listening
    *                            for vision updates.
+   * @param maxModuleSpeed      Maximum speed any module can turn
    * @param initialPose         Starting position of the robot for odometry.
    *
    */
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
-              std::shared_ptr<const frc::Gyro> gyro,
+              std::shared_ptr<const rmb::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
-              std::string visionTable, units::meters_per_second_t maxSpeed,
-              units::radians_per_second_t maxRotation,
+              std::string visionTable,
+              units::meters_per_second_t maxModuleSpeed,
               const frc::Pose2d &initialPose = frc::Pose2d());
 
   /**
@@ -70,15 +76,15 @@ public:
    *
    * @param modules             Array of swerve modules aprt of the drivetrain.
    * @param gyro                Monitors the robots heading for odometry.
-   * @param holonomicController Feedbakc controller for keeping the robot on
+   * @param holonomicController Feedback controller for keeping the robot on
    *                            path.
+   * @param maxModuleSpeed      Maximum speed any module can turn
    * @param initialPose         Starting position of the robot for odometry.
    */
   SwerveDrive(std::array<SwerveModule, NumModules> modules,
-              std::shared_ptr<const frc::Gyro> gyro,
+              std::shared_ptr<const rmb::Gyro> gyro,
               frc::HolonomicDriveController holonomicController,
-              units::meters_per_second_t maxSpeed,
-              units::radians_per_second_t maxRotation,
+              units::meters_per_second_t maxModuleSpeed,
               const frc::Pose2d &initialPose = frc::Pose2d());
 
   virtual ~SwerveDrive() = default;
@@ -89,7 +95,7 @@ public:
   void drivePolar(double speed, const frc::Rotation2d &angle, double zRotation,
                   bool fieldOriented);
 
-  void driveModulePower(std::array<SwerveModulePower, NumModules> powers);
+  void driveModulePowers(std::array<SwerveModulePower, NumModules> powers);
 
   void driveModuleStates(std::array<frc::SwerveModuleState, NumModules> states);
 
@@ -212,7 +218,29 @@ public:
       pathplanner::PathPlannerTrajectory trajectory,
       std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
+  void updateNTDebugInfo(bool openLoopVelocity = false);
+
 private:
+  void recomputeOpenloopInverseKinematicsMatrix();
+
+  //-----------------
+  // Network Tables Debugging
+  //-----------------
+
+  // std::array<nt::DoublePublisher, NumModules> ntVelocityErrorTopics;
+  // std::array<nt::DoublePublisher, NumModules> ntPositionErrorTopics;
+  // std::array<nt::DoublePublisher, NumModules> ntPositionTopics;
+  // std::array<nt::DoublePublisher, NumModules> ntVelocityTopics;
+
+  nt::DoubleArrayPublisher ntPositionTopics;
+  nt::DoubleArrayPublisher ntVelocityTopics;
+
+  nt::DoubleArrayPublisher ntPositionErrorTopics;
+  nt::DoubleArrayPublisher ntVelocityErrorTopics;
+
+  nt::DoubleArrayPublisher ntTargetPositionTopics;
+  nt::DoubleArrayPublisher ntTargetVelocityTopics;
+
   //-----------------
   // Drive Variables
   //-----------------
@@ -225,12 +253,18 @@ private:
   /**
    * Gyroscope to monitor the heading of the robot.
    */
-  std::shared_ptr<const frc::Gyro> gyro;
+  std::shared_ptr<const rmb::Gyro> gyro;
 
   /**
    * Kinematics to convert from module motion to chassis motion and visa versa.
    */
   frc::SwerveDriveKinematics<NumModules> kinematics;
+
+  /**
+   * Inverse Kinematics matrix to convert chassis speeds in percentage outputs
+   * to module states
+   */
+  Eigen::Matrix<float, 2 * NumModules, 3> openLoopInverseKinematics;
 
   /**
    * Controller to help drive follow a path.
@@ -251,8 +285,10 @@ private:
    */
   mutable std::mutex visionThreadMutex;
 
-  units::meters_per_second_t maxSpeed;
-  units::radians_per_second_t maxRotation;
+  units::meters_per_second_t maxModuleSpeed;
+
+  units::meter_t largestModuleDistance = 1.0_m;
 };
 } // namespace rmb
+
 #include "SwerveDrive.inl"

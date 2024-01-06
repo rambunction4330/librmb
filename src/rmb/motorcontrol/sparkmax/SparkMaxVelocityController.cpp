@@ -138,6 +138,8 @@ void SparkMaxVelocityController::setPower(double power) {
   sparkMax.Set(power);
 }
 
+double SparkMaxVelocityController::getPower() const { return sparkMax.Get(); }
+
 void SparkMaxVelocityController::disable() {
   targetVelocity = 0.0_rad_per_s;
   sparkMax.Disable();
@@ -198,7 +200,7 @@ units::radian_t SparkMaxVelocityController::getPosition() const {
   return 0_rad;
 }
 
-void SparkMaxVelocityController::zeroPosition(units::radian_t offset) {
+void SparkMaxVelocityController::setEncoderPosition(units::radian_t position) {
   using EncoderType = SparkMaxVelocityControllerHelper::EncoderType;
 
   switch (encoderType) {
@@ -206,19 +208,19 @@ void SparkMaxVelocityController::zeroPosition(units::radian_t offset) {
   case EncoderType::Quadrature: {
     rev::SparkMaxRelativeEncoder *rel =
         static_cast<rev::SparkMaxRelativeEncoder *>(encoder.get());
-    rel->SetPosition(units::turn_t(offset).to<double>() * gearRatio);
+    rel->SetPosition(units::turn_t(position).to<double>() * gearRatio);
     break;
   }
   case EncoderType::Alternate: {
     rev::SparkMaxAlternateEncoder *rel =
         static_cast<rev::SparkMaxAlternateEncoder *>(encoder.get());
-    rel->SetPosition(units::turn_t(offset).to<double>() * gearRatio);
+    rel->SetPosition(units::turn_t(position).to<double>() * gearRatio);
     break;
   }
   case EncoderType::Absolute: {
     rev::SparkMaxAbsoluteEncoder *ab =
         static_cast<rev::SparkMaxAbsoluteEncoder *>(encoder.get());
-    ab->SetZeroOffset(units::turn_t(offset).to<double>() * gearRatio);
+    ab->SetZeroOffset(units::turn_t(position).to<double>() * gearRatio);
   }
   }
 }

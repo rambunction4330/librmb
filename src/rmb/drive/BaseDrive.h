@@ -14,11 +14,12 @@
 
 #include <networktables/DoubleArrayTopic.h>
 #include <networktables/NetworkTable.h>
+#include <networktables/NetworkTableInstance.h>
 
 #include <frc2/command/CommandPtr.h>
 #include <frc2/command/Subsystem.h>
 
-#include <pathplanner/lib/PathPlannerTrajectory.h>
+#include <pathplanner/lib/path/PathPlannerTrajectory.h>
 
 namespace rmb {
 
