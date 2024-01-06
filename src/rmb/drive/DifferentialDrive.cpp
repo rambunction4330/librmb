@@ -1,4 +1,4 @@
-#if 0
+
 #include "rmb/drive/DifferentialDrive.h"
 
 #include <initializer_list>
@@ -119,6 +119,9 @@ void DifferentialDrive::setVisionSTDevs(wpi::array<double, 3> standardDevs) {
   poseEstimator.SetVisionMeasurementStdDevs(standardDevs);
 }
 
+
+// trjectory functions
+
 frc2::CommandPtr DifferentialDrive::followWPILibTrajectory(
     frc::Trajectory trajectory,
     std::initializer_list<frc2::Subsystem *> driveRequirements) {
@@ -141,5 +144,6 @@ frc2::CommandPtr DifferentialDrive::followPPTrajectory(
       .ToPtr();
 }
 
-} // namespace rmb
-#endif
+} 
+// namespace rmb
+

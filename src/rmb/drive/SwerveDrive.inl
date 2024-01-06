@@ -12,8 +12,10 @@
 
 #include "frc2/command/CommandPtr.h"
 #include "frc2/command/Commands.h"
+#include "frc2/command/Subsystem.h"
 #include "rmb/drive/SwerveDrive.h"
 #include "rmb/drive/SwerveModule.h"
+#include "rmb/motorcontrol/feedforward/Feedforward.h"
 #include "units/angle.h"
 #include "units/angular_velocity.h"
 #include "units/length.h"
@@ -23,6 +25,8 @@
 
 #include <array>
 #include <cstddef>
+#include <functional>
+#include <initializer_list>
 #include <iostream>
 
 namespace rmb {
@@ -55,8 +59,8 @@ SwerveDrive<NumModules>::SwerveDrive(
     frc::HolonomicDriveController holonomicController,
     units::meters_per_second_t maxSpeed,
     units::radians_per_second_t maxRotation, const frc::Pose2d &initialPose)
-    : SwerveDrive(std::move(modules), gyro, holonomicController, "",
-                  maxSpeed, maxRotation, initialPose) {}
+    : SwerveDrive(std::move(modules), gyro, holonomicController, "", maxSpeed,
+                  maxRotation, initialPose) {}
 
 template <size_t NumModules>
 std::array<frc::SwerveModulePosition, NumModules>
@@ -181,10 +185,30 @@ void SwerveDrive<NumModules>::setVisionSTDevs(
     wpi::array<double, 3> standardDevs) {}
 
 template <size_t NumModules>
-frc2::CommandPtr SwerveDrive<NumModules>::followPPTrajectory(
-    pathplanner::PathPlannerTrajectory trajectory,
+frc2::CommandPtr SwerveDrive<NumModules>::followWPILibTrajectory(
+    frc::Trajectory trajectory,
     std::initializer_list<frc2::Subsystem *> driveRequirements) {
-  return frc2::cmd::None();
+  return frc2::SwerveControllerCommand<NumModules>(
+      trajectory, []() { getPose(); }, kinematics, holonomicController,
+      holonomicController, holonomicController, frc::Rotation2d(),
+      getModuleStates();
+      , driveRequirements);
 }
 
+template <size_t NumModules>
+frc2::CommandPtr
+followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory,
+                   std::initializer_list<frc2::Subsystem *> driveRequirements) {
+  return pathplanner::FollowPathHolonomic (
+      trajectory, []() { return getPose(); },
+      []() { return getChassisSpeeds(); },
+      std::function<void(frc::ChassisSpeeds)> output,
+      pathplanner::PIDConstants translationConstants,
+      pathplanner::PIDConstants rotationConstants,
+      units::meters_per_second_t maxModuleSpeed,
+      units::meter_t driverBaseRadius,
+      pathplanner::ReplanningConfig replanningConfig, driveRequirements,
+      units::second_t period);
+}
 } // namespace rmb
+  // namespace rmb
