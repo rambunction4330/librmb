@@ -1,7 +1,7 @@
 plugins {
     id "cpp"
     id "google-test-test-suite"
-    id "edu.wpi.first.GradleRIO" version "2024.1.1-beta-3"
+    id "edu.wpi.first.GradleRIO" version "2024.+"
 }
 // Define my targets (RoboRIO) and artifacts (deployable files)
 // This is added by GradleRIO's backing project DeployUtils.
@@ -12,7 +12,7 @@ deploy {
             // or from command line. If not found an exception will be thrown.
             // You can use getTeamOrDefault(team) instead of getTeamNumber if you
             // want to store a team number in this file.
-            team = project.frc.getTeamNumber()
+            team = project.frc.getTeamOrDefault(4330)
             debug = project.frc.getDebugOrDefault(false)
 
             artifacts {

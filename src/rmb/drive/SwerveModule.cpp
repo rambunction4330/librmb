@@ -15,10 +15,13 @@ namespace rmb {
 
 SwerveModulePower SwerveModulePower::Optimize(const SwerveModulePower &desired,
                                               const frc::Rotation2d &current) {
-  if (units::math::abs((desired.angle - current).Degrees()) > 90_deg) {
+  if (desired.power == 0.0) {
+    return {0.0, current};
+  } else if (units::math::abs((desired.angle - current).Degrees()) > 90_deg) {
     return {-desired.power, desired.angle + frc::Rotation2d(180_deg)};
+  } else {
+    return {desired.power, desired.angle};
   }
-  return {desired.power, desired.angle};
 }
 
 SwerveModule::SwerveModule(

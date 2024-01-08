@@ -1,4 +1,5 @@
 #include "TalonFXVelocityController.h"
+#include "ctre/phoenix6/controls/DutyCycleOut.hpp"
 #include "units/angular_velocity.h"
 
 #include <iostream>
@@ -57,7 +58,7 @@ TalonFXVelocityController::TalonFXVelocityController(
   }
 
   // https://www.chiefdelphi.com/t/current-limiting-talonfx-values/374780/10
-  talonFXConfig.CurrentLimits.SupplyCurrentLimit =
+  /*talonFXConfig.CurrentLimits.SupplyCurrentLimit =
       createInfo.currentLimits.supplyCurrentLimit();
   talonFXConfig.CurrentLimits.SupplyTimeThreshold =
       createInfo.currentLimits.supplyTimeThreshold(); // But wait for this time
@@ -70,7 +71,7 @@ TalonFXVelocityController::TalonFXVelocityController(
       createInfo.currentLimits.statorCurrentLimitEnable;
   talonFXConfig.CurrentLimits.StatorCurrentLimit =
       createInfo.currentLimits.statorCurrentLimit(); // Motor-usage current
-                                                     // limit Prevent heat
+                                                     // limit Prevent heat*/
 
   if (createInfo.canCoderConfig.has_value()) {
     canCoder.emplace(createInfo.canCoderConfig.value().id);
@@ -140,8 +141,11 @@ units::radians_per_second_t TalonFXVelocityController::getVelocity() const {
 }
 
 void TalonFXVelocityController::setPower(double power) {
-  motorcontroller.SetControl(
-      ctre::phoenix6::controls::DutyCycleOut(0.0).WithOutput(power));
+  motorcontroller.SetControl(ctre::phoenix6::controls::DutyCycleOut(power));
+  // motorcontroller.Set(power);
+
+  // std::cout << "power: " << power;
+  // std::cout << "also power: " << getPower() << std::endl;
 }
 
 double TalonFXVelocityController::getPower() const {

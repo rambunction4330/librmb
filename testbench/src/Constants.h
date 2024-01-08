@@ -13,7 +13,7 @@ using rmb::TalonFXPositionControllerHelper::CANCoderConfig;
 const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig =
     {.p = 1.5, .i = 0.0003, .d = 0.00, .ff = 0.000};
 const rmb::TalonFXPositionControllerHelper::PIDConfig positionModulePIDConfig =
-    {.p = 0.8f, .i = 0.0000f, .d = 0.0f, .ff = 0.000};
+    {.p = 2.5f, .i = 0.0000f, .d = 0.0f, .ff = 0.000};
 
 const units::turn_t module1Zero(-0.156250);
 const units::turn_t module2Zero(-0.173828);
@@ -25,11 +25,7 @@ const units::meter_t wheelCircumference = 1.0_m;
 const frc::SerialPort::Port gyroPort = frc::SerialPort::Port::kMXP;
 
 const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo{
-    .config =
-        {
-            .id = 10,
-            .inverted = false,
-        },
+    .config = {.id = 10, .inverted = false, .brake = true},
     .pidConfig = velocityModulePIDConfig,
     .profileConfig = {.maxVelocity = 100_tps,
                       .minVelocity = -100_tps,
@@ -41,7 +37,7 @@ const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo{
 };
 
 const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo{
-    .config = {.id = 12, .inverted = false},
+    .config = {.id = 12, .inverted = false, .brake = true},
     .pidConfig = positionModulePIDConfig,
     .range = {.minPosition =
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
@@ -62,11 +58,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo{
 };
 
 const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo1{
-    .config =
-        {
-            .id = 20,
-            .inverted = false,
-        },
+    .config = {.id = 20, .inverted = false, .brake = true},
     .pidConfig = velocityModulePIDConfig,
     .profileConfig = {.maxVelocity = 100_tps,
                       .minVelocity = -100_tps,
@@ -78,7 +70,7 @@ const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo1{
 };
 
 const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo1{
-    .config = {.id = 22, .inverted = false},
+    .config = {.id = 22, .inverted = false, .brake = true},
     .pidConfig = positionModulePIDConfig,
     .range = {.minPosition =
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
@@ -99,11 +91,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo1{
 };
 
 const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo2{
-    .config =
-        {
-            .id = 30,
-            .inverted = false,
-        },
+    .config = {.id = 30, .inverted = false, .brake = true},
     .pidConfig = velocityModulePIDConfig,
     .profileConfig = {.maxVelocity = 100_tps,
                       .minVelocity = -100_tps,
@@ -115,7 +103,7 @@ const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo2{
 };
 
 const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo2{
-    .config = {.id = 32, .inverted = false},
+    .config = {.id = 32, .inverted = false, .brake = true},
     .pidConfig = positionModulePIDConfig,
     .range = {.minPosition =
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
@@ -136,11 +124,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo2{
 };
 
 const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo3{
-    .config =
-        {
-            .id = 40,
-            .inverted = false,
-        },
+    .config = {.id = 40, .inverted = false, .brake = true},
     .pidConfig = velocityModulePIDConfig,
     .profileConfig = {.maxVelocity = 100_tps,
                       .minVelocity = -100_tps,
@@ -152,7 +136,7 @@ const rmb::TalonFXVelocityController::CreateInfo velocityControllerCreateInfo3{
 };
 
 const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo3{
-    .config = {.id = 42, .inverted = false},
+    .config = {.id = 42, .inverted = false, .brake = true},
     .pidConfig = positionModulePIDConfig,
     .range = {.minPosition =
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
