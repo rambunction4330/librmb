@@ -10,7 +10,7 @@
     {
       "groupId": "edu.wpi.first.wpilibNewCommands",
       "artifactId": "wpilibNewCommands-java",
-      "version": "wpilib"
+      "version": "2024+"
     }
   ],
   "jniDependencies": [],

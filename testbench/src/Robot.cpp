@@ -84,7 +84,13 @@ void Robot::AutonomousPeriodic() {}
 
 void Robot::AutonomousExit() {}
 
-void Robot::TeleopInit() {}
+void Robot::TeleopInit() {
+  gyro->resetZRotation();
+}
+
+inline static double ensureMagnitudeMax(double val, double mag) {
+  return wpi::sgn(val) * std::clamp(std::abs(val), 0.0, mag);
+}
 
 void Robot::TeleopPeriodic() {
   // units::millisecond_t startTime = frc::Timer::GetFPGATimestamp();
@@ -96,11 +102,14 @@ void Robot::TeleopPeriodic() {
   // std::cout << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() -
   //               startTime)()
   //           << std::endl;
+  const double maxOpenloop = 0.15;
 
-  swerveDrive->driveCartesian(gamepad.GetLeftX(), -gamepad.GetLeftY(),
-                              -gamepad.GetRightY(), false);
+  swerveDrive->driveCartesian(
+      ensureMagnitudeMax(gamepad.GetLeftX(), maxOpenloop),
+      -ensureMagnitudeMax(gamepad.GetLeftY(), maxOpenloop),
+      -ensureMagnitudeMax(gamepad.GetRightY(), maxOpenloop), true);
 
-  swerveDrive->updateNTDebugInfo(true);
+  // swerveDrive->updateNTDebugInfo(true);
 }
 
 void Robot::TeleopExit() {}
@@ -112,12 +121,12 @@ void Robot::TestPeriodic() {
   //                             -joystick.GetY() * joystick.GetThrottle(),
   //                             -joystick.GetTwist() * joystick.GetThrottle(),
   //                             false);
-  swerveDrive->driveCartesian(frc::SmartDashboard::GetNumber("joyX", 0.0),
-                              -frc::SmartDashboard::GetNumber("joyY", 0.0),
-                              frc::SmartDashboard::GetNumber("joyTwist", 0.0),
-                              false);
-
-  swerveDrive->updateNTDebugInfo(true);
+  // swerveDrive->driveCartesian(frc::SmartDashboard::GetNumber("joyX", 0.0),
+  //                             -frc::SmartDashboard::GetNumber("joyY", 0.0),
+  //                             frc::SmartDashboard::GetNumber("joyTwist",
+  //                             0.0), false);
+  //
+  // swerveDrive->updateNTDebugInfo(true);
 }
 
 void Robot::TestExit() {}
