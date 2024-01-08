@@ -84,9 +84,7 @@ void Robot::AutonomousPeriodic() {}
 
 void Robot::AutonomousExit() {}
 
-void Robot::TeleopInit() {
-  gyro->resetZRotation();
-}
+void Robot::TeleopInit() { gyro->resetZRotation(); }
 
 inline static double ensureMagnitudeMax(double val, double mag) {
   return wpi::sgn(val) * std::clamp(std::abs(val), 0.0, mag);
