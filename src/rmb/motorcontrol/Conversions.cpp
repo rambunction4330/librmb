@@ -26,6 +26,8 @@ public:
 
   void setPower(double power) override { angular->setPower(power); }
 
+  double getPower() const override { return angular->getPower(); }
+
   void disable() override { angular->disable(); }
 
   void stop() override { angular->stop(); }
@@ -38,8 +40,8 @@ public:
     return angular->getPosition() * conversion;
   }
 
-  void zeroPosition(units::meter_t offset) override {
-    angular->zeroPosition(offset / conversion);
+  void setEncoderPosition(units::meter_t position) override {
+    angular->setEncoderPosition(position / conversion);
   }
 
   units::meters_per_second_t getTolerance() const override {
@@ -80,6 +82,8 @@ public:
 
   void setPower(double power) override { angular->setPower(power); }
 
+  double getPower() const override { return angular->getPower(); }
+
   units::meter_t getMinPosition() const override {
     return angular->getMinPosition() * conversion;
   }
@@ -100,8 +104,8 @@ public:
     return angular->getPosition() * conversion;
   }
 
-  void zeroPosition(units::meter_t offset) override {
-    angular->zeroPosition(offset / conversion);
+  void setEncoderPosition(units::meter_t position) override {
+    angular->setEncoderPosition(position / conversion);
   }
 
   units::meter_t getTolerance() const override {
@@ -142,6 +146,8 @@ public:
 
   void setPower(double power) override { linear->setPower(power); }
 
+  double getPower() const override { return linear->getPower(); }
+
   void disable() override { linear->disable(); }
 
   void stop() override { linear->stop(); }
@@ -154,8 +160,8 @@ public:
     return linear->getPosition() / conversion;
   }
 
-  void zeroPosition(units::radian_t offset) override {
-    linear->zeroPosition(offset * conversion);
+  void setEncoderPosition(units::radian_t position) override {
+    linear->setEncoderPosition(position * conversion);
   }
 
   units::radians_per_second_t getTolerance() const override {
@@ -196,6 +202,8 @@ public:
 
   void setPower(double power) override { linear->setPower(power); }
 
+  double getPower() const override { return linear->getPower(); }
+
   units::radian_t getMinPosition() const override {
     return linear->getMinPosition() / conversion;
   }
@@ -216,8 +224,9 @@ public:
     return linear->getPosition() / conversion;
   }
 
-  void zeroPosition(units::radian_t offset) override {
-    linear->zeroPosition(offset * conversion);
+  void setEncoderPosition(units::radian_t position) override {
+
+    linear->setEncoderPosition(position * conversion);
   }
 
   units::radian_t getTolerance() const override {

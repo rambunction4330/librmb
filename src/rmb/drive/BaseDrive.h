@@ -14,11 +14,12 @@
 
 #include <networktables/DoubleArrayTopic.h>
 #include <networktables/NetworkTable.h>
+#include <networktables/NetworkTableInstance.h>
 
 #include <frc2/command/CommandPtr.h>
 #include <frc2/command/Subsystem.h>
 
-#include <pathplanner/lib/PathPlannerTrajectory.h>
+#include <pathplanner/lib/path/PathPlannerTrajectory.h>
 
 namespace rmb {
 
@@ -46,7 +47,7 @@ protected:
    */
   BaseDrive(std::string visionTable);
 
-  ~BaseDrive();
+  virtual ~BaseDrive();
 
 public:
   //---------------
@@ -285,8 +286,5 @@ protected:
    * for position.
    */
   NT_Listener stdDevListener;
-
-  /** mutex to protect position estimations between vision threads. */
-  mutable std::mutex visionThreadMutex;
 };
 } // namespace rmb

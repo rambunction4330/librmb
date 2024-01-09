@@ -5,17 +5,16 @@
 #include "rmb/motorcontrol/AngularVelocityController.h"
 
 #include "TalonFXPositionController.h"
-#include "ctre/phoenix/sensors/WPI_CANCoder.h"
 #include "units/angular_velocity.h"
+
+#include <ctre/phoenix6/CANcoder.hpp>
+#include <ctre/phoenix6/TalonFX.hpp>
 
 namespace rmb {
 namespace TalonFXVelocityControllerHelper {
 struct PIDConfig {
   double p = 0.0, i = 0.0, d = 0.0, ff = 0.0;
-  units::turns_per_second_t tolerance = 0.0_tps;
-  double iZone = 0.0, iMaxAccumulator = 0.0;
 
-  double closedLoopMaxPercentOutput = 1.0;
   units::second_t rampRate = 1.0_s;
 };
 
@@ -33,40 +32,20 @@ struct ProfileConfig {
 
 class TalonFXVelocityController : public AngularVelocityController {
 public:
-  typedef units::unit<std::ratio<1, 2048>, units::turns> InternalEncoderTick;
-  typedef units::unit_t<InternalEncoderTick> InternalEncoderTick_t;
-
-  typedef units::compound_unit<InternalEncoderTick,
-                               units::inverse<units::deciseconds>>
-      RawInternalVelocityUnit;
-  typedef units::unit_t<RawInternalVelocityUnit> RawInternalVelocityUnit_t;
-
-  typedef units::unit<std::ratio<1, 1>, InternalEncoderTick>
-      RawInternalPositionUnit;
-  typedef units::unit_t<RawInternalPositionUnit> RawInternalPositionUnit_t;
-
-  //-------------CANCoder
-  // Units---------------------------------------------------
-  typedef units::unit<std::ratio<1, 4096>, units::turns> CANCoderTick;
-  typedef units::unit_t<CANCoderTick> CANCoderTick_t;
-
-  typedef units::compound_unit<CANCoderTick, units::inverse<units::deciseconds>>
-      RawCANCoderVelocityUnit;
-  typedef units::unit_t<RawCANCoderVelocityUnit> RawCANCoderVelocityUnit_t;
-
-  typedef units::unit<std::ratio<1, 1>, CANCoderTick> RawCANCoderPositionUnit;
-  typedef units::unit_t<RawCANCoderPositionUnit> RawCANCoderPositionUnit_t;
-
   struct CreateInfo {
     TalonFXPositionControllerHelper::MotorConfig config;
     TalonFXVelocityControllerHelper::PIDConfig pidConfig;
     TalonFXVelocityControllerHelper::ProfileConfig profileConfig;
     TalonFXPositionControllerHelper::FeedbackConfig feedbackConfig;
     TalonFXVelocityControllerHelper::OpenLoopConfig openLoopConfig;
-    TalonFXPositionControllerHelper::CANCoderConfig canCoderConfig;
+    TalonFXPositionControllerHelper::CurrentLimits currentLimits;
+    std::optional<TalonFXPositionControllerHelper::CANCoderConfig>
+        canCoderConfig;
   };
 
   TalonFXVelocityController(const CreateInfo &createInfo);
+
+  virtual ~TalonFXVelocityController() = default;
 
   //--------------------------------------------------
   // Methods Inherited from AngularVelocityController
@@ -90,6 +69,11 @@ public:
    * Common interface for setting a mechanism's raw power output.
    */
   virtual void setPower(double power) override;
+
+  /**
+   * Retrieve the percentage [-1.0, 1.0] output of the motor
+   */
+  virtual double getPower() const override;
 
   /**
    * Common interface for disabling a mechanism.
@@ -120,14 +104,10 @@ public:
   units::radian_t getPosition() const override;
 
   /**
-   * Zeros the angular positon the motor so the current position is set to
-   * the offset. In the case of an absolute encoder this sets the zero offset
-   * with no regard to the current position.
-   *
-   * @param offset the offset from the current angular position at which to
-   *               set the zero position.
+   * Sets the encoder's reported position
+   * @param position The position to reset the reference to. Defaults to 0
    */
-  void zeroPosition(units::radian_t offset = 0_rad) override;
+  void setEncoderPosition(units::radian_t position = 0_rad) override;
 
   //----------------------------------------------------------
   // Methods Inherited from AngularvelocityFeedbackController
@@ -138,12 +118,18 @@ public:
    *
    * @return the motor's tolerance in radians per second.
    */
-  virtual units::radians_per_second_t getTolerance() const override;
+  virtual units::radians_per_second_t getTolerance() const override {
+    return 0.0_rad_per_s;
+  }
+
+  /**
+   * Match duty cycle of the given controller
+   * @param inverted Use the inverted form of the parent's duty cycle
+   */
+  void follow(const TalonFXVelocityController &parentController, bool inverted);
 
 private:
-  mutable ctre::phoenix::motorcontrol::can::WPI_TalonFX motorcontroller;
-
-  float gearRatio = 0.0;
+  mutable ctre::phoenix6::hardware::TalonFX motorcontroller;
 
   units::radians_per_second_t tolerance = 0.0_tps;
 
@@ -151,7 +137,7 @@ private:
 
   const bool usingCANCoder;
 
-  std::optional<ctre::phoenix::sensors::WPI_CANCoder> canCoder;
+  mutable std::optional<ctre::phoenix6::hardware::CANcoder> canCoder;
 };
 
 } // namespace rmb

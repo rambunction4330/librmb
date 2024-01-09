@@ -1,6 +1,5 @@
 #pragma once
 
-#include <functional>
 #include <limits>
 
 #include <units/angle.h>
@@ -114,6 +113,11 @@ public:
   virtual void setPower(double power) override;
 
   /**
+   * Retrieve the percentage [0.0, 1.0] output of the motor
+   */
+  virtual double getPower() const override;
+
+  /**
    * Gets the minimum position.
    *
    * @return The minimum position in radians.
@@ -156,12 +160,11 @@ public:
   units::radian_t getPosition() const override;
 
   /**
-   * Zeros the positon th emotor so the current position is set to the offset.
+   * Set the position the motor reports
    *
-   * @param offset the offset from the current position at which to set the
-   *               zero position.
+   * @param position The new motor position
    */
-  void zeroPosition(units::radian_t offset = 0_rad) override;
+  void setEncoderPosition(units::radian_t position = 0_rad) override;
 
   //-----------------------------
   // Feedbakc Controller Methods

@@ -3,66 +3,71 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "Robot.h"
+#include "frc/controller/HolonomicDriveController.h"
+#include "frc/controller/ProfiledPIDController.h"
+#include "frc/smartdashboard/SmartDashboard.h"
+#include "rmb/drive/SwerveDrive.h"
+#include "rmb/drive/SwerveModule.h"
+#include "rmb/motorcontrol/AngularVelocityController.h"
 #include "rmb/motorcontrol/Talon/TalonFXPositionController.h"
 #include "rmb/motorcontrol/Talon/TalonFXVelocityController.h"
 #include "units/angle.h"
 
+#include <alloca.h>
 #include <frc2/command/CommandScheduler.h>
-#include <limits>
 #include <memory>
 
-#include <iostream>
+#include "Constants.h"
+#include "units/time.h"
 
 void Robot::RobotInit() {
-  rmb::TalonFXVelocityController::CreateInfo createInfo{
-      .config =
-          {
-              .id = 10,
-              .inverted = false,
-          },
-      .pidConfig =
-          {
-              .p = 0.130,
-              .i = 0.0001,
-              .d = 0.5,
-              .ff = 0.00,
-              .closedLoopMaxPercentOutput = 1.0,
-          },
-      .profileConfig = {.maxVelocity = 100_tps,
-                        .minVelocity = -100_tps,
-                        .maxAcceleration = 1.0_rad_per_s_sq},
-      .feedbackConfig = {.gearRatio = 6.12f},
-      .openLoopConfig = {.minOutput = -1.0,
-                         .maxOutput = 1.0,
-                         .rampRate = 1.0_s},
-      .canCoderConfig = {.useCANCoder = false},
+  // Because Aiden is evil & lazy
+  std::array<rmb::SwerveModule, 4> modules = {
+      rmb::SwerveModule(
+          rmb::asLinear(std::make_unique<rmb::TalonFXVelocityController>(
+                            constants::velocityControllerCreateInfo),
+                        constants::wheelCircumference / 1_tr),
+          std::make_unique<rmb::TalonFXPositionController>(
+              constants::positionControllerCreateInfo),
+          frc::Translation2d(-1_ft, 1_ft), true),
+      rmb::SwerveModule(
+          rmb::asLinear(std::make_unique<rmb::TalonFXVelocityController>(
+                            constants::velocityControllerCreateInfo1),
+                        constants::wheelCircumference / 1_tr),
+          std::make_unique<rmb::TalonFXPositionController>(
+              constants::positionControllerCreateInfo1),
+          frc::Translation2d(1_ft, 1_ft), true),
+      rmb::SwerveModule(
+          rmb::asLinear(std::make_unique<rmb::TalonFXVelocityController>(
+                            constants::velocityControllerCreateInfo2),
+                        constants::wheelCircumference / 1_tr),
+          std::make_unique<rmb::TalonFXPositionController>(
+              constants::positionControllerCreateInfo2),
+          frc::Translation2d(1_ft, -1_ft), true),
+      rmb::SwerveModule(
+          rmb::asLinear(std::make_unique<rmb::TalonFXVelocityController>(
+                            constants::velocityControllerCreateInfo3),
+                        constants::wheelCircumference / 1_tr),
+          std::make_unique<rmb::TalonFXPositionController>(
+              constants::positionControllerCreateInfo3),
+          frc::Translation2d(-1_ft, -1_ft), true),
+
   };
 
-  rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo{
-      .config = {.id = 12, .inverted = false},
-      .pidConfig = {.p = 1.000f,
-                    .i = 0.0f,
-                    .d = 1.0f,
-                    .ff = 0.000,
-                    .tolerance = 0.1_deg},
-      .range = {.minPosition =
-                    -(units::radian_t)std::numeric_limits<double>::infinity(),
-                .maxPosition =
-                    (units::radian_t)std::numeric_limits<double>::infinity(),
-                .isContinuous = false},
-      .feedbackConfig =
-          {
-              .gearRatio = 12.8,
-          },
-      .openLoopConfig = {},
-      .canCoderConfig = {.useCANCoder = true, .id = 11, .remoteSensorSlot = 0},
-  };
+  swerveDrive = std::make_unique<rmb::SwerveDrive<4>>(
+      std::move(modules), gyro,
+      frc::HolonomicDriveController(
+          frc::PIDController(1.0f, 0.0f, 0.0f),
+          frc::PIDController(1.0f, 0.0f, 0.0f),
+          frc::ProfiledPIDController<units::radian>(
+              1, 0, 0,
+              frc::TrapezoidProfile<units::radian>::Constraints(
+                  6.28_rad_per_s, 3.14_rad_per_s / 1_s))),
+      7.0_mps);
 
-  velocityController =
-      std::make_unique<rmb::TalonFXVelocityController>(createInfo);
-
-  positionController = std::make_unique<rmb::TalonFXPositionController>(
-      positionControllerCreateInfo);
+  frc::SmartDashboard::PutNumber("joyX", 0.0);
+  frc::SmartDashboard::PutNumber("joyY", 0.0);
+  frc::SmartDashboard::PutNumber("joyTwist", 0.0);
 }
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
@@ -79,28 +84,47 @@ void Robot::AutonomousPeriodic() {}
 
 void Robot::AutonomousExit() {}
 
-void Robot::TeleopInit() {}
+void Robot::TeleopInit() { gyro->resetZRotation(); }
 
-void Robot::TeleopPeriodic() {}
+inline static double ensureMagnitudeMax(double val, double mag) {
+  return wpi::sgn(val) * std::clamp(std::abs(val), 0.0, mag);
+}
+
+void Robot::TeleopPeriodic() {
+  // units::millisecond_t startTime = frc::Timer::GetFPGATimestamp();
+  // swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()),
+  //                             -joystick.GetY() * joystick.GetThrottle(),
+  //                             -joystick.GetTwist() * joystick.GetThrottle(),
+  //                             false);
+
+  // std::cout << ((units::millisecond_t)frc::Timer::GetFPGATimestamp() -
+  //               startTime)()
+  //           << std::endl;
+  const double maxOpenloop = 0.15;
+
+  swerveDrive->driveCartesian(
+      ensureMagnitudeMax(gamepad.GetLeftX(), maxOpenloop),
+      -ensureMagnitudeMax(gamepad.GetLeftY(), maxOpenloop),
+      -ensureMagnitudeMax(gamepad.GetRightY(), maxOpenloop), true);
+
+  // swerveDrive->updateNTDebugInfo(true);
+}
 
 void Robot::TeleopExit() {}
 
-void Robot::TestInit() {
-  frc2::CommandScheduler::GetInstance().CancelAll();
-  positionController->zeroPosition();
-}
+void Robot::TestInit() { frc2::CommandScheduler::GetInstance().CancelAll(); }
 
 void Robot::TestPeriodic() {
-  velocityController->setVelocity(10_tps);
-  // velocityController->setPower(0.5);
-
-  // positionController->setPower(0.2);
-  positionController->setPosition(0.25_tr);
-  std::cout << "position: "
-            << ((units::degree_t)positionController->getPosition())()
-            << std::endl;
-  std::cout << ((units::turns_per_second_t)velocityController->getVelocity())()
-            << std::endl;
+  // swerveDrive->driveCartesian(joystick.GetX() * (joystick.GetThrottle()),
+  //                             -joystick.GetY() * joystick.GetThrottle(),
+  //                             -joystick.GetTwist() * joystick.GetThrottle(),
+  //                             false);
+  // swerveDrive->driveCartesian(frc::SmartDashboard::GetNumber("joyX", 0.0),
+  //                             -frc::SmartDashboard::GetNumber("joyY", 0.0),
+  //                             frc::SmartDashboard::GetNumber("joyTwist",
+  //                             0.0), false);
+  //
+  // swerveDrive->updateNTDebugInfo(true);
 }
 
 void Robot::TestExit() {}

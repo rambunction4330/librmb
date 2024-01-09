@@ -148,6 +148,8 @@ void SparkMaxPositionController::setPower(double power) {
   sparkMax.Set(power);
 }
 
+double SparkMaxPositionController::getPower() const { return sparkMax.Get(); }
+
 units::radian_t SparkMaxPositionController::getMinPosition() const {
   return minPose;
 }
@@ -206,27 +208,27 @@ units::radian_t SparkMaxPositionController::getPosition() const {
   return 0_rad;
 }
 
-void SparkMaxPositionController::zeroPosition(units::radian_t offset) {
+void SparkMaxPositionController::setEncoderPosition(units::radian_t position) {
 
   switch (encoderType) {
   case EncoderType::HallSensor:
   case EncoderType::Quadrature: {
     rev::SparkMaxRelativeEncoder *rel =
         static_cast<rev::SparkMaxRelativeEncoder *>(encoder.get());
-    rel->SetPosition(units::turn_t(offset).to<double>() * gearRatio);
+    rel->SetPosition(units::turn_t(position).to<double>() * gearRatio);
     break;
   }
   case EncoderType::Alternate: {
     rev::SparkMaxAlternateEncoder *rel =
         static_cast<rev::SparkMaxAlternateEncoder *>(encoder.get());
-    rel->SetPosition(units::turn_t(offset).to<double>() * gearRatio);
+    rel->SetPosition(units::turn_t(position).to<double>() * gearRatio);
     break;
   }
   case EncoderType::Absolute: {
     rev::SparkMaxAbsoluteEncoder *ab =
         static_cast<rev::SparkMaxAbsoluteEncoder *>(encoder.get());
     ab->SetZeroOffset(ab->GetPosition() +
-                      units::turn_t(offset).to<double>() / gearRatio);
+                      units::turn_t(position).to<double>() / gearRatio);
     break;
   }
   }

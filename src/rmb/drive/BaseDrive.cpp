@@ -1,12 +1,13 @@
 #include "rmb/drive/BaseDrive.h"
-#include "frc/kinematics/DifferentialDriveKinematics.h"
+#include "frc2/command/CommandPtr.h"
 
 #include <typeinfo>
 
 #include <frc2/command/Commands.h>
 
-#include <pathplanner/lib/auto/RamseteAutoBuilder.h>
+#include <pathplanner/lib/auto/AutoBuilder.h>
 #include <pathplanner/lib/commands/FollowPathWithEvents.h>
+#include <pathplanner/lib/controllers/PPRamseteController.h>
 
 namespace rmb {
 BaseDrive::BaseDrive(std::string visionTable) {
@@ -37,8 +38,6 @@ BaseDrive::BaseDrive(std::string visionTable) {
 
         units::second_t time = units::microsecond_t(rawData.time);
 
-        // Lock mutex for thread saftey and add vision.
-        std::lock_guard<std::mutex> lock(visionThreadMutex);
         addVisionMeasurments(pose, time);
       });
 
@@ -54,8 +53,6 @@ BaseDrive::BaseDrive(std::string visionTable) {
                            return;
                          }
 
-                         // Lock mutex for thread saftey and add vision.
-                         std::lock_guard<std::mutex> lock(visionThreadMutex);
                          setVisionSTDevs({rawData[0], rawData[1], rawData[2]});
                        });
 }
@@ -99,10 +96,12 @@ frc2::CommandPtr BaseDrive::followPPTrajectoryWithEvents(
     std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
     std::initializer_list<frc2::Subsystem *> driveRequirments) {
 
-  return pathplanner::FollowPathWithEvents(
-             followPPTrajectory(trajectory, driveRequirments).Unwrap(),
-             trajectory.getMarkers(), eventMap)
-      .ToPtr();
+  // return pathplanner::FollowPathWithEvents(
+  //            followPPTrajectory(trajectory, driveRequirments).Unwrap(),
+  //            trajectory.getMarkers(), eventMap)
+  //     .ToPtr();
+
+  return frc2::cmd::None();
 }
 
 frc2::CommandPtr BaseDrive::followPPTrajectoryGroupWithEvents(
@@ -141,33 +140,37 @@ frc2::CommandPtr BaseDrive::fullPPAuto(
 
   // Dummy auto builder just used to generate stop commands so the underlying
   // the actual type does not matter.
-  pathplanner::RamseteAutoBuilder autoBuilder(
-      []() { return frc::Pose2d(); }, [](auto) {}, {},
-      frc::DifferentialDriveKinematics(0.0_m), [](auto, auto) {}, eventMap, {});
+  // pathplanner::RamseteAutoBuilder autoBuilder(
+  //     []() { return frc::Pose2d(); }, [](auto) {}, {},
+  //     frc::DifferentialDriveKinematics(0.0_m), [](auto, auto) {}, eventMap,
+  //     {});
+  //
+  // std::vector<frc2::CommandPtr> commands;
+  //
+  // if (isHolonomic()) {
+  //   commands.emplace_back(frc2::InstantCommand([this, trajectoryGroup]() {
+  //     resetPose(trajectoryGroup.front().getInitialHolonomicPose());
+  //   }));
+  // } else {
+  //   commands.emplace_back(frc2::InstantCommand([this, trajectoryGroup]() {
+  //     resetPose(trajectoryGroup.front().getInitialPose());
+  //   }));
+  // }
+  //
+  // for (auto trajectory : trajectoryGroup) {
+  //   commands.emplace_back(
+  //       autoBuilder.stopEventGroup(trajectory.getStartStopEvent()));
+  //   commands.emplace_back(
+  //       followPPTrajectoryWithEvents(trajectory, eventMap,
+  //       driveRequirements));
+  // }
+  //
+  // commands.emplace_back(
+  //     autoBuilder.stopEventGroup(trajectoryGroup.back().getEndStopEvent()));
+  //
+  // return frc2::cmd::Sequence(std::move(commands));
 
-  std::vector<frc2::CommandPtr> commands;
-
-  if (isHolonomic()) {
-    commands.emplace_back(frc2::InstantCommand([this, trajectoryGroup]() {
-      resetPose(trajectoryGroup.front().getInitialHolonomicPose());
-    }));
-  } else {
-    commands.emplace_back(frc2::InstantCommand([this, trajectoryGroup]() {
-      resetPose(trajectoryGroup.front().getInitialPose());
-    }));
-  }
-
-  for (auto trajectory : trajectoryGroup) {
-    commands.emplace_back(
-        autoBuilder.stopEventGroup(trajectory.getStartStopEvent()));
-    commands.emplace_back(
-        followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirements));
-  }
-
-  commands.emplace_back(
-      autoBuilder.stopEventGroup(trajectoryGroup.back().getEndStopEvent()));
-
-  return frc2::cmd::Sequence(std::move(commands));
+  return frc2::cmd::None();
 }
 
 } // namespace rmb

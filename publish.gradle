@@ -4,7 +4,7 @@ apply plugin: 'maven-publish'
 
 ext.licenseFile = files("$rootDir/LICENSE")
 
-def pubVersion = '2023.0.0'
+def pubVersion = '2024.0.0'
 
 def outputsFolder = file("$buildDir/outputs")
 
@@ -101,7 +101,7 @@ def javaBaseName = "_GROUP_com_librmb_lib_ID_${baseArtifactId}-java_CLS"
 task cppHeadersZip(type: Zip) {
     destinationDirectory = outputsFolder
     archiveBaseName = zipBaseName
-    classifier = "headers"
+    archiveClassifier = "headers"
 
     from(licenseFile) {
         into '/'
@@ -116,7 +116,7 @@ task cppHeadersZip(type: Zip) {
 task cppSourceZip(type: Zip) {
     destinationDirectory = outputsFolder
     archiveBaseName = zipBaseName
-    classifier = "source"
+    archiveClassifier = "source"
 
     from(licenseFile) {
         into '/'

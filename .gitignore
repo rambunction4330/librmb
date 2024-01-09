@@ -193,3 +193,5 @@ compile_flags.txt
 
 simgui*.json
 networktables.json
+
+ctre_sim
