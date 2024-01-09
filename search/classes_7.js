@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['motorconfig_0',['motorconfig',['../structrmb_1_1_spark_max_position_controller_helper_1_1_motor_config.html',1,'rmb::SparkMaxPositionControllerHelper::MotorConfig'],['../structrmb_1_1_spark_max_velocity_controller_helper_1_1_motor_config.html',1,'rmb::SparkMaxVelocityControllerHelper::MotorConfig'],['../structrmb_1_1_talon_f_x_position_controller_helper_1_1_motor_config.html',1,'rmb::TalonFXPositionControllerHelper::MotorConfig']]]
+  ['linearfeedforwardcontroller_0',['LinearFeedforwardController',['../classrmb_1_1_linear_feedforward_controller.html',1,'rmb']]],
+  ['linearpositioncontroller_1',['LinearPositionController',['../classrmb_1_1_linear_position_controller.html',1,'rmb']]],
+  ['linearvelocitycontroller_2',['LinearVelocityController',['../classrmb_1_1_linear_velocity_controller.html',1,'rmb']]],
+  ['logitechgamepad_3',['LogitechGamepad',['../classrmb_1_1_logitech_gamepad.html',1,'rmb']]],
+  ['logitechjoystick_4',['LogitechJoystick',['../classrmb_1_1_logitech_joystick.html',1,'rmb']]]
 ];

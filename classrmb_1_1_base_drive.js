@@ -20,6 +20,5 @@ var classrmb_1_1_base_drive =
     [ "poseListener", "classrmb_1_1_base_drive.html#a602d9cfc27c3fdf706d05031cec8fd03", null ],
     [ "poseSubscriber", "classrmb_1_1_base_drive.html#ad9ded7c66c6f67e02ccdaa5e4b2f9a8a", null ],
     [ "stdDevListener", "classrmb_1_1_base_drive.html#af5e3df58955e62b68ebf8a2ff543dfae", null ],
-    [ "stdDevSubscriber", "classrmb_1_1_base_drive.html#a63d9259b7a13098b98279376b26c1095", null ],
-    [ "visionThreadMutex", "classrmb_1_1_base_drive.html#a1d1889d759d40997863c367613a43f5d", null ]
+    [ "stdDevSubscriber", "classrmb_1_1_base_drive.html#a63d9259b7a13098b98279376b26c1095", null ]
 ];

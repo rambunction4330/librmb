@@ -1,6 +1,7 @@
 var namespacermb =
 [
     [ "trajectory", "namespacermb_1_1trajectory.html", null ],
+    [ "AHRSGyro", "classrmb_1_1_a_h_r_s_gyro.html", null ],
     [ "AngularFeedforwardontroller", "classrmb_1_1_angular_feedforwardontroller.html", "classrmb_1_1_angular_feedforwardontroller" ],
     [ "AngularPositionController", "classrmb_1_1_angular_position_controller.html", "classrmb_1_1_angular_position_controller" ],
     [ "AngularVelocityController", "classrmb_1_1_angular_velocity_controller.html", "classrmb_1_1_angular_velocity_controller" ],
@@ -9,6 +10,7 @@ var namespacermb =
     [ "DifferentialDrive", "classrmb_1_1_differential_drive.html", "classrmb_1_1_differential_drive" ],
     [ "ElevatorFeedforward", "classrmb_1_1_elevator_feedforward.html", "classrmb_1_1_elevator_feedforward" ],
     [ "Feedforward", "classrmb_1_1_feedforward.html", "classrmb_1_1_feedforward" ],
+    [ "Gyro", "classrmb_1_1_gyro.html", null ],
     [ "LinearFeedforwardController", "classrmb_1_1_linear_feedforward_controller.html", "classrmb_1_1_linear_feedforward_controller" ],
     [ "LinearPositionController", "classrmb_1_1_linear_position_controller.html", "classrmb_1_1_linear_position_controller" ],
     [ "LinearVelocityController", "classrmb_1_1_linear_velocity_controller.html", "classrmb_1_1_linear_velocity_controller" ],
@@ -18,6 +20,9 @@ var namespacermb =
     [ "SimpleFeedforward", "classrmb_1_1_simple_feedforward.html", "classrmb_1_1_simple_feedforward" ],
     [ "SparkMaxPositionController", "classrmb_1_1_spark_max_position_controller.html", "classrmb_1_1_spark_max_position_controller" ],
     [ "SparkMaxVelocityController", "classrmb_1_1_spark_max_velocity_controller.html", "classrmb_1_1_spark_max_velocity_controller" ],
+    [ "SwerveDrive", "classrmb_1_1_swerve_drive.html", "classrmb_1_1_swerve_drive" ],
+    [ "SwerveModule", "classrmb_1_1_swerve_module.html", "classrmb_1_1_swerve_module" ],
+    [ "SwerveModulePower", "structrmb_1_1_swerve_module_power.html", null ],
     [ "TalonFXPositionController", "classrmb_1_1_talon_f_x_position_controller.html", "classrmb_1_1_talon_f_x_position_controller" ],
     [ "TalonFXVelocityController", "classrmb_1_1_talon_f_x_velocity_controller.html", "classrmb_1_1_talon_f_x_velocity_controller" ],
     [ "asAngular", "namespacermb.html#a0fb858e619c199fa0226887468d3c16e", null ],

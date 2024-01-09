@@ -10,7 +10,6 @@ var classrmb_1_1_differential_drive =
     [ "driveWheelSpeeds", "classrmb_1_1_differential_drive.html#a5c19f2f4b4ef3906674237d2f3b79593", null ],
     [ "followPPTrajectory", "classrmb_1_1_differential_drive.html#aa79fa22ae808702e4cc43ba8e3f9116f", null ],
     [ "followWPILibTrajectory", "classrmb_1_1_differential_drive.html#a4796fdb366d12a5d66ac8f5dde96d2ab", null ],
-    [ "fullPPAuto", "classrmb_1_1_differential_drive.html#afe9d1de5f1324e0b68b7e4d4f4ccb0c2", null ],
     [ "getChassisSpeeds", "classrmb_1_1_differential_drive.html#a9752740b755f26817ea46bad3243a46f", null ],
     [ "getPose", "classrmb_1_1_differential_drive.html#af367b116264fb96f5f213b75fa0725e6", null ],
     [ "getWheelSpeeds", "classrmb_1_1_differential_drive.html#af766d5f6bbe7a881395bd1b8f07f9421", null ],

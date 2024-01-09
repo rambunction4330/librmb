@@ -13,7 +13,8 @@ var hierarchy =
     [ "rmb::LogitechGamepad::Axes", "structrmb_1_1_logitech_gamepad_1_1_axes.html", null ],
     [ "rmb::LogitechJoystick::Axes", "structrmb_1_1_logitech_joystick_1_1_axes.html", null ],
     [ "rmb::BaseDrive", "classrmb_1_1_base_drive.html", [
-      [ "rmb::DifferentialDrive", "classrmb_1_1_differential_drive.html", null ]
+      [ "rmb::DifferentialDrive", "classrmb_1_1_differential_drive.html", null ],
+      [ "rmb::SwerveDrive< NumModules >", "classrmb_1_1_swerve_drive.html", null ]
     ] ],
     [ "rmb::LogitechGamepad::Buttons", "structrmb_1_1_logitech_gamepad_1_1_buttons.html", null ],
     [ "rmb::TalonFXPositionControllerHelper::CANCoderConfig", "structrmb_1_1_talon_f_x_position_controller_helper_1_1_c_a_n_coder_config.html", null ],
@@ -25,6 +26,7 @@ var hierarchy =
     [ "rmb::SparkMaxVelocityController::CreateInfo", "structrmb_1_1_spark_max_velocity_controller_1_1_create_info.html", null ],
     [ "rmb::TalonFXPositionController::CreateInfo", "structrmb_1_1_talon_f_x_position_controller_1_1_create_info.html", null ],
     [ "rmb::TalonFXVelocityController::CreateInfo", "structrmb_1_1_talon_f_x_velocity_controller_1_1_create_info.html", null ],
+    [ "rmb::TalonFXPositionControllerHelper::CurrentLimits", "structrmb_1_1_talon_f_x_position_controller_helper_1_1_current_limits.html", null ],
     [ "rmb::SparkMaxPositionControllerHelper::FeedbackConfig", "structrmb_1_1_spark_max_position_controller_helper_1_1_feedback_config.html", null ],
     [ "rmb::SparkMaxVelocityControllerHelper::FeedbackConfig", "structrmb_1_1_spark_max_velocity_controller_helper_1_1_feedback_config.html", null ],
     [ "rmb::TalonFXPositionControllerHelper::FeedbackConfig", "structrmb_1_1_talon_f_x_position_controller_helper_1_1_feedback_config.html", null ],
@@ -34,6 +36,9 @@ var hierarchy =
     ] ],
     [ "rmb::Feedforward< units::radians >", "classrmb_1_1_feedforward.html", [
       [ "rmb::ArmFeedforward", "classrmb_1_1_arm_feedforward.html", null ]
+    ] ],
+    [ "rmb::Gyro", "classrmb_1_1_gyro.html", [
+      [ "rmb::AHRSGyro", "classrmb_1_1_a_h_r_s_gyro.html", null ]
     ] ],
     [ "rmb::LinearPositionController", "classrmb_1_1_linear_position_controller.html", null ],
     [ "rmb::LinearVelocityController", "classrmb_1_1_linear_velocity_controller.html", [
@@ -53,5 +58,12 @@ var hierarchy =
     [ "rmb::TalonFXPositionControllerHelper::ProfileConfig", "structrmb_1_1_talon_f_x_position_controller_helper_1_1_profile_config.html", null ],
     [ "rmb::TalonFXVelocityControllerHelper::ProfileConfig", "structrmb_1_1_talon_f_x_velocity_controller_helper_1_1_profile_config.html", null ],
     [ "rmb::SparkMaxPositionControllerHelper::Range", "structrmb_1_1_spark_max_position_controller_helper_1_1_range.html", null ],
-    [ "rmb::TalonFXPositionControllerHelper::Range", "structrmb_1_1_talon_f_x_position_controller_helper_1_1_range.html", null ]
+    [ "rmb::TalonFXPositionControllerHelper::Range", "structrmb_1_1_talon_f_x_position_controller_helper_1_1_range.html", null ],
+    [ "wpi::Sendable", null, [
+      [ "rmb::SwerveModule", "classrmb_1_1_swerve_module.html", null ]
+    ] ],
+    [ "wpi::SendableHelper", null, [
+      [ "rmb::SwerveModule", "classrmb_1_1_swerve_module.html", null ]
+    ] ],
+    [ "rmb::SwerveModulePower", "structrmb_1_1_swerve_module_power.html", null ]
 ];

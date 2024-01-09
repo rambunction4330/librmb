@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['servopositioncontroller_0',['ServoPositionController',['../classrmb_1_1_servo_position_controller.html',1,'rmb']]],
-  ['simplefeedforward_1',['SimpleFeedforward',['../classrmb_1_1_simple_feedforward.html',1,'rmb']]],
-  ['sparkmaxpositioncontroller_2',['SparkMaxPositionController',['../classrmb_1_1_spark_max_position_controller.html',1,'rmb']]],
-  ['sparkmaxvelocitycontroller_3',['SparkMaxVelocityController',['../classrmb_1_1_spark_max_velocity_controller.html',1,'rmb']]]
+  ['range_0',['Range',['../structrmb_1_1_spark_max_position_controller_helper_1_1_range.html',1,'rmb::SparkMaxPositionControllerHelper::Range'],['../structrmb_1_1_talon_f_x_position_controller_helper_1_1_range.html',1,'rmb::TalonFXPositionControllerHelper::Range']]]
 ];
