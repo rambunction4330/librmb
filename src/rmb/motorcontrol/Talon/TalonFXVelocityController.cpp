@@ -58,7 +58,7 @@ TalonFXVelocityController::TalonFXVelocityController(
   }
 
   // https://www.chiefdelphi.com/t/current-limiting-talonfx-values/374780/10
-  /*talonFXConfig.CurrentLimits.SupplyCurrentLimit =
+  talonFXConfig.CurrentLimits.SupplyCurrentLimit =
       createInfo.currentLimits.supplyCurrentLimit();
   talonFXConfig.CurrentLimits.SupplyTimeThreshold =
       createInfo.currentLimits.supplyTimeThreshold(); // But wait for this time
@@ -71,7 +71,7 @@ TalonFXVelocityController::TalonFXVelocityController(
       createInfo.currentLimits.statorCurrentLimitEnable;
   talonFXConfig.CurrentLimits.StatorCurrentLimit =
       createInfo.currentLimits.statorCurrentLimit(); // Motor-usage current
-                                                     // limit Prevent heat*/
+                                                     // limit Prevent heat
 
   if (createInfo.canCoderConfig.has_value()) {
     canCoder.emplace(createInfo.canCoderConfig.value().id);
