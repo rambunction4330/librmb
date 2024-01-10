@@ -25,6 +25,12 @@ jobs:
     - name: Publish
       run: gradle publish
 
+    - name: Upload a Build Artifact
+      if: ${{ matrix.os == "ubuntu-latest" }}
+      uses: actions/upload-artifact@v4.0.0
+      with:
+        name: LibRmb.json
+        path: build/LibRmb.json
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.0.0
@@ -59,6 +65,11 @@ jobs:
       with:
         name: windows-latest-repo
         path: archives/windows-latest
+        
+    - name: Download Vendordep Json
+      uses: actions/download-artifact@v4.1.0
+      with:
+        name: LibRmb.json
 
     - name: Merge repos with rsync
       run: rsync -aviuzP archives/ubuntu-latest/* ./repos |
