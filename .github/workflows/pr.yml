@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    if: ${{ always() }}
+    needs: gradle
     steps:
       - uses: actions/checkout@v4
       - uses: DoozyX/clang-format-lint-action@v0.13
