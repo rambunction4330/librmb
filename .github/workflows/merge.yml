@@ -47,17 +47,17 @@ jobs:
     - name: Download Linux Artifact
       uses: actions/download-artifact@v4.1.0
       with:
-        name: ubuntu-latest-artifact
+        name: ubuntu-latest-repo
         path: archives/ubuntu-latest
     - name: Download MacOS Artifact
       uses: actions/download-artifact@v4.1.0
       with:
-        name: macos-latest-artifact
+        name: macos-latest-repo
         path: archives/macos-latest
     - name: Download Windows Artifact
       uses: actions/download-artifact@v4.1.0
       with:
-        name: windows-latest-artifact
+        name: windows-latest-repo
         path: archives/windows-latest
 
     - name: Merge repos with rsync
