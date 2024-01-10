@@ -13,7 +13,6 @@
 #include "rmb/motorcontrol/Talon/TalonFXVelocityController.h"
 #include "units/angle.h"
 
-#include <alloca.h>
 #include <frc2/command/CommandScheduler.h>
 #include <memory>
 
