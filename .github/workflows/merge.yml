@@ -62,8 +62,8 @@ jobs:
 
     - name: Merge repos with rsync
       run: rsync -aviuzP archives/ubuntu-latest/* ./repos |
-           rsync -aviuzP archives/macos-latest/repos/* ./repos |
-           rsync -aviuzP archives/windows-latest/repos/* ./repos
+           rsync -aviuzP archives/macos-latest/* ./repos |
+           rsync -aviuzP archives/windows-latest/* ./repos
 
     - name: Clean
       run: rm -rf archives
