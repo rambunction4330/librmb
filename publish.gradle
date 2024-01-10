@@ -33,10 +33,10 @@ task generateVendorJSON() {
     outputs.files(vendordepJSONFile)
 
     def uuid = "abcaeed8-c3ff-11ed-afa1-0242ac120002"
-    def repoUrl = "https://raw.githubusercontent.com/rambunction4330/librmb/gh-pages/repos/releases"
-    def jsonUrl = "https://rambunction4330.github.io/librmb/vendordep/LibRmb.json"
+    def repoUrl = "https://raw.githubusercontent.com/rambunction4330/librmb/maven-repo/repos/releases"
+    def jsonUrl = "https://raw.githubusercontent.com/rambunction4330/librmb/maven-repo/LibRmb.json"
 
-    def platforms = ["linuxathena"]
+    def platforms = ["linuxathena", "windows", "osxuniversal"]
     
     String vendordepJSON =
 """{
@@ -60,7 +60,9 @@ task generateVendorJSON() {
             \"sharedLibrary\": true,
             \"skipInvalidPlatforms\": true,
             \"binaryPlatforms\": [
-                \"linuxathena\"
+                \"linuxathena\",
+                \"windows\",
+                \"osxuniversal\"
             ]
         }
     ]
