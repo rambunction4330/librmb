@@ -3,11 +3,11 @@
   <groupId>com.rambunction4330.lib</groupId>
   <artifactId>LibRmb-cpp</artifactId>
   <versioning>
-    <latest>2024.0.0</latest>
-    <release>2024.0.0</release>
+    <latest>2024.0.1</latest>
+    <release>2024.0.1</release>
     <versions>
-      <version>2024.0.0</version>
+      <version>2024.0.1</version>
     </versions>
-    <lastUpdated>20240110204319</lastUpdated>
+    <lastUpdated>20240111205114</lastUpdated>
   </versioning>
 </metadata>
