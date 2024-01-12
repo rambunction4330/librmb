@@ -339,121 +339,123 @@ $(function(){initNavTree('_swerve_drive_8inl_source.html',''); initResizable(); 
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
 <div class="foldopen" id="foldopen00230" data-start="{" data-end="}">
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno"><a class="line" href="classrmb_1_1_swerve_drive.html#a318c51752558c5f2fdf6901bea114cca">  230</a></span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt; frc::Pose2d <a class="code hl_function" href="classrmb_1_1_swerve_drive.html#a318c51752558c5f2fdf6901bea114cca">SwerveDrive&lt;NumModules&gt;::updatePose</a>() {</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>  <span class="keywordflow">return</span> poseEstimator.Update(gyro-&gt;getRotation(), getModulePositions());</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>}</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>  <span class="keywordflow">return</span> poseEstimator.Update(</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>      frc::Rotation2d((units::radian_t)gyro-&gt;getZRotation()),</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>      getModulePositions());</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>}</div>
 </div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="keywordtype">void</span> <a class="code hl_class" href="classrmb_1_1_swerve_drive.html">SwerveDrive&lt;NumModules&gt;::updateNTDebugInfo</a>(<span class="keywordtype">bool</span> openLoopVelocity) {</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>  std::array&lt;double, NumModules&gt; velocityErrors;</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    units::meters_per_second_t error = 0.0_mps;</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <span class="keywordflow">if</span> (!openLoopVelocity) {</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>      error = modules[i].getTargetState().speed - modules[i].getState().speed;</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>      velocityErrors[i] = error();</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    }</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    ntVelocityErrorTopics.Set(velocityErrors);</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    std::array&lt;double, NumModules&gt; positionErrors;</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>      units::degree_t error = modules[i].getTargetRotation().Degrees() -</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>                              modules[i].getState().angle.Degrees();</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>      positionErrors[i] = error();</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    }</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    ntPositionErrorTopics.Set(positionErrors);</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    std::array&lt;double, NumModules&gt; velocityTargets;</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>      <span class="keywordtype">double</span> target = 0.0;</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>      <span class="keywordflow">if</span> (!openLoopVelocity) {</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        target = modules[i].getTargetVelocity()();</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        target = modules[i].getPower().power;</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>      }</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>      velocityTargets[i] = target;</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    }</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    ntTargetVelocityTopics.Set(velocityTargets);</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    std::array&lt;double, NumModules&gt; positionTargets;</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>      units::degree_t target = modules[i].getTargetRotation().Degrees();</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>      positionTargets[i] = target();</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    }</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    ntTargetPositionTopics.Set(positionTargets);</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    std::array&lt;double, NumModules&gt; positions;</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>      units::degree_t position = modules[i].getState().angle.Degrees();</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>      positions[i] = position();</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    }</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    ntPositionTopics.Set(positions);</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    std::array&lt;double, NumModules&gt; velocities;</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>      units::meters_per_second_t velocity = modules[i].getState().speed;</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>      velocities[i] = velocity();</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    }</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    ntVelocityTopics.Set(velocities);</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>  }</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>}</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>std::array&lt;frc::SwerveModuleState, NumModules&gt;</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>SwerveDrive&lt;NumModules&gt;::getTargetModuleStates()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>  std::array&lt;frc::SwerveModuleState, NumModules&gt; targetStates;</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    targetStates[i] = modules[i].getTargetState();</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>  }</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>  <span class="keywordflow">return</span> targetStates;</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>}</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
-<div class="foldopen" id="foldopen00308" data-start="{" data-end="}">
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno"><a class="line" href="classrmb_1_1_swerve_drive.html#a8e7bcc2c47847bed53e12dcd31704c7b">  308</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_swerve_drive.html#a8e7bcc2c47847bed53e12dcd31704c7b">SwerveDrive&lt;NumModules&gt;::resetPose</a>(<span class="keyword">const</span> frc::Pose2d &amp;pose) {</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>  poseEstimator.ResetPosition(gyro-&gt;getRotation(), getModulePositions(), pose);</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>}</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="keywordtype">void</span> <a class="code hl_class" href="classrmb_1_1_swerve_drive.html">SwerveDrive&lt;NumModules&gt;::updateNTDebugInfo</a>(<span class="keywordtype">bool</span> openLoopVelocity) {</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>  std::array&lt;double, NumModules&gt; velocityErrors;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    units::meters_per_second_t error = 0.0_mps;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keywordflow">if</span> (!openLoopVelocity) {</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>      error = modules[i].getTargetState().speed - modules[i].getState().speed;</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>      velocityErrors[i] = error();</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    }</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    ntVelocityErrorTopics.Set(velocityErrors);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    std::array&lt;double, NumModules&gt; positionErrors;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>      units::turn_t error = modules[i].getTargetRotation().Degrees() -</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                            modules[i].getState().angle.Degrees();</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>      positionErrors[i] = error();</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    }</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    ntPositionErrorTopics.Set(positionErrors);</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    std::array&lt;double, NumModules&gt; velocityTargets;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>      <span class="keywordtype">double</span> target = 0.0;</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>      <span class="keywordflow">if</span> (!openLoopVelocity) {</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        target = modules[i].getTargetVelocity()();</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        target = modules[i].getPower().power;</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>      }</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>      velocityTargets[i] = target;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    }</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    ntTargetVelocityTopics.Set(velocityTargets);</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    std::array&lt;double, NumModules&gt; positionTargets;</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>      units::degree_t target = modules[i].getTargetRotation().Degrees();</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>      positionTargets[i] = target();</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    }</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    ntTargetPositionTopics.Set(positionTargets);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    std::array&lt;double, NumModules&gt; positions;</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>      units::turn_t position = modules[i].getState().angle.Degrees();</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>      positions[i] = position();</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    }</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    ntPositionTopics.Set(positions);</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    std::array&lt;double, NumModules&gt; velocities;</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>      units::meters_per_second_t velocity = modules[i].getState().speed;</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>      velocities[i] = velocity();</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    }</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    ntVelocityTopics.Set(velocities);</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>  }</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>}</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>std::array&lt;frc::SwerveModuleState, NumModules&gt;</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>SwerveDrive&lt;NumModules&gt;::getTargetModuleStates()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>  std::array&lt;frc::SwerveModuleState, NumModules&gt; targetStates;</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; NumModules; i++) {</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    targetStates[i] = modules[i].getTargetState();</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>  }</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>  <span class="keywordflow">return</span> targetStates;</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>}</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
+<div class="foldopen" id="foldopen00310" data-start="{" data-end="}">
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno"><a class="line" href="classrmb_1_1_swerve_drive.html#a8e7bcc2c47847bed53e12dcd31704c7b">  310</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_swerve_drive.html#a8e7bcc2c47847bed53e12dcd31704c7b">SwerveDrive&lt;NumModules&gt;::resetPose</a>(<span class="keyword">const</span> frc::Pose2d &amp;pose) {</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>  poseEstimator.ResetPosition(gyro-&gt;getRotation(), getModulePositions(), pose);</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>}</div>
 </div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
-<div class="foldopen" id="foldopen00313" data-start="{" data-end="}">
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno"><a class="line" href="classrmb_1_1_swerve_drive.html#acad575f49ac5d076a732ae9e86dda698">  313</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_swerve_drive.html#acad575f49ac5d076a732ae9e86dda698">SwerveDrive&lt;NumModules&gt;::addVisionMeasurments</a>(</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="keyword">const</span> frc::Pose2d &amp;poseEstimate, units::second_t time) {}</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
+<div class="foldopen" id="foldopen00315" data-start="{" data-end="}">
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno"><a class="line" href="classrmb_1_1_swerve_drive.html#acad575f49ac5d076a732ae9e86dda698">  315</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_swerve_drive.html#acad575f49ac5d076a732ae9e86dda698">SwerveDrive&lt;NumModules&gt;::addVisionMeasurments</a>(</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="keyword">const</span> frc::Pose2d &amp;poseEstimate, units::second_t time) {}</div>
 </div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
-<div class="foldopen" id="foldopen00317" data-start="{" data-end="}">
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno"><a class="line" href="classrmb_1_1_swerve_drive.html#a8fe97d3ec8aa6187ea0967e09d9211c2">  317</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_swerve_drive.html#a8fe97d3ec8aa6187ea0967e09d9211c2">SwerveDrive&lt;NumModules&gt;::setVisionSTDevs</a>(</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    wpi::array&lt;double, 3&gt; standardDevs) {}</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
+<div class="foldopen" id="foldopen00319" data-start="{" data-end="}">
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno"><a class="line" href="classrmb_1_1_swerve_drive.html#a8fe97d3ec8aa6187ea0967e09d9211c2">  319</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_swerve_drive.html#a8fe97d3ec8aa6187ea0967e09d9211c2">SwerveDrive&lt;NumModules&gt;::setVisionSTDevs</a>(</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    wpi::array&lt;double, 3&gt; standardDevs) {}</div>
 </div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
-<div class="foldopen" id="foldopen00321" data-start="{" data-end="}">
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno"><a class="line" href="classrmb_1_1_swerve_drive.html#ac672404c92e7a0012cc3c3fce346e7ff">  321</a></span>frc2::CommandPtr <a class="code hl_function" href="classrmb_1_1_swerve_drive.html#ac672404c92e7a0012cc3c3fce346e7ff">SwerveDrive&lt;NumModules&gt;::followPPTrajectory</a>(</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    pathplanner::PathPlannerTrajectory trajectory,</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    std::initializer_list&lt;frc2::Subsystem *&gt; driveRequirements) {</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>  <span class="keywordflow">return</span> frc2::cmd::None();</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>}</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt;</div>
+<div class="foldopen" id="foldopen00323" data-start="{" data-end="}">
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno"><a class="line" href="classrmb_1_1_swerve_drive.html#ac672404c92e7a0012cc3c3fce346e7ff">  323</a></span>frc2::CommandPtr <a class="code hl_function" href="classrmb_1_1_swerve_drive.html#ac672404c92e7a0012cc3c3fce346e7ff">SwerveDrive&lt;NumModules&gt;::followPPTrajectory</a>(</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    pathplanner::PathPlannerTrajectory trajectory,</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    std::initializer_list&lt;frc2::Subsystem *&gt; driveRequirements) {</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>  <span class="keywordflow">return</span> frc2::cmd::None();</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>}</div>
 </div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>} <span class="comment">// namespace rmb</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>} <span class="comment">// namespace rmb</span></div>
 <div class="ttc" id="aclassrmb_1_1_swerve_drive_html"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html">rmb::SwerveDrive</a></div><div class="ttdef"><b>Definition</b> SwerveDrive.h:48</div></div>
 <div class="ttc" id="aclassrmb_1_1_swerve_drive_html_a0cb881e64a59ae0ae500806c8e4206bb"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#a0cb881e64a59ae0ae500806c8e4206bb">rmb::SwerveDrive::driveCartesian</a></div><div class="ttdeci">void driveCartesian(double xSpeed, double ySpeed, double zRotation, bool fieldOriented)</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:115</div></div>
 <div class="ttc" id="aclassrmb_1_1_swerve_drive_html_a144a136a7afd7e1653258a4f25df1655"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#a144a136a7afd7e1653258a4f25df1655">rmb::SwerveDrive::driveChassisSpeeds</a></div><div class="ttdeci">void driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds) override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:212</div></div>
 <div class="ttc" id="aclassrmb_1_1_swerve_drive_html_a318c51752558c5f2fdf6901bea114cca"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#a318c51752558c5f2fdf6901bea114cca">rmb::SwerveDrive::updatePose</a></div><div class="ttdeci">frc::Pose2d updatePose() override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:230</div></div>
 <div class="ttc" id="aclassrmb_1_1_swerve_drive_html_a354d3937a080526937bab637a44a2baa"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#a354d3937a080526937bab637a44a2baa">rmb::SwerveDrive::getPose</a></div><div class="ttdeci">frc::Pose2d getPose() const override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:226</div></div>
-<div class="ttc" id="aclassrmb_1_1_swerve_drive_html_a8e7bcc2c47847bed53e12dcd31704c7b"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#a8e7bcc2c47847bed53e12dcd31704c7b">rmb::SwerveDrive::resetPose</a></div><div class="ttdeci">void resetPose(const frc::Pose2d &amp;pose=frc::Pose2d()) override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:308</div></div>
-<div class="ttc" id="aclassrmb_1_1_swerve_drive_html_a8fe97d3ec8aa6187ea0967e09d9211c2"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#a8fe97d3ec8aa6187ea0967e09d9211c2">rmb::SwerveDrive::setVisionSTDevs</a></div><div class="ttdeci">void setVisionSTDevs(wpi::array&lt; double, 3 &gt; standardDevs) override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:317</div></div>
-<div class="ttc" id="aclassrmb_1_1_swerve_drive_html_ac672404c92e7a0012cc3c3fce346e7ff"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#ac672404c92e7a0012cc3c3fce346e7ff">rmb::SwerveDrive::followPPTrajectory</a></div><div class="ttdeci">frc2::CommandPtr followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements) override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:321</div></div>
-<div class="ttc" id="aclassrmb_1_1_swerve_drive_html_acad575f49ac5d076a732ae9e86dda698"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#acad575f49ac5d076a732ae9e86dda698">rmb::SwerveDrive::addVisionMeasurments</a></div><div class="ttdeci">void addVisionMeasurments(const frc::Pose2d &amp;poseEstimate, units::second_t time) override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:313</div></div>
+<div class="ttc" id="aclassrmb_1_1_swerve_drive_html_a8e7bcc2c47847bed53e12dcd31704c7b"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#a8e7bcc2c47847bed53e12dcd31704c7b">rmb::SwerveDrive::resetPose</a></div><div class="ttdeci">void resetPose(const frc::Pose2d &amp;pose=frc::Pose2d()) override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:310</div></div>
+<div class="ttc" id="aclassrmb_1_1_swerve_drive_html_a8fe97d3ec8aa6187ea0967e09d9211c2"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#a8fe97d3ec8aa6187ea0967e09d9211c2">rmb::SwerveDrive::setVisionSTDevs</a></div><div class="ttdeci">void setVisionSTDevs(wpi::array&lt; double, 3 &gt; standardDevs) override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:319</div></div>
+<div class="ttc" id="aclassrmb_1_1_swerve_drive_html_ac672404c92e7a0012cc3c3fce346e7ff"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#ac672404c92e7a0012cc3c3fce346e7ff">rmb::SwerveDrive::followPPTrajectory</a></div><div class="ttdeci">frc2::CommandPtr followPPTrajectory(pathplanner::PathPlannerTrajectory trajectory, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements) override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:323</div></div>
+<div class="ttc" id="aclassrmb_1_1_swerve_drive_html_acad575f49ac5d076a732ae9e86dda698"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#acad575f49ac5d076a732ae9e86dda698">rmb::SwerveDrive::addVisionMeasurments</a></div><div class="ttdeci">void addVisionMeasurments(const frc::Pose2d &amp;poseEstimate, units::second_t time) override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:315</div></div>
 <div class="ttc" id="aclassrmb_1_1_swerve_drive_html_ae37a9eab0e13c33c1d38cfcf4014acee"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#ae37a9eab0e13c33c1d38cfcf4014acee">rmb::SwerveDrive::getChassisSpeeds</a></div><div class="ttdeci">frc::ChassisSpeeds getChassisSpeeds() const override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:220</div></div>
 <div class="ttc" id="aclassrmb_1_1_swerve_module_html"><div class="ttname"><a href="classrmb_1_1_swerve_module.html">rmb::SwerveModule</a></div><div class="ttdef"><b>Definition</b> SwerveModule.h:52</div></div>
 <div class="ttc" id="anamespacermb_html"><div class="ttname"><a href="namespacermb.html">rmb</a></div><div class="ttdoc">the master namespace of librmb</div><div class="ttdef"><b>Definition</b> LogitechGamepad.h:9</div></div>

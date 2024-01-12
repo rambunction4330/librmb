@@ -129,7 +129,7 @@ $(function(){initNavTree('_a_h_r_s_gyro_8h_source.html',''); initResizable(); })
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  <span class="keyword">virtual</span> <a class="code hl_class" href="classrmb_1_1_a_h_r_s_gyro.html">~AHRSGyro</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keyword">virtual</span> units::turn_t getZRotation() <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> resetZRotation(units::turn_t offset = 0_tr) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> resetZRotation() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <span class="keyword">virtual</span> frc::Rotation2d getRotation() <span class="keyword">const override</span>;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keyword">virtual</span> units::meters_per_second_squared_t getXAcceleration() <span class="keyword">const override</span>;</div>
@@ -142,11 +142,9 @@ $(function(){initNavTree('_a_h_r_s_gyro_8h_source.html',''); initResizable(); })
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  std::unique_ptr&lt;AHRS&gt; gyro;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  units::turn_t offset = 0.0_tr;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>};</div>
 </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>} <span class="comment">// namespace rmb</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>} <span class="comment">// namespace rmb</span></div>
 <div class="ttc" id="aclassrmb_1_1_a_h_r_s_gyro_html"><div class="ttname"><a href="classrmb_1_1_a_h_r_s_gyro.html">rmb::AHRSGyro</a></div><div class="ttdef"><b>Definition</b> AHRSGyro.h:11</div></div>
 <div class="ttc" id="aclassrmb_1_1_gyro_html"><div class="ttname"><a href="classrmb_1_1_gyro.html">rmb::Gyro</a></div><div class="ttdef"><b>Definition</b> gyro.h:13</div></div>
 <div class="ttc" id="anamespacermb_html"><div class="ttname"><a href="namespacermb.html">rmb</a></div><div class="ttdoc">the master namespace of librmb</div><div class="ttdef"><b>Definition</b> LogitechGamepad.h:9</div></div>
