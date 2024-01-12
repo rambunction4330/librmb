@@ -15,10 +15,10 @@ const rmb::TalonFXVelocityControllerHelper::PIDConfig velocityModulePIDConfig =
 const rmb::TalonFXPositionControllerHelper::PIDConfig positionModulePIDConfig =
     {.p = 2.5f, .i = 0.0000f, .d = 0.0f, .ff = 0.000};
 
-const units::turn_t module1Zero(-0.156250);
-const units::turn_t module2Zero(-0.173828);
-const units::turn_t module3Zero(-0.227295);
-const units::turn_t module4Zero(-0.879883);
+const units::turn_t module1Zero(-0.169778);
+const units::turn_t module2Zero(-0.190430);
+const units::turn_t module3Zero(-0.726318 + 0.5);
+const units::turn_t module4Zero(-0.37963 + 0.5);
 
 const units::meter_t wheelCircumference = 1.0_m;
 
@@ -43,7 +43,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .continuousWrap = true},
+              .continuousWrap = false},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 1.0f,
@@ -76,7 +76,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo1{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .continuousWrap = true},
+              .continuousWrap = false},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 1.0f,
@@ -109,7 +109,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo2{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .continuousWrap = true},
+              .continuousWrap = false},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 1.0f,
@@ -142,7 +142,7 @@ const rmb::TalonFXPositionController::CreateInfo positionControllerCreateInfo3{
                   -(units::radian_t)std::numeric_limits<double>::infinity(),
               .maxPosition =
                   (units::radian_t)std::numeric_limits<double>::infinity(),
-              .continuousWrap = true},
+              .continuousWrap = false},
     .feedbackConfig =
         {
             .sensorToMechanismRatio = 1.0f,

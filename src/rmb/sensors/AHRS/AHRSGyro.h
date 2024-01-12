@@ -15,7 +15,7 @@ public:
   virtual ~AHRSGyro() = default;
 
   virtual units::turn_t getZRotation() const override;
-  virtual void resetZRotation(units::turn_t offset = 0_tr) override;
+  virtual void resetZRotation() override;
   virtual frc::Rotation2d getRotation() const override;
 
   virtual units::meters_per_second_squared_t getXAcceleration() const override;
@@ -28,7 +28,5 @@ public:
 
 private:
   std::unique_ptr<AHRS> gyro;
-
-  units::turn_t offset = 0.0_tr;
 };
 } // namespace rmb

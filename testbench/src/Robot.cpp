@@ -106,7 +106,9 @@ void Robot::TeleopPeriodic() {
       -ensureMagnitudeMax(gamepad.GetLeftY(), maxOpenloop),
       -ensureMagnitudeMax(gamepad.GetRightY(), maxOpenloop), true);
 
-  // swerveDrive->updateNTDebugInfo(true);
+  frc::SmartDashboard::PutNumber("angle", gyro->getRotation().Degrees()());
+
+  swerveDrive->updateNTDebugInfo(true);
 }
 
 void Robot::TeleopExit() {}

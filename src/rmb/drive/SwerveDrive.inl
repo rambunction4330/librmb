@@ -228,7 +228,9 @@ frc::Pose2d SwerveDrive<NumModules>::getPose() const {
 }
 
 template <size_t NumModules> frc::Pose2d SwerveDrive<NumModules>::updatePose() {
-  return poseEstimator.Update(gyro->getRotation(), getModulePositions());
+  return poseEstimator.Update(
+      frc::Rotation2d((units::radian_t)gyro->getZRotation()),
+      getModulePositions());
 }
 
 template <size_t NumModules>
@@ -246,8 +248,8 @@ void SwerveDrive<NumModules>::updateNTDebugInfo(bool openLoopVelocity) {
 
     std::array<double, NumModules> positionErrors;
     for (size_t i = 0; i < NumModules; i++) {
-      units::degree_t error = modules[i].getTargetRotation().Degrees() -
-                              modules[i].getState().angle.Degrees();
+      units::turn_t error = modules[i].getTargetRotation().Degrees() -
+                            modules[i].getState().angle.Degrees();
 
       positionErrors[i] = error();
     }
@@ -277,7 +279,7 @@ void SwerveDrive<NumModules>::updateNTDebugInfo(bool openLoopVelocity) {
 
     std::array<double, NumModules> positions;
     for (size_t i = 0; i < NumModules; i++) {
-      units::degree_t position = modules[i].getState().angle.Degrees();
+      units::turn_t position = modules[i].getState().angle.Degrees();
 
       positions[i] = position();
     }

@@ -14,7 +14,7 @@ class Gyro {
 public:
   virtual units::turn_t getZRotation() const = 0;
   virtual frc::Rotation2d getRotation() const = 0;
-  virtual void resetZRotation(units::turn_t offset = 0_tr) = 0;
+  virtual void resetZRotation() = 0;
 
   virtual units::meters_per_second_squared_t getXAcceleration() const = 0;
   virtual units::meters_per_second_squared_t getYAcceleration() const = 0;
