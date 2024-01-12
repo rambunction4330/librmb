@@ -14,13 +14,9 @@ units::turn_t AHRSGyro::AHRSGyro::getZRotation() const {
   return units::degree_t(-gyro->GetRotation2d().Degrees());
 }
 
-frc::Rotation2d AHRSGyro::getRotation() const {
-  return gyro->GetRotation2d();
-}
+frc::Rotation2d AHRSGyro::getRotation() const { return gyro->GetRotation2d(); }
 
-void AHRSGyro::resetZRotation() { 
-  gyro->ZeroYaw();
-}
+void AHRSGyro::resetZRotation() { gyro->ZeroYaw(); }
 
 units::meters_per_second_squared_t AHRSGyro::getXAcceleration() const {
   return units::meters_per_second_squared_t(this->gyro->GetRawAccelX());

@@ -249,7 +249,7 @@ void SwerveDrive<NumModules>::updateNTDebugInfo(bool openLoopVelocity) {
     std::array<double, NumModules> positionErrors;
     for (size_t i = 0; i < NumModules; i++) {
       units::turn_t error = modules[i].getTargetRotation().Degrees() -
-                              modules[i].getState().angle.Degrees();
+                            modules[i].getState().angle.Degrees();
 
       positionErrors[i] = error();
     }
