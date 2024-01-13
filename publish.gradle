@@ -4,6 +4,7 @@ apply plugin: 'maven-publish'
 
 ext.licenseFile = files("$rootDir/LICENSE")
 
+def year = '2024'
 def pubVersion = '2024.0.1'
 
 def outputsFolder = file("$buildDir/outputs")
@@ -43,6 +44,7 @@ task generateVendorJSON() {
     \"fileName\": \"LibRmb.json\",
     \"name\": \"LibRmb\",
     \"version\": \"${pubVersion}\",
+    \"frcYear\": \"${year}\",
     \"uuid\": \"${uuid}\",
     \"mavenUrls\": [
         \"${repoUrl}\"
