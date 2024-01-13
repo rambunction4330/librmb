@@ -1,4 +1,6 @@
-import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
+import java.util.ArrayList
+import javax.swing.filechooser.FileFilter
 
 apply plugin: 'maven-publish'
 
@@ -153,6 +155,34 @@ publishing {
 task cleanReleaseRepo(type: Delete) {
     delete releasesRepoUrl
 }
+
+def ArrayList<String> getVendorDepURLs() {
+  def list = new ArrayList<String>();
+
+  def vendordepsFolder = new File("${rootDir}/vendordeps")
+
+  def vendorDeps = vendordepsFolder.listFiles({File file ->
+    file.getName().endsWith(".json")
+  } as FileFilter);
+
+  for (File vendordep in vendorDeps) {
+    def slurper = new JsonSlurper()
+
+    def map = slurper.parseFile(vendordep)
+
+    if(map instanceof Map) {
+      if (map.containsKey('jsonUrl')) {
+        list.append(map.jsonUrl)
+      }
+    }
+  }
+
+  return list
+}
+
+def vendordepUrls = getVendorDepURLs();
+
+println("vendordep URLs" + vendordepUrls.toString())
 
 tasks.matching {it != cleanReleaseRepo}.all {it.dependsOn cleanReleaseRepo}
 
