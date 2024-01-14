@@ -1,9 +1,12 @@
-import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
+import java.util.ArrayList
+import javax.swing.filechooser.FileFilter
 
 apply plugin: 'maven-publish'
 
 ext.licenseFile = files("$rootDir/LICENSE")
 
+def year = '2024'
 def pubVersion = '2024.0.1'
 
 def outputsFolder = file("$buildDir/outputs")
@@ -30,22 +33,68 @@ task outputVersions() {
 task generateVendorJSON() {
     description = "Generate the vendordep json file"
     group = 'Build'
-    outputs.files(vendordepJSONFile)
+    // outputs.files(vendordepJSONFile)
 
     def uuid = "abcaeed8-c3ff-11ed-afa1-0242ac120002"
     def repoUrl = "https://raw.githubusercontent.com/rambunction4330/librmb/maven-repo/repos/releases"
     def jsonUrl = "https://raw.githubusercontent.com/rambunction4330/librmb/maven-repo/LibRmb.json"
 
     def platforms = ["linuxathena", "windows", "osxuniversal"]
+
+    def vendordepUrls = new ArrayList<String>();
+    def vendordepUUIDs = new ArrayList<String>();
+    def depsStringBuilder = new StringBuilder();
+
+    def vendordepsFolder = new File("${rootDir}/vendordeps")
+
+    def vendorDeps = vendordepsFolder.listFiles({File dir, String name ->
+      name.endsWith(".json")
+    } as FilenameFilter);
+
+    for (File vendordep in vendorDeps) {
+      def slurper = new JsonSlurper()
+
+      def map = slurper.parse(new FileReader(vendordep))
+
+      if(map instanceof Map) {
+        if (map.containsKey('jsonUrl')) {
+          try {
+            def _url = new URI(map.jsonUrl)
+            vendordepUrls.add(map.jsonUrl);
+          } catch (def e) {}
+        }
+
+        if (map.containsKey('uuid')) {
+          vendordepUUIDs.add(map.uuid);
+        }
+      }
+    }
+    
+    for (int i = 0; i < vendordepUrls.size(); i++) {
+      depsStringBuilder.append(
+""",
+        {
+            \"uuid\": \"${vendordepUUIDs[i]}\",
+            \"errorMessage\": \"\",
+            \"onlineUrl\": \"${vendordepUrls[i]}\"
+        }""")
+    }
+
+    depsStringBuilder.deleteCharAt(0);
+    depsStringBuilder.deleteCharAt(0);
     
     String vendordepJSON =
 """{
     \"fileName\": \"LibRmb.json\",
     \"name\": \"LibRmb\",
     \"version\": \"${pubVersion}\",
+    \"frcYear\": \"${year}\",
     \"uuid\": \"${uuid}\",
     \"mavenUrls\": [
         \"${repoUrl}\"
+    ],
+    \"requirements\": [
+${depsStringBuilder.toString()}
     ],
     \"jsonUrl\": \"${jsonUrl}\",
     \"javaDependencies\": [],
@@ -113,6 +162,16 @@ task cppHeadersZip(type: Zip) {
         include "**/*.h"
         into '/'
     }
+
+    from('src/') {
+      include "**/*.inc"
+      into '/'
+    }
+
+    from('src/') {
+      include "**/*.inl"
+      into '/'
+    }
 }
 
 task cppSourceZip(type: Zip) {
@@ -151,6 +210,59 @@ publishing {
 task cleanReleaseRepo(type: Delete) {
     delete releasesRepoUrl
 }
+
+def ArrayList<String> getVendorDepUUIDs() {
+  def list = new ArrayList<String>();
+
+  def vendordepsFolder = new File("${rootDir}/vendordeps")
+
+  def vendorDeps = vendordepsFolder.listFiles({File dir, String name ->
+    name.endsWith(".json")
+  } as FilenameFilter);
+
+  for (File vendordep in vendorDeps) {
+    def slurper = new JsonSlurper()
+
+    def map = slurper.parse(new FileReader(vendordep))
+
+    if(map instanceof Map) {
+      if (map.containsKey('uuid') && map.uuid.length() != 0) {
+        list.add(map.uuid);
+      }
+    }
+  }
+
+  return list
+}
+
+def ArrayList<String> getVendorDepURLs() {
+  def list = new ArrayList<String>();
+
+  def vendordepsFolder = new File("${rootDir}/vendordeps")
+
+  def vendorDeps = vendordepsFolder.listFiles({File dir, String name ->
+    name.endsWith(".json")
+  } as FilenameFilter);
+
+  for (File vendordep in vendorDeps) {
+    def slurper = new JsonSlurper()
+
+    def map = slurper.parse(new FileReader(vendordep))
+
+    if(map instanceof Map) {
+      if (map.containsKey('jsonUrl') && map.jsonUrl.length() != 0) {
+        try {
+          def _url = new URI(map.jsonUrl)
+          list.add(map.jsonUrl);
+        } catch (def e) {}
+      }
+    }
+  }
+
+  return list
+}
+
+publish.dependsOn generateVendorJSON
 
 tasks.matching {it != cleanReleaseRepo}.all {it.dependsOn cleanReleaseRepo}
 
