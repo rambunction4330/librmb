@@ -2,9 +2,37 @@
     "fileName": "LibRmb.json",
     "name": "LibRmb",
     "version": "2024.0.1",
+    "frcYear": "2024",
     "uuid": "abcaeed8-c3ff-11ed-afa1-0242ac120002",
     "mavenUrls": [
         "https://raw.githubusercontent.com/rambunction4330/librmb/maven-repo/repos/releases"
+    ],
+    "requirements": [
+        {
+            "uuid": "cb311d09-36e9-4143-a032-55bb2b94443b",
+            "errorMessage": "",
+            "onlineUrl": "https://dev.studica.com/releases/2024/NavX.json"
+        },
+        {
+            "uuid": "e995de00-2c64-4df5-8831-c1441420ff19",
+            "errorMessage": "",
+            "onlineUrl": "https://maven.ctr-electronics.com/release/com/ctre/phoenix6/latest/Phoenix6-frc2024-latest.json"
+        },
+        {
+            "uuid": "111e20f7-815e-48f8-9dd6-e675ce75b266",
+            "errorMessage": "",
+            "onlineUrl": ""
+        },
+        {
+            "uuid": "1b42324f-17c6-4875-8e77-1c312bc8c786",
+            "errorMessage": "",
+            "onlineUrl": "https://3015rangerrobotics.github.io/pathplannerlib/PathplannerLib.json"
+        },
+        {
+            "uuid": "3f48eb8c-50fe-43a6-9cb7-44c86353c4cb",
+            "errorMessage": "",
+            "onlineUrl": "https://software-metadata.revrobotics.com/REVLib-2024.json"
+        }
     ],
     "jsonUrl": "https://raw.githubusercontent.com/rambunction4330/librmb/maven-repo/LibRmb.json",
     "javaDependencies": [],
