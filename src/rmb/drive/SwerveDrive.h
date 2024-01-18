@@ -21,9 +21,12 @@
 
 #include <pathplanner/lib/path/PathPlannerTrajectory.h>
 
+#include "frc/geometry/Pose2d.h"
+#include "frc/geometry/Translation2d.h"
 #include "frc2/command/Commands.h"
 #include "networktables/DoubleArrayTopic.h"
 #include "pathplanner/lib/commands/FollowPathHolonomic.h"
+#include "pathplanner/lib/path/PathConstraints.h"
 #include "pathplanner/lib/path/PathPlannerPath.h"
 #include "rmb/drive/BaseDrive.h"
 #include "rmb/drive/SwerveModule.h"
@@ -36,6 +39,7 @@
 #include "units/time.h"
 
 #include <rmb/sensors/gyro.h>
+#include <vector>
 
 namespace rmb {
 
@@ -219,6 +223,8 @@ public:
   frc2::CommandPtr followPPPath(
       std::shared_ptr<pathplanner::PathPlannerPath> path,
       std::initializer_list<frc2::Subsystem *> driveRequirements) override;
+
+  frc2::CommandPtr FollowGeneratedPPPath(frc::Pose2d targetPose, pathplanner::PathConstraints constraints,  std::initializer_list<frc2::Subsystem *> driveRequirements); 
 
   void updateNTDebugInfo(bool openLoopVelocity = false);
 

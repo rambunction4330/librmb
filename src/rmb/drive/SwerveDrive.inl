@@ -1,7 +1,9 @@
 #pragma once
 
-#include "pathplanner/lib/util/HolonomicPathFollowerConfig.h"
+#include "frc/geometry/Pose2d.h"
+#include "pathplanner/lib/path/PathConstraints.h"
 #include "pathplanner/lib/path/PathPlannerPath.h"
+#include "pathplanner/lib/util/HolonomicPathFollowerConfig.h"
 #include "pathplanner/lib/util/PIDConstants.h"
 #include "pathplanner/lib/util/ReplanningConfig.h"
 #include "rmb/drive/BaseDrive.h"
@@ -51,7 +53,9 @@
 #include <Eigen/Core>
 #include <memory>
 
+#include "pathplanner/lib//commands/PathfindHolonomic.h"
 #include "pathplanner/lib/commands/FollowPathHolonomic.h"
+#include "pathplanner/lib/path/PathConstraints.h"
 #include "pathplanner/lib/util/HolonomicPathFollowerConfig.h"
 #include "pathplanner/lib/util/ReplanningConfig.h"
 
@@ -373,4 +377,25 @@ frc2::CommandPtr SwerveDrive<NumModules>::followPPPath(
       .ToPtr();
 }
 
+template <size_t NumModules>
+frc2::CommandPtr SwerveDrive<NumModules>::FollowGeneratedPPPath(
+    frc::Pose2d targetPose, pathplanner::PathConstraints contraints,
+    std::initializer_list<frc2::Subsystem *> driveRequirements) {
+
+  pathplanner::ReplanningConfig replanningConfig;
+  units::second_t period;
+  pathplanner::HolonomicPathFollowerConfig holonomicPathFollowerConfig(
+      maxModuleSpeed, largestModuleDistance, replanningConfig, period);
+  units::meter_t rotationDelayDistance = 0_m;
+
+  return pathplanner::PathfindHolonomic(
+             targetPose, contraints, [this]() { return getPose(); },
+             [this]() { return getChassisSpeeds(); },
+             [this](frc::ChassisSpeeds chassisSpeeds) {
+               driveChassisSpeeds(chassisSpeeds);
+             },
+             holonomicPathFollowerConfig, driveRequirements,
+             rotationDelayDistance)
+      .ToPtr(); 
+}
 } // namespace rmb
