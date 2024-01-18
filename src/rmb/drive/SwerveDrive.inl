@@ -326,9 +326,8 @@ frc2::CommandPtr SwerveDrive<NumModules>::followPPTrajectory(
   return frc2::cmd::None();
 }
 
-template <size_t NumModules>
-void SwerveDrive<NumModules>::stop() {
-  for (auto& module : modules) {
+template <size_t NumModules> void SwerveDrive<NumModules>::stop() {
+  for (auto &module : modules) {
     module.stop();
   }
 }
