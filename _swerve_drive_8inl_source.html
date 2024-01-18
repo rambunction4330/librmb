@@ -446,7 +446,13 @@ $(function(){initNavTree('_swerve_drive_8inl_source.html',''); initResizable(); 
 <div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>}</div>
 </div>
 <div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>} <span class="comment">// namespace rmb</span></div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> NumModules&gt; <span class="keywordtype">void</span> <a class="code hl_class" href="classrmb_1_1_swerve_drive.html">SwerveDrive&lt;NumModules&gt;::stop</a>() {</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;module : modules) {</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    <span class="keyword">module</span>.stop();</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>  }</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>}</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>} <span class="comment">// namespace rmb</span></div>
 <div class="ttc" id="aclassrmb_1_1_swerve_drive_html"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html">rmb::SwerveDrive</a></div><div class="ttdef"><b>Definition</b> SwerveDrive.h:48</div></div>
 <div class="ttc" id="aclassrmb_1_1_swerve_drive_html_a0cb881e64a59ae0ae500806c8e4206bb"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#a0cb881e64a59ae0ae500806c8e4206bb">rmb::SwerveDrive::driveCartesian</a></div><div class="ttdeci">void driveCartesian(double xSpeed, double ySpeed, double zRotation, bool fieldOriented)</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:115</div></div>
 <div class="ttc" id="aclassrmb_1_1_swerve_drive_html_a144a136a7afd7e1653258a4f25df1655"><div class="ttname"><a href="classrmb_1_1_swerve_drive.html#a144a136a7afd7e1653258a4f25df1655">rmb::SwerveDrive::driveChassisSpeeds</a></div><div class="ttdeci">void driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds) override</div><div class="ttdef"><b>Definition</b> SwerveDrive.inl:212</div></div>
