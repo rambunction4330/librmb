@@ -123,6 +123,8 @@ public:
    */
   void setPower(const SwerveModulePower &power);
 
+  void stop();
+
   SwerveModulePower getPower();
 
   /**
