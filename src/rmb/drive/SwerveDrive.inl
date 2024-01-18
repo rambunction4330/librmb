@@ -313,7 +313,9 @@ void SwerveDrive<NumModules>::resetPose(const frc::Pose2d &pose) {
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::addVisionMeasurments(
-    const frc::Pose2d &poseEstimate, units::second_t time) {}
+    const frc::Pose2d &poseEstimate, units::second_t time) {
+  poseEstimator.AddVisionMeasurement(poseEstimate, time);
+}
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::setVisionSTDevs(

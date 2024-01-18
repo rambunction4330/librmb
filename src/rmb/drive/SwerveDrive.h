@@ -142,6 +142,8 @@ public:
    */
   frc::Pose2d updatePose() override;
 
+  frc::Pose2d addVisionMeasurment();
+
   /**
    * Resets the estimated robot poition.
    *
