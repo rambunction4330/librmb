@@ -385,7 +385,7 @@ frc2::CommandPtr SwerveDrive<NumModules>::followPPPath(
              [this](frc::ChassisSpeeds chassisSpeeds) {
                driveChassisSpeeds(chassisSpeeds);
              },
-             holonomicPathFollowerConfig, driveRequirements)
+             holonomicPathFollowerConfig, []() { return true; }, driveRequirements)
       .ToPtr();
 }
 
