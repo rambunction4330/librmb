@@ -53,8 +53,8 @@
 #include <Eigen/Core>
 #include <memory>
 
-#include "pathplanner/lib/commands/PathfindHolonomic.h"
 #include "pathplanner/lib/commands/FollowPathHolonomic.h"
+#include "pathplanner/lib/commands/PathfindHolonomic.h"
 #include "pathplanner/lib/path/PathConstraints.h"
 #include "pathplanner/lib/util/HolonomicPathFollowerConfig.h"
 #include "pathplanner/lib/util/ReplanningConfig.h"
@@ -389,7 +389,6 @@ frc2::CommandPtr SwerveDrive<NumModules>::followPPPath(
       .ToPtr();
 }
 
-
 template <size_t NumModules>
 frc2::CommandPtr SwerveDrive<NumModules>::FollowGeneratedPPPath(
     frc::Pose2d targetPose, pathplanner::PathConstraints contraints,
@@ -409,7 +408,7 @@ frc2::CommandPtr SwerveDrive<NumModules>::FollowGeneratedPPPath(
              },
              holonomicPathFollowerConfig, driveRequirements,
              rotationDelayDistance)
-      .ToPtr(); 
+      .ToPtr();
 }
 
 template <size_t NumModules> void SwerveDrive<NumModules>::stop() {

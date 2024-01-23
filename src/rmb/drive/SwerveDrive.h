@@ -208,8 +208,7 @@ public:
   //  */
   frc2::CommandPtr followWPILibTrajectory(
       frc::Trajectory trajectory,
-      std::initializer_list<frc2::Subsystem *> driveRequirements) override; 
-  
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
   // /**
   //  * Generates a command to follow PathPlanner Trajectory.
@@ -224,7 +223,9 @@ public:
       std::shared_ptr<pathplanner::PathPlannerPath> path,
       std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
-  frc2::CommandPtr FollowGeneratedPPPath(frc::Pose2d targetPose, pathplanner::PathConstraints constraints,  std::initializer_list<frc2::Subsystem *> driveRequirements); 
+  frc2::CommandPtr FollowGeneratedPPPath(
+      frc::Pose2d targetPose, pathplanner::PathConstraints constraints,
+      std::initializer_list<frc2::Subsystem *> driveRequirements);
 
   void updateNTDebugInfo(bool openLoopVelocity = false);
 
@@ -298,7 +299,6 @@ private:
   units::meters_per_second_t maxModuleSpeed;
 
   units::meter_t largestModuleDistance = 1.0_m;
-
 };
 } // namespace rmb
 

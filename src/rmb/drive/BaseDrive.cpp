@@ -113,7 +113,8 @@ frc2::CommandPtr BaseDrive::followPPPathWithEvents(
 
 //   for (auto trajectory : trajectoryGroup) {
 //     followCommands.emplace_back(
-//         followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirements));
+//         followPPTrajectoryWithEvents(trajectory, eventMap,
+//         driveRequirements));
 //   }
 
 //   return frc2::cmd::Sequence(std::move(followCommands));
