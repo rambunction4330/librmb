@@ -119,4 +119,9 @@ void SwerveModule::InitSendable(wpi::SendableBuilder &builder) {
       "angle", [this] { return this->getAngle(); }, [](double) {});
 }
 
+void SwerveModule::stop() {
+  velocityController->stop();
+  angularController->stop();
+}
+
 } // namespace rmb

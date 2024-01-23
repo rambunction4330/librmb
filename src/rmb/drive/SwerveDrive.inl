@@ -53,11 +53,12 @@
 #include <Eigen/Core>
 #include <memory>
 
-#include "pathplanner/lib//commands/PathfindHolonomic.h"
+#include "pathplanner/lib/commands/PathfindHolonomic.h"
 #include "pathplanner/lib/commands/FollowPathHolonomic.h"
 #include "pathplanner/lib/path/PathConstraints.h"
 #include "pathplanner/lib/util/HolonomicPathFollowerConfig.h"
 #include "pathplanner/lib/util/ReplanningConfig.h"
+#include <mutex>
 
 namespace rmb {
 
@@ -249,11 +250,15 @@ frc::ChassisSpeeds SwerveDrive<NumModules>::getChassisSpeeds() const {
 
 template <size_t NumModules>
 frc::Pose2d SwerveDrive<NumModules>::getPose() const {
+  std::lock_guard<std::mutex> lock(visionThreadMutex);
   return poseEstimator.GetEstimatedPosition();
 }
 
 template <size_t NumModules> frc::Pose2d SwerveDrive<NumModules>::updatePose() {
-  return poseEstimator.Update(gyro->getRotation(), getModulePositions());
+  std::lock_guard<std::mutex> lock(visionThreadMutex);
+  return poseEstimator.Update(
+      frc::Rotation2d((units::radian_t)gyro->getZRotation()),
+      getModulePositions());
 }
 
 template <size_t NumModules>
@@ -271,8 +276,8 @@ void SwerveDrive<NumModules>::updateNTDebugInfo(bool openLoopVelocity) {
 
     std::array<double, NumModules> positionErrors;
     for (size_t i = 0; i < NumModules; i++) {
-      units::degree_t error = modules[i].getTargetRotation().Degrees() -
-                              modules[i].getState().angle.Degrees();
+      units::turn_t error = modules[i].getTargetRotation().Degrees() -
+                            modules[i].getState().angle.Degrees();
 
       positionErrors[i] = error();
     }
@@ -302,7 +307,7 @@ void SwerveDrive<NumModules>::updateNTDebugInfo(bool openLoopVelocity) {
 
     std::array<double, NumModules> positions;
     for (size_t i = 0; i < NumModules; i++) {
-      units::degree_t position = modules[i].getState().angle.Degrees();
+      units::turn_t position = modules[i].getState().angle.Degrees();
 
       positions[i] = position();
     }
@@ -331,16 +336,23 @@ SwerveDrive<NumModules>::getTargetModuleStates() const {
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::resetPose(const frc::Pose2d &pose) {
+  std::lock_guard<std::mutex> lock(visionThreadMutex);
   poseEstimator.ResetPosition(gyro->getRotation(), getModulePositions(), pose);
 }
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::addVisionMeasurments(
-    const frc::Pose2d &poseEstimate, units::second_t time) {}
+    const frc::Pose2d &poseEstimate, units::second_t time) {
+  std::lock_guard<std::mutex> lock(visionThreadMutex);
+  poseEstimator.AddVisionMeasurement(poseEstimate, time);
+}
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::setVisionSTDevs(
-    wpi::array<double, 3> standardDevs) {}
+    wpi::array<double, 3> standardDevs) {
+  std::lock_guard<std::mutex> lock(visionThreadMutex);
+  poseEstimator.SetVisionMeasurementStdDevs(standardDevs);
+}
 
 template <size_t NumModules>
 frc2::CommandPtr SwerveDrive<NumModules>::followWPILibTrajectory(
@@ -377,6 +389,7 @@ frc2::CommandPtr SwerveDrive<NumModules>::followPPPath(
       .ToPtr();
 }
 
+
 template <size_t NumModules>
 frc2::CommandPtr SwerveDrive<NumModules>::FollowGeneratedPPPath(
     frc::Pose2d targetPose, pathplanner::PathConstraints contraints,
@@ -398,4 +411,11 @@ frc2::CommandPtr SwerveDrive<NumModules>::FollowGeneratedPPPath(
              rotationDelayDistance)
       .ToPtr(); 
 }
+
+template <size_t NumModules> void SwerveDrive<NumModules>::stop() {
+  for (auto &module : modules) {
+    module.stop();
+  }
+}
+
 } // namespace rmb

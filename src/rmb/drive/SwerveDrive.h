@@ -228,6 +228,8 @@ public:
 
   void updateNTDebugInfo(bool openLoopVelocity = false);
 
+  void stop();
+
 private:
   void recomputeOpenloopInverseKinematicsMatrix();
 
