@@ -33,6 +33,7 @@
 #include <cstddef>
 
 #include <Eigen/Core>
+#include <mutex>
 
 namespace rmb {
 
@@ -224,10 +225,12 @@ frc::ChassisSpeeds SwerveDrive<NumModules>::getChassisSpeeds() const {
 
 template <size_t NumModules>
 frc::Pose2d SwerveDrive<NumModules>::getPose() const {
+  std::lock_guard<std::mutex> lock(visionThreadMutex);
   return poseEstimator.GetEstimatedPosition();
 }
 
 template <size_t NumModules> frc::Pose2d SwerveDrive<NumModules>::updatePose() {
+  std::lock_guard<std::mutex> lock(visionThreadMutex);
   return poseEstimator.Update(
       frc::Rotation2d((units::radian_t)gyro->getZRotation()),
       getModulePositions());
@@ -308,16 +311,23 @@ SwerveDrive<NumModules>::getTargetModuleStates() const {
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::resetPose(const frc::Pose2d &pose) {
+  std::lock_guard<std::mutex> lock(visionThreadMutex);
   poseEstimator.ResetPosition(gyro->getRotation(), getModulePositions(), pose);
 }
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::addVisionMeasurments(
-    const frc::Pose2d &poseEstimate, units::second_t time) {}
+    const frc::Pose2d &poseEstimate, units::second_t time) {
+  std::lock_guard<std::mutex> lock(visionThreadMutex);
+  poseEstimator.AddVisionMeasurement(poseEstimate, time);
+}
 
 template <size_t NumModules>
 void SwerveDrive<NumModules>::setVisionSTDevs(
-    wpi::array<double, 3> standardDevs) {}
+    wpi::array<double, 3> standardDevs) {
+  std::lock_guard<std::mutex> lock(visionThreadMutex);
+  poseEstimator.SetVisionMeasurementStdDevs(standardDevs);
+}
 
 template <size_t NumModules>
 frc2::CommandPtr SwerveDrive<NumModules>::followPPTrajectory(
