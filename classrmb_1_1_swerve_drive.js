@@ -5,7 +5,7 @@ var classrmb_1_1_swerve_drive =
     [ "addVisionMeasurments", "classrmb_1_1_swerve_drive.html#acad575f49ac5d076a732ae9e86dda698", null ],
     [ "driveCartesian", "classrmb_1_1_swerve_drive.html#a0cb881e64a59ae0ae500806c8e4206bb", null ],
     [ "driveChassisSpeeds", "classrmb_1_1_swerve_drive.html#a144a136a7afd7e1653258a4f25df1655", null ],
-    [ "followPPTrajectory", "classrmb_1_1_swerve_drive.html#ac672404c92e7a0012cc3c3fce346e7ff", null ],
+    [ "followPPPath", "classrmb_1_1_swerve_drive.html#a5164d7d3d949672fe3f4599af2991a1c", null ],
     [ "followWPILibTrajectory", "classrmb_1_1_swerve_drive.html#acc578ac22465edae0c2cd65bb11d16e5", null ],
     [ "getChassisSpeeds", "classrmb_1_1_swerve_drive.html#ae37a9eab0e13c33c1d38cfcf4014acee", null ],
     [ "getPose", "classrmb_1_1_swerve_drive.html#a354d3937a080526937bab637a44a2baa", null ],

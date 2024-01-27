@@ -163,21 +163,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa7e062e777df6af126494e38135fc79a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4796fdb366d12a5d66ac8f5dde96d2ab" id="r_a4796fdb366d12a5d66ac8f5dde96d2ab"><td class="memItemLeft" align="right" valign="top">frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4796fdb366d12a5d66ac8f5dde96d2ab">followWPILibTrajectory</a> (frc::Trajectory trajectory, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements) override</td></tr>
 <tr class="separator:a4796fdb366d12a5d66ac8f5dde96d2ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa79fa22ae808702e4cc43ba8e3f9116f" id="r_aa79fa22ae808702e4cc43ba8e3f9116f"><td class="memItemLeft" align="right" valign="top">frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa79fa22ae808702e4cc43ba8e3f9116f">followPPTrajectory</a> (pathplanner::PathPlannerTrajectory trajectory, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements) override</td></tr>
-<tr class="separator:aa79fa22ae808702e4cc43ba8e3f9116f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b1dafdb44aca55548498b6f3763e7a5" id="r_a1b1dafdb44aca55548498b6f3763e7a5"><td class="memItemLeft" align="right" valign="top">frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b1dafdb44aca55548498b6f3763e7a5">followPPPath</a> (std::shared_ptr&lt; pathplanner::PathPlannerPath &gt; path, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements) override</td></tr>
+<tr class="separator:a1b1dafdb44aca55548498b6f3763e7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classrmb_1_1_base_drive"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classrmb_1_1_base_drive')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classrmb_1_1_base_drive.html">rmb::BaseDrive</a></td></tr>
-<tr class="memitem:abf4d153f104f1a98eb8e1c223332914c inherit pub_methods_classrmb_1_1_base_drive" id="r_abf4d153f104f1a98eb8e1c223332914c"><td class="memItemLeft" align="right" valign="top">virtual frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_base_drive.html#abf4d153f104f1a98eb8e1c223332914c">followWPILibTrajectoryGroup</a> (std::vector&lt; frc::Trajectory &gt; trajectoryGroup, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirments)</td></tr>
-<tr class="separator:abf4d153f104f1a98eb8e1c223332914c inherit pub_methods_classrmb_1_1_base_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9679a99c9ae248740648175fcd25d5b inherit pub_methods_classrmb_1_1_base_drive" id="r_ac9679a99c9ae248740648175fcd25d5b"><td class="memItemLeft" align="right" valign="top">virtual frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_base_drive.html#ac9679a99c9ae248740648175fcd25d5b">followPPTrajectoryGroup</a> (std::vector&lt; pathplanner::PathPlannerTrajectory &gt; trajectoryGroup, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirments)</td></tr>
-<tr class="separator:ac9679a99c9ae248740648175fcd25d5b inherit pub_methods_classrmb_1_1_base_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08a722c67fda6179adfadb79645e15ab inherit pub_methods_classrmb_1_1_base_drive" id="r_a08a722c67fda6179adfadb79645e15ab"><td class="memItemLeft" align="right" valign="top">virtual frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_base_drive.html#a08a722c67fda6179adfadb79645e15ab">followPPTrajectoryWithEvents</a> (pathplanner::PathPlannerTrajectory trajectory, std::unordered_map&lt; std::string, std::shared_ptr&lt; frc2::Command &gt; &gt; eventMap, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirments)</td></tr>
-<tr class="separator:a08a722c67fda6179adfadb79645e15ab inherit pub_methods_classrmb_1_1_base_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc69b3cf6f57396fbea3a9970ea8ccd8 inherit pub_methods_classrmb_1_1_base_drive" id="r_abc69b3cf6f57396fbea3a9970ea8ccd8"><td class="memItemLeft" align="right" valign="top">virtual frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_base_drive.html#abc69b3cf6f57396fbea3a9970ea8ccd8">followPPTrajectoryGroupWithEvents</a> (std::vector&lt; pathplanner::PathPlannerTrajectory &gt; trajectoryGroup, std::unordered_map&lt; std::string, std::shared_ptr&lt; frc2::Command &gt; &gt; eventMap, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirments)</td></tr>
-<tr class="separator:abc69b3cf6f57396fbea3a9970ea8ccd8 inherit pub_methods_classrmb_1_1_base_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f5cc32f09d680136edc10f098fbe309 inherit pub_methods_classrmb_1_1_base_drive" id="r_a7f5cc32f09d680136edc10f098fbe309"><td class="memItemLeft" align="right" valign="top">virtual frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_base_drive.html#a7f5cc32f09d680136edc10f098fbe309">fullPPAuto</a> (pathplanner::PathPlannerTrajectory trajectory, std::unordered_map&lt; std::string, std::shared_ptr&lt; frc2::Command &gt; &gt; eventMap, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirments)</td></tr>
-<tr class="separator:a7f5cc32f09d680136edc10f098fbe309 inherit pub_methods_classrmb_1_1_base_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03486fdbb1681a4309e73b5caf74e6cd inherit pub_methods_classrmb_1_1_base_drive" id="r_a03486fdbb1681a4309e73b5caf74e6cd"><td class="memItemLeft" align="right" valign="top">virtual frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_base_drive.html#a03486fdbb1681a4309e73b5caf74e6cd">fullPPAuto</a> (std::vector&lt; pathplanner::PathPlannerTrajectory &gt; trajectoryGroup, std::unordered_map&lt; std::string, std::shared_ptr&lt; frc2::Command &gt; &gt; eventMap, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirments)</td></tr>
-<tr class="separator:a03486fdbb1681a4309e73b5caf74e6cd inherit pub_methods_classrmb_1_1_base_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aef05173efb88ffa293316a05453770 inherit pub_methods_classrmb_1_1_base_drive" id="r_a4aef05173efb88ffa293316a05453770"><td class="memItemLeft" align="right" valign="top">virtual frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_base_drive.html#a4aef05173efb88ffa293316a05453770">followWPILibTrajectoryGroup</a> (std::vector&lt; frc::Trajectory &gt; trajectoryGroup, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements)</td></tr>
+<tr class="separator:a4aef05173efb88ffa293316a05453770 inherit pub_methods_classrmb_1_1_base_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4318425f6c3d6e62af928b53f7609899 inherit pub_methods_classrmb_1_1_base_drive" id="r_a4318425f6c3d6e62af928b53f7609899"><td class="memItemLeft" align="right" valign="top">virtual frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_base_drive.html#a4318425f6c3d6e62af928b53f7609899">followPPPathWithEvents</a> (pathplanner::PathPlannerPath path, std::unordered_map&lt; std::string, std::shared_ptr&lt; frc2::Command &gt; &gt; eventMap, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements)</td></tr>
+<tr class="separator:a4318425f6c3d6e62af928b53f7609899 inherit pub_methods_classrmb_1_1_base_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c0f4c55091c174545ed19af49a52809 inherit pub_methods_classrmb_1_1_base_drive" id="r_a1c0f4c55091c174545ed19af49a52809"><td class="memItemLeft" align="right" valign="top">virtual frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_base_drive.html#a1c0f4c55091c174545ed19af49a52809">fullPPAuto</a> (pathplanner::PathPlannerPath path, std::unordered_map&lt; std::string, std::shared_ptr&lt; frc2::Command &gt; &gt; eventMap, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements)</td></tr>
+<tr class="separator:a1c0f4c55091c174545ed19af49a52809 inherit pub_methods_classrmb_1_1_base_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab05d938325d7e5b31d378c09c8cb5c89 inherit pub_methods_classrmb_1_1_base_drive" id="r_ab05d938325d7e5b31d378c09c8cb5c89"><td class="memItemLeft" align="right" valign="top">virtual frc2::CommandPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_base_drive.html#ab05d938325d7e5b31d378c09c8cb5c89">fullPPAuto</a> (std::vector&lt; pathplanner::PathPlannerTrajectory &gt; trajectoryGroup, std::unordered_map&lt; std::string, std::shared_ptr&lt; frc2::Command &gt; &gt; eventMap, std::initializer_list&lt; frc2::Subsystem * &gt; driveRequirements)</td></tr>
+<tr class="separator:ab05d938325d7e5b31d378c09c8cb5c89 inherit pub_methods_classrmb_1_1_base_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -500,8 +496,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="aa79fa22ae808702e4cc43ba8e3f9116f" name="aa79fa22ae808702e4cc43ba8e3f9116f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa79fa22ae808702e4cc43ba8e3f9116f">&#9670;&#160;</a></span>followPPTrajectory()</h2>
+<a id="a1b1dafdb44aca55548498b6f3763e7a5" name="a1b1dafdb44aca55548498b6f3763e7a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b1dafdb44aca55548498b6f3763e7a5">&#9670;&#160;</a></span>followPPPath()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -510,9 +506,9 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">frc2::CommandPtr rmb::DifferentialDrive::followPPTrajectory </td>
+          <td class="memname">frc2::CommandPtr rmb::DifferentialDrive::followPPPath </td>
           <td>(</td>
-          <td class="paramtype">pathplanner::PathPlannerTrajectory</td>          <td class="paramname"><span class="paramname"><em>trajectory</em>, </span></td>
+          <td class="paramtype">std::shared_ptr&lt; pathplanner::PathPlannerPath &gt;</td>          <td class="paramname"><span class="paramname"><em>path</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -536,7 +532,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The command to follow a trajectory. </dd></dl>
 
-<p>Implements <a class="el" href="classrmb_1_1_base_drive.html#a9a71ea673af2da069d7859c1e7183e6d">rmb::BaseDrive</a>.</p>
+<p>Implements <a class="el" href="classrmb_1_1_base_drive.html#ae10f4b4147ca22f217963f2a72e4b3a2">rmb::BaseDrive</a>.</p>
 
 </div>
 </div>
@@ -576,7 +572,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The command to follow a trajectory. </dd></dl>
 
-<p>Implements <a class="el" href="classrmb_1_1_base_drive.html#a1935730cee242a39e0dce6d04acb4ad7">rmb::BaseDrive</a>.</p>
+<p>Implements <a class="el" href="classrmb_1_1_base_drive.html#ac8db69fe085763920ef90f6e6abc5c5b">rmb::BaseDrive</a>.</p>
 
 </div>
 </div>

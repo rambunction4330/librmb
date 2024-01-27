@@ -58,8 +58,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_h_r_s_gyro_8h_source.html",
-"classrmb_1_1_elevator_feedforward.html#a6e72cfb16bd702ce2f689be27552168d",
-"classrmb_1_1_swerve_drive.html#a144a136a7afd7e1653258a4f25df1655"
+"classrmb_1_1_elevator_feedforward.html#a9b53371e5d214ce6a2cd7bce1f8eb576",
+"classrmb_1_1_swerve_drive.html#a354d3937a080526937bab637a44a2baa"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
