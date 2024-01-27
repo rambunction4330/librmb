@@ -65,36 +65,36 @@ BaseDrive::~BaseDrive() {
 
 frc2::CommandPtr BaseDrive::followWPILibTrajectoryGroup(
     std::vector<frc::Trajectory> trajectoryGroup,
-    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+    std::initializer_list<frc2::Subsystem *> driveRequirements) {
 
   std::vector<frc2::CommandPtr> followCommands;
 
   for (auto trajectory : trajectoryGroup) {
     followCommands.emplace_back(
-        followWPILibTrajectory(trajectory, driveRequirments));
+        followWPILibTrajectory(trajectory, driveRequirements));
   }
 
   return frc2::cmd::Sequence(std::move(followCommands));
 }
 
-frc2::CommandPtr BaseDrive::followPPTrajectoryGroup(
-    std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
-    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+// frc2::CommandPtr BaseDrive::followPPTrajectoryGroup(
+//     std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
+//     std::initializer_list<frc2::Subsystem *> driveRequirements) {
 
-  std::vector<frc2::CommandPtr> followCommands;
+//   std::vector<frc2::CommandPtr> followCommands;
 
-  for (auto trajectory : trajectoryGroup) {
-    followCommands.emplace_back(
-        followPPTrajectory(trajectory, driveRequirments));
-  }
+//   for (auto path : trajectoryGroup) {
+//     followCommands.emplace_back(
+//         followPPTrajectory(path, driveRequirements));
+//   }
 
-  return frc2::cmd::Sequence(std::move(followCommands));
-}
+//   return frc2::cmd::Sequence(std::move(followCommands));
+// }
 
-frc2::CommandPtr BaseDrive::followPPTrajectoryWithEvents(
-    pathplanner::PathPlannerTrajectory trajectory,
+frc2::CommandPtr BaseDrive::followPPPathWithEvents(
+    pathplanner::PathPlannerPath path,
     std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+    std::initializer_list<frc2::Subsystem *> driveRequirements) {
 
   // return pathplanner::FollowPathWithEvents(
   //            followPPTrajectory(trajectory, driveRequirments).Unwrap(),
@@ -104,29 +104,31 @@ frc2::CommandPtr BaseDrive::followPPTrajectoryWithEvents(
   return frc2::cmd::None();
 }
 
-frc2::CommandPtr BaseDrive::followPPTrajectoryGroupWithEvents(
-    std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup,
-    std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+// frc2::CommandPtr BaseDrive::followPPTrajectoryGroupWithEvents(
+//     std::vector<pathplanner::PathPlannerPath> trajectoryGroup,
+//     std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
+//     std::initializer_list<frc2::Subsystem *> driveRequirements) {
 
-  std::vector<frc2::CommandPtr> followCommands;
+//   std::vector<frc2::CommandPtr> followCommands;
 
-  for (auto trajectory : trajectoryGroup) {
-    followCommands.emplace_back(
-        followPPTrajectoryWithEvents(trajectory, eventMap, driveRequirments));
-  }
+//   for (auto trajectory : trajectoryGroup) {
+//     followCommands.emplace_back(
+//         followPPTrajectoryWithEvents(trajectory, eventMap,
+//         driveRequirements));
+//   }
 
-  return frc2::cmd::Sequence(std::move(followCommands));
-}
+//   return frc2::cmd::Sequence(std::move(followCommands));
+// }
 
 frc2::CommandPtr BaseDrive::fullPPAuto(
-    pathplanner::PathPlannerTrajectory trajectory,
+    pathplanner::PathPlannerPath path,
     std::unordered_map<std::string, std::shared_ptr<frc2::Command>> eventMap,
-    std::initializer_list<frc2::Subsystem *> driveRequirments) {
+    std::initializer_list<frc2::Subsystem *> driveRequirements) {
 
-  std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup;
-  trajectoryGroup.push_back(trajectory);
-  return fullPPAuto(trajectoryGroup, eventMap, driveRequirments);
+  // std::vector<pathplanner::PathPlannerTrajectory> trajectoryGroup;
+  // trajectoryGroup.push_back(path);
+  // return fullPPAuto(trajectoryGroup, eventMap, driveRequirements);
+  return frc2::cmd::None();
 }
 
 frc2::CommandPtr BaseDrive::fullPPAuto(

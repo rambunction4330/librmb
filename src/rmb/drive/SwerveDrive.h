@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <array>
@@ -22,8 +21,13 @@
 
 #include <pathplanner/lib/path/PathPlannerTrajectory.h>
 
+#include "frc/geometry/Pose2d.h"
+#include "frc/geometry/Translation2d.h"
 #include "frc2/command/Commands.h"
 #include "networktables/DoubleArrayTopic.h"
+#include "pathplanner/lib/commands/FollowPathHolonomic.h"
+#include "pathplanner/lib/path/PathConstraints.h"
+#include "pathplanner/lib/path/PathPlannerPath.h"
 #include "rmb/drive/BaseDrive.h"
 #include "rmb/drive/SwerveModule.h"
 #include "units/angular_velocity.h"
@@ -32,8 +36,10 @@
 #include <frc2/command/CommandPtr.h>
 
 #include "networktables/DoubleTopic.h"
+#include "units/time.h"
 
 #include <rmb/sensors/gyro.h>
+#include <vector>
 
 namespace rmb {
 
@@ -191,33 +197,35 @@ public:
    */
   bool isHolonomic() const override { return true; }
 
-  /**
-   * Generates a command to follow WPILib Trajectory.
-   *
-   * @param trajectory       The trajectory to follow.
-   * @param driveRequirments The subsystems required for driving the robot
-   * (ie. the one that contains this class)
-   *
-   * @return The command to follow a trajectory.
-   */
+  // /**
+  //  * Generates a command to follow WPILib Trajectory.
+  //  *
+  //  * @param trajectory       The trajectory to follow.
+  //  * @param driveRequirments The subsystems required for driving the robot
+  //  * (ie. the one that contains this class)
+  //  *
+  //  * @return The command to follow a trajectory.
+  //  */
   frc2::CommandPtr followWPILibTrajectory(
       frc::Trajectory trajectory,
-      std::initializer_list<frc2::Subsystem *> driveRequirements) override {
-    return frc2::cmd::None();
-  }
-
-  /**
-   * Generates a command to follow PathPlanner Trajectory.
-   *
-   * @param trajectory       The trajectory to follow.
-   * @param driveRequirments The subsystems required for driving the robot
-   *                         (ie. the one that contains this class)
-   *
-   * @return The command to follow a trajectory.
-   */
-  frc2::CommandPtr followPPTrajectory(
-      pathplanner::PathPlannerTrajectory trajectory,
       std::initializer_list<frc2::Subsystem *> driveRequirements) override;
+
+  // /**
+  //  * Generates a command to follow PathPlanner Trajectory.
+  //  *
+  //  * @param trajectory       The trajectory to follow.
+  //  * @param driveRequirments The subsystems required for driving the robot
+  //  *                         (ie. the one that contains this class)
+  //  *
+  //  * @return The command to follow a trajectory.
+  //  */
+  frc2::CommandPtr followPPPath(
+      std::shared_ptr<pathplanner::PathPlannerPath> path,
+      std::initializer_list<frc2::Subsystem *> driveRequirements) override;
+
+  frc2::CommandPtr FollowGeneratedPPPath(
+      frc::Pose2d targetPose, pathplanner::PathConstraints constraints,
+      std::initializer_list<frc2::Subsystem *> driveRequirements);
 
   void updateNTDebugInfo(bool openLoopVelocity = false);
 

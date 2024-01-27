@@ -19,6 +19,7 @@
 
 #include <pathplanner/lib/path/PathPlannerTrajectory.h>
 
+#include "pathplanner/lib/path/PathPlannerPath.h"
 #include "rmb/drive/BaseDrive.h"
 #include "rmb/motorcontrol/LinearVelocityController.h"
 
@@ -235,8 +236,8 @@ public:
    *
    * @return The command to follow a trajectory.
    */
-  frc2::CommandPtr followPPTrajectory(
-      pathplanner::PathPlannerTrajectory trajectory,
+  frc2::CommandPtr followPPPath(
+      std::shared_ptr<pathplanner::PathPlannerPath> path,
       std::initializer_list<frc2::Subsystem *> driveRequirements) override;
 
 private:
